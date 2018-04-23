@@ -1,5 +1,5 @@
 {
-  "name": "create-react-app-redux",
+  "name": "Cindex",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -61,7 +61,6 @@
     "test": "node scripts/test.js --env=jsdom",
     "precommit": "lint-staged"
   },
-  "homepage": "https://cra-redux-router-thunk.herokuapp.com",
   "lint-staged": {
     "*.{js,json,css,md}": [
       "prettier --write",
