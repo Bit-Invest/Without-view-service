@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Select } from './select/select';
-import { Input } from './input';
-import { Checkbox } from './checkbox';
+import { Select } from '@registration/select';
+import { Input } from '@registration/input';
+import { Checkbox } from '@registration/checkbox';
 import './registrationForm.css';
 
-class RegistrationForm extends Component {
+export class RegistrationForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -41,7 +41,11 @@ class RegistrationForm extends Component {
           <img className="logo" src="image/Logo.png" alt="" />
           <div className="title">Sign Up</div>
           <Select onChange={this.handleSelectChange} />
-          <Input onChange={this.HandleEmailChange} />
+          <Input
+            onChange={this.HandleEmailChange}
+            placeholder="Your email"
+            type="text"
+          />
           <Input
             onChange={this.HandleEmailChange}
             placeholder="Password (min 6 characters)"
@@ -71,5 +75,3 @@ class RegistrationForm extends Component {
     );
   }
 }
-
-export default RegistrationForm;
