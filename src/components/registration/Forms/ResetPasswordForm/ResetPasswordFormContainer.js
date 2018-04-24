@@ -5,10 +5,7 @@ export class ResetPasswordFormContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      select: 'Trader',
-      email: '',
-      password: '',
-      checked: true
+      email: ''
     };
   }
 
@@ -17,24 +14,19 @@ export class ResetPasswordFormContainer extends React.Component {
     console.log('text', this.state);
   };
 
-  handleSelectChange = event => {
-    this.setState({ select: event.target.value });
-  };
-
-  HandleEmailChange = event => {
+  handleEmailChange = event => {
     this.setState({ email: event.target.value });
   };
 
-  HandlePasswordlChange = event => {
-    this.setState({ password: event.target.value });
-  };
-
-  handleCheckboxChange = event => {
-    const { checked } = event.target;
-    this.setState({ checked: checked });
-  };
-
   render() {
-    return <ResetPasswordForm {...this} />;
+    const {
+      handleEmailChange,
+      handleSubmit
+    } = this;
+    return <ResetPasswordForm
+      handleSubmit={handleSubmit}
+      handleEmailChange={handleEmailChange}
+      onClickSignIn={this.props.onClickSignIn}
+    />;
   }
 }

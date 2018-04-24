@@ -21,11 +21,11 @@ export class SignUpFormContainer extends React.Component {
     this.setState({ select: event.target.value });
   };
 
-  HandleEmailChange = event => {
+  handleEmailChange = event => {
     this.setState({ email: event.target.value });
   };
 
-  HandlePasswordlChange = event => {
+  handlePasswordChange = event => {
     this.setState({ password: event.target.value });
   };
 
@@ -35,6 +35,21 @@ export class SignUpFormContainer extends React.Component {
   };
 
   render() {
-    return <SignUpForm {...this} />;
+    const {
+      handleSubmit,
+      handleSelectChange,
+      handleEmailChange,
+      handlePasswordChange,
+      handleCheckboxChange
+    } = this;
+    return <SignUpForm
+      onClickSignIn={this.props.onClickSignIn}
+      handleSubmit={handleSubmit}
+      handleSelectChange={handleSelectChange}
+      handleEmailChange={handleEmailChange}
+      handlePasswordChange={handlePasswordChange}
+      handleCheckboxChange={handleCheckboxChange}
+      checked={this.state.checked}
+    />;
   }
 }

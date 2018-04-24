@@ -8,10 +8,10 @@ import {
 } from '@registration/Forms';
 
 const FORMS = {
-  SIGN_IN: <SignInForm />,
-  SIGN_UP: <SignUpForm />,
-  RESET_PASSWORD: <ResetPasswordForm />,
-  CHECK_EMAIL: <CheckEmailForm />
+  SIGN_IN: SignInForm,
+  SIGN_UP: SignUpForm,
+  RESET_PASSWORD: ResetPasswordForm,
+  CHECK_EMAIL: CheckEmailForm
 };
 
 export class RegistrationPageContainer extends React.Component {
@@ -22,17 +22,39 @@ export class RegistrationPageContainer extends React.Component {
     };
   }
 
-  render() {
-    return (
-      <React.Fragment>
-        <RegistrationPage>
-          {this.renderForm()}
-        </RegistrationPage>
-      </React.Fragment>
-    );
+  onClickForgot() {
+    this.setState({currentForm: 'RESET_PASSWORD'});
   }
 
-  renderForm() {
-    return FORMS[this.state.currentForm];
+  onClickSignUp() {
+    this.setState({currentForm: 'SIGN_UP'});
+  }
+
+  onClickSignIn() {
+    this.setState({currentForm: 'SIGN_IN'});
+  }
+
+  onCheckedEmail() {
+    this.setState({currentForm: 'CHECK_EMAIL'});
+  }
+
+  render() {
+    const Form = FORMS[this.state.currentForm];
+    const {
+      onClickForgot,
+      onClickSignIn,
+      onClickSignUp,
+      onCheckedEmail
+    } = this;
+    return (
+      <RegistrationPage>
+        <Form
+          onClickForgot={onClickForgot.bind(this)}
+          onClickSignIn={onClickSignIn.bind(this)}
+          onClickSignUp={onClickSignUp.bind(this)}
+          onCheckedEmail={onCheckedEmail.bind(this)}
+        />
+      </RegistrationPage>
+    );
   }
 }
