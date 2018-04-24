@@ -14,11 +14,12 @@ export class PopUpManager extends React.Component {
   render() {
     return (
       <div className={ROOT_CLASS}>
-        <div className={`${ROOT_CLASS}__content`}>
-
-        </div>
-        <div className={`${ROOT_CLASS}__undercover`}>
-
+        <div className={`${ROOT_CLASS}__undercover`}></div>
+        <div className={`${ROOT_CLASS}__content-wrap`}>
+          <div className={`${ROOT_CLASS}__close`}></div>
+          <div className={`${ROOT_CLASS}__content`}>
+            {this.props.children}
+          </div>
         </div>
       </div>
     );
