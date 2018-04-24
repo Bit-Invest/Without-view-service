@@ -1,0 +1,44 @@
+.registration-page {
+  display: flex;
+  width: 100%;
+}
+
+.registration-page__form-column {
+  padding: 50px 0 33px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 33%;
+}
+
+.registration-page__form {
+  align-self: center;
+}
+
+.registration-page__picture-column {
+  width: 67%;
+  height: 100vh;
+  background-image: url(./registration-background.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.registration-page__disclaimer {
+  align-self: flex-end;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #666666;
+}
+
+.registration-page__logo {
+  width: 138px;
+  height: 40px;
+  background-image: url(./cindex-logo.svg);
+  background-image: 100%;
+  background-repeat: no-repeat;
+}
