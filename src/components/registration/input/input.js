@@ -1,7 +1,7 @@
 import React from 'react';
-import './InputComponent.css';
+import './input.css';
 
-export const InputComponent = props => {
+export const Input = props => {
   const HandleEmailChange = e => {
     const { onChange } = props;
 
@@ -10,8 +10,8 @@ export const InputComponent = props => {
 
   return (
     <input
-      type={this.props.type}
-      placeholder="Your email"
+      type={props.type}
+      placeholder={props.placeholder}
       onChange={HandleEmailChange}
       className="inputEmail"
     />

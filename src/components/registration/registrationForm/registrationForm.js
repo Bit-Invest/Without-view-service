@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import SelectComponent from './SelectComponent/SelectComponent';
-import { InputComponent } from './InputComponent';
-import InputPasswordComponent from './InputPasswordComponent/InputPasswordComponent';
-import CheckboxComponent from './CheckboxComponent/CheckboxComponent';
-import './RegistrationForm.css';
+import { Select } from '@registration/select';
+import { Input } from '@registration/input';
+import { Checkbox } from '@registration/checkbox';
+import './registrationForm.css';
 
-class RegistrationForm extends Component {
+export class RegistrationForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -30,10 +29,6 @@ class RegistrationForm extends Component {
     this.setState({ email: event.target.value });
   };
 
-  PasswordChange = event => {
-    this.setState({ password: event.target.value });
-  };
-
   handleCheckboxChange = event => {
     const { checked } = event.target;
     this.setState({ checked: checked });
@@ -45,11 +40,19 @@ class RegistrationForm extends Component {
         <form className="RegistrationForm" onSubmit={this.handleSubmit}>
           <img className="logo" src="image/Logo.png" alt="" />
           <div className="title">Sign Up</div>
-          <SelectComponent onChange={this.handleSelectChange} />
-          <InputComponent onChange={this.HandleEmailChange} />
-          <InputPasswordComponent onChange={this.PasswordChange} />
+          <Select onChange={this.handleSelectChange} />
+          <Input
+            onChange={this.HandleEmailChange}
+            placeholder="Your email"
+            type="text"
+          />
+          <Input
+            onChange={this.HandleEmailChange}
+            placeholder="Password (min 6 characters)"
+            type="password"
+          />
           <div className="checkboxBlock">
-            <CheckboxComponent
+            <Checkbox
               checked={this.state.checked}
               onChange={this.handleCheckboxChange}
             />
@@ -72,5 +75,3 @@ class RegistrationForm extends Component {
     );
   }
 }
-
-export default RegistrationForm;
