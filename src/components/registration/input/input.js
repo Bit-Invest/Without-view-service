@@ -1,7 +1,7 @@
 import React from 'react';
-import './InputComponent.css';
+import './input.css';
 
-export const InputComponent = props => {
+export const Input = props => {
   const HandleEmailChange = e => {
     const { onChange } = props;
 
