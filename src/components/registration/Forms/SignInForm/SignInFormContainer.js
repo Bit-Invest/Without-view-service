@@ -5,7 +5,6 @@ export class SignInFormContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      select: 'Trader',
       email: '',
       password: '',
       checked: true
@@ -15,10 +14,6 @@ export class SignInFormContainer extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log('text', this.state);
-  };
-
-  handleSelectChange = event => {
-    this.setState({ select: event.target.value });
   };
 
   HandleEmailChange = event => {
