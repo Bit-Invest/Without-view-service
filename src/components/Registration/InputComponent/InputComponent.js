@@ -10,7 +10,7 @@ export const InputComponent = props => {
 
   return (
     <input
-      type="text"
+      type={this.props.type}
       placeholder="Your email"
       onChange={HandleEmailChange}
       className="inputEmail"

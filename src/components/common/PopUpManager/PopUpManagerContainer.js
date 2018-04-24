@@ -1,27 +1,26 @@
 import * as React from 'react';
 import { PopUpManager } from './PopUpManager'
 
-const ROOT_CLASS = 'pop-up-container';
-
-export class PopUpManager extends React.Component {
+export class PopUpManagerContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShowed: false
+      isShowed: this.props.isShowed
     };
   }
 
   render() {
     return (
-      <div className={ROOT_CLASS}>
-        <div className={`${ROOT_CLASS}__undercover`}></div>
-        <div className={`${ROOT_CLASS}__content-wrap`}>
-          <div className={`${ROOT_CLASS}__close`}></div>
-          <div className={`${ROOT_CLASS}__content`}>
-            {this.props.children}
-          </div>
-        </div>
-      </div>
+      <PopUpManager
+        isShowed={this.state.isShowed}
+        onClickClose={this.closePopUp.bind(this)}
+      >
+        {this.props.children}
+      </PopUpManager>
     );
+  }
+
+  closePopUp() {
+    this.setState({isShowed: false});
   }
 }

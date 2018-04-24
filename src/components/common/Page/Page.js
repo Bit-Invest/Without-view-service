@@ -1,18 +1,13 @@
 import * as React from 'react';
+import { PopUpManager } from '@components/PopUpManager';
 
-export class Page extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const ROOT_CLASS = 'page';
 
-  render() {
-    return (
-      {this.renderContent()}
-    );
-  }
-
-  renderContent() {
-    return null;
-  }
+export const Page = (props) => {
+  return (
+    <div className={ROOT_CLASS}>
+      {props.children}
+      <PopUpManager isShowed={props.isPopUpOpened} />
+    </div>
+  );
 }
