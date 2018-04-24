@@ -12,6 +12,7 @@
 }
 
 .registration-page__form {
+  width: 100%;
   align-self: center;
 }
 
@@ -39,6 +40,6 @@
   width: 138px;
   height: 40px;
   background-image: url(./cindex-logo.svg);
-  background-image: 100%;
+  background-size: 100%;
   background-repeat: no-repeat;
 }

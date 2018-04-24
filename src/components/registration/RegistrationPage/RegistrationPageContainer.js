@@ -1,5 +1,18 @@
 import * as React from 'react';
-import { RegistrationPage } from './RegistrationPage'
+import { RegistrationPage } from './RegistrationPage';
+import {
+  SignInForm,
+  SignUpForm,
+  ResetPasswordForm,
+  CheckEmailForm
+} from '@registration/Forms';
+
+const FORMS = {
+  SIGN_IN: <SignInForm />,
+  SIGN_UP: <SignUpForm />,
+  RESET_PASSWORD: <ResetPasswordForm />,
+  CHECK_EMAIL: <CheckEmailForm />
+};
 
 export class RegistrationPageContainer extends React.Component {
   constructor(props) {
@@ -11,13 +24,15 @@ export class RegistrationPageContainer extends React.Component {
 
   render() {
     return (
-      <RegistrationPage>
-        {this.calculateForm()}
-      </RegistrationPage>
+      <React.Fragment>
+        <RegistrationPage>
+          {this.renderForm()}
+        </RegistrationPage>
+      </React.Fragment>
     );
   }
 
-  calculateForm() {
-    return null;
+  renderForm() {
+    return FORMS[this.state.currentForm];
   }
 }

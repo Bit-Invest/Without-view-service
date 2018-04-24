@@ -29,12 +29,7 @@ export const SignInForm = props => {
         <div className="transitionAccount">
           Do you have an account? <span>Sign Up</span>
         </div>
-        <div className="infoHref">
-          © 2018 CryptoActive | <span>Privacy Policy</span> &{' '}
-          <span>Terms of Service</span>
-        </div>
       </form>
-      <img className="regFon" src="image/reg_fon.jpg" alt="" />
     </div>
   );
 };
