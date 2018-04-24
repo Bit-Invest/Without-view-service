@@ -20,8 +20,6 @@
 
 .pop-up-manager__content {
   align-self: flex-end;
-  width: 550px;
-  height: 400px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
@@ -40,7 +38,6 @@
   width: max-content;
   align-self: flex-end;
   cursor: pointer;
-
 }
 
 .pop-up-manager__close-title {
