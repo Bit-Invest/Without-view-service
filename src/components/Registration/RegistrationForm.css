@@ -1,0 +1,76 @@
+.regBlock {
+  display: flex;
+  justify-content: center;
+}
+.RegistrationForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  width: 500px;
+  height: 698px;
+}
+.RegistrationForm .logo {
+  height: 40px;
+  width: auto;
+  margin: 0 auto;
+}
+.RegistrationForm .title {
+  text-align: center;
+  font-family: Lato, sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 50px 0 30px;
+}
+.RegistrationForm .checkboxBlock {
+  display: flex;
+  margin-top: 30px;
+  width: 280px;
+  height: 50px;
+  font-family: Lato, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+.RegistrationForm .btn {
+  width: 280px;
+  height: 40px;
+  border-radius: 5px;
+  background: linear-gradient(
+    45deg,
+    rgba(133, 96, 253, 1) 15%,
+    rgba(99, 141, 247, 1) 100%
+  );
+  font-family: Lato, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 30px;
+  border: none;
+}
+.RegistrationForm .transitionAccount {
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: center;
+}
+.RegistrationForm .transitionAccount span {
+  color: #8560fd;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.RegistrationForm .infoHref {
+  bottom: 0;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: 300;
+  color: #666666;
+  padding-top: 50px;
+}
+.RegistrationForm .infoHref span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.regFon {
+  width: 544px;
+  height: 698px;
+}
