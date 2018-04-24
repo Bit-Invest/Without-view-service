@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Home from '@components/home';
 import About from '@components/about';
-import { RegistrationForm } from '@components/registration/registrationForm';
+import { CheckEmailForm } from '@components/registration/CheckEmailForm';
 
 export const App = () => (
   <div>
@@ -15,7 +15,7 @@ export const App = () => (
     <main>
       <Route exact path="/" component={Home} />
       <Route exact path="/about-us" component={About} />
-      <Route exact path="/registration" component={RegistrationForm} />
+      <Route exact path="/registration" component={CheckEmailForm} />
     </main>
   </div>
 );
