@@ -14,11 +14,19 @@ export class ResetPasswordFormContainer extends React.Component {
     console.log('text', this.state);
   };
 
-  HandleEmailChange = event => {
+  handleEmailChange = event => {
     this.setState({ email: event.target.value });
   };
 
   render() {
-    return <ResetPasswordForm {...this} />;
+    const {
+      handleEmailChange,
+      handleSubmit
+    } = this;
+    return <ResetPasswordForm
+      handleSubmit={handleSubmit}
+      handleEmailChange={handleEmailChange}
+      onClickSignIn={this.props.onClickSignIn}
+    />;
   }
 }

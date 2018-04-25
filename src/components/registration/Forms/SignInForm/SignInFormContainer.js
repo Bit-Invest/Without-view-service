@@ -16,11 +16,15 @@ export class SignInFormContainer extends React.Component {
     console.log('text', this.state);
   };
 
-  HandleEmailChange = event => {
+  handleSelectChange = event => {
+    this.setState({ select: event.target.value });
+  };
+
+  handleEmailChange = event => {
     this.setState({ email: event.target.value });
   };
 
-  HandlePasswordlChange = event => {
+  handlePasswordChange = event => {
     this.setState({ password: event.target.value });
   };
 
@@ -30,6 +34,22 @@ export class SignInFormContainer extends React.Component {
   };
 
   render() {
-    return <SignInForm {...this} />;
+    const {
+      handleSubmit,
+      handleSelectChange,
+      handleEmailChange,
+      handlePasswordChange,
+      handleCheckboxChange
+    } = this;
+    return <SignInForm
+      onClickSignUp={this.props.onClickSignUp}
+      onClickForgot={this.props.onClickForgot}
+      handleSubmit={handleSubmit}
+      handleSelectChange={handleSelectChange}
+      handleEmailChange={handleEmailChange}
+      handlePasswordChange={handlePasswordChange}
+      handleCheckboxChange={handleCheckboxChange}
+      checked={this.state.checked}
+    />;
   }
 }

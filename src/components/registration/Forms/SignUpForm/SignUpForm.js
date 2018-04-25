@@ -12,18 +12,18 @@ export const SignUpForm = props => {
       <div className="title">Sign Up</div>
       <Select onChange={this.handleSelectChange} />
       <Input
-        onChange={this.HandleEmailChange}
+        onChange={this.handleEmailChange}
         placeholder="Your email"
         type="text"
       />
       <Input
-        onChange={this.HandlePasswordlChange}
+        onChange={this.handlePasswordChange}
         placeholder="Password (min 6 characters)"
         type="password"
       />
       <div className="checkboxBlock">
         <Checkbox
-          checked={props.state.checked}
+          checked={props.checked}
           onChange={props.handleCheckboxChange}
         />
         <div>
@@ -31,9 +31,9 @@ export const SignUpForm = props => {
           purpose of verifying my identity.
         </div>
       </div>
-      <button className="btn">Sign Up</button>
+      <button className="btn"><div className="btn-title">Sign Up</div><div className="btn-image"></div></button>
       <div className="transitionAccount">
-        Already have an account? <span>Sign In</span>
+        Already have an account? <span onClick={props.onClickSignIn}>Sign In</span>
       </div>
     </form>
   );

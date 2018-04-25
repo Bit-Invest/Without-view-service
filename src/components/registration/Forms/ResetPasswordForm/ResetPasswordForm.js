@@ -12,13 +12,13 @@ export const ResetPasswordForm = props => {
         We’ll email you instructions to reset your password.
       </div>
       <Input
-        onChange={props.HandleEmailChange}
+        onChange={props.handleEmailChange}
         placeholder="Your email"
         type="text"
       />
       <button className="btn">Send</button>
       <div className="transitionAccount">
-        Return to Sign In <span>Sign In</span>
+        Return to Sign In <span onClick={props.onClickSignIn}>Sign In</span>
       </div>
     </form>
   );
