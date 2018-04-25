@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input } from '@registration/input';
+import { Button } from '@registration/Forms/Button';
 import './ResetPasswordForm.css';
 
 export const ResetPasswordForm = props => {
@@ -16,7 +17,7 @@ export const ResetPasswordForm = props => {
         placeholder="Your email"
         type="text"
       />
-      <button className="btn">Send</button>
+      <Button />
       <div className="transitionAccount">
         Return to Sign In <span onClick={props.onClickSignIn}>Sign In</span>
       </div>

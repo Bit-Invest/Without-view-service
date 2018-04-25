@@ -1,6 +1,7 @@
 import React from 'react';
 import { Input } from '@registration/input';
 import { Checkbox } from '@registration/checkbox';
+import { Button } from '@registration/Forms/Button';
 import './SignInForm.css';
 
 export const SignInForm = props => {
@@ -27,9 +28,11 @@ export const SignInForm = props => {
         />
         <div>Remember me</div>
       </div>
-      <button className="btn">Sign In</button>
+      <Button />
+      {/*<button className="btn">Sign In</button>*/}
       <div className="transitionAccount">
-        Do you have an account? <span onClick={props.onClickSignUp}>Sign Up</span>
+        Do you have an account?{' '}
+        <span onClick={props.onClickSignUp}>Sign Up</span>
       </div>
     </form>
   );
