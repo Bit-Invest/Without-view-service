@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { SignInForm } from './SignInForm';
+import { store } from '@store';
+import { push } from 'react-router-redux';
 
 export class SignInFormContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: '',
@@ -13,7 +15,11 @@ export class SignInFormContainer extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('text', this.state);
+    const data = this.state;
+    const { signIn } = this.props;
+    signIn(data).then(() => {
+      store.dispatch(push('/profile'));
+    });
   };
 
   handleSelectChange = event => {
@@ -44,7 +50,7 @@ export class SignInFormContainer extends React.Component {
     return <SignInForm
       onClickSignUp={this.props.onClickSignUp}
       onClickForgot={this.props.onClickForgot}
-      handleSubmit={handleSubmit}
+      handleSubmit={handleSubmit.bind(this)}
       handleSelectChange={handleSelectChange}
       handleEmailChange={handleEmailChange}
       handlePasswordChange={handlePasswordChange}

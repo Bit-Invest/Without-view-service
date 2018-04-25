@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import Home from '@components/home';
 import About from '@components/about';
 import { RegistrationPage } from '@registration/RegistrationPage';
+import { ProfilePage } from '@profile/ProfilePage';
 
 export const App = () => (
   <div>
@@ -16,6 +17,7 @@ export const App = () => (
       <Route exact path="/" component={Home} />
       <Route exact path="/about-us" component={About} />
       <Route exact path="/registration" component={RegistrationPage} />
+      <Route exact path="/profile" component={ProfilePage} />
     </main>
   </div>
 );
