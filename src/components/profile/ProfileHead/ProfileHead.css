@@ -1,0 +1,12 @@
+.profile-head {
+  max-width: 960px;
+  min-width: 640px;
+}
+.profile-head {
+}
+.icon-user-border {
+  width: 130px;
+  height: 130px;
+  background-color: #ffffff;
+  border: solid 2px #8560fd;
+}
