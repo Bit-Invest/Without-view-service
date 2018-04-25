@@ -13,7 +13,6 @@
 
 .registration-page__form {
   width: 100%;
-  align-self: center;
 }
 
 .registration-page__picture-column {
@@ -26,7 +25,7 @@
 
 .registration-page__disclaimer {
   align-self: flex-end;
-  font-family: Lato;
+  font-family: Lato, sans-serif;
   font-size: 14px;
   font-weight: 300;
   font-style: normal;
@@ -34,6 +33,11 @@
   line-height: normal;
   letter-spacing: normal;
   color: #666666;
+}
+
+.registration-page__disclaimer span {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .registration-page__logo {
