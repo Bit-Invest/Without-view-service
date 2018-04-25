@@ -43,9 +43,6 @@
 .input-reg_forgot .inputEmail {
   padding-right: 72px;
 }
-.input-error {
-  border: solid 2px #ff4040;
-}
 .inputEmail__required {
   position: absolute;
   top: 12px;
@@ -59,4 +56,7 @@
   letter-spacing: normal;
   color: #ff4040;
   cursor: pointer;
+}
+.input-reg_error .inputEmail {
+  border: solid 2px #ff4040;
 }
