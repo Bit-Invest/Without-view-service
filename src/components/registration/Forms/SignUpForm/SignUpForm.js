@@ -23,7 +23,7 @@ export const SignUpForm = props => {
       />
       <div className="checkboxBlock">
         <Checkbox
-          checked={props.state.checked}
+          checked={props.checked}
           onChange={props.handleCheckboxChange}
         />
         <div>
@@ -31,7 +31,7 @@ export const SignUpForm = props => {
           purpose of verifying my identity.
         </div>
       </div>
-      <button className="btn">Sign Up</button>
+      <button className="btn"><div className="btn-title">Sign Up</div><div className="btn-image"></div></button>
       <div className="transitionAccount">
         Already have an account? <span onClick={props.onClickSignIn}>Sign In</span>
       </div>

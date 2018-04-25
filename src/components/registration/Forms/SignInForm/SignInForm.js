@@ -16,12 +16,13 @@ export const SignInForm = props => {
       />
       <Input
         onChange={props.handlePasswordChange}
-        placeholder="Password (min 6 characters)"
+        placeholder="Password"
         type="password"
+        needForgot
       />
       <div className="checkboxBlock">
         <Checkbox
-          checked={props.state.checked}
+          checked={props.checked}
           onChange={props.handleCheckboxChange}
         />
         <div>Remember me</div>

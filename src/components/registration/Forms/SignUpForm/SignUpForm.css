@@ -35,6 +35,10 @@
   color: #000000;
 }
 .SignUpForms__RegistrationForm .btn {
+  display: flex;
+  padding: 0 14px;
+  justify-content: space-between;
+  align-items: center;
   width: 280px;
   height: 40px;
   border-radius: 5px;
@@ -69,4 +73,16 @@
   color: #8560fd;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.SignUpForms__RegistrationForm .btn-title {
+  flex-grow: 2;
+}
+
+.SignUpForms__RegistrationForm .btn-image {
+  background-image: url(../images/button_img.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 8px;
+  height: 13px;
 }
