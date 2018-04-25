@@ -9,7 +9,9 @@ export const Input = props => {
   };
 
   const buildRootClass = () => {
-    return 'input-reg' + (props.needForgot ? ' input-reg_forgot' : '');
+    return 'input-reg' +
+      (props.needForgot ? ' input-reg_forgot' : '') +
+      (props.isError ? ' input-reg_error' : '');
   };
 
   const renderForgot = () => {
