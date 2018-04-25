@@ -9,8 +9,10 @@ export const Input = props => {
   };
 
   const buildRootClass = () => {
-    return 'input-reg' + (props.needForgot ? ' input-reg_forgot' : '');
-  }
+    return 'input-reg' +
+      (props.needForgot ? ' input-reg_forgot' : '') +
+      (props.isError ? ' input-reg_error' : '');
+  };
 
   const renderForgot = () => {
     let result = null;
@@ -22,7 +24,13 @@ export const Input = props => {
       );
     }
     return result;
-  }
+  };
+
+  const renderRequired = () => {
+    if (props.required) {
+      return <div className="inputEmail__required">*</div>;
+    }
+  };
 
   return (
     <div className={buildRootClass()}>
@@ -32,6 +40,7 @@ export const Input = props => {
         onChange={HandleEmailChange}
         className="inputEmail"
       />
+      {renderRequired()}
       {renderForgot()}
     </div>
   );
