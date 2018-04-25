@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { SignInForm } from './SignInForm';
-import { store } from '@store';
-import { push } from 'react-router-redux';
 
 export class SignInFormContainer extends React.Component {
   constructor(props) {
@@ -9,7 +7,8 @@ export class SignInFormContainer extends React.Component {
     this.state = {
       email: '',
       password: '',
-      checked: true
+      checked: true,
+      isError: false
     };
   }
 
@@ -17,8 +16,8 @@ export class SignInFormContainer extends React.Component {
     event.preventDefault();
     const data = this.state;
     const { signIn } = this.props;
-    signIn(data).then(() => {
-      store.dispatch(push('/profile'));
+    signIn(data).catch(() => {
+      this.setState({isError: true});
     });
   };
 
@@ -56,6 +55,7 @@ export class SignInFormContainer extends React.Component {
       handlePasswordChange={handlePasswordChange}
       handleCheckboxChange={handleCheckboxChange}
       checked={this.state.checked}
+      isError={this.state.isError}
     />;
   }
 }

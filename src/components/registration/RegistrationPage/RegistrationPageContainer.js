@@ -24,37 +24,34 @@ const FORMS = {
 class RegistrationPageContainer extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       currentForm: 'SIGN_IN'
     };
   }
 
   onClickForgot = () => {
-    const { setState } = this;
-
-    setState &&
-      setState({currentForm: 'RESET_PASSWORD'});
+    this.setState({
+      currentForm: 'RESET_PASSWORD'
+    });
   }
 
-  onClickSignUp = () => {
-    const { setState } = this;
-
-    setState &&
-      setState({currentForm: 'SIGN_UP'});
+  onClickSignUp = (e) => {
+    this.setState({
+      currentForm: 'SIGN_UP'
+    });
   }
 
   onClickSignIn = () => {
-    const { setState } = this;
-
-    setState &&
-      setState({currentForm: 'SIGN_IN'});
+    this.setState({
+      currentForm: 'SIGN_IN'
+    });
   }
 
   onCheckedEmail = () => {
-    const { setState } = this;
-
-    setState &&
-      setState({currentForm: 'CHECK_EMAIL'});
+    this.setState({
+      currentForm: 'CHECK_EMAIL'
+    });
   }
 
   render() {
@@ -65,6 +62,7 @@ class RegistrationPageContainer extends React.Component {
       onClickSignUp,
       onCheckedEmail
     } = this;
+
     return (
       <RegistrationPage>
         <Form
@@ -75,10 +73,15 @@ class RegistrationPageContainer extends React.Component {
           signIn={this.props.SIGN_IN}
           signUp={this.props.SIGN_UP}
           resetPassword={this.props.RESET_PASSWORD}
+          isError={this.props.isError}
         />
       </RegistrationPage>
     );
   }
+}
+
+const mapStateToProps = state => {
+  return state.registration;
 }
 
 const mapDispatchToProps = dispatch =>
@@ -91,5 +94,5 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 const connectedContainer =
-  connect(null, mapDispatchToProps)(RegistrationPageContainer);
+  connect(mapStateToProps, mapDispatchToProps)(RegistrationPageContainer);
 export {connectedContainer as RegistrationPageContainer};

@@ -5,13 +5,25 @@ export class ResetPasswordFormContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: ''
+      email: '',
+      isError: false
     };
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('text', this.state);
+    const data = this.state;
+    const {
+      resetPassword,
+      onCheckedEmail
+    } = this.props;
+    resetPassword(data)
+      .then(() => {
+        onCheckedEmail();
+      })
+      .catch(() => {
+        this.setState({isError: true});
+      });
   };
 
   handleEmailChange = event => {
@@ -27,6 +39,7 @@ export class ResetPasswordFormContainer extends React.Component {
       handleSubmit={handleSubmit}
       handleEmailChange={handleEmailChange}
       onClickSignIn={this.props.onClickSignIn}
+      isError={this.state.isError}
     />;
   }
 }

@@ -5,10 +5,12 @@ export const signIn = async () => {
 };
 
 export const signUp = async () => {
-  return new Promise((resolve, reject) => setTimeout(() => {
-    reject();
-  }, 500));
-};
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject('ERROR');
+    }, 500);
+  });
+}
 
 export const resetPassword = async () => {
   return new Promise((resolve) => setTimeout(() => {

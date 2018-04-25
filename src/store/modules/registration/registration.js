@@ -1,4 +1,5 @@
 import { signIn, signUp, resetPassword } from './api';
+import { push } from 'react-router-redux';
 
 export const SIGN_IN_REQUESTED = 'registration/SIGN_IN_REQUESTED';
 export const SIGN_IN_REJECTED = 'registration/SIGN_IN_REJECTED';
@@ -10,42 +11,10 @@ export const RESET_PASSWORD_REQUESTED = 'registration/RESET_PASSWORD_REQUESTED';
 export const RESET_PASSWORD_APPROVED = 'registration/RESET_PASSWORD_APPROVED';
 export const RESET_PASSWORD_REJECTED = 'registration/RESET_PASSWORD_REJECTED';
 
-const initialState = {
-  isError: false
-};
+const initialState = {};
 
 export const registration = (state = initialState, action) => {
   switch (action.type) {
-    case SIGN_IN_APPROVED:
-      return {
-        ...state,
-        isError: false
-      };
-    case SIGN_UP_APPROVED:
-      return {
-        ...state,
-        isError: false
-      };
-    case RESET_PASSWORD_APPROVED:
-      return {
-        ...state,
-        isError: false
-      };
-    case SIGN_IN_REJECTED:
-      return {
-        ...state,
-        isError: true
-      };
-    case SIGN_UP_REJECTED:
-      return {
-        ...state,
-        isError: true
-      };
-    case RESET_PASSWORD_REJECTED:
-      return {
-        ...state,
-        isError: true
-      };
     default:
       return state;
   }
@@ -58,7 +27,13 @@ export const SIGN_IN = (userData) => {
       userData
     });
 
-    return signIn(userData);
+    return signIn(userData)
+      .then(() => {
+        dispatch({
+          type: SIGN_IN_APPROVED
+        });
+        dispatch(push('/profile'));
+      });
   }
 }
 
@@ -69,7 +44,13 @@ export const SIGN_UP = (userData) => {
       userData
     });
 
-    return signUp(userData);
+    return signUp(userData)
+      .then(() => {
+        dispatch({
+          type: SIGN_UP_APPROVED
+        });
+        dispatch(push('/profile'));
+      });
   }
 }
 
@@ -80,6 +61,11 @@ export const RESET_PASSWORD = (email) => {
       email
     });
 
-    return resetPassword(email);
+    return resetPassword(email)
+      .then(() => {
+        dispatch({
+          type: RESET_PASSWORD_APPROVED
+        });
+      })
   };
 }
