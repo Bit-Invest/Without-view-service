@@ -7,6 +7,7 @@ import { App } from '@components/common/App';
 
 import 'sanitize.css/sanitize.css';
 import './index.css';
+import './css/app.css';
 
 const target = document.querySelector('#root');
 

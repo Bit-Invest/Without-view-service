@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './RegistrationPage.css';
 
 const ROOT_CLASS = 'registration-page';
 
