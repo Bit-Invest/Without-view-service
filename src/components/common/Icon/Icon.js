@@ -10,7 +10,7 @@ export const Icon = (props) => {
       }
       onClick={props.onClick}
     >
-      <use href={`#${props.type}`}></use>
+      <use xlinkHref={`#${props.type}`}></use>
     </svg>
   );
 }

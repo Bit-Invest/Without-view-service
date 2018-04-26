@@ -7,13 +7,6 @@ import { ProfilePage } from '@profile/ProfilePage';
 
 export const App = () => (
   <div>
-    <header>
-      <Link to="/">Home</Link>
-      <Link to="/about-us">About</Link>
-      <Link to="/registration">Registration</Link>
-      <Link to="/profile">Profile</Link>
-    </header>
-
     <main>
       <Route exact path="/" component={Home} />
       <Route exact path="/about-us" component={About} />
