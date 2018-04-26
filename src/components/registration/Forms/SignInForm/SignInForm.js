@@ -2,9 +2,9 @@ import React from 'react';
 import { Input } from '@registration/input';
 import { Checkbox } from '@registration/checkbox';
 import { Button } from '@registration/Forms/Button';
-import './SignInForm.css';
 
 export const SignInForm = props => {
+  const { isError } = props;
   return (
     <form
       className="SignInForms__RegistrationForm"
@@ -14,12 +14,14 @@ export const SignInForm = props => {
         onChange={props.handleEmailChange}
         placeholder="Your email"
         type="text"
+        isError={isError}
       />
       <Input
         onChange={props.handlePasswordChange}
         placeholder="Password"
         type="password"
         needForgot
+        isError={isError}
       />
       <div className="checkboxBlock">
         <Checkbox

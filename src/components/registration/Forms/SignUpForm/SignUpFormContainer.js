@@ -8,13 +8,18 @@ export class SignUpFormContainer extends React.Component {
       select: 'Trader',
       email: '',
       password: '',
-      checked: true
+      checked: true,
+      isError: false
     };
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('text', this.state);
+    const data = this.state;
+    const { signUp } = this.props;
+    signUp(data).catch(() => {
+      this.setState({isError: true});
+    });
   };
 
   handleSelectChange = event => {
@@ -50,6 +55,7 @@ export class SignUpFormContainer extends React.Component {
       handlePasswordChange={handlePasswordChange}
       handleCheckboxChange={handleCheckboxChange}
       checked={this.state.checked}
+      isError={this.state.isError}
     />;
   }
 }

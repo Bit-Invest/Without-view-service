@@ -30,6 +30,10 @@
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-sass": "^4.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "module-alias": "^2.0.6",
@@ -58,10 +62,9 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "precommit": "lint-staged"
+    "watch-css": "gulp",
+    "start-js": "node scripts/start",
+    "start": "npm-run-all -p watch-css start-js"
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]

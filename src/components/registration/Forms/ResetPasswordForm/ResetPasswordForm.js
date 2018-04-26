@@ -1,9 +1,9 @@
 import React from 'react';
 import { Input } from '@registration/input';
 import { Button } from '@registration/Forms/Button';
-import './ResetPasswordForm.css';
 
 export const ResetPasswordForm = props => {
+  const { isError } = props;
   return (
     <form
       className="Reset-password__RegistrationForm"
@@ -16,6 +16,7 @@ export const ResetPasswordForm = props => {
         onChange={props.handleEmailChange}
         placeholder="Your email"
         type="text"
+        isError={isError}
       />
       <Button />
       <div className="transitionAccount">

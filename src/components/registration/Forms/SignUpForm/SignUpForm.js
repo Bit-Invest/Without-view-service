@@ -3,9 +3,9 @@ import { Select } from '@registration/select';
 import { Input } from '@registration/input';
 import { Checkbox } from '@registration/checkbox';
 import { Button } from '@registration/Forms/Button';
-import './SignUpForm.css';
 
 export const SignUpForm = props => {
+  const { isError } = props;
   return (
     <form
       className="SignUpForms__RegistrationForm"
@@ -17,12 +17,14 @@ export const SignUpForm = props => {
         placeholder="Your email"
         type="text"
         required
+        isError={isError}
       />
       <Input
         onChange={this.handlePasswordChange}
         placeholder="Password (min 6 characters)"
         type="password"
         required
+        isError={isError}
       />
       <div className="checkboxBlock">
         <Checkbox

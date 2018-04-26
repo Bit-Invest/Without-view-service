@@ -1,5 +1,4 @@
 import React from 'react';
-import './UserName.css';
 
 const ROOT_CLASS = 'user-name';
 

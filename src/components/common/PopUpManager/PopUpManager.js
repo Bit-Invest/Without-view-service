@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './PopUpManager.css';
 
 const ROOT_CLASS = 'pop-up-manager';
 

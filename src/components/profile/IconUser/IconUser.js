@@ -1,5 +1,4 @@
 import React from 'react';
-import './IconUser.css';
 
 const ROOT_CLASS = 'icon-user';
 
