@@ -2,7 +2,6 @@ import React from 'react';
 import { Input } from '@registration/input';
 import { Checkbox } from '@registration/checkbox';
 import { Button } from '@registration/Forms/Button';
-import './SignInForm.css';
 
 export const SignInForm = props => {
   const { isError } = props;

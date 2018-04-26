@@ -2,7 +2,6 @@ import React from 'react';
 import { IconUser } from '../IconUser/IconUser';
 import { UserName } from '../UserName/UserName';
 import { Button } from '@components/registration/Forms/Button/button';
-import './ProfileHead.css';
 
 const ROOT_CLASS = 'profile-head';
 
