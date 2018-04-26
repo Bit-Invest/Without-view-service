@@ -28,8 +28,7 @@ export const SignInForm = props => {
         />
         <div>Remember me</div>
       </div>
-      <Button />
-      {/*<button className="btn">Sign In</button>*/}
+      <Button theme="gradient-img" NameBtn="Sign In" />
       <div className="transitionAccount">
         Do you have an account?{' '}
         <span onClick={props.onClickSignUp}>Sign Up</span>
