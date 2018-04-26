@@ -1,3 +1,5 @@
+@import "../../common/Utils/Utils.scss";
+
 .profile-product-block {
   width: 440px;
   height: 40px;
@@ -10,7 +12,7 @@
   margin-top: 20px;
 
   &__name-product {
-    font-family: Lato;
+    @include font(Lato-Bold);
     font-size: 18px;
     font-weight: bold;
     font-style: normal;
@@ -20,7 +22,7 @@
     color: #000000;
   }
   &__index {
-    font-family: Lato;
+    @include font(Lato-Light);
     font-size: 18px;
     font-weight: 300;
     font-style: normal;
@@ -30,7 +32,7 @@
     color: #000000;
   }
   &__data-product {
-    font-family: Lato;
+    @include font(Lato-Light);
     font-size: 18px;
     font-weight: 300;
     font-style: normal;
@@ -40,7 +42,7 @@
     color: #000000;
   }
   &__result-product {
-    font-family: Lato;
+    @include font(Lato-Bold);
     font-size: 18px;
     font-weight: bold;
     font-style: normal;

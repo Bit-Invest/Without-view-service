@@ -1,3 +1,5 @@
+@import "../../common/Utils/Utils.scss";
+
 .profile-block {
   margin: 0 auto;
   max-width: 960px;
@@ -27,7 +29,7 @@
   &__rating-block {
     display: flex;
     align-items: center;
-    font-family: Lato;
+    @include font(Lato-Light);
     font-size: 16px;
     font-weight: 300;
     font-style: normal;
@@ -68,7 +70,7 @@
     height: 15px;
   }
   &__kyc {
-    font-family: Lato;
+    @include font(Lato-Light);
     font-size: 16px;
     font-weight: 300;
     font-style: normal;
@@ -89,7 +91,7 @@
     justify-content: space-between;
   }
   &__get-bonus {
-    font-family: Lato;
+    @include font(Lato-Bold);
     font-size: 14px;
     font-weight: bold;
     font-style: normal;

@@ -1,3 +1,5 @@
+@import "../../common/Utils/Utils.scss";
+
 .trader-card {
   width: 210px;
   border-radius: 5px;
@@ -8,7 +10,7 @@
   cursor: pointer;
   &__exchange {
     padding-left: 15px;
-    font-family: Lato;
+    @include font(Lato-Bold);
     font-size: 12px;
     font-weight: bold;
     font-style: normal;
@@ -38,7 +40,7 @@
     align-items: center;
     margin: 0 4px;
     padding: 10px 15px;
-    font-family: Lato;
+    @include font(Lato-Light);
     font-size: 16px;
     font-weight: 300;
     font-style: normal;
@@ -74,7 +76,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: Lato;
+    @include font(Lato-Light);
     font-size: 12px;
     font-weight: 300;
     font-style: normal;
@@ -94,7 +96,7 @@
     align-items: flex-end;
   }
   &__block-data {
-    font-family: Lato;
+    @include font(Lato-Light);
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -115,7 +117,7 @@
   }
   &__info-block {
     width: 180px;
-    font-family: Lato;
+    @include font(Lato);
     font-size: 14px;
     font-weight: normal;
     font-style: normal;

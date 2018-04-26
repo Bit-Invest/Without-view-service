@@ -1,9 +1,11 @@
+@import "../../common/Utils/Utils.scss";
+
 .selectInput {
   width: 280px;
   height: 40px;
   border-radius: 5px;
   border: solid 2px #dddddd;
-  font-family: Lato, sans-serif;
+  @include font(Lato);
   font-size: 18px;
   font-weight: normal;
   font-style: normal;
