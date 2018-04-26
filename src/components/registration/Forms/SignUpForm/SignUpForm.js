@@ -38,8 +38,7 @@ export const SignUpForm = props => {
           <div className="required">* Required</div>
         </div>
       </div>
-      <Button />
-      {/*<button className="btn"><div className="btn-title">Sign Up</div><div className="btn-image"></div></button>*/}
+      <Button themeSignUp="signUp" />
       <div className="transitionAccount">
         Already have an account?{' '}
         <span onClick={props.onClickSignIn}>Sign In</span>

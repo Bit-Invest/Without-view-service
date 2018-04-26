@@ -1,11 +1,25 @@
 import React from 'react';
 import './button.css';
 
+const ROOT_CLASS = 'button';
+
 export const Button = props => {
+  const buildRootClass = () => {
+    return (
+      ROOT_CLASS +
+      (props.theme ? ` ${ROOT_CLASS}_${props.theme}` : '') +
+      (props.noImage ? `${ROOT_CLASS}_btn-img-none` : '')
+    );
+  };
+
+  const NameBtn = () => {
+    return props.NameBtn ? ` ${props.NameBtn}` : '';
+  };
+
   return (
-    <button className="btn">
-      <div className="btn-title">Sign Up</div>
-      <div className="btn-image" />
+    <button className={buildRootClass()}>
+      <div className={`${ROOT_CLASS}__btn-title`}>{NameBtn()}</div>
+      <div className={`${ROOT_CLASS}__btn-img`} />
     </button>
   );
 };
