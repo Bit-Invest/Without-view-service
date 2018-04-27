@@ -8,12 +8,12 @@ const ROOT_CLASS = 'trader-card';
 export const TraderCard = props => {
   return (
     <div className={ROOT_CLASS}>
-      <div className={`${ROOT_CLASS}__exchange`}>BNX</div>
+      <div className={`${ROOT_CLASS}__exchange`}>{props.exchange}</div>
       <div className={`${ROOT_CLASS}__icon-user-border`}>
         <IconUser />
       </div>
       <div className={`${ROOT_CLASS}__user-name-block`}>
-        <UserName />
+        <UserName name='Ivan' surname='Ivanov' />
       </div>
       <div className={`${ROOT_CLASS}__rating`}>
         Rating:
