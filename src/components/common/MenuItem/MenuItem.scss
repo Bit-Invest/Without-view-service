@@ -1,0 +1,56 @@
+.menu-item {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 100%;
+  cursor: pointer;
+
+  &_terminal {
+    &_active {
+      background-image: url(../assets/images/terminal-active.svg);
+    }
+    &_disabled {
+      background-image: url(../assets/images/terminal-disabled.svg);
+    }
+  }
+
+  &_marketplace {
+    &_active {
+      background-image: url(../assets/images/marketplace-active.svg);
+    }
+    &_disabled {
+      background-image: url(../assets/images/marketplace-disabled.svg);
+    }
+  }
+
+  &_billing {
+    &_active {
+      background-image: url(../assets/images/billing-active.svg);
+    }
+    &_disabled {
+      background-image: url(../assets/images/billing-disabled.svg);
+    }
+  }
+
+  &_profile {
+    &_active {
+      background-image: url(../assets/images/profile-active.svg);
+    }
+    &_disabled {
+      background-image: url(../assets/images/profile-disabled.svg);
+    }
+  }
+
+  &_help {
+    &_active {
+      background-image: url(../assets/images/help-active.svg);
+
+    }
+    &_disabled {
+      background-image: url(../assets/images/help-disabled.svg);
+    }
+  }
+}

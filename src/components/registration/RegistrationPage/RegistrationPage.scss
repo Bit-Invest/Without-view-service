@@ -1,0 +1,51 @@
+@import "../../common/Utils/Utils.scss";
+
+.registration-page {
+  display: flex;
+  width: 100%;
+}
+
+.registration-page__form-column {
+  padding: 50px 0 33px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 33%;
+}
+
+.registration-page__form {
+  width: 100%;
+}
+
+.registration-page__picture-column {
+  width: 67%;
+  height: 100vh;
+  background-image: url(../assets/images/registration-background.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.registration-page__disclaimer {
+  align-self: flex-end;
+  @include font(Lato-Light);
+  font-size: 14px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #666666;
+}
+
+.registration-page__disclaimer span {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.registration-page__logo {
+  width: 138px;
+  height: 40px;
+  background-image: url(../assets/images/cindex-logo.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,142 @@
+@import "../../common/Utils/Utils.scss";
+
+.profile-block {
+  margin: 0 auto;
+  max-width: 960px;
+  min-width: 640px;
+  padding: 20px 0;
+  padding-left: 40px;
+  padding-right: 26px;
+  &__profile-head {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__user-info {
+    display: flex;
+  }
+  &__icon-user-border {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: solid 2px #8560fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+  }
+  &__rating-block {
+    display: flex;
+    align-items: center;
+    @include font(Lato-Light);
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.41;
+    letter-spacing: normal;
+    color: #000000;
+    margin-top: 10px;
+  }
+  &__rating {
+    display: flex;
+    align-items: center;
+    margin: 0 4px;
+  }
+  &__full-circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    margin: 0 2px;
+    background-color: #8560fd;
+  }
+  &__full-empty {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    margin: 0 2px;
+    border: 2px solid #cebffe;
+  }
+  &__kyc-block {
+    display: flex;
+    align-items: center;
+  }
+  &__kyc-img {
+    background-image: url(../assets/images/check_mark.png);
+    background-size: 100%;
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+  }
+  &__kyc {
+    @include font(Lato-Light);
+    font-size: 16px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.41;
+    letter-spacing: normal;
+    color: #8560fd;
+  }
+  &__btn-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 110px;
+  }
+  &__get-bonus-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__get-bonus {
+    @include font(Lato-Bold);
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #689f38;
+  }
+  &__get-bonus-img {
+    background-image: url(../assets/images/get_bonus.png);
+    background-size: 100%;
+    width: 30px;
+    height: 30px;
+  }
+  &__button-block {
+    width: 190px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__hr {
+    margin: 20px 0;
+    height: 1px;
+    background-color: silver;
+  }
+  &__graf {
+    background-image: url(../assets/images/grafon.png);
+    background-size: 100%;
+    width: 894px;
+    height: 515px;
+  }
+  &__graf2 {
+    background-image: url(../assets/images/grafon2.png);
+    background-size: 100%;
+    width: 894px;
+    height: 515px;
+  }
+  &__product-block {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+  &__news {
+    background-image: url(../assets/images/news.png);
+    background-size: 100%;
+    width: 894px;
+    height: 260px;
+    margin-top: 50px;
+  }
+}

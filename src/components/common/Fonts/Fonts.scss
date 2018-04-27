@@ -1,0 +1,11 @@
+@import "../Utils/Utils.scss";
+
+@include fonts('Lato', 'Lato/Lato-Regular');
+@include fonts('Lato-Black', 'Lato/Lato-Black');
+@include fonts('Lato-BlackItalic', 'Lato/Lato-BlackItalic');
+@include fonts('Lato-Bold', 'Lato/Lato-Bold');
+@include fonts('Lato-BoldItalic', 'Lato/Lato-BoldItalic');
+@include fonts('Lato-Hairline', 'Lato/Lato-Hairline');
+@include fonts('Lato-Italic', 'Lato/Lato-Italic');
+@include fonts('Lato-Light', 'Lato/Lato-Light');
+@include fonts('Lato-LightItalic', 'Lato/Lato-LightItalic');
