@@ -17,21 +17,21 @@ export const ProfileHead = props => {
             </div>
           </div>
           <div>
-            <UserName />
+            <UserName name='Ivan' surname='Ivanov' />
             <div className={`${ROOT_CLASS}__rating-block`}>
               <div>Investor / </div>
               <div className={`${ROOT_CLASS}__rating`}>
                 Rating:
-                <div className={`${ROOT_CLASS}__full-circle`} />
-                <div className={`${ROOT_CLASS}__full-circle`} />
-                <div className={`${ROOT_CLASS}__full-circle`} />
-                <div className={`${ROOT_CLASS}__full-circle`} />
-                <div className={`${ROOT_CLASS}__full-circle`} />
-                <div className={`${ROOT_CLASS}__full-circle`} />
-                <div className={`${ROOT_CLASS}__full-circle`} />
-                <div className={`${ROOT_CLASS}__full-empty`} />
-                <div className={`${ROOT_CLASS}__full-empty`} />
-                <div className={`${ROOT_CLASS}__full-empty`} />
+                  <div className={`${ROOT_CLASS}__full-circle`} />
+                  <div className={`${ROOT_CLASS}__full-circle`} />
+                  <div className={`${ROOT_CLASS}__full-circle`} />
+                  <div className={`${ROOT_CLASS}__full-circle`} />
+                  <div className={`${ROOT_CLASS}__full-circle`} />
+                  <div className={`${ROOT_CLASS}__full-circle`} />
+                  <div className={`${ROOT_CLASS}__full-circle`} />
+                  <div className={`${ROOT_CLASS}__full-empty`} />
+                  <div className={`${ROOT_CLASS}__full-empty`} />
+                  <div className={`${ROOT_CLASS}__full-empty`} />
               </div>
             </div>
             <div className={`${ROOT_CLASS}__kyc-block`}>
@@ -61,14 +61,14 @@ export const ProfileHead = props => {
       <div className={`${ROOT_CLASS}__product-block`}>
         <div>
           <Button theme='product-btn' NameBtn="Add product"/>
-          <ProfileProduct />
-          <ProfileProduct />
-          <ProfileProduct />
+          <ProfileProduct name="XML" today={19} rate={213} />
+          <ProfileProduct name="MDK" today={5} rate={103} />
+          <ProfileProduct name="LKC" today={3} rate={157} />
         </div>
         <div>
-          <ProfileProduct />
-          <ProfileProduct />
-          <ProfileProduct />
+          <ProfileProduct name="JRK" today={-3} rate={-70} />
+          <ProfileProduct name="UKO" today={28} rate={-10} />
+          <ProfileProduct name="OOL" today={14} rate={10} />
         </div>
       </div>
       <div className={`${ROOT_CLASS}__news`}></div>

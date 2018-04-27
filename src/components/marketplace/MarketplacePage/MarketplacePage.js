@@ -8,18 +8,18 @@ export const MarketplacePage = props => {
   return (
     <Page>
       <div className={ROOT_CLASS}>
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
-        <TraderCard />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
+        <TraderCard exchange='BNX' />
       </div>
     </Page>
   );
