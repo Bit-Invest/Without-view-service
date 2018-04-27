@@ -3,6 +3,9 @@
   height: 50px;
   background-size: 100%;
   background-repeat: no-repeat;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 100%;
+  cursor: pointer;
 
   &_terminal {
     &_active {

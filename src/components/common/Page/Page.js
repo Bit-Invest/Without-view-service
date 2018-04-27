@@ -11,10 +11,6 @@ export const Page = (props) => {
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__content-wrap`}>
         <div className={`${ROOT_CLASS}__menu-wrap`}>
-          <div className={`${ROOT_CLASS}__logo`}></div>
-          <div className={`${ROOT_CLASS}__menu`}>
-            <Menu page={props.page} push={props.push} />
-          </div>
         </div>
         <div className={`${ROOT_CLASS}__content`}>
           {props.children}
@@ -26,3 +22,7 @@ export const Page = (props) => {
     </div>
   );
 }
+// <div className={`${ROOT_CLASS}__logo`}></div>
+// <div className={`${ROOT_CLASS}__menu`}>
+//   <Menu page={props.page} push={props.push} />
+// </div>

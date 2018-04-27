@@ -7,15 +7,6 @@
   padding-top: 20px;
   padding-bottom: 33px;
 
-  &__logo {
-    display: none;
-    width: 52px;
-    height: 60px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-image: url('../assets/images/cindex-without-title.svg');
-  }
-
   &__content {
     background-color: #fff;
     border-radius: 5px;
@@ -31,9 +22,7 @@
   }
 
   &__menu-wrap {
-    position: absolute;
-    left: -102px;
-    top: 0;
+    position: fixed;
   }
 
   &__disclaimer {
@@ -59,10 +48,6 @@
 
     &__menu {
       margin-top: 55px;
-    }
-
-    &__menu-wrap {
-      top: 50px;
     }
   }
 }
