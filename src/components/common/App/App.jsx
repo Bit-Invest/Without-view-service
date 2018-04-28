@@ -6,6 +6,8 @@ import { RegistrationPage } from '@registration/RegistrationPage';
 import { ProfilePage } from '@profile/ProfilePage';
 import { MarketplacePage } from '@components/marketplace/MarketplacePage/MarketplacePage';
 import { Menu } from '../Menu';
+import 'normalize.css';
+
 
 export const App = (props) => {
   return (
