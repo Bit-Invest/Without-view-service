@@ -3,6 +3,7 @@ import { IconUser } from '../IconUser/IconUser';
 import { UserName } from '../UserName/UserName';
 import { Button } from '@components/registration/Forms/Button/button';
 import { ProfileProduct } from '../ProfileProduct/ProfileProduct';
+import { Rating } from '@components/marketplace/Rating/Rating';
 
 const ROOT_CLASS = 'profile-block';
 
@@ -11,28 +12,14 @@ export const ProfileHead = props => {
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__profile-head`}>
         <div className={`${ROOT_CLASS}__user-info`}>
-          <div className={`${ROOT_CLASS}__profile-head`}>
             <div className={`${ROOT_CLASS}__icon-user-border`}>
               <IconUser />
             </div>
-          </div>
           <div>
             <UserName name='Ivan' surname='Ivanov' />
             <div className={`${ROOT_CLASS}__rating-block`}>
-              <div>Investor / </div>
-              <div className={`${ROOT_CLASS}__rating`}>
-                Rating:
-                  <div className={`${ROOT_CLASS}__full-circle`} />
-                  <div className={`${ROOT_CLASS}__full-circle`} />
-                  <div className={`${ROOT_CLASS}__full-circle`} />
-                  <div className={`${ROOT_CLASS}__full-circle`} />
-                  <div className={`${ROOT_CLASS}__full-circle`} />
-                  <div className={`${ROOT_CLASS}__full-circle`} />
-                  <div className={`${ROOT_CLASS}__full-circle`} />
-                  <div className={`${ROOT_CLASS}__full-empty`} />
-                  <div className={`${ROOT_CLASS}__full-empty`} />
-                  <div className={`${ROOT_CLASS}__full-empty`} />
-              </div>
+              <div className={`${ROOT_CLASS}__investor`}>Investor &nbsp; /</div>
+              <Rating rating={7} />
             </div>
             <div className={`${ROOT_CLASS}__kyc-block`}>
               <div className={`${ROOT_CLASS}__kyc-img`} />
