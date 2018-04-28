@@ -1,12 +1,13 @@
 import { signIn, signUp, resetPassword } from './api';
 import { push } from 'react-router-redux';
+import { USER_LOG_IN } from '../user';
 
 export const SIGN_IN_REQUESTED = 'registration/SIGN_IN_REQUESTED';
 export const SIGN_IN_REJECTED = 'registration/SIGN_IN_REJECTED';
 export const SIGN_IN_APPROVED = 'registration/SIGN_IN_APPROVED';
 export const SIGN_UP_REQUESTED = 'registration/SIGN_UP_REQUESTED';
 export const SIGN_UP_REJECTED = 'registration/SIGN_UP_REJECTED';
-export const SIGN_UP_APPROVED= 'registration/SIGN_UP_APPROVED';
+export const SIGN_UP_APPROVED = 'registration/SIGN_UP_APPROVED';
 export const RESET_PASSWORD_REQUESTED = 'registration/RESET_PASSWORD_REQUESTED';
 export const RESET_PASSWORD_APPROVED = 'registration/RESET_PASSWORD_APPROVED';
 export const RESET_PASSWORD_REJECTED = 'registration/RESET_PASSWORD_REJECTED';
@@ -29,10 +30,7 @@ export const SIGN_IN = (userData) => {
 
     return signIn(userData)
       .then(() => {
-        dispatch({
-          type: SIGN_IN_APPROVED
-        });
-        dispatch(push('/profile'));
+        dispatch(USER_LOG_IN());
       });
   }
 }
@@ -46,10 +44,7 @@ export const SIGN_UP = (userData) => {
 
     return signUp(userData)
       .then(() => {
-        dispatch({
-          type: SIGN_UP_APPROVED
-        });
-        dispatch(push('/profile'));
+        dispatch(USER_LOG_IN());
       });
   }
 }
