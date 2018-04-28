@@ -13,7 +13,7 @@ export const TraderCard = props => {
         <IconUser />
       </div>
       <div className={`${ROOT_CLASS}__user-name-block`}>
-        <UserName name='Ivan' surname='Ivanov' />
+        <UserName name='Ivan' surname='Ivanov' theme='MarketPlaceName' />
       </div>
       <div className={`${ROOT_CLASS}__rating`}>
         Rating:
