@@ -12,17 +12,45 @@
   }
 
   &__logo {
-    display: none;
+    // display: none;
     width: 52px;
-    height: 60px;
+    // height: 60px;
     background-size: 100%;
     background-repeat: no-repeat;
     background-image: url('../assets/images/cindex-without-title.svg');
+
+    &_open-logo {
+      height: 60px;
+      animation: open-logo ease 1s;
+    }
+
+    &_close-logo {
+      height: 0px;
+      animation: close-logo ease 1s;
+    }
   }
 }
 
 .menu_profile {
   .menu__logo {
     display: block;
+  }
+}
+
+@keyframes open-logo {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 60px;
+  }
+}
+
+@keyframes close-logo {
+  0% {
+    height: 60px;
+  }
+  100% {
+    height: 0px;
   }
 }
