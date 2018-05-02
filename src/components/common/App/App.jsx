@@ -1,7 +1,5 @@
 import React from 'react';
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
-import Home from '@components/home';
-import About from '@components/about';
+import { Route, Switch } from 'react-router-dom';
 import { RegistrationPage } from '@registration/RegistrationPage';
 import { ProfilePage } from '@profile/ProfilePage';
 import { MarketplacePage } from '@components/marketplace/MarketplacePage/MarketplacePage';
@@ -13,9 +11,9 @@ export const App = (props) => {
   return (
     <div className={`App_${props.page}`}>
       <main>
+        <Menu push={props.push} page={props.page} />
         <Switch>
           <Route path="/registration" component={RegistrationPage} />
-          <Route path="/about-us" component={About} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/marketplace" component={MarketplacePage} />
         </Switch>

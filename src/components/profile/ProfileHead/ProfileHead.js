@@ -1,9 +1,9 @@
 import React from 'react';
-import { IconUser } from '../IconUser/IconUser';
-import { UserName } from '../UserName/UserName';
-import { Button } from '@components/registration/Forms/Button/button';
-import { ProfileProduct } from '../ProfileProduct/ProfileProduct';
-import { Rating } from '@components/marketplace/Rating/Rating';
+import { IconUser } from '@profile/IconUser';
+import { UserName } from '@profile/UserName';
+import { Button } from '@registration/Forms/Button/button';
+import { ProfileProduct } from '@profile/ProfileProduct';
+import { Rating } from '@marketplace/Rating/Rating';
 
 const ROOT_CLASS = 'profile-block';
 
