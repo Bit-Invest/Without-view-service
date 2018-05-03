@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu } from '../Menu';
+import { Menu } from '@common/Menu';
 import { PopUpManager } from '@common/PopUpManager';
 
 const ROOT_CLASS = 'page';
@@ -20,13 +20,9 @@ export const Page = (props) => {
       <div className={`${ROOT_CLASS}__disclaimer`}>
         © 2018 CryptoActive | Privacy Policy & Terms of Service
       </div>
-      <PopUpManager>
+      <PopUpManager isShowed>
         POP_UP
       </PopUpManager>
     </div>
   );
 }
-// <div className={`${ROOT_CLASS}__logo`}></div>
-// <div className={`${ROOT_CLASS}__menu`}>
-//   <Menu page={props.page} push={props.push} />
-// </div>
