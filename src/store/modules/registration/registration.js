@@ -1,5 +1,4 @@
 import { signIn, signUp, resetPassword } from './api';
-import { push } from 'react-router-redux';
 import { USER_LOG_IN } from '../user';
 
 export const SIGN_IN_REQUESTED = 'registration/SIGN_IN_REQUESTED';

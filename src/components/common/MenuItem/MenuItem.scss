@@ -9,7 +9,7 @@
   cursor: pointer;
 
   &_terminal {
-    &_active {
+    &_active, &_disabled:hover {
       background-image: url(../assets/images/terminal-active.svg);
     }
     &_disabled {
@@ -18,7 +18,7 @@
   }
 
   &_marketplace {
-    &_active {
+    &_active, &_disabled:hover {
       background-image: url(../assets/images/marketplace-active.svg);
     }
     &_disabled {
@@ -27,7 +27,7 @@
   }
 
   &_billing {
-    &_active {
+    &_active, &_disabled:hover {
       background-image: url(../assets/images/billing-active.svg);
     }
     &_disabled {
@@ -36,7 +36,7 @@
   }
 
   &_profile {
-    &_active {
+    &_active, &_disabled:hover {
       background-image: url(../assets/images/profile-active.svg);
     }
     &_disabled {
@@ -45,9 +45,8 @@
   }
 
   &_help {
-    &_active {
+    &_active, &_disabled:hover {
       background-image: url(../assets/images/help-active.svg);
-
     }
     &_disabled {
       background-image: url(../assets/images/help-disabled.svg);

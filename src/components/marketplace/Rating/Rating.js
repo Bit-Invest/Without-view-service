@@ -3,9 +3,9 @@ import React from 'react';
 const ROOT_CLASS = 'rating';
 
 export const Rating = props => {
-  const RetingResult = () => {
-    { props.rating }
-  }
+  // const RetingResult = () => {
+  //   { props.rating }
+  // }
 
   const renderRating = () => {
     let circles = [];

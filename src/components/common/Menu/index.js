@@ -1,1 +1,1 @@
-export { Menu } from './Menu';
+export { MenuContainer as Menu } from './MenuContainer';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@components/registration/Forms/Button/button';
+import { Button } from '@components/common/Button';
 
 const ROOT_CLASS = 'pop-up-registration';
 

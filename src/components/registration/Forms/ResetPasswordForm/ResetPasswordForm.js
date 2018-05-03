@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input } from '@registration/input';
-import { Button } from '@registration/Forms/Button';
+import { Button } from '@components/common/Button';
 
 export const ResetPasswordForm = props => {
   const { isError } = props;
