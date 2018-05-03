@@ -11,7 +11,6 @@ export const Menu = (props) => {
   }
 
   const logoClass = () => {
-    // return `${ROOT_CLASS}__logo`;
     let result = `${ROOT_CLASS}__logo`;
     if (props.exPage === 'profile' && props.page !== 'profile') {
       result += ` ${ROOT_CLASS}__logo_close-logo`;
@@ -21,18 +20,30 @@ export const Menu = (props) => {
     return result;
   }
 
+  const itemsClass = () => {
+    let result = `${ROOT_CLASS}__items`;
+    if (props.exPage === 'profile' && props.page !== 'profile') {
+      result += ` ${ROOT_CLASS}__items_up`;
+    } else if (props.page === 'profile' && props.exPage !== 'profile') {
+      result += ` ${ROOT_CLASS}__items_down`;
+    }
+    return result;
+  }
+
   return (
     <div className={buildRootClass()}>
       <div className={logoClass()}></div>
-      {ITEMS.map((item, index) =>
-        <div className={`${ROOT_CLASS}__item-wrap`} key={index}>
-          <MenuItem
-            type={item}
-            isActive={props.page === item}
-            push={props.push}
-          />
-        </div>
-      )}
+      <div className={itemsClass()}>
+        {ITEMS.map((item, index) =>
+          <div className={`${ROOT_CLASS}__item-wrap`} key={index}>
+            <MenuItem
+              type={item}
+              isActive={props.page === item}
+              push={props.push}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
