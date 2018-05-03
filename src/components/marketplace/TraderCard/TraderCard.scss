@@ -8,6 +8,7 @@
   margin-top: 20px;
   padding: 10px 0;
   cursor: pointer;
+  overflow: hidden;
   &__exchange {
     padding-left: 15px;
     @include font(Lato-Bold);

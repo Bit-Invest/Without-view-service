@@ -1,6 +1,6 @@
 @import "../../common/Utils/Utils.scss";
 
-.profile-product-block {
+.profile-product {
   width: 440px;
   height: 40px;
   border-radius: 5px;
@@ -10,6 +10,7 @@
   justify-content: space-between;
   padding: 10px 10px;
   margin-top: 20px;
+  cursor: pointer;
 
   &__name-product {
     @include font(Lato-Bold);
@@ -51,4 +52,7 @@
     letter-spacing: normal;
     color: #689f38;
   }
+}
+.profile-product:hover {
+  background-color: #f1f1f1;
 }

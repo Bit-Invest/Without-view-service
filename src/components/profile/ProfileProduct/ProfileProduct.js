@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ROOT_CLASS = 'profile-product-block';
+const ROOT_CLASS = 'profile-product';
 
 export const ProfileProduct = props => {
   return (
