@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuItem } from '../MenuItem';
+import { MenuItem } from '@common/MenuItem';
 
 const ROOT_CLASS = 'menu';
 
@@ -39,7 +39,6 @@ export const Menu = (props) => {
             <MenuItem
               type={item}
               isActive={props.page === item}
-              push={props.push}
             />
           </div>
         )}

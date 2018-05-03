@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@components/common/Button';
+import { Link } from 'react-router-dom';
 
 const ROOT_CLASS = 'pop-up-registration';
 
@@ -12,7 +13,9 @@ export const PopUpRegistration = (props) => {
         <div className={`${ROOT_CLASS}__info`}>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ...
         </div>
-        <Button className={`${ROOT_CLASS}__button`} theme="theme-gradient-popUp" NameBtn="Join now"/>
+        <Link to={'/registration'}>
+          <Button className={`${ROOT_CLASS}__button`} theme="theme-gradient-popUp" NameBtn="Join now"/>
+        </Link>
         <div className={`${ROOT_CLASS}__sign-in`}>Already have an account? <a>Sign In</a></div>
       </div>
     </div>
