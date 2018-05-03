@@ -1,6 +1,6 @@
 @import "../../common/Utils/Utils.scss";
 
-.selectInput {
+.select {
   width: 280px;
   height: 40px;
   border-radius: 5px;
@@ -16,4 +16,10 @@
   outline: none;
   margin-top: 20px;
   padding-left: 10px;
+  &_new-product {
+    width: 560px;
+    height: 40px;
+    border-radius: 5px;
+    border: solid 2px #dddddd;
+  }
 }
