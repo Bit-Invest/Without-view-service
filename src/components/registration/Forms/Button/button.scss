@@ -23,6 +23,25 @@
       rgba(99, 141, 247, 1) 100%
     );
   }
+  &_theme-gradient-popUp {
+    width: 260px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    background: linear-gradient(45deg,
+      rgba(133, 96, 253, 1) 15%,
+      rgba(99, 141, 247, 1) 100%
+    );
+    @include font(Lato);
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+  }
   &_signUp {
     display: flex;
     padding: 0 14px;
@@ -75,4 +94,11 @@
     font-size: 18px;
     margin-top: 20px;
   }
+}
+.button:hover {
+  background: rgba(133, 96, 253, 1);
+  color: white;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
 }

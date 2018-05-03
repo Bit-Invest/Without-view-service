@@ -1,9 +1,10 @@
 import React from 'react';
-import { IconUser } from '../IconUser/IconUser';
-import { UserName } from '../UserName/UserName';
-import { Button } from '@components/registration/Forms/Button/button';
-import { ProfileProduct } from '../ProfileProduct/ProfileProduct';
-import { Rating } from '@components/marketplace/Rating/Rating';
+import { IconUser } from '../IconUser';
+import { UserName } from '../UserName';
+import { Button } from '@components/registration/Forms/Button';
+import { ProfileProduct } from '../ProfileProduct';
+import { Rating } from '@components/marketplace/Rating';
+import { Chart } from '@profile/Chart';
 
 const ROOT_CLASS = 'profile-block';
 
@@ -43,7 +44,7 @@ export const ProfileHead = props => {
         </div>
       </div>
       <div className={`${ROOT_CLASS}__hr`}></div>
-      <div className={`${ROOT_CLASS}__graf`}></div>
+      <Chart />
       <div className={`${ROOT_CLASS}__graf2`}></div>
       <div className={`${ROOT_CLASS}__product-block`}>
         <div>
