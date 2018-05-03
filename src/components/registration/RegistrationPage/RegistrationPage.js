@@ -9,7 +9,7 @@ export const RegistrationPage = props => {
         <div className={`${ROOT_CLASS}__logo`} />
         <div className={`${ROOT_CLASS}__form`}>{props.children}</div>
         <div className={`${ROOT_CLASS}__disclaimer`}>
-          © 2018 CryptoActive | <span>Privacy Policy</span> &{' '}
+          © 2018 CryptoActive |<br /> <span>Privacy Policy</span> &{' '}
           <span>Terms of Service</span>
         </div>
       </div>

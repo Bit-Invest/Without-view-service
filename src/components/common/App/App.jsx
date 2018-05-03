@@ -12,16 +12,14 @@ export const App = (props) => {
   return (
     <div className={`App_${props.page}`}>
       <main>
-        <Menu push={props.push} page={props.page} />
         <Switch>
           <Route path="/registration" component={RegistrationPage} />
           <Route path="/profile" component={ProfilePage} push={props.push} />
           <Route path="/marketplace" component={MarketplacePage} />
           <Route path="/product-page" component={ProductPage} />
         </Switch>
+        <Menu push={props.push} page={props.page} />
       </main>
     </div>
   );
 };
-
-// <Menu push={props.push : react-router-redux push} page={props.page : string} />

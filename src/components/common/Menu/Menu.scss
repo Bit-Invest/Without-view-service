@@ -19,27 +19,28 @@
     background-image: url('../assets/images/cindex-without-title.svg');
 
     &_open-logo {
-      animation: open-logo ease .7s;
+      animation: open-logo ease .3s;
       opacity: 1;
     }
 
     &_close-logo {
-      animation: close-logo ease .7s;
+      animation: close-logo ease .3s;
       opacity: 0;
     }
   }
 
   &__items {
     position: absolute;
-
+    top: 85px;
+    
     &_up {
       top: 0px;
-      animation: move-items-up ease .7s;
+      animation: move-items-up ease .3s;
     }
 
     &_down {
       top: 85px;
-      animation: move-items-down ease .7s;
+      animation: move-items-down ease .3s;
     }
   }
 }

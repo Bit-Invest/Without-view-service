@@ -1,8 +1,11 @@
 @import "../../common/Utils/Utils.scss";
 
 .registration-page {
+  position: absolute;
   display: flex;
   width: 100%;
+  overflow: auto;
+  height: 100%;
 }
 
 .registration-page__form-column {
@@ -34,6 +37,7 @@
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
+  text-align: center;
   color: #666666;
 }
 
@@ -48,4 +52,18 @@
   background-image: url(../assets/images/cindex-logo.svg);
   background-size: 100%;
   background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+  .registration-page {
+
+  }
+
+  .registration-page__form-column {
+    width: 100%;
+  }
+
+  .registration-page__picture-column {
+    display: none;
+  }
 }
