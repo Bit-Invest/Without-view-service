@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TraderCard } from '../TraderCard/TraderCard'
 import { Page } from '@common/Page';
 import { PopUpManager } from '@common/PopUpManager';
-import { PopUpRegistration } from '@common/PopUps/PopUpRegistration';
+import { PopUpNewProduct } from '@common/PopUps/PopUpNewProduct';
 
 const ROOT_CLASS = 'marketplace-page';
 
@@ -23,7 +23,7 @@ export const MarketplacePage = props => {
         <TraderCard exchange='BNX' />
         <TraderCard exchange='BNX' />
         <PopUpManager isShowed >
-          <PopUpRegistration />
+          <PopUpNewProduct />
         </PopUpManager>
       </div>
     </Page>
