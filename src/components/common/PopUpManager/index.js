@@ -1,1 +1,1 @@
-export { PopUpManagerContainer as PopUpManager } from './PopUpManagerContainer';
+export { PopUpManager } from './PopUpManager';

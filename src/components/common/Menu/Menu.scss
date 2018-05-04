@@ -12,17 +12,71 @@
   }
 
   &__logo {
-    display: none;
-    width: 52px;
     height: 60px;
+    width: 52px;
     background-size: 100%;
     background-repeat: no-repeat;
     background-image: url('../assets/images/cindex-without-title.svg');
+
+    &_open-logo {
+      animation: open-logo ease .3s;
+      opacity: 1;
+    }
+
+    &_close-logo {
+      animation: close-logo ease .3s;
+      opacity: 0;
+    }
+  }
+
+  &__items {
+    position: absolute;
+    top: 85px;
+    
+    &_up {
+      top: 0px;
+      animation: move-items-up ease .3s;
+    }
+
+    &_down {
+      top: 85px;
+      animation: move-items-down ease .3s;
+    }
   }
 }
 
-.menu_profile {
-  .menu__logo {
-    display: block;
+@keyframes move-items-up {
+  0% {
+    top: 85px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+@keyframes move-items-down {
+  0% {
+    top: 0px;
+  }
+  100% {
+    top: 85px;
+  }
+}
+
+@keyframes open-logo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes close-logo {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Select } from '@registration/select';
 import { Input } from '@registration/input';
 import { Checkbox } from '@registration/checkbox';
-import { Button } from '@registration/Forms/Button';
+import { Button } from '@components/common/Button';
 
 export const SignUpForm = props => {
   const { isError } = props;
@@ -11,7 +11,11 @@ export const SignUpForm = props => {
       className="SignUpForms__RegistrationForm"
       onSubmit={props.handleSubmit}>
       <div className="title">Sign Up</div>
-      <Select onChange={this.handleSelectChange} />
+      <Select
+        onChange={this.handleSelectChange}
+        NameSelect1='Trader'
+        NameSelect2='Investor'
+      />
       <Input
         onChange={this.handleEmailChange}
         placeholder="Your email"

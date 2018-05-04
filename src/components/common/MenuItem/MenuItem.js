@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 const ROOT_CLASS = 'menu-item';
 
@@ -9,10 +10,22 @@ export const MenuItem = (props) => {
         'active' : 'disabled'}`;
   };
 
-  return (
-    <div
-      className={buildRootClass()}
-      onClick={() => {props.push(`/${props.type}`)}}
-    ></div>
-  );
+  let result = null;
+  if (props.inDev) {
+    result = (
+      <div
+        onClick={props.onClick}
+        className={buildRootClass()}
+      ></div>
+    );
+  } else {
+    result = (
+      <Link to={`/${props.type}`}>
+        <div
+          className={buildRootClass()}
+        ></div>
+      </Link>
+    );
+  }
+  return result;
 }

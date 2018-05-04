@@ -4,10 +4,10 @@
   margin: 0 auto;
   max-width: 960px;
   min-width: 640px;
-  padding: 20px 0;
-  padding-left: 40px;
-  padding-right: 26px;
   &__profile-head {
+    padding: 25px 0 20px;
+    padding-right: 25px;
+    padding-left: 40px;
     display: flex;
     justify-content: space-between;
   }
@@ -23,7 +23,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 25px;
   }
   &__rating-block {
     display: flex;
@@ -38,24 +38,8 @@
     color: #000000;
     margin-top: 10px;
   }
-  &__rating {
-    display: flex;
-    align-items: center;
-    margin: 0 4px;
-  }
-  &__full-circle {
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    margin: 0 2px;
-    background-color: #8560fd;
-  }
-  &__full-empty {
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    margin: 0 2px;
-    border: 2px solid #cebffe;
+  &__investor {
+    margin-right: 5px;
   }
   &__kyc-block {
     display: flex;
@@ -111,32 +95,7 @@
     justify-content: space-between;
   }
   &__hr {
-    margin: 20px 0;
     height: 1px;
     background-color: silver;
-  }
-  &__graf {
-    background-image: url(../assets/images/grafon.png);
-    background-size: 100%;
-    width: 894px;
-    height: 515px;
-  }
-  &__graf2 {
-    background-image: url(../assets/images/grafon2.png);
-    background-size: 100%;
-    width: 894px;
-    height: 515px;
-  }
-  &__product-block {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
-  }
-  &__news {
-    background-image: url(../assets/images/news.png);
-    background-size: 100%;
-    width: 894px;
-    height: 260px;
-    margin-top: 50px;
   }
 }

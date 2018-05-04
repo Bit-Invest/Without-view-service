@@ -8,6 +8,7 @@
   margin-top: 20px;
   padding: 10px 0;
   cursor: pointer;
+  overflow: hidden;
   &__exchange {
     padding-left: 15px;
     @include font(Lato-Bold);
@@ -34,34 +35,10 @@
   &__user-name-block {
     display: flex;
     justify-content: center;
+    margin-top: 10px;
   }
-  &__rating {
-    display: flex;
-    align-items: center;
-    margin: 0 4px;
-    padding: 10px 15px;
-    @include font(Lato-Light);
-    font-size: 16px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.41;
-    letter-spacing: normal;
-    color: #000000;
-  }
-  &__full-circle {
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    margin-left: 2px;
-    background-color: #8560fd;
-  }
-  &__full-empty {
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    margin-left: 2px;
-    border: 2px solid #cebffe;
+  &__rating-block {
+    padding: 5px 11px;
   }
   &__position-trade {
     width: 208px;
@@ -85,10 +62,13 @@
     letter-spacing: normal;
     color: #666666;
   }
+  &__dynamic-info {
+    @include font(Lato-Bold);
+  }
   &__result-block {
     display: flex;
     justify-content: space-around;
-    margin: 20px 0;
+    margin: 15px 0;
   }
   &__result-block-data {
     display: flex;
@@ -96,7 +76,7 @@
     align-items: flex-end;
   }
   &__block-data {
-    @include font(Lato-Light);
+    @include font(Lato-Bold);
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -125,7 +105,11 @@
     line-height: normal;
     letter-spacing: normal;
     color: #666666;
-    margin: 0px 15px 10px;
+    margin: 0px 15px 15px;
+  }
+  &__href {
+    color: #8560fd;
+    text-decoration: underline;
   }
   &__button-block {
     display: flex;
