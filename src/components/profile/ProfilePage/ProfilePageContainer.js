@@ -5,7 +5,8 @@ export class ProfilePageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoaded: false
+      isLoaded: false,
+      isShowedPopUpNewProduct: false
     };
   }
 
@@ -15,9 +16,24 @@ export class ProfilePageContainer extends React.Component {
     }, 2000);
   }
 
+  onClickAddProduct() {
+    this.setState({isShowedPopUpNewProduct: true});
+  }
+
+  onClosePopUp() {
+    this.setState({isShowedPopUpNewProduct: false});
+  }
+
   render() {
+    const { onClickAddProduct, onClosePopUp } = this;
+
     return (
-      <ProfilePage isLoaded={this.state.isLoaded} />
+      <ProfilePage
+        isLoaded={this.state.isLoaded}
+        isShowedPopUpNewProduct={this.state.isShowedPopUpNewProduct}
+        onClickAddProduct={onClickAddProduct.bind(this)}
+        onClosePopUp={onClosePopUp.bind(this)}
+      />
     );
   }
 }

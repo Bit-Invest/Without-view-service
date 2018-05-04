@@ -4,6 +4,8 @@ import { ProfileHead } from '@components/profile/ProfileHead';
 import { Chart } from '@profile/Chart';
 import { ChartFeedBack } from '@profile/ChartFeedBack';
 import { ListProducts } from '@profile/ListProducts';
+import { PopUpManager } from '@common/PopUpManager';
+import { PopUpNewProduct } from '@common/PopUps/PopUpNewProduct';
 
 export const ProfilePage = props => {
   return (
@@ -11,7 +13,13 @@ export const ProfilePage = props => {
       <ProfileHead />
       <Chart />
       <ChartFeedBack />
-      <ListProducts />
+      <ListProducts onClickAddProduct={props.onClickAddProduct} />
+      <PopUpManager
+        isShowed={props.isShowedPopUpNewProduct}
+        onClickClose={props.onClosePopUp}
+      >
+        <PopUpNewProduct />
+      </PopUpManager>
     </Page>
   );
 };

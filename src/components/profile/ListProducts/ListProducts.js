@@ -9,7 +9,7 @@ export const ListProducts = props => {
     <div>
       <div className={ROOT_CLASS}>
         <div>
-          <Button theme='product-btn' NameBtn="Add product"/>
+          <Button theme='product-btn' NameBtn="Add product" onClick={() => {props.onClickAddProduct()}} />
           <ProfileProduct name="XML" today={19} rate={213} />
           <ProfileProduct name="MDK" today={5} rate={103} />
           <ProfileProduct name="LKC" today={3} rate={157} />
