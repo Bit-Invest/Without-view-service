@@ -11,6 +11,7 @@
   padding: 10px 10px;
   margin-top: 20px;
   cursor: pointer;
+  text-decoration: none;
 
   &__name-product {
     @include font(Lato-Bold);
