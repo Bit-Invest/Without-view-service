@@ -9,8 +9,6 @@ export const ProfilePage = props => {
   return (
     <Page isLoaded={props.isLoaded}>
       <ProfileHead />
-      <Chart />
-      <ChartFeedBack />
       <ListProducts onClickAddProduct={props.onClickAddProduct} />
       <PopUpManager
         isShowed={props.isShowedPopUpNewProduct}
