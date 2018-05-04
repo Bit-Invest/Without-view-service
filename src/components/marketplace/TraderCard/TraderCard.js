@@ -3,6 +3,7 @@ import { IconUser } from '@components/profile/IconUser/IconUser';
 import { UserName } from '@components/profile/UserName/UserName';
 import { Button } from '@components/common/Button';
 import { Rating } from '@components/marketplace/Rating/Rating';
+import { Link } from 'react-router-dom';
 
 const ROOT_CLASS = 'trader-card';
 
@@ -49,7 +50,9 @@ export const TraderCard = props => {
       </div>
       <div className={`${ROOT_CLASS}__button-block`}>
         <Button theme="theme-gradient" NameBtn="Connect" />
-        <Button NameBtn="Compare" />
+        <Link to={`/product/${props.id}`}>
+          <Button NameBtn="More" />
+        </Link>
       </div>
     </div>
   );

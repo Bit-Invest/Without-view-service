@@ -12,6 +12,7 @@
   overflow-y: auto;
 
   &__content {
+    display: flex;
     background-color: #fff;
     border-radius: 5px;
     overflow: hidden;
@@ -40,6 +41,24 @@
     line-height: normal;
     letter-spacing: normal;
     color: #666666;
+  }
+
+  &__preloader {
+    margin: 0 auto;
+    align-self: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url('../assets/images/preloader.gif');
+    width: 40px;
+    height: 40px;
+
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__child_hidden {
+    display: none;
   }
 }
 

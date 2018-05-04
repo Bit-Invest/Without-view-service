@@ -8,21 +8,21 @@ const ROOT_CLASS = 'marketplace-page';
 
 export const MarketplacePage = props => {
   return (
-    <Page>
+    <Page isLoaded={props.isLoaded}>
       <div className={ROOT_CLASS}>
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <TraderCard exchange='BNX' />
-        <PopUpManager isShowed >
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <TraderCard exchange='BNX' id={1} />
+        <PopUpManager>
           <PopUpNewProduct />
         </PopUpManager>
       </div>

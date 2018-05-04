@@ -1,1 +1,1 @@
-export { ProductPage } from './ProductPage'
+export { ProductPageContainer as ProductPage } from './ProductPageContainer';

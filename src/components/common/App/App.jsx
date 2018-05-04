@@ -15,10 +15,9 @@ export const App = (props) => {
       <main>
         <Switch>
           <Route path="/registration" component={RegistrationPage} />
-          <Route path="/profile" component={ProfilePage} push={props.push} />
+          <Route path="/profile" component={ProfilePage} />
           <Route path="/marketplace" component={MarketplacePage} />
-          <Route path="/product-page" component={ProductPage} />
-          <Route path="/kyc" component={KycPage} />
+          <Route path="/product/:id" component={ProductPage} />
         </Switch>
         <Menu page={props.page} />
       </main>
