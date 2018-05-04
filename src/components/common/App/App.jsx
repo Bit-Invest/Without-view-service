@@ -5,6 +5,7 @@ import { ProfilePage } from '@profile/ProfilePage';
 import { MarketplacePage } from '@components/marketplace/MarketplacePage';
 import { ProductPage } from '@components/product/ProductPage';
 import { Menu } from '../Menu';
+import { KycPage } from '@components/kyc/KycPage';
 import 'normalize.css';
 
 
@@ -17,6 +18,7 @@ export const App = (props) => {
           <Route path="/profile" component={ProfilePage} push={props.push} />
           <Route path="/marketplace" component={MarketplacePage} />
           <Route path="/product-page" component={ProductPage} />
+          <Route path="/kyc" component={KycPage} />
         </Switch>
         <Menu page={props.page} />
       </main>

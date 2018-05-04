@@ -20,7 +20,7 @@ export const ListProducts = props => {
           <ProfileProduct name="OOL" today={14} rate={10} />
         </div>
       </div>
-      <div className={`${ROOT_CLASS}__news`}></div>
+      {/*<div className={`${ROOT_CLASS}__news`}></div>*/}
     </div>
   );
 };

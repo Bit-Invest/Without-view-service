@@ -17,7 +17,7 @@ export const Select = props => {
   };
 
   const NameSelect = () => {
-    return props.NameSelect1 ? ` ${props.NameSelect1}` : '' || props.NameSelect2 ? ` ${props.NameSelect2}` : '';
+    return  props.NameSelect1 ? ` ${props.NameSelect1}` : '' || props.NameSelect2 ? ` ${props.NameSelect2}` : '';
   };
 
   return (
