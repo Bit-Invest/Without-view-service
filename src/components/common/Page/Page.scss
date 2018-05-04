@@ -46,9 +46,11 @@
   &__preloader {
     margin: 0 auto;
     align-self: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url('../assets/images/preloader.gif');
     width: 40px;
     height: 40px;
-    border: 1px solid black;
 
     &_hidden {
       display: none;

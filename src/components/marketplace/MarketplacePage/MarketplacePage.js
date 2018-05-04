@@ -8,7 +8,7 @@ const ROOT_CLASS = 'marketplace-page';
 
 export const MarketplacePage = props => {
   return (
-    <Page>
+    <Page isLoaded={props.isLoaded}>
       <div className={ROOT_CLASS}>
         <TraderCard exchange='BNX' />
         <TraderCard exchange='BNX' />
@@ -22,7 +22,7 @@ export const MarketplacePage = props => {
         <TraderCard exchange='BNX' />
         <TraderCard exchange='BNX' />
         <TraderCard exchange='BNX' />
-        <PopUpManager isShowed >
+        <PopUpManager>
           <PopUpNewProduct />
         </PopUpManager>
       </div>

@@ -12,7 +12,7 @@ export const Page = (props) => {
   if (props.isLoaded) {
     preloaderClass += ` ${preloaderClass}_hidden`;
   } else {
-    child += ` ${childClass}_hidden`;
+    childClass += ` ${childClass}_hidden`;
   }
 
   return (

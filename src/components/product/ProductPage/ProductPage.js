@@ -7,7 +7,7 @@ const ROOT_CLASS = 'product-page';
 
 export const ProductPage = props => {
   return (
-    <Page>
+    <Page isLoaded={props.isLoaded}>
       <div className={ROOT_CLASS}>
         <ProfileHead />
         <div className={`${ROOT_CLASS}__head-info`}>

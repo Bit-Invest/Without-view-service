@@ -7,7 +7,7 @@ import { ListProducts } from '@profile/ListProducts';
 
 export const ProfilePage = props => {
   return (
-    <Page>
+    <Page isLoaded={props.isLoaded}>
       <ProfileHead />
       <Chart />
       <ChartFeedBack />

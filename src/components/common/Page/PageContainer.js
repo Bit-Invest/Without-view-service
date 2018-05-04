@@ -7,7 +7,7 @@ import { push } from 'react-router-redux';
 class PageContainer extends React.Component {
   render() {
     return (
-      <Page push={this.props.push} page={this.props.page}>
+      <Page isLoaded={this.props.isLoaded} push={this.props.push} page={this.props.page}>
         {this.props.children}
       </Page>
     );

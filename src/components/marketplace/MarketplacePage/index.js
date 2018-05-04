@@ -1,1 +1,1 @@
-export { MarketplacePage } from './MarketplacePage';
+export { MarketplacePageContainer as MarketplacePage } from './MarketplacePageContainer';
