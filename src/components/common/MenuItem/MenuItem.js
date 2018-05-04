@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 const ROOT_CLASS = 'menu-item';
 
@@ -10,9 +11,10 @@ export const MenuItem = (props) => {
   };
 
   return (
-    <div
-      className={buildRootClass()}
-      onClick={() => {props.push(`/${props.type}`)}}
-    ></div>
+    <Link to={`/${props.type}`}>
+      <div
+        className={buildRootClass()}
+      ></div>
+    </Link>
   );
 }

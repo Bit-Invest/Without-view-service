@@ -1,0 +1,13 @@
+.list-products {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding: 0 30px;
+  &__news {
+    background-image: url(../assets/images/news.png);
+    background-size: 100%;
+    width: 894px;
+    height: 260px;
+    margin: 50px 30px;
+  }
+}

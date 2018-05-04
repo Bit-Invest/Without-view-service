@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconUser } from '@components/profile/IconUser/IconUser';
 import { UserName } from '@components/profile/UserName/UserName';
-import { Button } from '@components/registration/Forms/Button/button';
+import { Button } from '@components/common/Button';
 import { Rating } from '@components/marketplace/Rating/Rating';
 
 const ROOT_CLASS = 'trader-card';

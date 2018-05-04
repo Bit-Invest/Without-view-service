@@ -1,4 +1,4 @@
-@import "../../../common/Utils/Utils.scss";
+@import "../Utils/Utils.scss";
 
 .button {
   width: 90px;
@@ -22,6 +22,25 @@
       rgba(133, 96, 253, 1) 15%,
       rgba(99, 141, 247, 1) 100%
     );
+  }
+  &_theme-gradient-popUp {
+    width: 260px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    background: linear-gradient(45deg,
+      rgba(133, 96, 253, 1) 15%,
+      rgba(99, 141, 247, 1) 100%
+    );
+    @include font(Lato);
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
   }
   &_signUp {
     display: flex;
@@ -75,4 +94,28 @@
     font-size: 18px;
     margin-top: 20px;
   }
+  &_pop-up-new-product {
+    width: 560px;
+    height: 40px;
+    color: #ffffff;
+    border: none;
+    @include font(Lato-Bold);
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    background: linear-gradient(45deg,
+      rgba(133, 96, 253, 1) 15%,
+      rgba(99, 141, 247, 1) 100%
+    );
+  }
+}
+.button:hover {
+  background: rgba(133, 96, 253, 1);
+  color: white;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
 }

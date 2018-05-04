@@ -12,7 +12,6 @@ export class MenuContainer extends React.Component {
     this.currentPage = this.props.page;
     return (
       <Menu
-        push={this.props.push}
         page={this.props.page}
         exPage={exPage}
       />

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Menu } from '../Menu';
 
 const ROOT_CLASS = 'page';
 
@@ -34,7 +33,3 @@ export const Page = (props) => {
     </div>
   );
 }
-// <div className={`${ROOT_CLASS}__logo`}></div>
-// <div className={`${ROOT_CLASS}__menu`}>
-//   <Menu page={props.page} push={props.push} />
-// </div>
