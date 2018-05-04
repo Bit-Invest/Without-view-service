@@ -49,7 +49,7 @@ export const TraderCard = props => {
         <div className={`${ROOT_CLASS}__href`}>Read more...</div>
       </div>
       <div className={`${ROOT_CLASS}__button-block`}>
-        <Button theme="theme-gradient" NameBtn="Connect" />
+        <Button theme="theme-gradient" NameBtn="Connect" onClick={props.onClickCompare}/>
         <Link to={`/product/${props.id}`}>
           <Button NameBtn="More" />
         </Link>
