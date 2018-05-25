@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Checkbox } from '@registration/checkbox';
-import { Select } from '@registration/select';
+// import { Checkbox } from '@registration/checkbox';
+// import { Select } from '@registration/select';
 import { Button } from '@components/common/Button';
 
 const ROOT_CLASS = 'kyc-step2';

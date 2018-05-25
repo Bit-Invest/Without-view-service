@@ -1,5 +1,5 @@
-import { signIn, signUp, resetPassword } from './api';
-import { USER_LOG_IN } from '../user';
+import { resetPassword } from './api';
+// import { USER_LOG_IN } from '../user';
 
 export const SIGN_IN_REQUESTED = 'registration/SIGN_IN_REQUESTED';
 export const SIGN_IN_REJECTED = 'registration/SIGN_IN_REJECTED';
@@ -11,7 +11,9 @@ export const RESET_PASSWORD_REQUESTED = 'registration/RESET_PASSWORD_REQUESTED';
 export const RESET_PASSWORD_APPROVED = 'registration/RESET_PASSWORD_APPROVED';
 export const RESET_PASSWORD_REJECTED = 'registration/RESET_PASSWORD_REJECTED';
 
-const initialState = {};
+const initialState = {
+  isFormError: false
+};
 
 export const registration = (state = initialState, action) => {
   switch (action.type) {
@@ -20,32 +22,43 @@ export const registration = (state = initialState, action) => {
   }
 }
 
-export const SIGN_IN = (userData) => {
-  return dispatch => {
-    dispatch({
-      type: SIGN_IN_REQUESTED,
-      userData
-    });
+// export const SIGN_IN = (userData) => {
+//   return dispatch => {
+//     dispatch({
+//       type: SIGN_IN_REQUESTED,
+//       userData
+//     });
+//     return signIn(userData)
+//       .then(() => {
+//         dispatch(USER_LOG_IN());
+//       });
+//   }
+// }
 
-    return signIn(userData)
-      .then(() => {
-        dispatch(USER_LOG_IN());
-      });
-  }
+export const signInAction = (userData) => {
+  return {
+    type: 'SIGN_IN',
+    payload: {
+      request: {
+        method: 'POST',
+        url: '/signin',
+        data: userData
+      }
+    }
+  };
 }
 
-export const SIGN_UP = (userData) => {
-  return dispatch => {
-    dispatch({
-      type: SIGN_UP_REQUESTED,
-      userData
-    });
-
-    return signUp(userData)
-      .then(() => {
-        dispatch(USER_LOG_IN());
-      });
-  }
+export const signUpAction = (userData) => {
+  return {
+    type: 'SIGN_UP',
+    payload: {
+      request: {
+        method: 'POST',
+        url: '/signup',
+        data: userData
+      }
+    }
+  };
 }
 
 export const RESET_PASSWORD = (email) => {

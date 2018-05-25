@@ -14,11 +14,12 @@ export class SignInFormContainer extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const data = this.state;
+    const data = {
+      email: this.state.email,
+      password: this.state.password
+    };
     const { signIn } = this.props;
-    signIn(data).catch(() => {
-      this.setState({isError: true});
-    });
+    signIn(data);
   };
 
   handleSelectChange = event => {

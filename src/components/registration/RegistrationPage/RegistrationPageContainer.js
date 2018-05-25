@@ -9,8 +9,8 @@ import {
   CheckEmailForm
 } from '@registration/Forms';
 import {
-  SIGN_IN,
-  SIGN_UP,
+  signInAction,
+  signUpAction,
   RESET_PASSWORD
 } from '@store/modules/registration';
 
@@ -24,17 +24,16 @@ const FORMS = {
 class RegistrationPageContainer extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      currentForm: 'SIGN_IN'
+      currentForm: 'SIGN_UP'
     };
   }
 
-  onClickForgot = () => {
-    this.setState({
-      currentForm: 'RESET_PASSWORD'
-    });
-  }
+  // onClickForgot = () => {
+  //   this.setState({
+  //     currentForm: 'RESET_PASSWORD'
+  //   });
+  // }
 
   onClickSignUp = (e) => {
     this.setState({
@@ -70,8 +69,8 @@ class RegistrationPageContainer extends React.Component {
           onClickSignIn={onClickSignIn}
           onClickSignUp={onClickSignUp}
           onCheckedEmail={onCheckedEmail}
-          signIn={this.props.SIGN_IN}
-          signUp={this.props.SIGN_UP}
+          signIn={this.props.signInAction}
+          signUp={this.props.signUpAction}
           resetPassword={this.props.RESET_PASSWORD}
           isError={this.props.isError}
         />
@@ -87,8 +86,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      SIGN_IN,
-      SIGN_UP,
+      signInAction,
+      signUpAction,
       RESET_PASSWORD
     },
     dispatch

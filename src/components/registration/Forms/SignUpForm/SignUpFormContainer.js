@@ -17,8 +17,7 @@ export class SignUpFormContainer extends React.Component {
     event.preventDefault();
     const data = this.state;
     const { signUp } = this.props;
-    signUp(data).catch(() => {
-      this.setState({isError: true});
+    signUp(data).then(response => {
     });
   };
 

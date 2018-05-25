@@ -1,6 +1,6 @@
 export {
-  SIGN_IN,
-  SIGN_UP,
+  signInAction,
+  signUpAction,
   RESET_PASSWORD,
   registration
 } from './registration';
