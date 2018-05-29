@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { IconUser } from '@components/profile/IconUser/IconUser';
 import { UserName } from '@components/profile/UserName/UserName';
 import { Button } from '@components/common/Button';

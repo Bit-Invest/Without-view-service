@@ -5,7 +5,7 @@ import { ProfilePage } from '@profile/ProfilePage';
 import { MarketplacePage } from '@components/marketplace/MarketplacePage';
 import { ProductPage } from '@components/product/ProductPage';
 import { Menu } from '../Menu';
-import { KycPage } from '@components/kyc/KycPage';
+// import { KycPage } from '@components/kyc/KycPage';
 import 'normalize.css';
 
 

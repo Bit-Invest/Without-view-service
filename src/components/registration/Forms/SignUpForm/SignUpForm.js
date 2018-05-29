@@ -12,19 +12,19 @@ export const SignUpForm = props => {
       onSubmit={props.handleSubmit}>
       <div className="title">Sign Up</div>
       <Select
-        onChange={this.handleSelectChange}
+        onChange={props.handleSelectChange}
         NameSelect1='Trader'
         NameSelect2='Investor'
       />
       <Input
-        onChange={this.handleEmailChange}
+        onChange={props.handleEmailChange}
         placeholder="Your email"
         type="text"
         required
         isError={isError}
       />
       <Input
-        onChange={this.handlePasswordChange}
+        onChange={props.handlePasswordChange}
         placeholder="Password (min 6 characters)"
         type="password"
         required
