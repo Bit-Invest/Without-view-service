@@ -5,7 +5,8 @@ export class MarketplacePageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoaded: false
+      isLoaded: false,
+      isShowedPopUp: false
     };
   }
 
@@ -17,7 +18,20 @@ export class MarketplacePageContainer extends React.Component {
 
   render() {
     return (
-      <MarketplacePage isLoaded={this.state.isLoaded} />
+      <MarketplacePage
+        isLoaded={this.state.isLoaded} 
+        onClickCompare={this.onClickCompare.bind(this)}
+        onClosePopUp={this.onClosePopUp.bind(this)}
+        isShowedPopUp={this.state.isShowedPopUp}
+      />
     );
+  }
+
+  onClickCompare() {
+    this.setState({isShowedPopUp: true});
+  }
+
+  onClosePopUp() {
+    this.setState({isShowedPopUp: false});
   }
 }

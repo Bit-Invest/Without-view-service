@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { MenuItem } from '@common/MenuItem';
+import { PopUpManager } from '@common/PopUpManager';
+import { PopUpRegistration } from '@common/PopUps/PopUpRegistration';
 
 const ROOT_CLASS = 'menu';
 
 const ITEMS = ['terminal', 'marketplace', 'billing', 'profile', 'help'];
+const inDev = ['billing', 'terminal', 'help'];
 
 export const Menu = (props) => {
   const buildRootClass = () => {
@@ -39,10 +42,18 @@ export const Menu = (props) => {
             <MenuItem
               type={item}
               isActive={props.page === item}
+              inDev={inDev.indexOf(item) >= 0}
+              onClick={props.onClickInDev}
             />
           </div>
         )}
       </div>
+      <PopUpManager
+        isShowed={props.isShowedPopUp}
+        onClickClose={props.onClosePopUp}
+      >
+        <PopUpRegistration />
+      </PopUpManager>
     </div>
   );
 }

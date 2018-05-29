@@ -10,11 +10,22 @@ export const MenuItem = (props) => {
         'active' : 'disabled'}`;
   };
 
-  return (
-    <Link to={`/${props.type}`}>
+  let result = null;
+  if (props.inDev) {
+    result = (
       <div
+        onClick={props.onClick}
         className={buildRootClass()}
       ></div>
-    </Link>
-  );
+    );
+  } else {
+    result = (
+      <Link to={`/${props.type}`}>
+        <div
+          className={buildRootClass()}
+        ></div>
+      </Link>
+    );
+  }
+  return result;
 }
