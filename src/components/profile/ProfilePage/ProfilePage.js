@@ -8,7 +8,7 @@ import { PopUpNewProduct } from '@common/PopUps/PopUpNewProduct';
 export const ProfilePage = props => {
   return (
     <Page isLoaded={props.isLoaded}>
-      <ProfileHead />
+      <ProfileHead personalInfo={props.user.personalInfo} />
       <ListProducts onClickAddProduct={props.onClickAddProduct} />
       <PopUpManager
         isShowed={props.isShowedPopUpNewProduct}

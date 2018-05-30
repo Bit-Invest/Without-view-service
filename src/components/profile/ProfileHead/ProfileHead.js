@@ -15,9 +15,14 @@ export const ProfileHead = props => {
               <IconUser />
             </div>
           <div>
-            <UserName name='Ivan' surname='Ivanov' />
+            <UserName
+              name={props.personalInfo.name}
+              surname={props.personalInfo.surname}
+            />
             <div className={`${ROOT_CLASS}__rating-block`}>
-              <div className={`${ROOT_CLASS}__investor`}>Investor &nbsp; /</div>
+              <div className={`${ROOT_CLASS}__investor`}>
+                {props.personalInfo.role}&nbsp;/
+              </div>
               <Rating rating={7} />
             </div>
             <div className={`${ROOT_CLASS}__kyc-block`}>
