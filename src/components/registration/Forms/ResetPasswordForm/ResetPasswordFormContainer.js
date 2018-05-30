@@ -1,14 +1,19 @@
 import * as React from 'react';
 import { ResetPasswordForm } from './ResetPasswordForm';
+import PropTypes from 'prop-types';
 
 export class ResetPasswordFormContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       isError: false
     };
   }
+
+  static propTypes = {
+    onClickSignIn: PropTypes.func,
+  };
 
   handleSubmit = event => {
     event.preventDefault();

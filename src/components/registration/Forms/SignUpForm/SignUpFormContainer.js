@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SignUpForm } from './SignUpForm';
+import PropTypes from 'prop-types';
 
 export class SignUpFormContainer extends React.Component {
   constructor(props) {
@@ -11,6 +12,10 @@ export class SignUpFormContainer extends React.Component {
       checked: true
     };
   }
+
+  static propTypes = {
+    onClickSignIn: PropTypes.func,
+  };
 
   handleSubmit = event => {
     event.preventDefault();

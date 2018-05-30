@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { signInAction as signIn } from '@store/modules/registration';
+import PropTypes from 'prop-types';
 
 class SignInFormContainer extends React.Component {
   constructor(props) {
@@ -15,6 +16,11 @@ class SignInFormContainer extends React.Component {
       isError: false
     };
   }
+
+  static propTypes = {
+    onClickSignUp: PropTypes.func,
+    onClickForgot: PropTypes.func,
+  };
 
   handleSubmit = event => {
     event.preventDefault();
