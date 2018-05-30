@@ -49,7 +49,7 @@ export const signInAction = (userData) => {
 
 export const signUpAction = (userData) => {
   return {
-    types: [SIGN_UP, SIGN_UP_SUCCESS, SIGN_UP_FAILED],
+    types: SIGN_UP,
     payload: {
       request: {
         method: 'POST',
