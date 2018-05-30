@@ -3,6 +3,7 @@ import { Select } from '@registration/select';
 import { Input } from '@registration/input';
 import { Checkbox } from '@registration/checkbox';
 import { Button } from '@components/common/Button';
+import { Link } from 'react-router-dom';
 
 export const SignUpForm = props => {
   const { isError } = props;
@@ -44,7 +45,7 @@ export const SignUpForm = props => {
       <Button theme="gradient-img" NameBtn="Sign Up" />
       <div className="transitionAccount">
         Already have an account?{' '}
-        <span onClick={props.onClickSignIn}>Sign In</span>
+        <Link to={'/registration/sign-in'}>Sign In</Link>
       </div>
     </form>
   );

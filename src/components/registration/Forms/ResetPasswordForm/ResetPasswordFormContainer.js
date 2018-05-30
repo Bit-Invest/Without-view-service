@@ -38,7 +38,6 @@ export class ResetPasswordFormContainer extends React.Component {
     return <ResetPasswordForm
       handleSubmit={handleSubmit}
       handleEmailChange={handleEmailChange}
-      onClickSignIn={this.props.onClickSignIn}
       isError={this.state.isError}
     />;
   }

@@ -1,47 +1,46 @@
-import { resetPassword } from './api';
-// import { USER_LOG_IN } from '../user';
-
-export const SIGN_IN_REQUESTED = 'registration/SIGN_IN_REQUESTED';
-export const SIGN_IN_REJECTED = 'registration/SIGN_IN_REJECTED';
-export const SIGN_IN_APPROVED = 'registration/SIGN_IN_APPROVED';
-export const SIGN_UP_REQUESTED = 'registration/SIGN_UP_REQUESTED';
-export const SIGN_UP_REJECTED = 'registration/SIGN_UP_REJECTED';
-export const SIGN_UP_APPROVED = 'registration/SIGN_UP_APPROVED';
 export const RESET_PASSWORD_REQUESTED = 'registration/RESET_PASSWORD_REQUESTED';
 export const RESET_PASSWORD_APPROVED = 'registration/RESET_PASSWORD_APPROVED';
 export const RESET_PASSWORD_REJECTED = 'registration/RESET_PASSWORD_REJECTED';
+export const SIGN_UP = 'registration/SIGN_UP';
+export const SIGN_UP_SUCCESS = 'registration/SIGN_UP_SUCCESS';
+export const SIGN_UP_FAILED = 'registration/SIGN_UP_FAILED';
+export const SIGN_IN = 'registration/SIGN_IN';
+export const SIGN_IN_SUCCESS = 'registration/SIGN_IN_SUCCESS';
+export const SIGN_IN_FAILED = 'registration/SIGN_IN_FAIL';
+export const RESET_ERROR = 'registration/RESET_ERROR';
 
 const initialState = {
-  isFormError: false
+  isSignUpError: false,
+  isSignInError: false,
+  isResetPassError: false
 };
 
 export const registration = (state = initialState, action) => {
   switch (action.type) {
+    case SIGN_IN_SUCCESS:
+      return state;
+    case SIGN_UP_FAILED:
+      return Object.assign({}, state, {isSignUpError: true});
+    case SIGN_IN_FAILED:
+      return Object.assign({}, state, {isSignInError: true});
     default:
       return state;
   }
 }
 
-// export const SIGN_IN = (userData) => {
-//   return dispatch => {
-//     dispatch({
-//       type: SIGN_IN_REQUESTED,
-//       userData
-//     });
-//     return signIn(userData)
-//       .then(() => {
-//         dispatch(USER_LOG_IN());
-//       });
-//   }
-// }
+export const resetError = () => {
+  return {
+    type: RESET_ERROR
+  };
+}
 
 export const signInAction = (userData) => {
   return {
-    type: 'SIGN_IN',
+    type: SIGN_IN,
     payload: {
       request: {
         method: 'POST',
-        url: '/signin',
+        url: '/auth/signin',
         data: userData
       }
     }
@@ -50,29 +49,13 @@ export const signInAction = (userData) => {
 
 export const signUpAction = (userData) => {
   return {
-    type: 'SIGN_UP',
+    types: [SIGN_UP, SIGN_UP_SUCCESS, SIGN_UP_FAILED],
     payload: {
       request: {
         method: 'POST',
-        url: '/signup',
+        url: '/auth/signup',
         data: userData
       }
     }
-  };
-}
-
-export const RESET_PASSWORD = (email) => {
-  return dispatch => {
-    dispatch({
-      type: RESET_PASSWORD_REQUESTED,
-      email
-    });
-
-    return resetPassword(email)
-      .then(() => {
-        dispatch({
-          type: RESET_PASSWORD_APPROVED
-        });
-      })
   };
 }

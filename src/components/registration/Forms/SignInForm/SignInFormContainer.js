@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { SignInForm } from './SignInForm';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import { signInAction as signIn } from '@store/modules/registration';
 
-export class SignInFormContainer extends React.Component {
+class SignInFormContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +23,18 @@ export class SignInFormContainer extends React.Component {
       password: this.state.password
     };
     const { signIn } = this.props;
-    signIn(data);
+    signIn(data)
+      .then(this.onSuccessSubmit.bind(this))
+      .catch(this.onErrorSubmit.bind(this));
   };
+
+  onSuccessSubmit(res) {
+    this.props.push('/profile');
+  }
+
+  onErrorSubmit(err) {
+    this.setState({isError: true});
+  }
 
   handleSelectChange = event => {
     this.setState({ select: event.target.value });
@@ -48,8 +62,6 @@ export class SignInFormContainer extends React.Component {
       handleCheckboxChange
     } = this;
     return <SignInForm
-      onClickSignUp={this.props.onClickSignUp}
-      onClickForgot={this.props.onClickForgot}
       handleSubmit={handleSubmit.bind(this)}
       handleSelectChange={handleSelectChange}
       handleEmailChange={handleEmailChange}
@@ -60,3 +72,11 @@ export class SignInFormContainer extends React.Component {
     />;
   }
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({push, signIn}, dispatch);
+
+const connectedContainer =
+  connect(null, mapDispatchToProps)(SignInFormContainer);
+
+export {connectedContainer as SignInFormContainer};

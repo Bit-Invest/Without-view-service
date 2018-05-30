@@ -17,9 +17,27 @@ const client = axios.create({
   }
 });
 
+const axiosMiddlewareConfig = {
+  onError: (info) => {
+    const errorInfo = {
+      error: info.error,
+      meta: {
+        previousAction: info.action
+      },
+      type: `${info.action.type}_FAIL`
+    };
+    info.dispatch(errorInfo);
+    return Promise.reject(errorInfo);
+  }
+};
+
 const initialState = {};
 const enhancers = [];
-const middleware = [thunk, routerMiddleware(history), axiosMiddleware(client)];
+const middleware = [
+  thunk,
+  routerMiddleware(history),
+  axiosMiddleware(client, axiosMiddlewareConfig)
+];
 
 if (process.env.NODE_ENV === 'development') {
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;

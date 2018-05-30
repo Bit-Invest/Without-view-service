@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const CheckEmailForm = props => {
   return (
@@ -9,7 +10,7 @@ export const CheckEmailForm = props => {
       </div>
       <div className="success-img" alt="" />
       <div className="transitionAccount">
-        Return to <span onClick={props.onClickSignIn}>Sign In</span>
+        Return to <Link to="/registration/sign-in"><span>Sign In</span></Link>
       </div>
     </form>
   );

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { RegistrationPage } from './RegistrationPage';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
@@ -9,71 +10,28 @@ import {
   CheckEmailForm
 } from '@registration/Forms';
 import {
-  signInAction,
-  signUpAction,
-  RESET_PASSWORD
+  signUpAction
 } from '@store/modules/registration';
-
-const FORMS = {
-  SIGN_IN: SignInForm,
-  SIGN_UP: SignUpForm,
-  RESET_PASSWORD: ResetPasswordForm,
-  CHECK_EMAIL: CheckEmailForm
-};
+import { push } from 'react-router-redux';
 
 class RegistrationPageContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentForm: 'SIGN_UP'
-    };
-  }
-
-  // onClickForgot = () => {
-  //   this.setState({
-  //     currentForm: 'RESET_PASSWORD'
-  //   });
-  // }
-
-  onClickSignUp = (e) => {
-    this.setState({
-      currentForm: 'SIGN_UP'
-    });
-  }
-
-  onClickSignIn = () => {
-    this.setState({
-      currentForm: 'SIGN_IN'
-    });
-  }
-
-  onCheckedEmail = () => {
-    this.setState({
-      currentForm: 'CHECK_EMAIL'
-    });
-  }
-
   render() {
-    const Form = FORMS[this.state.currentForm];
-    const {
-      onClickForgot,
-      onClickSignIn,
-      onClickSignUp,
-      onCheckedEmail
-    } = this;
-
     return (
       <RegistrationPage>
-        <Form
-          onClickForgot={onClickForgot}
-          onClickSignIn={onClickSignIn}
-          onClickSignUp={onClickSignUp}
-          onCheckedEmail={onCheckedEmail}
-          signIn={this.props.signInAction}
-          signUp={this.props.signUpAction}
-          resetPassword={this.props.RESET_PASSWORD}
-          isError={this.props.isError}
-        />
+        <Redirect from="/registration" to="/registration/sign-in" />
+        <Switch>
+          <Route path="/registration/sign-in" component={SignInForm}/>
+          <Route path="/registration/sign-up" render={
+            () => <SignUpForm
+              isError={this.props.isSignUpError}
+              signUp={this.props.signUpAction}
+            />
+          }/>
+          <Route path="/registration/reset-password" render={
+            () => <ResetPasswordForm isError={this.props.isFormError} />
+          }/>
+          <Route path="/registration/check-email" component={CheckEmailForm} />
+        </Switch>
       </RegistrationPage>
     );
   }
@@ -86,9 +44,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      signInAction,
       signUpAction,
-      RESET_PASSWORD
+      push
     },
     dispatch
   );

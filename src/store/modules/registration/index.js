@@ -1,6 +1,6 @@
 export {
   signInAction,
   signUpAction,
-  RESET_PASSWORD,
+  resetError,
   registration
 } from './registration';

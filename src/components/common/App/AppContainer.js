@@ -12,7 +12,7 @@ class AppContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {page: state.router.location.pathname.substring(1)};
+  return {page: state.router.location.pathname.split('/')[1]};
 }
 const connectedContainer =
   withRouter(connect(mapStateToProps, null)(AppContainer));

@@ -2,14 +2,13 @@ import * as React from 'react';
 import { SignUpForm } from './SignUpForm';
 
 export class SignUpFormContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       select: 'Trader',
       email: '',
       password: '',
-      checked: true,
-      isError: false
+      checked: true
     };
   }
 
@@ -17,8 +16,7 @@ export class SignUpFormContainer extends React.Component {
     event.preventDefault();
     const data = this.state;
     const { signUp } = this.props;
-    signUp(data).then(response => {
-    });
+    signUp(data);
   };
 
   handleSelectChange = event => {
@@ -47,14 +45,13 @@ export class SignUpFormContainer extends React.Component {
       handleCheckboxChange
     } = this;
     return <SignUpForm
-      onClickSignIn={this.props.onClickSignIn}
       handleSubmit={handleSubmit}
       handleSelectChange={handleSelectChange}
       handleEmailChange={handleEmailChange}
       handlePasswordChange={handlePasswordChange}
       handleCheckboxChange={handleCheckboxChange}
       checked={this.state.checked}
-      isError={this.state.isError}
+      isError={this.props.isError}
     />;
   }
 }
