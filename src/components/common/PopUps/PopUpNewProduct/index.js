@@ -1,1 +1,1 @@
-export { PopUpNewProduct } from './PopUpNewProduct';
+export { PopUpNewProductContainer as PopUpNewProduct } from './PopUpNewProductContainer';

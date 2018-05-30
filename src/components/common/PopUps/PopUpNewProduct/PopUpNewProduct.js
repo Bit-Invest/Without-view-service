@@ -12,16 +12,16 @@ export const PopUpNewProduct = (props) => {
       <div className={`${ROOT_CLASS}__tittle`}>New Product</div>
       <Select
         onChange={this.handleSelectChange}
-        NameSelect1="Choose your Exchange"
+        NameSelect1="Choose your stock exchange"
         NameSelect2='option2'
         theme="new-product"
       />
-      <Select
+    {/*<Select
         onChange={this.handleSelectChange}
         NameSelect1="Currency pair"
         NameSelect2='option2'
         theme="new-product"
-      />
+      />*/}
       <Input
         onChange={this.handleEmailChange}
         placeholder="API Key"
@@ -31,14 +31,14 @@ export const PopUpNewProduct = (props) => {
       />
       <Input
         onChange={this.handleEmailChange}
-        placeholder="Strategy Name"
+        placeholder="secret key"
         type="text"
         theme="input-new-product"
         required
       />
-      <TextArea
+    {/*<TextArea
         placeholder='Description of your strategy min 500 characters'
-      />
+      />*/}
       <Button
         className={`${ROOT_CLASS}__button`}
         theme="pop-up-new-product"
