@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Menu } from './Menu'
+import { Menu } from './Menu';
+import PropTypes from 'prop-types';
 
 export class MenuContainer extends React.Component {
   constructor(props) {
@@ -9,6 +10,10 @@ export class MenuContainer extends React.Component {
     };
     this.currentPage = props.page;
   }
+
+  static propTypes = {
+    page: PropTypes.string,
+  };
 
   render() {
     const exPage = this.currentPage;
