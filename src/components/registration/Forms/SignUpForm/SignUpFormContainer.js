@@ -1,15 +1,20 @@
 import * as React from 'react';
 import { SignUpForm } from './SignUpForm';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import { signUpAction as signUp } from '@store/modules/registration';
 import PropTypes from 'prop-types';
 
-export class SignUpFormContainer extends React.Component {
+class SignUpFormContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       select: 'Trader',
       email: '',
       password: '',
-      checked: true
+      checked: true,
+      isError: false
     };
   }
 
@@ -21,8 +26,19 @@ export class SignUpFormContainer extends React.Component {
     event.preventDefault();
     const data = this.state;
     const { signUp } = this.props;
-    signUp(data);
+    signUp(data)
+      .then(this.onSuccessSubmit.bind(this))
+      .catch(this.onErrorSubmit.bind(this));
   };
+
+  onSuccessSubmit(res) {
+    console.log('ok');
+    this.props.push('/registration/sign-in');
+  }
+
+  onErrorSubmit(err) {
+    this.setState({isError: true});
+  }
 
   handleSelectChange = event => {
     this.setState({ select: event.target.value });
@@ -50,13 +66,21 @@ export class SignUpFormContainer extends React.Component {
       handleCheckboxChange
     } = this;
     return <SignUpForm
-      handleSubmit={handleSubmit}
+      handleSubmit={handleSubmit.bind(this)}
       handleSelectChange={handleSelectChange}
       handleEmailChange={handleEmailChange}
       handlePasswordChange={handlePasswordChange}
       handleCheckboxChange={handleCheckboxChange}
       checked={this.state.checked}
-      isError={this.props.isError}
+      isError={this.state.isError}
     />;
   }
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({push, signUp}, dispatch);
+
+const connectedContainer =
+  connect(null, mapDispatchToProps)(SignUpFormContainer);
+
+export {connectedContainer as SignUpFormContainer};
