@@ -19,12 +19,17 @@ class SignUpFormContainer extends React.Component {
   }
 
   static propTypes = {
-    onClickSignIn: PropTypes.func,
+    push: PropTypes.func,
+    signUp: PropTypes.func
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    const data = this.state;
+    const data = {
+      select: this.state.select,
+      email: this.state.email,
+      password: this.state.password
+    };
     const { signUp } = this.props;
     signUp(data)
       .then(this.onSuccessSubmit.bind(this))
@@ -32,7 +37,6 @@ class SignUpFormContainer extends React.Component {
   };
 
   onSuccessSubmit(res) {
-    console.log('ok');
     this.props.push('/registration/sign-in');
   }
 

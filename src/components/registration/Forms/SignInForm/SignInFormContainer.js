@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { signInAction as signIn } from '@store/modules/registration';
+import { LocalStorage } from '@common/Utils';
 import PropTypes from 'prop-types';
 
 class SignInFormContainer extends React.Component {
@@ -18,8 +19,8 @@ class SignInFormContainer extends React.Component {
   }
 
   static propTypes = {
-    onClickSignUp: PropTypes.func,
-    onClickForgot: PropTypes.func,
+    push: PropTypes.func,
+    signIn: PropTypes.func,
   };
 
   handleSubmit = event => {
@@ -35,6 +36,8 @@ class SignInFormContainer extends React.Component {
   };
 
   onSuccessSubmit(res) {
+    res.payload.data &&
+      LocalStorage.setItem('token', res.payload.data.token);
     this.props.push('/profile');
   }
 

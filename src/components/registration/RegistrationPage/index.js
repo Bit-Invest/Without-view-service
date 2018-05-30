@@ -1,2 +1,1 @@
-export { RegistrationPageContainer as RegistrationPage }
-  from './RegistrationPageContainer';
+export { RegistrationPage } from './RegistrationPage';
