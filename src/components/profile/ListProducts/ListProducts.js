@@ -8,19 +8,40 @@ export const ListProducts = props => {
   return (
     <div>
       <div className={ROOT_CLASS}>
-        <div>
-          <Button theme='product-btn' NameBtn="Add product" onClick={() => {props.onClickAddProduct()}} />
-          <ProfileProduct name="XML" today={19} rate={213} id={1} />
-          <ProfileProduct name="MDK" today={5} rate={103} id={2} />
-          <ProfileProduct name="LKC" today={3} rate={157} id={3} />
+        <div className={`${ROOT_CLASS}__button-block`}>
+          <div className={`${ROOT_CLASS}__caption`}>Current Fund’s API</div>
+          <div className={`${ROOT_CLASS}__button-block`}>
+            <div className={`${ROOT_CLASS}__help`}>Where to get API Key?</div>
+            <Button theme='product-btn' NameBtn="Add new API" onClick={() => {props.onClickAddProduct()}} />
+          </div>
         </div>
-        <div>
-          <ProfileProduct name="JRK" today={-3} rate={-70} id={4} />
-          <ProfileProduct name="UKO" today={28} rate={-10} id={5} />
-          <ProfileProduct name="OOL" today={14} rate={10} id={6} />
+        <div className={`${ROOT_CLASS}__list`}>
+          <ProfileProduct
+            exchange="binance"
+            number={12000.00}
+            number2={7438.2181}
+            connect={'Connected to BNX'}
+          />
+          <ProfileProduct
+            exchange="poloniex"
+            number={12000.00}
+            number2={7438.2181}
+            connect={'Disconnected'}
+          />
+          <ProfileProduct
+            exchange="bittrex"
+            number={12000.00}
+            number2={7438.2181}
+            connect={'Free to Use'}
+          />
+          <ProfileProduct
+            exchange="kucoin"
+            number={12000.00}
+            number2={7438.2181}
+            connect={'Disconnected'}
+          />
         </div>
       </div>
-      {/*<div className={`${ROOT_CLASS}__news`}></div>*/}
     </div>
   );
 };
