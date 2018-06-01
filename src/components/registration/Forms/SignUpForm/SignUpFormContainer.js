@@ -37,6 +37,7 @@ class SignUpFormContainer extends React.Component {
   };
 
   onSuccessSubmit(res) {
+    
     this.props.push('/registration/sign-in');
   }
 

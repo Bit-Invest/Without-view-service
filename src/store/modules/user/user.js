@@ -5,6 +5,7 @@ export const GET_PERSONAL_INFO = 'user/GET_PERSONAL_INFO';
 export const GET_PERSONAL_INFO_SUCCESS = 'user/GET_PERSONAL_INFO_SUCCESS';
 export const GET_PERSONAL_INFO_FAIL = 'user/GET_PERSONAL_INFO_FAIL';
 export const ADD_EXCHANGE = 'user/ADD_EXCHANGE';
+export const USER_LOGIN = 'user/USER_LOGIN';
 
 const initialState = {
   personalInfo: null,
@@ -37,6 +38,12 @@ export const user = (state = initialState, action) => {
         state,
         {personalInfo: action.payload.data}
       );
+    case USER_LOGIN:
+      return Object.assign(
+        {},
+        state,
+        {status: STATUS.LOGGED_IN}
+      );
     default:
       return state;
   }
@@ -54,5 +61,11 @@ export const getPersonalInfo = () => {
         }
       }
     }
+  };
+}
+
+export const userLogIn = () => {
+  return {
+    type: USER_LOGIN,
   };
 }

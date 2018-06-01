@@ -45,7 +45,7 @@ export const TraderCard = props => {
         </div>
       </div>
       <div className={`${ROOT_CLASS}__info-block`}>
-        Lorem Ipsum has been the industry's standard dummy text ever since
+        Lorem Ipsum has been the industrys standard dummy text ever since
         <div className={`${ROOT_CLASS}__href`}>Read more...</div>
       </div>
       <div className={`${ROOT_CLASS}__button-block`}>

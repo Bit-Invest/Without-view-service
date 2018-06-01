@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { signInAction as signIn } from '@store/modules/registration';
+import { userLogIn } from '@store/modules/user';
 import { LocalStorage } from '@common/Utils';
 import PropTypes from 'prop-types';
 
@@ -31,13 +32,14 @@ class SignInFormContainer extends React.Component {
     };
     const { signIn } = this.props;
     signIn(data)
-      .then(this.onSuccessSubmit.bind(this))
-      .catch(this.onErrorSubmit.bind(this));
+    .then(this.onSuccessSubmit.bind(this))
+    .catch(this.onErrorSubmit.bind(this));
   };
 
   onSuccessSubmit(res) {
     res.payload.data &&
       LocalStorage.setItem('token', res.payload.data.token);
+    this.props.userLogIn();
     this.props.push('/profile');
   }
 
@@ -83,7 +85,7 @@ class SignInFormContainer extends React.Component {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({push, signIn}, dispatch);
+  bindActionCreators({push, signIn, userLogIn}, dispatch);
 
 const connectedContainer =
   connect(null, mapDispatchToProps)(SignInFormContainer);
