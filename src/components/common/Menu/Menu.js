@@ -6,7 +6,7 @@ import { PopUpRegistration } from '@common/PopUps/PopUpRegistration';
 const ROOT_CLASS = 'menu';
 
 const ITEMS = ['terminal', 'marketplace', 'billing', 'profile', 'help'];
-const inDev = ['billing', 'terminal', 'help'];
+const inDev = ['billing', 'help'];
 
 export const Menu = (props) => {
   const buildRootClass = () => {
