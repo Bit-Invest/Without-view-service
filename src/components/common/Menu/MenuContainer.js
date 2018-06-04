@@ -30,6 +30,7 @@ export class MenuContainer extends React.Component {
   }
 
   onClickInDev() {
+    console.log('SSSSSSSSSSSSS');
     this.setState({isShowedPopUp: true});
   }
 

@@ -11,14 +11,15 @@ export const MenuItem = (props) => {
         'active' : 'disabled'}`;
   };
 
+  const buildRootClass = () => {
+    return `${ROOT_CLASS} ${props.isActive ? ROOT_CLASS + '_active': ''}`;
+  }
+
   let result = null;
   if (props.inDev) {
     result = (
-      <div className={ROOT_CLASS}>
-        <div
-          onClick={props.onClick}
-          className={buildIconClass()}
-        ></div>
+      <div className={buildRootClass()} onClick={props.onClick}>
+        <div className={buildIconClass()}></div>
         <div className={`${ROOT_CLASS}__title`}>
           {props.type.toUpperCase()}
         </div>
@@ -27,7 +28,7 @@ export const MenuItem = (props) => {
   } else {
     result = (
       <Link to={`/${props.type}`}>
-        <div className={ROOT_CLASS}>
+        <div className={buildRootClass()}>
           <div
             className={buildIconClass()}
           ></div>

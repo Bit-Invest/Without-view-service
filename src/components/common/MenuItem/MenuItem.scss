@@ -76,6 +76,16 @@
     }
   }
 }
+
+.menu-item_active {
+  background-color: #0b142d;
+  border-left: 6px solid #685ed3;
+  padding-left: 29px;
+
+  .menu-item__title {
+    color: #ffffff;
+  }
+}
 .menu-item:hover {
   background-color: #0b142d;
   border-left: 6px solid #685ed3;

@@ -36,8 +36,8 @@ export const ProfileHead = props => {
         userImage={UserIcon}
       />
       <div className={`${ROOT_CLASS}__units`}>
-        {units.map(unit =>
-          <ProfileUnit title={unit.title} count={unit.count} />)}
+        {units.map((unit, index) =>
+          <ProfileUnit title={unit.title} count={unit.count} key={index} />)}
       </div>
     </div>
   );

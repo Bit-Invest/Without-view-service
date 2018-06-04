@@ -18,9 +18,6 @@ export const Page = (props) => {
 
   return (
     <div className={buildRootClass()}>
-      <div className={`${ROOT_CLASS}__menu-wrap`}>
-        <Menu page={props.page} />
-      </div>
       <div className={`${ROOT_CLASS}__content-wrap`}>
         <div className={`${ROOT_CLASS}__content`}>
           <div className={`${preloaderClass}`}></div>
@@ -32,7 +29,9 @@ export const Page = (props) => {
           © 2018 CryptoActive | Privacy Policy & Terms of Service
         </div>
       </div>
-
+      <div className={`${ROOT_CLASS}__menu-wrap`}>
+        <Menu page={props.page} />
+      </div>
     </div>
   );
 }
