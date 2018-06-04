@@ -5,25 +5,36 @@ const ROOT_CLASS = 'menu-item';
 
 export const MenuItem = (props) => {
 
-  const buildRootClass = () => {
-    return `${ROOT_CLASS} ${ROOT_CLASS}_${props.type}_${props.isActive ?
+  const buildIconClass = () => {
+    const iconClass = `${ROOT_CLASS}__icon`;
+    return `${iconClass} ${iconClass}_${props.type}_${props.isActive ?
         'active' : 'disabled'}`;
   };
 
   let result = null;
   if (props.inDev) {
     result = (
-      <div
-        onClick={props.onClick}
-        className={buildRootClass()}
-      ></div>
+      <div className={ROOT_CLASS}>
+        <div
+          onClick={props.onClick}
+          className={buildIconClass()}
+        ></div>
+        <div className={`${ROOT_CLASS}__title`}>
+          {props.type.toUpperCase()}
+        </div>
+      </div>
     );
   } else {
     result = (
       <Link to={`/${props.type}`}>
-        <div
-          className={buildRootClass()}
-        ></div>
+        <div className={ROOT_CLASS}>
+          <div
+            className={buildIconClass()}
+          ></div>
+          <div className={`${ROOT_CLASS}__title`}>
+            {props.type.toUpperCase()}
+          </div>
+        </div>
       </Link>
     );
   }

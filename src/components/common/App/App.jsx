@@ -18,7 +18,6 @@ export const App = (props) => {
           <Route path="/marketplace" component={MarketplacePage} />
           <Route path="/product/:id" component={ProductPage} />
         </Switch>
-        <Menu page={props.page} />
       </main>
     </div>
   );

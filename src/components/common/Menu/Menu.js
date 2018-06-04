@@ -5,15 +5,15 @@ import { PopUpRegistration } from '@common/PopUps/PopUpRegistration';
 
 const ROOT_CLASS = 'menu';
 
-const ITEMS = ['terminal', 'marketplace', 'billing', 'profile', 'help'];
-const inDev = ['billing', 'terminal', 'help'];
+const ITEMS = ['terminal', 'marketplace', 'save', 'billing', 'profile', 'help'];
+const inDev = ['billing', 'terminal', 'help', 'save'];
 
 export const Menu = (props) => {
   const buildRootClass = () => {
     return `${ROOT_CLASS} ${ROOT_CLASS}_${props.page}`;
   }
 
-  const logoClass = () => {
+  /*const logoClass = () => {
     let result = `${ROOT_CLASS}__logo`;
     if (props.exPage === 'profile' && props.page !== 'profile') {
       result += ` ${ROOT_CLASS}__logo_close-logo`;
@@ -21,7 +21,7 @@ export const Menu = (props) => {
       result += ` ${ROOT_CLASS}__logo_open-logo`;
     }
     return result;
-  }
+  }*/
 
   const itemsClass = () => {
     let result = `${ROOT_CLASS}__items`;
@@ -35,8 +35,8 @@ export const Menu = (props) => {
 
   return (
     <div className={buildRootClass()}>
-      <div className={logoClass()}></div>
       <div className={itemsClass()}>
+        <div className={`${ROOT_CLASS}__logo`}></div>
         {ITEMS.map((item, index) =>
           <div className={`${ROOT_CLASS}__item-wrap`} key={index}>
             <MenuItem
