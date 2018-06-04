@@ -5,7 +5,6 @@ import { ProfilePage } from '@profile/ProfilePage';
 import { MarketplacePage } from '@components/marketplace/MarketplacePage';
 import { ProductPage } from '@components/product/ProductPage';
 import { TerminalPage } from '@terminal/TerminalPage';
-import { Menu } from '../Menu';
 import 'normalize.css';
 
 
@@ -20,7 +19,6 @@ export const App = (props) => {
           <Route path="/product/:id" component={ProductPage} />
           <Route path="/terminal" component={TerminalPage} />
         </Switch>
-        <Menu page={props.page} />
       </main>
     </div>
   );

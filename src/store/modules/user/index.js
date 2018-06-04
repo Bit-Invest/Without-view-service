@@ -1,1 +1,1 @@
-export { user, getPersonalInfo, addExchange } from './user';
+export { user, getPersonalInfo, addExchange, userLogIn } from './user';
