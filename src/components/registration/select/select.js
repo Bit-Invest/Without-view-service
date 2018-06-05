@@ -16,14 +16,10 @@ export const Select = props => {
     );
   };
 
-  const NameSelect = () => {
-    return  props.NameSelect1 ? ` ${props.NameSelect1}` : '' || props.NameSelect2 ? ` ${props.NameSelect2}` : '';
-  };
-
   return (
     <select onChange={handleSelectChange} className={buildRootClass()}>
-      <option>{NameSelect()}</option>
-      <option>{NameSelect()}</option>
+      {props.options.map((option, index) =>
+          <option value={option.value} key={index}>{option.label}</option>)}
     </select>
   );
 };

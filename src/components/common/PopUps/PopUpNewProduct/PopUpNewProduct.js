@@ -11,8 +11,10 @@ export const PopUpNewProduct = (props) => {
       <div className={`${ROOT_CLASS}__tittle`}>New Product</div>
       <Select
         onChange={props.handleSelectChange}
-        NameSelect1="Choose your stock exchange"
-        NameSelect2='option2'
+        options={[
+          {value: 'binance', label: 'Binance'},
+          {value: 'polinex', label: 'Polinex'}
+        ]}
         theme="new-product"
       />
       <Input

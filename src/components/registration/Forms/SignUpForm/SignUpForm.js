@@ -14,8 +14,16 @@ export const SignUpForm = props => {
       <div className="title">Sign Up</div>
       <Select
         onChange={props.handleSelectChange}
-        NameSelect1='Trader'
-        NameSelect2='Investor'
+        options={[
+          {
+            value: 'trader',
+            label: 'Trader'
+          },
+          {
+            value: 'investor',
+            label: 'Investor'
+          }
+        ]}
       />
       <Input
         onChange={props.handleEmailChange}
