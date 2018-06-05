@@ -9,7 +9,7 @@ export const Rating = props => {
 
   const renderRating = () => {
     let circles = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       circles.push(
         <div
           className={`${ROOT_CLASS}__${i < props.rating ? "full-circle" : "full-empty"}`}
@@ -22,7 +22,6 @@ export const Rating = props => {
 
   return (
     <div className={ROOT_CLASS}>
-      <div className={`${ROOT_CLASS}__label`}>Rating: &nbsp;</div>
         {renderRating()}
     </div>
   );

@@ -11,6 +11,8 @@ class SignUpFormContainer extends React.Component {
     super(props);
     this.state = {
       select: 'Trader',
+      name: '',
+      surname: '',
       email: '',
       password: '',
       checked: true,
@@ -27,6 +29,8 @@ class SignUpFormContainer extends React.Component {
     event.preventDefault();
     const data = {
       select: this.state.select,
+      name: this.state.name,
+      surname: this.state.surname,
       email: this.state.email,
       password: this.state.password
     };
@@ -37,7 +41,6 @@ class SignUpFormContainer extends React.Component {
   };
 
   onSuccessSubmit(res) {
-    
     this.props.push('/registration/sign-in');
   }
 
@@ -53,6 +56,14 @@ class SignUpFormContainer extends React.Component {
     this.setState({ email: event.target.value });
   };
 
+  handleNameChange = event => {
+    this.setState({ name: event.target.value });
+  }
+
+  handleSurnameChange = event  => {
+    this.setState({ surname: event.target.value });
+  }
+
   handlePasswordChange = event => {
     this.setState({ password: event.target.value });
   };
@@ -66,6 +77,8 @@ class SignUpFormContainer extends React.Component {
     const {
       handleSubmit,
       handleSelectChange,
+      handleNameChange,
+      handleSurnameChange,
       handleEmailChange,
       handlePasswordChange,
       handleCheckboxChange
@@ -74,6 +87,8 @@ class SignUpFormContainer extends React.Component {
       handleSubmit={handleSubmit.bind(this)}
       handleSelectChange={handleSelectChange}
       handleEmailChange={handleEmailChange}
+      handleNameChange={handleNameChange}
+      handleSurnameChange={handleSurnameChange}
       handlePasswordChange={handlePasswordChange}
       handleCheckboxChange={handleCheckboxChange}
       checked={this.state.checked}
