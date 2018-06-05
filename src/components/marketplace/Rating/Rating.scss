@@ -3,30 +3,18 @@
 .rating {
   display: flex;
   align-items: center;
-  &__label {
-    @include font(Lato-Light);
-    font-size: 16px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.41;
-    letter-spacing: normal;
-    color: #000000;
-  }
   &__full-circle {
+    background-image: url(../assets/images/star-active.png);
+    background-size: cover;
     width: 10px;
     height: 10px;
-    border-radius: 10px;
-    margin: 12px 0 8px;
     margin-left: 3px;
-    background-color: #8560fd;
   }
   &__full-empty {
+    background-image: url(../assets/images/star-deactive.png);
+    background-size: cover;
     width: 10px;
     height: 10px;
-    border-radius: 10px;
-    margin: 12px 0 8px;
     margin-left: 3px;
-    border: 2px solid #cebffe;
   }
 }

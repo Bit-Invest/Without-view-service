@@ -11,7 +11,7 @@ export const UserName = props => {
   };
   return (
     <div className='user-name-block'>
-      <div className={MarketPlaceTeame()}>{props.name}</div>
+      <div className={MarketPlaceTeame()}>{props.name}&nbsp;</div>
       <div className={MarketPlaceTeame()}>{props.surname}</div>
     </div>
   );

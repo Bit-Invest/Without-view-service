@@ -18,6 +18,20 @@ export const SignUpForm = props => {
         NameSelect2='Investor'
       />
       <Input
+        onChange={props.handleNameChange}
+        placeholder="Your name"
+        type="text"
+        required
+        isError={isError}
+      />
+      <Input
+        onChange={props.handleSurnameChange}
+        placeholder="Your surname"
+        type="text"
+        required
+        isError={isError}
+      />
+      <Input
         onChange={props.handleEmailChange}
         placeholder="Your email"
         type="text"
