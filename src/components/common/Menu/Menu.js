@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MenuItem } from '@common/MenuItem';
 import { PopUpManager } from '@common/PopUpManager';
 import { PopUpRegistration } from '@common/PopUps/PopUpRegistration';
-import { PopUpNewProduct } from '@common/PopUps/PopUpNewProduct';
+import { PopUpComingSoon } from '@common/PopUps/PopUpComingSoon';
 
 const ROOT_CLASS = 'menu';
 
@@ -41,7 +41,7 @@ export const Menu = (props) => {
         isShowed={props.isShowedPopUpDev}
         onClickClose={props.onCloseDevPopUp}
       >
-        <PopUpNewProduct />
+        <PopUpComingSoon />
       </PopUpManager>
       <PopUpManager
         isShowed={props.isShowedPopUpRegistration}
