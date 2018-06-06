@@ -128,11 +128,6 @@
     color: #8560fd;
     text-decoration: underline;
   }
-  &__button-block {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-  }
 }
 .trader-card:hover {
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);

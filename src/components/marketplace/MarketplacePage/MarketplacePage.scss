@@ -10,6 +10,31 @@
   background-color: #ffffff;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
   &__filter {
-    margin-bottom: 30px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &__card {
+    background-image: url(../assets/images/grid_view.png);
+    background-size: cover;
+    width: 16px;
+    height: 16px;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+  &__card:hover {
+    background-image: url(../assets/images/grid_view_deactive.png);
+  }
+  &__list {
+    background-image: url(../assets/images/horizon_view.png);
+    background-size: cover;
+    width: 16px;
+    height: 16px;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+  &__list:hover {
+    background-image: url(../assets/images/horizon_view_deactive.png);
   }
 }

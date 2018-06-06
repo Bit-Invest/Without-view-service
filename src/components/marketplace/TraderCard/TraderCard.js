@@ -44,18 +44,15 @@ export const TraderCard = props => {
         <IconUser />
         <div>
           <div className={`${ROOT_CLASS}__user-name-block`}>
-            <UserName name='Ivan' surname='I.' theme='MarketPlaceName' />
+            <UserName name='John' surname='S.' theme='MarketPlaceName' />
           </div>
           <div className={`${ROOT_CLASS}__rating-block`}>
             <Rating rating={5}/>
           </div>
         </div>
       </div>
-
-      <div className={`${ROOT_CLASS}__button-block`}>
-        <Link to={`/product/${props.id}`}>
-        </Link>
-      </div>
+      <Link to={`/product/${props.id}`}>
+      </Link>
     </div>
   );
 };

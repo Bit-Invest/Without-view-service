@@ -32,7 +32,7 @@ export class MarketplacePageContainer extends React.Component {
         isLoaded={this.state.isLoaded}
         isShowedPopUp={this.state.isShowedPopUp}
         showType={this.state.showType}
-        cards={[{exchange: 'BTC', id: 1}, {exchange: 'LTC', id: 2}, {exchange: 'LTC', id: 3}, {exchange: 'LTC', id: 3}, {exchange: 'LTC', id: 3}, {exchange: 'LTC', id: 3}, {exchange: 'BTC', id: 1}, {exchange: 'BTC', id: 1}]}
+        cards={[{exchange: 'BTC', id: 1}, {exchange: 'LTC', id: 2}, {exchange: 'LTC', id: 3}, {exchange: 'LTC', id: 4}, {exchange: 'LTC', id: 5}, {exchange: 'LTC', id: 6}, {exchange: 'BTC', id: 7}, {exchange: 'BTC', id: 8}]}
       />
     );
   }

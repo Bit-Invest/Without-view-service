@@ -45,8 +45,12 @@
   }
   &__input-block {
     display: flex;
+    justify-content: space-between;
     padding-left: 31px;
     margin-top: 10px;
+  }
+  &__input {
+    width: 214px;
   }
   &__input-total {
     width: 440px;
@@ -74,6 +78,7 @@
     letter-spacing: normal;
     color: #ffffff;
     cursor: pointer;
+    outline: none;
   }
   &__button-sell {
     margin-top: 10px;

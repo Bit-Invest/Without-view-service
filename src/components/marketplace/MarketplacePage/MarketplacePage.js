@@ -4,7 +4,6 @@ import { TraderCardList } from '../TraderCardList';
 import { Page } from '@common/Page';
 import { PopUpManager } from '@common/PopUpManager';
 import { PopUpRegistration } from '@common/PopUps/PopUpRegistration';
-import { Button } from '@components/common/Button';
 
 const ROOT_CLASS = 'marketplace-page';
 
@@ -18,8 +17,8 @@ export const MarketplacePage = props => {
   return (
     <Page isLoaded={props.isLoaded}>
       <div className={`${ROOT_CLASS}__filter`}>
-        <Button theme="theme-gradient" NameBtn="card" onClick={props.onClickCard} />
-        <Button theme="theme-gradient" NameBtn="list" onClick={props.onClickList} />
+        <div className={`${ROOT_CLASS}__card`} onClick={props.onClickCard}></div>
+        <div className={`${ROOT_CLASS}__list`} onClick={props.onClickList}></div>
       </div>
       <div className={ROOT_CLASS}>
         {props.cards.map(card => <ProductCard {...card} key={card.id}/>)}
