@@ -1,6 +1,7 @@
 @import "../../common/Utils/Utils.scss";
 
 .trader-card {
+  position: relative;
   width: 210px;
   height: 280px;
   border-radius: 5px;
@@ -21,6 +22,9 @@
     color: #000000;
   }
   &__save-block {
+    position: absolute;
+    top: 0;
+    left: 175px;
     width: 20px;
     height: 24px;
     background-image: url(../assets/images/saved-flag-active.png);
@@ -43,7 +47,7 @@
     display: flex;
     align-items: center;
     padding-left: 15px;
-    margin-top: 15px;
+    margin-top: 12px;
   }
   &__user-name-block {
     display: flex;
