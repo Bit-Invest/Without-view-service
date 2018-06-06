@@ -17,8 +17,10 @@ export const MarketplacePage = props => {
   const ProductCard = ProductTypes[props.showType];
   return (
     <Page isLoaded={props.isLoaded}>
-      <Button theme="theme-gradient" NameBtn="card" onClick={props.onClickCard} />
-      <Button theme="theme-gradient" NameBtn="list" onClick={props.onClickList} />
+      <div className={`${ROOT_CLASS}__filter`}>
+        <Button theme="theme-gradient" NameBtn="card" onClick={props.onClickCard} />
+        <Button theme="theme-gradient" NameBtn="list" onClick={props.onClickList} />
+      </div>
       <div className={ROOT_CLASS}>
         {props.cards.map(card => <ProductCard {...card} key={card.id}/>)}
         <PopUpManager
