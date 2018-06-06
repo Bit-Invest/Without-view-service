@@ -17,7 +17,7 @@ export const ProfileProduct = props => {
         <div className={`${ROOT_CLASS}__img-currency-usd`}></div>
         <div className={`${ROOT_CLASS}__number`}>{props.number2}</div>
       </div>
-      <div className={`${ROOT_CLASS}__result-connect`}>{props.connect}</div>
+      <div className={`${ROOT_CLASS}__result-connect`}>Disconnected</div>
     </Link>
   );
 }
