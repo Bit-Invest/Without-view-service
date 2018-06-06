@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Menu } from '@common/Menu';
+import { PopUpManager } from '@common/PopUpManager';
+import { PopUpNewProduct } from '@common/PopUps/PopUpNewProduct';
 
 const ROOT_CLASS = 'page';
 
@@ -32,6 +34,9 @@ export const Page = (props) => {
       <div className={`${ROOT_CLASS}__menu-wrap`}>
         <Menu page={props.page} />
       </div>
+      <PopUpManager>
+
+      </PopUpManager>
     </div>
   );
 }
