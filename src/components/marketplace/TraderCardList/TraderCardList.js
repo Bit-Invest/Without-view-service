@@ -14,9 +14,9 @@ export const TraderCardList = props => {
       </div>
       <div className={`${ROOT_CLASS}__position-result-block`}>
         <div className={`${ROOT_CLASS}__result-block`}>
-          <div className={`${ROOT_CLASS}__result`}>Week <span className={`${ROOT_CLASS}__result-span`} >{props.resultWeek}+32%</span></div>
-          <div className={`${ROOT_CLASS}__result`}>Month -15%</div>
-          <div className={`${ROOT_CLASS}__result`}>6 Months -15%</div>
+          <div className={`${ROOT_CLASS}__result`}>Week <span className={`${ROOT_CLASS}__result-span-plus`} >{props.resultWeek} +32%</span></div>
+          <div className={`${ROOT_CLASS}__result`}>Month <span className={`${ROOT_CLASS}__result-span-minus`} >{props.resultMonth} -15%</span></div>
+          <div className={`${ROOT_CLASS}__result`}>6 Months <span className={`${ROOT_CLASS}__result-span-minus`} >{props.result6Month} -15%</span></div>
         </div>
         <div className={`${ROOT_CLASS}__position`}>
           <div className={`${ROOT_CLASS}__position-result`}>Horizon  LONG</div>
@@ -28,7 +28,7 @@ export const TraderCardList = props => {
         <IconUser />
         <div>
           <div className={`${ROOT_CLASS}__user-name-block`}>
-            <UserName name='Ivan' surname='I.' theme='MarketPlaceName' />
+            <UserName name='John' surname='S.' theme='MarketPlaceName' />
           </div>
           <div className={`${ROOT_CLASS}__rating-block`}>
             <Rating rating={5}/>

@@ -48,6 +48,14 @@
     color: #666666;
     text-align: center;
   }
+  &__result-span-plus {
+    color: #8bc34a;
+    @include font(Lato-Bold);
+  }
+  &__result-span-minus {
+    color: #ff4040;;
+    @include font(Lato-Bold);
+  }
   &__position {
     display: flex;
     align-items: center;
