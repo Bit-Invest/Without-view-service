@@ -57,6 +57,7 @@ export const SignUpForm = props => {
         <Checkbox
           checked={props.checked}
           onChange={props.handleCheckboxChange}
+          isError={isError}
         />
         <div>
           I give my consent to process and store my personal data for the

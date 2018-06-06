@@ -28,6 +28,7 @@ export const SignInForm = props => {
         <Checkbox
           checked={props.checked}
           onChange={props.handleCheckboxChange}
+          isError={isError}
         />
         <div>Remember me</div>
       </div>

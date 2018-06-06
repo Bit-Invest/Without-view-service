@@ -26,19 +26,30 @@ class SignUpFormContainer extends React.Component {
   };
 
   handleSubmit = event => {
+    console.log(this.isErrorInForm());
     event.preventDefault();
-    const data = {
-      select: this.state.select,
-      name: this.state.name,
-      surname: this.state.surname,
-      email: this.state.email,
-      password: this.state.password
-    };
-    const { signUp } = this.props;
-    signUp(data)
-      .then(this.onSuccessSubmit.bind(this))
-      .catch(this.onErrorSubmit.bind(this));
+    if (this.isErrorInForm()) {
+      this.onErrorSubmit();
+    } else {
+      const data = {
+        select: this.state.select,
+        name: this.state.name,
+        surname: this.state.surname,
+        email: this.state.email,
+        password: this.state.password
+      };
+      const { signUp } = this.props;
+      signUp(data)
+        .then(this.onSuccessSubmit.bind(this))
+        .catch(this.onErrorSubmit.bind(this));
+    }
   };
+
+
+  isErrorInForm() {
+    return !(this.state.checked &&
+      new RegExp("^[A-Za-z0-9][A-Za-z0-9\.-_]*[A-Za-z0-9]*@([A-Za-z0-9]+([A-Za-z0-9-]*[A-Za-z0-9]+)*\.)+[A-Za-z]*$").test(this.state.email))
+  }
 
   onSuccessSubmit(res) {
     this.props.push('/registration/sign-in');
