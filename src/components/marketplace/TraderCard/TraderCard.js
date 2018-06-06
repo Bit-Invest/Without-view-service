@@ -3,6 +3,7 @@ import { IconUser } from '@components/profile/IconUser/IconUser';
 import { UserName } from '@components/profile/UserName/UserName';
 import { Rating } from '@components/marketplace/Rating/Rating';
 import { Link } from 'react-router-dom';
+import { PercentResult } from '@common/PercentResult';
 
 const ROOT_CLASS = 'trader-card';
 
@@ -18,11 +19,11 @@ export const TraderCard = props => {
       <div className={`${ROOT_CLASS}__result-block`}>
         <div className={`${ROOT_CLASS}__result-block-data`} >
           <div className={`${ROOT_CLASS}__block-data`}>Week &nbsp;</div>
-          <div className={`${ROOT_CLASS}__block-result`}>17%</div>
+          <PercentResult count={17} size="small" />
         </div>
         <div className={`${ROOT_CLASS}__result-block-data`}>
           <div className={`${ROOT_CLASS}__block-data`}>Month &nbsp;</div>
-          <div className={`${ROOT_CLASS}__block-result`}>21%</div>
+          <PercentResult count={-21} size="small" />
         </div>
       </div>
       <div className={`${ROOT_CLASS}__position-trade`}>
@@ -50,11 +51,8 @@ export const TraderCard = props => {
           </div>
         </div>
       </div>
-
-      <div className={`${ROOT_CLASS}__button-block`}>
-        <Link to={`/product/${props.id}`}>
-        </Link>
-      </div>
+      <Link to={`/product/${props.id}`}>
+      </Link>
     </div>
   );
 };

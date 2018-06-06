@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IconUser } from '@components/profile/IconUser/IconUser';
 import { UserName } from '@components/profile/UserName/UserName';
 import { Rating } from '@components/marketplace/Rating/Rating';
+import { PercentResult } from '@common/PercentResult';
 
 const ROOT_CLASS = 'card-list';
 
@@ -14,9 +15,15 @@ export const TraderCardList = props => {
       </div>
       <div className={`${ROOT_CLASS}__position-result-block`}>
         <div className={`${ROOT_CLASS}__result-block`}>
-          <div className={`${ROOT_CLASS}__result`}>Week <span className={`${ROOT_CLASS}__result-span-plus`} >{props.resultWeek} +32%</span></div>
-          <div className={`${ROOT_CLASS}__result`}>Month <span className={`${ROOT_CLASS}__result-span-minus`} >{props.resultMonth} -15%</span></div>
-          <div className={`${ROOT_CLASS}__result`}>6 Months <span className={`${ROOT_CLASS}__result-span-minus`} >{props.result6Month} -15%</span></div>
+          <div className={`${ROOT_CLASS}__result`}>Week
+            <PercentResult count={-21} size="small" />
+          </div>
+          <div className={`${ROOT_CLASS}__result`}>Month
+            <PercentResult count={10} size="small" />
+          </div>
+          <div className={`${ROOT_CLASS}__result`}>6 Months
+            <PercentResult count={8} size="small" />
+          </div>
         </div>
         <div className={`${ROOT_CLASS}__position`}>
           <div className={`${ROOT_CLASS}__position-result`}>Horizon  LONG</div>

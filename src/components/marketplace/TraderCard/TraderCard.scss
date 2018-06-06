@@ -92,7 +92,8 @@
     align-items: flex-end;
   }
   &__block-data {
-    @include font(Lato-Bold);
+    display: inline;
+    @include font(Lato-Light);
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -126,11 +127,6 @@
   &__href {
     color: #8560fd;
     text-decoration: underline;
-  }
-  &__button-block {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
   }
 }
 .trader-card:hover {

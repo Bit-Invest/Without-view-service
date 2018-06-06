@@ -5,12 +5,13 @@ import axiosMiddleware from 'redux-axios-middleware';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import rootReducer from './modules';
-
+import { socketMiddleware } from './middlewares';
+import io from 'socket.io-client';
 
 export const history = createHistory();
 
 const client = axios.create({
-  baseURL: 'http://192.168.100.155:3000',
+  baseURL: 'http://192.168.100.154:3000',
   responseType: 'json',
   headers: {
     'Content-Type': 'application/json',
@@ -18,6 +19,8 @@ const client = axios.create({
   }
 });
 
+const socket = io('http://192.168.100.154:3000');
+socket.on('connect', () => {console.log('OH SHIT');})
 const axiosMiddlewareConfig = {
   onError: (info) => {
     const errorInfo = {
@@ -37,7 +40,8 @@ const enhancers = [];
 const middleware = [
   thunk,
   routerMiddleware(history),
-  axiosMiddleware(client, axiosMiddlewareConfig)
+  axiosMiddleware(client, axiosMiddlewareConfig),
+  socketMiddleware(socket)
 ];
 
 if (process.env.NODE_ENV === 'development') {

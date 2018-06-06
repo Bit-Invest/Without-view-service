@@ -22,11 +22,15 @@ export const TerminalForm = () => (
         <div className={`${ROOT_CLASS}__input-block`}>
           <div>
             <div className={`${ROOT_CLASS}__label`}>Price</div>
-            <InputTerminal />
+            <div className={`${ROOT_CLASS}__input`}>
+              <InputTerminal />
+            </div>
           </div>
           <div>
             <div className={`${ROOT_CLASS}__label`}>Volume</div>
-            <InputTerminal />
+            <div className={`${ROOT_CLASS}__input`}>
+              <InputTerminal />
+            </div>
           </div>
         </div>
         <div className={`${ROOT_CLASS}__total-input-block`}>
@@ -39,16 +43,20 @@ export const TerminalForm = () => (
         <div className={`${ROOT_CLASS}__input-block`}>
           <div>
             <div className={`${ROOT_CLASS}__label`}>Price</div>
-            <InputTerminal />
+            <div className={`${ROOT_CLASS}__input`}>
+              <InputTerminal />
+            </div>
           </div>
           <div>
             <div className={`${ROOT_CLASS}__label`}>Volume</div>
-            <InputTerminal />
+            <div className={`${ROOT_CLASS}__input`}>
+              <InputTerminal />
+            </div>
           </div>
         </div>
         <div className={`${ROOT_CLASS}__total-input-block`}>
           <div className={`${ROOT_CLASS}__label`}>Total</div>
-          <InputTerminal theme='input-total' />
+          <InputTerminal />
         </div>
         <button className={`${ROOT_CLASS}__button-sell`}>PLACE SELL ORDER</button>
       </div>
