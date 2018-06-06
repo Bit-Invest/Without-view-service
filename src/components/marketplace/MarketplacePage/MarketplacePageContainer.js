@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { MarketplacePage } from './MarketplacePage';
 
+const ShowTypes = {
+  CARD: 'CARD',
+  LIST_ELEM: 'LIST_ELEM'
+};
+
 export class MarketplacePageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
-      isShowedPopUp: false
+      isShowedPopUp: false,
+      showType: ShowTypes.CARD
     };
   }
 
@@ -19,12 +25,24 @@ export class MarketplacePageContainer extends React.Component {
   render() {
     return (
       <MarketplacePage
-        isLoaded={this.state.isLoaded} 
         onClickCompare={this.onClickCompare.bind(this)}
         onClosePopUp={this.onClosePopUp.bind(this)}
+        onClickCard={this.onClickCard.bind(this)}
+        onClickList={this.onClickList.bind(this)}
+        isLoaded={this.state.isLoaded}
         isShowedPopUp={this.state.isShowedPopUp}
+        showType={this.state.showType}
+        cards={[{exchange: 'BTC', id: 1}, {exchange: 'LTC', id: 2}, {exchange: 'LTC', id: 3}, {exchange: 'LTC', id: 4}, {exchange: 'LTC', id: 5}, {exchange: 'LTC', id: 6}, {exchange: 'BTC', id: 7}, {exchange: 'BTC', id: 8}]}
       />
     );
+  }
+
+  onClickList() {
+    this.setState({showType: ShowTypes.LIST_ELEM});
+  }
+
+  onClickCard() {
+    this.setState({showType: ShowTypes.CARD});
   }
 
   onClickCompare() {

@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { SignInForm } from './SignInForm';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import { signInAction as signIn } from '@store/modules/registration';
+import { userLogIn } from '@store/modules/user';
+import { LocalStorage } from '@common/Utils';
+import PropTypes from 'prop-types';
 
-export class SignInFormContainer extends React.Component {
+class SignInFormContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,14 +19,33 @@ export class SignInFormContainer extends React.Component {
     };
   }
 
+  static propTypes = {
+    push: PropTypes.func,
+    signIn: PropTypes.func,
+  };
+
   handleSubmit = event => {
     event.preventDefault();
-    const data = this.state;
+    const data = {
+      email: this.state.email,
+      password: this.state.password
+    };
     const { signIn } = this.props;
-    signIn(data).catch(() => {
-      this.setState({isError: true});
-    });
+    signIn(data)
+    .then(this.onSuccessSubmit.bind(this))
+    .catch(this.onErrorSubmit.bind(this));
   };
+
+  onSuccessSubmit(res) {
+    res.payload.data &&
+      LocalStorage.setItem('token', res.payload.data.token);
+    this.props.userLogIn();
+    this.props.push('/profile');
+  }
+
+  onErrorSubmit(err) {
+    this.setState({isError: true});
+  }
 
   handleSelectChange = event => {
     this.setState({ select: event.target.value });
@@ -47,8 +73,6 @@ export class SignInFormContainer extends React.Component {
       handleCheckboxChange
     } = this;
     return <SignInForm
-      onClickSignUp={this.props.onClickSignUp}
-      onClickForgot={this.props.onClickForgot}
       handleSubmit={handleSubmit.bind(this)}
       handleSelectChange={handleSelectChange}
       handleEmailChange={handleEmailChange}
@@ -59,3 +83,11 @@ export class SignInFormContainer extends React.Component {
     />;
   }
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({push, signIn, userLogIn}, dispatch);
+
+const connectedContainer =
+  connect(null, mapDispatchToProps)(SignInFormContainer);
+
+export {connectedContainer as SignInFormContainer};

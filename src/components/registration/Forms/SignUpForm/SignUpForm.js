@@ -3,6 +3,7 @@ import { Select } from '@registration/select';
 import { Input } from '@registration/input';
 import { Checkbox } from '@registration/checkbox';
 import { Button } from '@components/common/Button';
+import { Link } from 'react-router-dom';
 
 export const SignUpForm = props => {
   const { isError } = props;
@@ -12,19 +13,41 @@ export const SignUpForm = props => {
       onSubmit={props.handleSubmit}>
       <div className="title">Sign Up</div>
       <Select
-        onChange={this.handleSelectChange}
-        NameSelect1='Trader'
-        NameSelect2='Investor'
+        onChange={props.handleSelectChange}
+        options={[
+          {
+            value: 'trader',
+            label: 'Trader'
+          },
+          {
+            value: 'investor',
+            label: 'Investor'
+          }
+        ]}
       />
       <Input
-        onChange={this.handleEmailChange}
+        onChange={props.handleNameChange}
+        placeholder="Your name"
+        type="text"
+        required
+        isError={isError}
+      />
+      <Input
+        onChange={props.handleSurnameChange}
+        placeholder="Your surname"
+        type="text"
+        required
+        isError={isError}
+      />
+      <Input
+        onChange={props.handleEmailChange}
         placeholder="Your email"
         type="text"
         required
         isError={isError}
       />
       <Input
-        onChange={this.handlePasswordChange}
+        onChange={props.handlePasswordChange}
         placeholder="Password (min 6 characters)"
         type="password"
         required
@@ -34,6 +57,7 @@ export const SignUpForm = props => {
         <Checkbox
           checked={props.checked}
           onChange={props.handleCheckboxChange}
+          isError={isError}
         />
         <div>
           I give my consent to process and store my personal data for the
@@ -44,7 +68,7 @@ export const SignUpForm = props => {
       <Button theme="gradient-img" NameBtn="Sign Up" />
       <div className="transitionAccount">
         Already have an account?{' '}
-        <span onClick={props.onClickSignIn}>Sign In</span>
+        <Link to={'/registration/sign-in'}>Sign In</Link>
       </div>
     </form>
   );

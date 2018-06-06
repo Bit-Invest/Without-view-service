@@ -1,17 +1,24 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+  /Users/mac/.nvm/versions/node/v8.11.2/bin/node /usr/local/bin/yarn
 
 PATH: 
-  C:\Users\OgMan\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\OgMan\bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Go\bin;C:\Program Files\MATLAB\R2013b\runtime\win64;C:\Program Files\MATLAB\R2013b\bin;C:\Program Files\MATLAB\R2013b\polyspace\bin;C:\Program Files\Git\cmd;C:\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\PuTTY;C:\Program Files (x86)\Skype\Phone;C:\HashiCorp\Vagrant\bin;C:\Users\OgMan\AppData\Roaming\npm;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\OgMan\AppData\Local\atom\bin;C:\Users\OgMan\AppData\Roaming\npm;C:\Users\OgMan\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  /Users/mac/.nvm/versions/node/v8.11.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
-  1.5.1
+  1.6.0
 
 Node version: 
-  8.10.0
+  8.11.2
 
 Platform: 
-  win32 x64
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/redux-axios-middleware: ETIMEDOUT
+      at Timeout._onTimeout (/usr/local/lib/node_modules/yarn/lib/cli.js:133819:19)
+      at ontimeout (timers.js:498:11)
+      at tryOnTimeout (timers.js:323:5)
+      at Timer.listOnTimeout (timers.js:290:5)
 
 npm manifest: 
   {
@@ -25,6 +32,7 @@ npm manifest:
     },
     "dependencies": {
       "autoprefixer": "7.1.6",
+      "axios": "^0.18.0",
       "babel-core": "6.26.0",
       "babel-eslint": "7.2.3",
       "babel-jest": "20.0.3",
@@ -71,6 +79,7 @@ npm manifest:
       "react-router-dom": "^4.2.2",
       "react-router-redux": "next",
       "redux": "^3.7.2",
+      "redux-axios-middleware": "^4.0.0",
       "redux-devtools-extension": "^2.13.2",
       "redux-thunk": "^2.2.0",
       "sanitize.css": "^5.0.0",
@@ -640,6 +649,13 @@ Lockfile:
   aws4@^1.2.1, aws4@^1.6.0:
     version "1.6.0"
     resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
+  
+  axios@^0.18.0:
+    version "0.18.0"
+    resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+    dependencies:
+      follow-redirects "^1.3.0"
+      is-buffer "^1.1.5"
   
   axobject-query@^0.1.0:
     version "0.1.0"
@@ -3650,6 +3666,12 @@ Lockfile:
   flatten@^1.0.2:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
+  
+  follow-redirects@^1.3.0:
+    version "1.5.0"
+    resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.0.tgz#234f49cf770b7f35b40e790f636ceba0c3a0ab77"
+    dependencies:
+      debug "^3.1.0"
   
   for-in@^1.0.1, for-in@^1.0.2:
     version "1.0.2"
@@ -10151,164 +10173,3 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-2.4.1.tgz#9528f442dab1b2284e58b4379bb194e22e0c4005"
     dependencies:
       fd-slicer "~1.0.1"
-
-Trace: 
-  Error: C:\work\Without-view-service\node_modules\node-sass: Command failed.
-  Exit code: 1
-  Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c node scripts/build.js
-  Directory: C:\work\Without-view-service\node_modules\node-sass
-  Output:
-  Building: C:\Program Files\nodejs\node.exe C:\work\Without-view-service\node_modules\node-gyp\bin\node-gyp.js rebuild --verbose --libsass_ext= --libsass_cflags= --libsass_ldflags= --libsass_library=
-  gyp info it worked if it ends with ok
-  gyp verb cli [ 'C:\\Program Files\\nodejs\\node.exe',
-  gyp verb cli   'C:\\work\\Without-view-service\\node_modules\\node-gyp\\bin\\node-gyp.js',
-  gyp verb cli   'rebuild',
-  gyp verb cli   '--verbose',
-  gyp verb cli   '--libsass_ext=',
-  gyp verb cli   '--libsass_cflags=',
-  gyp verb cli   '--libsass_ldflags=',
-  gyp verb cli   '--libsass_library=' ]
-  gyp info using node-gyp@3.6.2
-  gyp info using node@8.10.0 | win32 | x64
-  gyp verb command rebuild []
-  gyp verb command clean []
-  gyp verb clean removing "build" directory
-  gyp verb command configure []
-  gyp verb check python checking for Python executable "python2" in the PATH
-  gyp verb `which` failed Error: not found: python2
-  gyp verb `which` failed     at getNotFoundError (C:\work\Without-view-service\node_modules\which\which.js:13:12)
-  gyp verb `which` failed     at F (C:\work\Without-view-service\node_modules\which\which.js:68:19)
-  gyp verb `which` failed     at E (C:\work\Without-view-service\node_modules\which\which.js:80:29)
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\which\which.js:89:16
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\isexe\index.js:42:5
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\isexe\windows.js:36:5
-  gyp verb `which` failed     at FSReqWrap.oncomplete (fs.js:152:21)
-  gyp verb `which` failed  python2 { Error: not found: python2
-  gyp verb `which` failed     at getNotFoundError (C:\work\Without-view-service\node_modules\which\which.js:13:12)
-  gyp verb `which` failed     at F (C:\work\Without-view-service\node_modules\which\which.js:68:19)
-  gyp verb `which` failed     at E (C:\work\Without-view-service\node_modules\which\which.js:80:29)
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\which\which.js:89:16
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\isexe\index.js:42:5
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\isexe\windows.js:36:5
-  gyp verb `which` failed     at FSReqWrap.oncomplete (fs.js:152:21)
-  gyp verb `which` failed   stack: 'Error: not found: python2\n    at getNotFoundError (C:\\work\\Without-view-service\\node_modules\\which\\which.js:13:12)\n    at F (C:\\work\\Without-view-service\\node_modules\\which\\which.js:68:19)\n    at E (C:\\work\\Without-view-service\\node_modules\\which\\which.js:80:29)\n    at C:\\work\\Without-view-service\\node_modules\\which\\which.js:89:16\n    at C:\\work\\Without-view-service\\node_modules\\isexe\\index.js:42:5\n    at C:\\work\\Without-view-service\\node_modules\\isexe\\windows.js:36:5\n    at FSReqWrap.oncomplete (fs.js:152:21)',
-  gyp verb `which` failed   code: 'ENOENT' }
-  gyp verb check python checking for Python executable "python" in the PATH
-  gyp verb `which` failed Error: not found: python
-  gyp verb `which` failed     at getNotFoundError (C:\work\Without-view-service\node_modules\which\which.js:13:12)
-  gyp verb `which` failed     at F (C:\work\Without-view-service\node_modules\which\which.js:68:19)
-  gyp verb `which` failed     at E (C:\work\Without-view-service\node_modules\which\which.js:80:29)
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\which\which.js:89:16
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\isexe\index.js:42:5
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\isexe\windows.js:36:5
-  gyp verb `which` failed     at FSReqWrap.oncomplete (fs.js:152:21)
-  gyp verb `which` failed  python { Error: not found: python
-  gyp verb `which` failed     at getNotFoundError (C:\work\Without-view-service\node_modules\which\which.js:13:12)
-  gyp verb `which` failed     at F (C:\work\Without-view-service\node_modules\which\which.js:68:19)
-  gyp verb `which` failed     at E (C:\work\Without-view-service\node_modules\which\which.js:80:29)
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\which\which.js:89:16
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\isexe\index.js:42:5
-  gyp verb `which` failed     at C:\work\Without-view-service\node_modules\isexe\windows.js:36:5
-  gyp verb `which` failed     at FSReqWrap.oncomplete (fs.js:152:21)
-  gyp verb `which` failed   stack: 'Error: not found: python\n    at getNotFoundError (C:\\work\\Without-view-service\\node_modules\\which\\which.js:13:12)\n    at F (C:\\work\\Without-view-service\\node_modules\\which\\which.js:68:19)\n    at E (C:\\work\\Without-view-service\\node_modules\\which\\which.js:80:29)\n    at C:\\work\\Without-view-service\\node_modules\\which\\which.js:89:16\n    at C:\\work\\Without-view-service\\node_modules\\isexe\\index.js:42:5\n    at C:\\work\\Without-view-service\\node_modules\\isexe\\windows.js:36:5\n    at FSReqWrap.oncomplete (fs.js:152:21)',
-  gyp verb `which` failed   code: 'ENOENT' }
-  gyp verb could not find "python". checking python launcher 
-  gyp verb check python launcher python executable found: "C:\\Users\\OgMan\\.windows-build-tools\\python27\\python.exe"
-  gyp verb check python version `C:\Users\OgMan\.windows-build-tools\python27\python.exe -c "import platform; print(platform.python_version());"` returned: "2.7.14\r\n"
-  gyp verb get node dir no --target version specified, falling back to host node version: 8.10.0
-  gyp verb command install [ '8.10.0' ]
-  gyp verb install input version string "8.10.0"
-  gyp verb install installing version: 8.10.0
-  gyp verb install --ensure was passed, so won't reinstall if already installed
-  gyp verb install version is already installed, need to check "installVersion"
-  gyp verb got "installVersion" 9
-  gyp verb needs "installVersion" 9
-  gyp verb install version is good
-  gyp verb get node dir target node version installed: 8.10.0
-  gyp verb build dir attempting to create "build" dir: C:\work\Without-view-service\node_modules\node-sass\build
-  gyp verb build dir "build" dir needed to be created? C:\work\Without-view-service\node_modules\node-sass\build
-  gyp verb Not using VS2017: Could not use PowerShell to find VS2017
-  gyp verb build/config.gypi creating config file
-  gyp verb build/config.gypi writing out config file: C:\work\Without-view-service\node_modules\node-sass\build\config.gypi
-  gyp verb config.gypi checking for gypi file: C:\work\Without-view-service\node_modules\node-sass\config.gypi
-  gyp verb common.gypi checking for gypi file: C:\work\Without-view-service\node_modules\node-sass\common.gypi
-  gyp verb gyp gyp format was not specified; forcing "msvs"
-  gyp info spawn C:\Users\OgMan\.windows-build-tools\python27\python.exe
-  gyp info spawn args [ 'C:\\work\\Without-view-service\\node_modules\\node-gyp\\gyp\\gyp_main.py',
-  gyp info spawn args   'binding.gyp',
-  gyp info spawn args   '-f',
-  gyp info spawn args   'msvs',
-  gyp info spawn args   '-G',
-  gyp info spawn args   'msvs_version=auto',
-  gyp info spawn args   '-I',
-  gyp info spawn args   'C:\\work\\Without-view-service\\node_modules\\node-sass\\build\\config.gypi',
-  gyp info spawn args   '-I',
-  gyp info spawn args   'C:\\work\\Without-view-service\\node_modules\\node-gyp\\addon.gypi',
-  gyp info spawn args   '-I',
-  gyp info spawn args   'C:\\Users\\OgMan\\.node-gyp\\8.10.0\\include\\node\\common.gypi',
-  gyp info spawn args   '-Dlibrary=shared_library',
-  gyp info spawn args   '-Dvisibility=default',
-  gyp info spawn args   '-Dnode_root_dir=C:\\Users\\OgMan\\.node-gyp\\8.10.0',
-  gyp info spawn args   '-Dnode_gyp_dir=C:\\work\\Without-view-service\\node_modules\\node-gyp',
-  gyp info spawn args   '-Dnode_lib_file=C:\\Users\\OgMan\\.node-gyp\\8.10.0\\<(target_arch)\\node.lib',
-  gyp info spawn args   '-Dmodule_root_dir=C:\\work\\Without-view-service\\node_modules\\node-sass',
-  gyp info spawn args   '-Dnode_engine=v8',
-  gyp info spawn args   '--depth=.',
-  gyp info spawn args   '--no-parallel',
-  gyp info spawn args   '--generator-output',
-  gyp info spawn args   'C:\\work\\Without-view-service\\node_modules\\node-sass\\build',
-  gyp info spawn args   '-Goutput_dir=.' ]
-  gyp verb command build []
-  gyp verb build type Release
-  gyp verb architecture x64
-  gyp verb node dev dir C:\Users\OgMan\.node-gyp\8.10.0
-  gyp verb found first Solution file build/binding.sln
-  gyp verb could not find "msbuild.exe" in PATH - finding location in registry 
-  gyp info spawn C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe
-  gyp info spawn args [ 'build/binding.sln',
-  gyp info spawn args   '/nologo',
-  gyp info spawn args   '/p:Configuration=Release;Platform=x64' ]
-  Building the projects in this solution one at a time. To enable parallel build, please add the "/m" switch.
-  Build started 03.05.2018 3:16:56.
-  Project "C:\work\Without-view-service\node_modules\node-sass\build\binding.sln" on node 1 (default targets).
-  ValidateSolutionConfiguration:
-    Building solution configuration "Release|x64".
-  Project "C:\work\Without-view-service\node_modules\node-sass\build\binding.sln" (1) is building "C:\work\Without-view-service\node_modules\node-sass\build\binding.vcxproj.metaproj" (2) on node 1 (default targets).
-  Project "C:\work\Without-view-service\node_modules\node-sass\build\binding.vcxproj.metaproj" (2) is building "C:\work\Without-view-service\node_modules\node-sass\build\src\libsass.vcxproj" (3) on node 1 (default targets).
-  C:\work\Without-view-service\node_modules\node-sass\build\src\libsass.vcxproj(20,3): error MSB4019: The imported project "C:\Microsoft.Cpp.Default.props" was not found. Confirm that the path in the <Import> declaration is correct, and that the file exists on disk.
-  Done Building Project "C:\work\Without-view-service\node_modules\node-sass\build\src\libsass.vcxproj" (default targets) -- FAILED.
-  Done Building Project "C:\work\Without-view-service\node_modules\node-sass\build\binding.vcxproj.metaproj" (default targets) -- FAILED.
-  Done Building Project "C:\work\Without-view-service\node_modules\node-sass\build\binding.sln" (default targets) -- FAILED.
-  
-  Build FAILED.
-  
-  "C:\work\Without-view-service\node_modules\node-sass\build\binding.sln" (default target) (1) ->
-  "C:\work\Without-view-service\node_modules\node-sass\build\binding.vcxproj.metaproj" (default target) (2) ->
-  "C:\work\Without-view-service\node_modules\node-sass\build\src\libsass.vcxproj" (default target) (3) ->
-    C:\work\Without-view-service\node_modules\node-sass\build\src\libsass.vcxproj(20,3): error MSB4019: The imported project "C:\Microsoft.Cpp.Default.props" was not found. Confirm that the path in the <Import> declaration is correct, and that the file exists on disk.
-  
-      0 Warning(s)
-      1 Error(s)
-  
-  Time Elapsed 00:00:00.51
-  gyp ERR! build error 
-  gyp ERR! stack Error: `C:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe` failed with exit code: 1
-  gyp ERR! stack     at ChildProcess.onExit (C:\work\Without-view-service\node_modules\node-gyp\lib\build.js:258:23)
-  gyp ERR! stack     at emitTwo (events.js:126:13)
-  gyp ERR! stack     at ChildProcess.emit (events.js:214:7)
-  gyp ERR! stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:198:12)
-  gyp ERR! System Windows_NT 6.3.9600
-  gyp ERR! command "C:\\Program Files\\nodejs\\node.exe" "C:\\work\\Without-view-service\\node_modules\\node-gyp\\bin\\node-gyp.js" "rebuild" "--verbose" "--libsass_ext=" "--libsass_cflags=" "--libsass_ldflags=" "--libsass_library="
-  gyp ERR! cwd C:\work\Without-view-service\node_modules\node-sass
-  gyp ERR! node -v v8.10.0
-  gyp ERR! node-gyp -v v3.6.2
-  gyp ERR! not ok 
-  Build failed with error code: 1
-      at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
-      at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
-      at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
-      at emitTwo (events.js:126:13)
-      at ChildProcess.emit (events.js:214:7)
-      at maybeClose (internal/child_process.js:925:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)

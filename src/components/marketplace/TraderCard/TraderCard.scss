@@ -1,7 +1,9 @@
 @import "../../common/Utils/Utils.scss";
 
 .trader-card {
+  position: relative;
   width: 210px;
+  height: 280px;
   border-radius: 5px;
   background-color: #ffffff;
   border: solid 1px #cccccc;
@@ -9,45 +11,59 @@
   padding: 10px 0;
   cursor: pointer;
   overflow: hidden;
+  &__block-exchange {
+    display: flex;
+    align-items: center;
+  }
   &__exchange {
-    padding-left: 15px;
+    padding-left: 10px;
     @include font(Lato-Bold);
     font-size: 12px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: 2.4px;
     color: #000000;
   }
-  &__icon-user-border {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    border: solid 2px #8560fd;
+  &__save-block {
+    position: absolute;
+    top: 0;
+    left: 175px;
+    width: 20px;
+    height: 24px;
+    background-image: url(../assets/images/saved-flag-active.png);
+    background-size: cover;
+  }
+  &__currencyPair {
+    @include font(Lato);
+    font-size: 12px;
+    color: #cccccc;
+    padding-left: 10px;
+  }
+  &__graf {
+    width: 208px;
+    height: 80px;
+    background-image: url(../assets/images/Graphic_product.png);
+    background-size: cover;
+    margin-top: 15px;
+  }
+  &__user-block {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-right: 20px;
-    margin: 0 auto;
+    padding-left: 15px;
+    margin-top: 12px;
   }
   &__user-name-block {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
   }
   &__rating-block {
-    padding: 5px 11px;
+    padding-left: 15px;
   }
   &__position-trade {
     width: 208px;
-    height: 54px;
+    height: 40px;
     background-color: #eeeeee;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px;
+    padding: 0 12px;
   }
   &__position-trade-block {
     display: flex;
@@ -68,7 +84,7 @@
   &__result-block {
     display: flex;
     justify-content: space-around;
-    margin: 15px 0;
+    margin: 12px 0;
   }
   &__result-block-data {
     display: flex;
@@ -76,7 +92,8 @@
     align-items: flex-end;
   }
   &__block-data {
-    @include font(Lato-Bold);
+    display: inline;
+    @include font(Lato-Light);
     font-size: 12px;
     font-weight: normal;
     font-style: normal;
@@ -93,7 +110,7 @@
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: #8560fd;
+    color: #8bc34a;
   }
   &__info-block {
     width: 180px;
@@ -110,11 +127,6 @@
   &__href {
     color: #8560fd;
     text-decoration: underline;
-  }
-  &__button-block {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
   }
 }
 .trader-card:hover {

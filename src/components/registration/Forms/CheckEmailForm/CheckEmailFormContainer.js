@@ -3,6 +3,6 @@ import { CheckEmailForm } from './CheckEmailForm';
 
 export class CheckEmailFormContainer extends React.Component {
   render() {
-    return <CheckEmailForm onClickSignIn={this.props.onClickSignIn} />;
+    return <CheckEmailForm/>;
   }
 }

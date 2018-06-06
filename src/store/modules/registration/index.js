@@ -1,6 +1,7 @@
 export {
-  SIGN_IN,
-  SIGN_UP,
-  RESET_PASSWORD,
-  registration
+  signInAction,
+  signUpAction,
+  resetError,
+  registration,
+  resetPassword
 } from './registration';

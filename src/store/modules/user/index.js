@@ -1,1 +1,1 @@
-export { user, USER_LOG_IN, APPROVE_KYC } from './user';
+export { user, getPersonalInfo, addExchange, userLogIn, getKeys } from './user';

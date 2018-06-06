@@ -1,6 +1,7 @@
 import React from 'react';
 import { Input } from '@registration/input';
 import { Button } from '@components/common/Button';
+import { Link } from 'react-router-dom';
 
 export const ResetPasswordForm = props => {
   const { isError } = props;
@@ -20,7 +21,7 @@ export const ResetPasswordForm = props => {
       />
       <Button />
       <div className="transitionAccount">
-        Return to Sign In <span onClick={props.onClickSignIn}>Sign In</span>
+        Return to Sign In <Link to={'/registration/sign-in'}>Sign In</Link>
       </div>
     </form>
   );

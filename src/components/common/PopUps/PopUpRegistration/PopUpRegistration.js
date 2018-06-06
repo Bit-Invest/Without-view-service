@@ -13,7 +13,7 @@ export const PopUpRegistration = (props) => {
         <div className={`${ROOT_CLASS}__info`}>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ...
         </div>
-        <Link to={'/registration'}>
+        <Link to={'/registration/sign-up'}>
           <Button className={`${ROOT_CLASS}__button`} theme="theme-gradient-popUp" NameBtn="Join now"/>
         </Link>
         <div className={`${ROOT_CLASS}__sign-in`}>Already have an account? <a>Sign In</a></div>

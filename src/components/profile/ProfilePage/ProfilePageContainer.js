@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { ProfilePage } from './ProfilePage';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getPersonalInfo, getKeys } from '@store/modules/user';
+import { push } from 'react-router-redux';
 
-export class ProfilePageContainer extends React.Component {
+class ProfilePageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,9 +15,19 @@ export class ProfilePageContainer extends React.Component {
   }
 
   componentWillMount() {
-    setTimeout(() => {
-      this.setState({isLoaded: true});
-    }, 2000);
+    Promise.all([
+      this.props.getPersonalInfo(),
+      this.props.getKeys()
+    ]).then(this.onLoadPersonalInfo.bind(this))
+      .catch(this.onFailPersonalInfo.bind(this));
+  }
+
+  onFailPersonalInfo(err) {
+    this.props.push('/registration/sign-in');
+  }
+
+  onLoadPersonalInfo() {
+    this.setState({isLoaded: true});
   }
 
   onClickAddProduct() {
@@ -27,13 +41,24 @@ export class ProfilePageContainer extends React.Component {
   render() {
     const { onClickAddProduct, onClosePopUp } = this;
 
-    return (
+    return this.state.isLoaded ? (
       <ProfilePage
         isLoaded={this.state.isLoaded}
         isShowedPopUpNewProduct={this.state.isShowedPopUpNewProduct}
         onClickAddProduct={onClickAddProduct.bind(this)}
         onClosePopUp={onClosePopUp.bind(this)}
+        user={this.props.user}
       />
-    );
+    ) : null;
   }
 }
+
+const mapStateToProps = (state) => {return {user: state.user}};
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({getPersonalInfo, getKeys, push}, dispatch);
+
+const connectedContainer =
+  connect(mapStateToProps, mapDispatchToProps)(ProfilePageContainer);
+
+export {connectedContainer as ProfilePageContainer};

@@ -89,12 +89,24 @@
     display: none;
   }
   &_product-btn {
-    width: 440px;
+    width: 147px;
     height: 40px;
+    @include font(Lato-Bold);
     font-size: 18px;
-    margin-top: 20px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    background: linear-gradient(45deg,
+      rgba(133, 96, 253, 1) 15%,
+      rgba(99, 141, 247, 1) 100%
+    );
+    border: none;
   }
   &_pop-up-new-product {
+    margin-top: 35px;
     width: 560px;
     height: 40px;
     color: #ffffff;

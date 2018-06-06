@@ -92,7 +92,9 @@ module.exports = {
       '@registration': path.resolve(__dirname, '../src/components/registration'),
       '@profile': path.resolve(__dirname, '../src/components/profile'),
       '@common': path.resolve(__dirname, '../src/components/common'),
-      '@marketplace': path.resolve(__dirname, '../src/components/marketplace')
+      '@marketplace': path.resolve(__dirname, '../src/components/marketplace'),
+      '@assets': path.resolve(__dirname, '../src/assets'),
+      '@terminal': path.resolve(__dirname, '../src/components/terminal')
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
