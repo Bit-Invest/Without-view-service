@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 const ROOT_CLASS = 'menu-item';
 
 export const MenuItem = (props) => {
-
   const buildIconClass = () => {
     const iconClass = `${ROOT_CLASS}__icon`;
     return `${iconClass} ${iconClass}_${props.type}_${props.isActive ?
@@ -15,29 +13,24 @@ export const MenuItem = (props) => {
     return `${ROOT_CLASS} ${props.isActive ? ROOT_CLASS + '_active': ''}`;
   }
 
-  let result = null;
-  if (props.inDev) {
-    result = (
-      <div className={buildRootClass()} onClick={props.onClick}>
-        <div className={buildIconClass()}></div>
-        <div className={`${ROOT_CLASS}__title`}>
-          {props.type.toUpperCase()}
-        </div>
-      </div>
-    );
-  } else {
-    result = (
-      <Link to={`/${props.type}`}>
-        <div className={buildRootClass()}>
-          <div
-            className={buildIconClass()}
-          ></div>
-          <div className={`${ROOT_CLASS}__title`}>
-            {props.type.toUpperCase()}
-          </div>
-        </div>
-      </Link>
-    );
+  const onClickItem = () => {
+    if (!props.popUp) {
+      props.push(`/${props.type}`);
+    } else if (props.popUp === 'onlyRegistrated') {
+      props.user.status === 'logged-in' ?
+        props.push(`/${props.type}`) :
+        props.onClickRegItem();
+    } else if (props.popUp === 'inDev') {
+      props.onClickInDev();
+    }
   }
-  return result;
+
+  return (
+    <div className={buildRootClass()} onClick={onClickItem}>
+      <div className={buildIconClass()}></div>
+      <div className={`${ROOT_CLASS}__title`}>
+        {props.type.toUpperCase()}
+      </div>
+    </div>
+  );
 }
