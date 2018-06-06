@@ -1,7 +1,6 @@
 @import "../../common/Utils/Utils.scss";
 
 .list-products {
-  margin-top: 50px;
   padding: 0 30px;
   &__news {
     background-image: url(../assets/images/news.png);
@@ -41,6 +40,17 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
+  }
+  &__list-title {
+    margin: 50px auto 0 auto;
+    @include font(Lato-Bold);
+    font-size: 25px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
   }
 }
 .list-products__help:hover {

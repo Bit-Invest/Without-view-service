@@ -6,11 +6,13 @@ export const GET_PERSONAL_INFO_SUCCESS = 'user/GET_PERSONAL_INFO_SUCCESS';
 export const GET_PERSONAL_INFO_FAIL = 'user/GET_PERSONAL_INFO_FAIL';
 export const ADD_EXCHANGE = 'user/ADD_EXCHANGE';
 export const USER_LOGIN = 'user/USER_LOGIN';
+export const GET_KEYS = 'user/GET_KEYS';
+export const GET_KEYS_SUCCESS = 'user/GET_KEYS_SUCCESS';
 
 const initialState = {
   personalInfo: null,
   status: STATUS.UNLOGGED_IN,
-  burses: [],
+  burses: null,
   products: []
 };
 
@@ -44,6 +46,12 @@ export const user = (state = initialState, action) => {
         state,
         {status: STATUS.LOGGED_IN}
       );
+    case GET_KEYS_SUCCESS:
+      return Object.assign(
+        {},
+        state,
+        {burses: action.payload.data.keys}
+      );
     default:
       return state;
   }
@@ -57,11 +65,26 @@ export const getPersonalInfo = () => {
         url: '/api/user/getinfo',
         method: 'GET',
         headers: {
-          'Authorization': LocalStorage.getItem('token')
+          Authorization: LocalStorage.getItem('token')
         }
       }
     }
   };
+}
+
+export const getKeys = () => {
+  return {
+    type: GET_KEYS,
+    payload: {
+      request: {
+        url: '/api/user/getkeys',
+        method: 'GET',
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
 }
 
 export const userLogIn = () => {

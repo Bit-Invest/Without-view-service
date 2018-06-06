@@ -9,7 +9,7 @@ export const ProfilePage = props => {
   return (
     <Page isLoaded={props.isLoaded}>
       <ProfileHead personalInfo={props.user.personalInfo} />
-      <ListProducts onClickAddProduct={props.onClickAddProduct} />
+      <ListProducts onClickAddProduct={props.onClickAddProduct} products={props.user.burses} />
       <PopUpManager
         isShowed={props.isShowedPopUpNewProduct}
         onClickClose={props.onClosePopUp}

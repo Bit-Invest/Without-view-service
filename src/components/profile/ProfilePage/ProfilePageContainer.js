@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ProfilePage } from './ProfilePage';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getPersonalInfo } from '@store/modules/user';
+import { getPersonalInfo, getKeys } from '@store/modules/user';
 import { push } from 'react-router-redux';
 
 class ProfilePageContainer extends React.Component {
@@ -15,8 +15,10 @@ class ProfilePageContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getPersonalInfo()
-      .then(this.onLoadPersonalInfo.bind(this))
+    Promise.all([
+      this.props.getPersonalInfo(),
+      this.props.getKeys()
+    ]).then(this.onLoadPersonalInfo.bind(this))
       .catch(this.onFailPersonalInfo.bind(this));
   }
 
@@ -54,7 +56,7 @@ class ProfilePageContainer extends React.Component {
 const mapStateToProps = (state) => {return {user: state.user}};
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({getPersonalInfo, push}, dispatch);
+  bindActionCreators({getPersonalInfo, getKeys, push}, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(ProfilePageContainer);

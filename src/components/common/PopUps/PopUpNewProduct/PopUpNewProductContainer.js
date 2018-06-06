@@ -8,7 +8,7 @@ class PopUpNewProductContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      select: 'Choose your stock exchange',
+      select: 'binance',
       ApiKey: '',
       secretKey: ''
     };
