@@ -28,14 +28,5 @@
     width: 100%;
     height: 100vh;
     background-color: #182549;
-
-    &_up {
-      top: 0px;
-      animation: move-items-up ease .3s;
-    }
-
-    &_down {
-      animation: move-items-down ease .3s;
-    }
   }
 }

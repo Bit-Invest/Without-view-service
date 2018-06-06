@@ -3,6 +3,7 @@ import { ProfilePage } from './ProfilePage';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getPersonalInfo } from '@store/modules/user';
+import { push } from 'react-router-redux';
 
 class ProfilePageContainer extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class ProfilePageContainer extends React.Component {
 
   onFailPersonalInfo(err) {
     console.log(err);
+    this.props.push('/registration/sign-in');
   }
 
   onLoadPersonalInfo() {
@@ -53,7 +55,7 @@ class ProfilePageContainer extends React.Component {
 const mapStateToProps = (state) => {return {user: state.user}};
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({getPersonalInfo}, dispatch);
+  bindActionCreators({getPersonalInfo, push}, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(ProfilePageContainer);
