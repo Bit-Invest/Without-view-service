@@ -3,6 +3,7 @@
 .percent-result {
   display: inline;
   @include font(Lato-Bold);
+  line-height: normal;
 }
 
 .percent-result_medium {
