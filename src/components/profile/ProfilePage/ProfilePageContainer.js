@@ -21,7 +21,6 @@ class ProfilePageContainer extends React.Component {
   }
 
   onFailPersonalInfo(err) {
-    console.log(err);
     this.props.push('/registration/sign-in');
   }
 

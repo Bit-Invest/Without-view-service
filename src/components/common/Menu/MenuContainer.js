@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { Menu } from './Menu';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
-export class MenuContainer extends React.Component {
+class MenuContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShowedPopUp: false
+      isShowedPopUpDev: false,
+      isShowedPopUpRegistration: false
     };
     this.currentPage = props.page;
   }
@@ -16,25 +20,46 @@ export class MenuContainer extends React.Component {
   };
 
   render() {
-    const exPage = this.currentPage;
     this.currentPage = this.props.page;
     return (
       <Menu
+        push={this.props.push}
         page={this.props.page}
-        exPage={exPage}
+        user={this.props.user}
+        onClickRegItem={this.onClickRegItem.bind(this)}
         onClickInDev={this.onClickInDev.bind(this)}
-        onClosePopUp={this.onClosePopUp.bind(this)}
-        isShowedPopUp={this.state.isShowedPopUp}
+        onCloseDevPopUp={this.onCloseDevPopUp.bind(this)}
+        onClosePopUpRegistration={this.onClosePopUpRegistration.bind(this)}
+        isShowedPopUpDev={this.state.isShowedPopUpDev}
+        isShowedPopUpRegistration={this.state.isShowedPopUpRegistration}
       />
     );
   }
 
-  onClickInDev() {
-    console.log('SSSSSSSSSSSSS');
-    this.setState({isShowedPopUp: true});
+  onClickRegItem() {
+    this.setState({isShowedPopUpRegistration: true});
   }
 
-  onClosePopUp() {
-    this.setState({isShowedPopUp: false});
+  onClosePopUpRegistration() {
+    this.setState({isShowedPopUpRegistration: false});
+  }
+
+  onClickInDev() {
+    this.setState({isShowedPopUpDev: true});
+  }
+
+  onCloseDevPopUp() {
+    this.setState({isShowedPopUpDev: false});
   }
 }
+
+const mapStateToProps = (state) => {
+  return {user: state.user};
+}
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({push}, dispatch);
+
+const connectedContainer =
+  connect(mapStateToProps, mapDispatchToProps)(MenuContainer);
+
+export {connectedContainer as MenuContainer};

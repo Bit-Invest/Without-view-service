@@ -2,11 +2,13 @@ import * as React from 'react';
 import { MenuItem } from '@common/MenuItem';
 import { PopUpManager } from '@common/PopUpManager';
 import { PopUpRegistration } from '@common/PopUps/PopUpRegistration';
+import { PopUpNewProduct } from '@common/PopUps/PopUpNewProduct';
 
 const ROOT_CLASS = 'menu';
 
 const ITEMS = ['terminal', 'marketplace', 'save', 'billing', 'profile', 'help'];
 const inDev = ['billing', 'help', 'save'];
+const onlyRegistrated = ['terminal', 'profile'];
 
 export const Menu = (props) => {
   const buildRootClass = () => {
@@ -17,20 +19,33 @@ export const Menu = (props) => {
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__items`}>
         <div className={`${ROOT_CLASS}__logo`}></div>
-        {ITEMS.map((item, index) =>
-          <div className={`${ROOT_CLASS}__item-wrap`} key={index}>
-            <MenuItem
-              type={item}
-              isActive={props.page === item}
-              inDev={inDev.indexOf(item) >= 0}
-              onClick={props.onClickInDev}
-            />
-          </div>
-        )}
+          {ITEMS.map((item, index) =>
+            <div className={`${ROOT_CLASS}__item-wrap`} key={index}>
+              <MenuItem
+                user={props.user}
+                type={item}
+                isActive={props.page === item}
+                popUp={
+                  inDev.indexOf(item) >= 0 ?
+                  'inDev' : onlyRegistrated.indexOf(item) >= 0 ?
+                  'onlyRegistrated' : null
+                }
+                onClickInDev={props.onClickInDev}
+                onClickRegItem={props.onClickRegItem}
+                push={props.push}
+              />
+            </div>
+          )}
       </div>
       <PopUpManager
-        isShowed={props.isShowedPopUp}
-        onClickClose={props.onClosePopUp}
+        isShowed={props.isShowedPopUpDev}
+        onClickClose={props.onCloseDevPopUp}
+      >
+        <PopUpNewProduct />
+      </PopUpManager>
+      <PopUpManager
+        isShowed={props.isShowedPopUpRegistration}
+        onClickClose={props.onClosePopUpRegistration}
       >
         <PopUpRegistration />
       </PopUpManager>
