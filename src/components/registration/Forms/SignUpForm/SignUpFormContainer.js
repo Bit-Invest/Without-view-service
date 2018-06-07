@@ -55,7 +55,7 @@ class SignUpFormContainer extends React.Component {
       const { signUp } = this.props;
       signUp(data)
         .then(this.onSuccessSubmit.bind(this))
-        .catch(this.onErrorEmailDuplicat.bind(this), console.log(data));
+        .catch(this.onErrorEmailDuplicat.bind(this));
     }
   };
 
@@ -81,7 +81,6 @@ class SignUpFormContainer extends React.Component {
   }
 
   onErrorEmailDuplicat(err) {
-    console.log(err);
     this.onErrorSubmit();
     this.setState({errorMessage: ErrorMessage.DUBLICATE_EMAIL });
   }
