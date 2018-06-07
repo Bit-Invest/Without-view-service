@@ -6,8 +6,8 @@ import { PopUpComingSoon } from '@common/PopUps/PopUpComingSoon';
 
 const ROOT_CLASS = 'menu';
 
-const ITEMS = ['terminal', 'marketplace', 'save', 'billing', 'profile', 'help'];
-const inDev = ['billing', 'help', 'save'];
+const ITEMS = ['terminal', 'marketplace', 'saved', 'billing', 'profile', 'help'];
+const inDev = ['billing', 'help', 'saved'];
 const onlyRegistrated = ['terminal', 'profile'];
 
 export const Menu = (props) => {
