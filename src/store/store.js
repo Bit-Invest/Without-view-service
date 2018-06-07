@@ -11,7 +11,7 @@ import io from 'socket.io-client';
 export const history = createHistory();
 
 const client = axios.create({
-  baseURL: 'http://192.168.100.154:3000',
+  baseURL: 'http://188.166.84.245:3000',
   responseType: 'json',
   headers: {
     'Content-Type': 'application/json',
