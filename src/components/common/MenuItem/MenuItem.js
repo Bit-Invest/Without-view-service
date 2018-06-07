@@ -19,9 +19,9 @@ export const MenuItem = (props) => {
     } else if (props.popUp === 'onlyRegistrated') {
       props.user.status === 'logged-in' ?
         props.push(`/${props.type}`) :
-        props.onClickRegItem();
+        props.showPopUp('registration');
     } else if (props.popUp === 'inDev') {
-      props.onClickInDev();
+      props.showPopUp('comingSoon');
     }
   }
 

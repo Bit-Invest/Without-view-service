@@ -4,14 +4,11 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { showPopUp } from '@store/modules/common';
 
 class MenuContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isShowedPopUpDev: false,
-      isShowedPopUpRegistration: false
-    };
     this.currentPage = props.page;
   }
 
@@ -22,34 +19,8 @@ class MenuContainer extends React.Component {
   render() {
     this.currentPage = this.props.page;
     return (
-      <Menu
-        push={this.props.push}
-        page={this.props.page}
-        user={this.props.user}
-        onClickRegItem={this.onClickRegItem.bind(this)}
-        onClickInDev={this.onClickInDev.bind(this)}
-        onCloseDevPopUp={this.onCloseDevPopUp.bind(this)}
-        onClosePopUpRegistration={this.onClosePopUpRegistration.bind(this)}
-        isShowedPopUpDev={this.state.isShowedPopUpDev}
-        isShowedPopUpRegistration={this.state.isShowedPopUpRegistration}
-      />
+      <Menu {...this.props} />
     );
-  }
-
-  onClickRegItem() {
-    this.setState({isShowedPopUpRegistration: true});
-  }
-
-  onClosePopUpRegistration() {
-    this.setState({isShowedPopUpRegistration: false});
-  }
-
-  onClickInDev() {
-    this.setState({isShowedPopUpDev: true});
-  }
-
-  onCloseDevPopUp() {
-    this.setState({isShowedPopUpDev: false});
   }
 }
 
@@ -57,7 +28,7 @@ const mapStateToProps = (state) => {
   return {user: state.user};
 }
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({push}, dispatch);
+  bindActionCreators({push, showPopUp}, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(MenuContainer);

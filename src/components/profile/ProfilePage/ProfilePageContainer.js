@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getPersonalInfo, getKeys } from '@store/modules/user';
 import { push } from 'react-router-redux';
+import { showPopUp } from '@store/modules/common';
 
 class ProfilePageContainer extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class ProfilePageContainer extends React.Component {
   }
 
   onClickAddProduct() {
-    this.setState({isShowedPopUpNewProduct: true});
+    this.props.showPopUp('newProduct');
   }
 
   onClosePopUp() {
@@ -56,7 +57,7 @@ class ProfilePageContainer extends React.Component {
 const mapStateToProps = (state) => {return {user: state.user}};
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({getPersonalInfo, getKeys, push}, dispatch);
+  bindActionCreators({getPersonalInfo, getKeys, push, showPopUp}, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(ProfilePageContainer);
