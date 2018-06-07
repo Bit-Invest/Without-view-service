@@ -8,6 +8,8 @@ import { userLogIn } from '@store/modules/user';
 import { LocalStorage } from '@common/Utils';
 import PropTypes from 'prop-types';
 
+const ErrorMessage = 'Incorrect email or password';
+
 class SignInFormContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +17,7 @@ class SignInFormContainer extends React.Component {
       email: '',
       password: '',
       checked: true,
+      errorMessage: '',
       isError: false
     };
   }
@@ -44,6 +47,7 @@ class SignInFormContainer extends React.Component {
   }
 
   onErrorSubmit(err) {
+    this.setState({errorMessage: ErrorMessage});
     this.setState({isError: true});
   }
 
@@ -75,6 +79,7 @@ class SignInFormContainer extends React.Component {
     return <SignInForm
       handleSubmit={handleSubmit.bind(this)}
       handleSelectChange={handleSelectChange}
+      errorMessage={this.state.errorMessage}
       handleEmailChange={handleEmailChange}
       handlePasswordChange={handlePasswordChange}
       handleCheckboxChange={handleCheckboxChange}

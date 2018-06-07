@@ -11,6 +11,7 @@ export const SignInForm = props => {
       className="SignInForms__RegistrationForm"
       onSubmit={props.handleSubmit}>
       <div className="title">Sign In</div>
+      <div className='SignInForms__RegistrationForm__error-block'>{props.errorMessage}</div>
       <Input
         onChange={props.handleEmailChange}
         placeholder="Your email"
@@ -21,17 +22,8 @@ export const SignInForm = props => {
         onChange={props.handlePasswordChange}
         placeholder="Password"
         type="password"
-        needForgot
         isError={isError}
       />
-      <div className="checkboxBlock">
-        <Checkbox
-          checked={props.checked}
-          onChange={props.handleCheckboxChange}
-          isError={isError}
-        />
-        <div>Remember me</div>
-      </div>
       <Button theme="gradient-img" NameBtn="Sign In" />
       <div className="transitionAccount">
         Do you have an account?{' '}
