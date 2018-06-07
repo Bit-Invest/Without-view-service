@@ -3,7 +3,7 @@ import { EMIT, SUBSCRIBE } from './types';
 export const socketMiddleware = (io) => {
 
   return ({getState, dispatch}) => next => action => {
-    if (action.payload.socket) {
+    if (action.payload && action.payload.socket) {
       const socket = action.payload.socket;
       switch (action.payload.socket.type) {
         case EMIT:

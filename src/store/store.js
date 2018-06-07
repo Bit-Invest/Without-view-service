@@ -19,7 +19,7 @@ const client = axios.create({
   }
 });
 
-const socket = io('http://188.166.84.245:3000');
+const socket = io('http://192.168.100.154:3000');
 
 const axiosMiddlewareConfig = {
   onError: (info) => {
@@ -40,7 +40,8 @@ const enhancers = [];
 const middleware = [
   thunk,
   routerMiddleware(history),
-  axiosMiddleware(client, axiosMiddlewareConfig)
+  axiosMiddleware(client, axiosMiddlewareConfig),
+  socketMiddleware(socket)
 ];
 
 if (process.env.NODE_ENV === 'development') {

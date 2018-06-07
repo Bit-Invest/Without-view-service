@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { signInAction as signIn } from '@store/modules/registration';
 import { userLogIn } from '@store/modules/user';
+import { hidePopUp } from '@store/modules/common';
 import { LocalStorage } from '@common/Utils';
 import PropTypes from 'prop-types';
 
@@ -29,6 +30,7 @@ class SignInFormContainer extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props.hidePopUp();
     const data = {
       email: this.state.email,
       password: this.state.password
@@ -90,7 +92,7 @@ class SignInFormContainer extends React.Component {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({push, signIn, userLogIn}, dispatch);
+  bindActionCreators({push, signIn, userLogIn, hidePopUp}, dispatch);
 
 const connectedContainer =
   connect(null, mapDispatchToProps)(SignInFormContainer);

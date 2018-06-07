@@ -18,7 +18,7 @@ export const ListProducts = props => {
     let res = [];
     console.log(props.products);
     props.products.map((product, index) => {
-      res.push(<ProfileProduct exchange={product} key={index} />);
+      res.push(<ProfileProduct {...product} key={index} />);
     });
     return res;
   }
