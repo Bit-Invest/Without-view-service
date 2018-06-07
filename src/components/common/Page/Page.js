@@ -27,7 +27,7 @@ export const Page = (props) => {
           </div>
         </div>
         <div className={`${ROOT_CLASS}__disclaimer`}>
-          © 2018 CryptoActive | Privacy Policy & Terms of Service
+          © 2018 Cindx | Privacy Policy & Terms of Service
         </div>
       </div>
       <div className={`${ROOT_CLASS}__menu-wrap`}>

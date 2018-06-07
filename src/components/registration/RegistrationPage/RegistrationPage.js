@@ -24,7 +24,7 @@ export const RegistrationPage = props => {
           </Switch>
         </div>
         <div className={`${ROOT_CLASS}__disclaimer`}>
-          © 2018 CryptoActive |<br /> <span>Privacy Policy</span> &{' '}
+          © 2018 Cindx |<br /> <span>Privacy Policy</span> &{' '}
           <span>Terms of Service</span>
         </div>
       </div>
