@@ -51,6 +51,13 @@
   margin-top: 20px;
   text-align: center;
 }
+.SignInForms__RegistrationForm__error-block {
+  @include font(Lato);
+  font-size: 14px;
+  color: #ff4040;
+  text-align: center;
+  margin-top: 10px;
+}
 .SignInForms__RegistrationForm .transitionAccount .span {
   color: #8560fd;
   text-decoration: underline;
