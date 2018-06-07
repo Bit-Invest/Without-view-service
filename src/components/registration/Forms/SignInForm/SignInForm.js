@@ -35,7 +35,7 @@ export const SignInForm = props => {
       <Button theme="gradient-img" NameBtn="Sign In" />
       <div className="transitionAccount">
         Do you have an account?{' '}
-        <Link to={'/registration/sign-up'}>Sign Up</Link>
+        <Link className='span' to={'/registration/sign-up'}>Sign Up</Link>
       </div>
     </form>
   );

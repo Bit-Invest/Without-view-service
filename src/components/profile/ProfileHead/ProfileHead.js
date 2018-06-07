@@ -32,7 +32,7 @@ export const ProfileHead = props => {
         name={props.personalInfo.name}
         surname={props.personalInfo.surname}
         role={props.personalInfo.role}
-        status="active"
+        status="disabled"
         userImage={UserIcon}
       />
       <div className={`${ROOT_CLASS}__units`}>
