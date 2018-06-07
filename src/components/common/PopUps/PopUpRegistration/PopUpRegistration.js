@@ -16,7 +16,8 @@ export const PopUpRegistration = (props) => {
         <Link to={'/registration/sign-up'}>
           <Button className={`${ROOT_CLASS}__button`} theme="theme-gradient-popUp" NameBtn="Join now"/>
         </Link>
-        <div className={`${ROOT_CLASS}__sign-in`}>Already have an account? <a>Sign In</a></div>
+        <div className={`${ROOT_CLASS}__sign-in`}>Already have an account?{' '}
+        <Link className='span' to={'/registration/sign-in'}>Sign In</Link></div>
       </div>
     </div>
   )
