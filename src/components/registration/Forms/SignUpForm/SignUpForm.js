@@ -12,6 +12,7 @@ export const SignUpForm = props => {
       className="SignUpForms__RegistrationForm"
       onSubmit={props.handleSubmit}>
       <div className="title">Sign Up</div>
+      <div className='SignUpForms__RegistrationForm__error-block'>{props.errorMessage}</div>
       <Select
         onChange={props.handleSelectChange}
         options={[
@@ -48,7 +49,7 @@ export const SignUpForm = props => {
       />
       <Input
         onChange={props.handlePasswordChange}
-        placeholder="Password (min 6 characters)"
+        placeholder="Password (min 8 characters)"
         type="password"
         required
         isError={isError}
@@ -68,7 +69,7 @@ export const SignUpForm = props => {
       <Button theme="gradient-img" NameBtn="Sign Up" />
       <div className="transitionAccount">
         Already have an account?{' '}
-        <Link to={'/registration/sign-in'}>Sign In</Link>
+        <Link className='span' to={'/registration/sign-in'}>Sign In</Link>
       </div>
     </form>
   );
