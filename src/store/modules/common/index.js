@@ -1,1 +1,1 @@
-export { checkJWT, common } from './common';
+export { checkJWT, common, showPopUp, hidePopUp } from './common';

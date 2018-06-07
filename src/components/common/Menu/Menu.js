@@ -30,25 +30,12 @@ export const Menu = (props) => {
                   'inDev' : onlyRegistrated.indexOf(item) >= 0 ?
                   'onlyRegistrated' : null
                 }
-                onClickInDev={props.onClickInDev}
-                onClickRegItem={props.onClickRegItem}
                 push={props.push}
+                showPopUp={props.showPopUp}
               />
             </div>
           )}
       </div>
-      <PopUpManager
-        isShowed={props.isShowedPopUpDev}
-        onClickClose={props.onCloseDevPopUp}
-      >
-        <PopUpComingSoon />
-      </PopUpManager>
-      <PopUpManager
-        isShowed={props.isShowedPopUpRegistration}
-        onClickClose={props.onClosePopUpRegistration}
-      >
-        <PopUpRegistration />
-      </PopUpManager>
     </div>
   );
 }
