@@ -14,7 +14,8 @@ export const SignUpForm = props => {
       <div className="title">Sign Up</div>
       <div className='SignUpForms__RegistrationForm__error-block'>{props.errorMessage}</div>
       <Select
-        onChange={props.handleSelectChange}
+        onChange={props.handleEnter}
+        name="select"
         options={[
           {
             value: 'trader',
@@ -27,37 +28,41 @@ export const SignUpForm = props => {
         ]}
       />
       <Input
-        onChange={props.handleNameChange}
+        onChange={props.handleEnter}
         placeholder="Your name"
         type="text"
         required
         isError={isError}
+        name="name"
       />
       <Input
-        onChange={props.handleSurnameChange}
+        onChange={props.handleEnter}
         placeholder="Your surname"
         type="text"
         required
         isError={isError}
+        name="surname"
       />
       <Input
-        onChange={props.handleEmailChange}
+        onChange={props.handleEnter}
         placeholder="Your email"
         type="text"
         required
         isError={isError}
+        name="email"
       />
       <Input
-        onChange={props.handlePasswordChange}
+        onChange={props.handleEnter}
         placeholder="Password (min 8 characters)"
         type="password"
         required
         isError={isError}
+        name="password"
       />
       <div className="checkboxBlock">
         <Checkbox
           checked={props.checked}
-          onChange={props.handleCheckboxChange}
+          onChange={props.handleEnter}
           isError={isError}
         />
         <div>

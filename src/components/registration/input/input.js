@@ -47,6 +47,7 @@ export const Input = props => {
         placeholder={props.placeholder}
         onChange={HandleEmailChange}
         className={themeClass()}
+        name={props.name}
       />
       {renderRequired()}
       {renderForgot()}

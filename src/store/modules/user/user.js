@@ -8,6 +8,10 @@ export const ADD_EXCHANGE = 'user/ADD_EXCHANGE';
 export const USER_LOGIN = 'user/USER_LOGIN';
 export const GET_KEYS = 'user/GET_KEYS';
 export const GET_KEYS_SUCCESS = 'user/GET_KEYS_SUCCESS';
+export const UNAUTHORIZED_SUBSCRIBE = 'user/UNAUTHORIZED_SUBSCRIBE';
+export const UNAUTHORIZED = 'user/UNAUTHORIZED';
+export const AUTHENTICATE = 'user/AUTHENTICATE';
+export const AUTH_PLS = 'user/AUTH_PLS';
 
 const initialState = {
   personalInfo: null,
@@ -15,22 +19,6 @@ const initialState = {
   burses: null,
   products: []
 };
-
-export const addExchange = (userData) => {
-  return {
-    type: ADD_EXCHANGE,
-    payload: {
-      request: {
-        method: 'POST',
-        url: '/api/user/addkey',
-        data: userData,
-        headers: {
-          Authorization: LocalStorage.getItem('token')
-        }
-      }
-    }
-  };
-}
 
 export const user = (state = initialState, action) => {
   switch (action.type) {
@@ -52,9 +40,28 @@ export const user = (state = initialState, action) => {
         state,
         {burses: action.payload.data.keys}
       );
+    case UNAUTHORIZED:
+      console.log(action);
+      return state;
     default:
       return state;
   }
+}
+
+export const addExchange = (userData) => {
+  return {
+    type: ADD_EXCHANGE,
+    payload: {
+      request: {
+        method: 'POST',
+        url: '/api/user/addkey',
+        data: userData,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  };
 }
 
 export const getPersonalInfo = () => {
@@ -84,7 +91,47 @@ export const getKeys = () => {
         }
       }
     }
+  };
+}
+
+export const authpls = () => {
+  return {
+    type: AUTH_PLS,
+    payload: {
+      socket: {
+        message: 'authpls',
+        type: 'emit'
+      }
+    }
   }
+}
+
+export const authenticate = () => {
+  return {
+    type: AUTHENTICATE,
+    payload: {
+      socket: {
+        message: 'authenticate',
+        type: 'emit',
+        payload: {
+          token: LocalStorage.getItem('token')
+        }
+      }
+    }
+  };
+}
+
+export const unauthorized = () => {
+  return {
+    type: UNAUTHORIZED_SUBSCRIBE,
+    payload: {
+      socket: {
+        message: 'unauthorized',
+        type: 'subscribe',
+        actionType: UNAUTHORIZED
+      }
+    }
+  };
 }
 
 export const userLogIn = () => {

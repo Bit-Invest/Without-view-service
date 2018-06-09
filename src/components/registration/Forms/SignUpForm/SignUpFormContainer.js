@@ -61,7 +61,7 @@ class SignUpFormContainer extends React.Component {
 
 
   isErrorInForm() {
-    return !(new RegExp("^[A-Za-z0-9][A-Za-z0-9\.-_]*[A-Za-z0-9]*@([A-Za-z0-9]+([A-Za-z0-9-]*[A-Za-z0-9]+)*\.)+[A-Za-z]*$").test(this.state.email))
+    return !(new RegExp("^[A-Za-z0-9][A-Za-z0-9.-_]*[A-Za-z0-9]*@([A-Za-z0-9]+([A-Za-z0-9-]*[A-Za-z0-9]+)*.)+[A-Za-z]*$").test(this.state.email))
   }
 
   passwordError = event => {
@@ -89,50 +89,19 @@ class SignUpFormContainer extends React.Component {
     this.setState({isError: true});
   }
 
-  handleSelectChange = event => {
-    this.setState({ select: event.target.value });
-  };
-
-  handleEmailChange = event => {
-    this.setState({ email: event.target.value });
+  handleEnter = event => {
+    this.setState({[event.target.name]: event.target.value})
   }
-
-  handleNameChange = event => {
-    this.setState({ name: event.target.value });
-  }
-
-  handleSurnameChange = event  => {
-    this.setState({ surname: event.target.value });
-  }
-
-  handlePasswordChange = event => {
-    this.setState({ password: event.target.value });
-  };
-
-  handleCheckboxChange = event => {
-    const { checked } = event.target;
-    this.setState({ checked: checked });
-  };
 
   render() {
     const {
       handleSubmit,
-      handleSelectChange,
-      handleNameChange,
-      handleSurnameChange,
-      handleEmailChange,
-      handlePasswordChange,
-      handleCheckboxChange
+      handleEnter
     } = this;
     return <SignUpForm
       handleSubmit={handleSubmit.bind(this)}
-      handleSelectChange={handleSelectChange}
       errorMessage={this.state.errorMessage}
-      handleEmailChange={handleEmailChange}
-      handleNameChange={handleNameChange}
-      handleSurnameChange={handleSurnameChange}
-      handlePasswordChange={handlePasswordChange}
-      handleCheckboxChange={handleCheckboxChange}
+      handleEnter={handleEnter}
       checked={this.state.checked}
       isError={this.state.isError}
     />;

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getPersonalInfo, getKeys } from '@store/modules/user';
 import { push } from 'react-router-redux';
 import { showPopUp } from '@store/modules/common';
+import { testSubscribe, openingPosition } from '@store/modules/terminal';
 
 class ProfilePageContainer extends React.Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class ProfilePageContainer extends React.Component {
   }
 
   componentWillMount() {
+    this.props.testSubscribe();
+    this.props.openingPosition();
     Promise.all([
       this.props.getPersonalInfo(),
       this.props.getKeys()
@@ -57,7 +60,14 @@ class ProfilePageContainer extends React.Component {
 const mapStateToProps = (state) => {return {user: state.user}};
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({getPersonalInfo, getKeys, push, showPopUp}, dispatch);
+  bindActionCreators({
+    getPersonalInfo,
+    getKeys,
+    push,
+    showPopUp,
+    openingPosition,
+    testSubscribe
+  }, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(ProfilePageContainer);

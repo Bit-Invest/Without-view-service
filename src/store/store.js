@@ -11,7 +11,7 @@ import io from 'socket.io-client';
 export const history = createHistory();
 
 const client = axios.create({
-  baseURL: 'http://192.168.100.154:3000',
+  baseURL: 'http://192.168.100.154',
   responseType: 'json',
   headers: {
     'Content-Type': 'application/json',
@@ -19,7 +19,13 @@ const client = axios.create({
   }
 });
 
-const socket = io('http://192.168.100.154:3000');
+const socket = io('http://192.168.100.154');
+socket.on('connect', () => {
+  console.log(new Date());
+});
+socket.on('disconnect', () => {
+  console.log(new Date());
+});
 
 const axiosMiddlewareConfig = {
   onError: (info) => {

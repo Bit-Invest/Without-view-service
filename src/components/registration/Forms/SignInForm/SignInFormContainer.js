@@ -4,9 +4,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { signInAction as signIn } from '@store/modules/registration';
-import { userLogIn } from '@store/modules/user';
+import { userLogIn, authenticate, authpls } from '@store/modules/user';
 import { hidePopUp } from '@store/modules/common';
 import { LocalStorage } from '@common/Utils';
+import { openingPosition } from '@store/modules/terminal';
 import PropTypes from 'prop-types';
 
 const ErrorMessage = 'Incorrect email or password';
@@ -28,6 +29,10 @@ class SignInFormContainer extends React.Component {
     signIn: PropTypes.func,
   };
 
+  componentWillMount() {
+    this.props.openingPosition();
+  }
+
   handleSubmit = event => {
     event.preventDefault();
     this.props.hidePopUp();
@@ -37,14 +42,16 @@ class SignInFormContainer extends React.Component {
     };
     const { signIn } = this.props;
     signIn(data)
-    .then(this.onSuccessSubmit.bind(this))
-    .catch(this.onErrorSubmit.bind(this));
+      .then(this.onSuccessSubmit.bind(this))
+      .catch(this.onErrorSubmit.bind(this));
   };
 
   onSuccessSubmit(res) {
     res.payload.data &&
       LocalStorage.setItem('token', res.payload.data.token);
     this.props.userLogIn();
+    this.props.authpls();
+    this.props.authenticate();
     this.props.push('/profile');
   }
 
@@ -53,38 +60,19 @@ class SignInFormContainer extends React.Component {
     this.setState({isError: true});
   }
 
-  handleSelectChange = event => {
-    this.setState({ select: event.target.value });
-  };
-
-  handleEmailChange = event => {
-    this.setState({ email: event.target.value });
-  };
-
-  handlePasswordChange = event => {
-    this.setState({ password: event.target.value });
-  };
-
-  handleCheckboxChange = event => {
-    const { checked } = event.target;
-    this.setState({ checked: checked });
+  handleEnter = event => {
+    this.setState({[event.target.name]: event.target.value});
   };
 
   render() {
     const {
       handleSubmit,
-      handleSelectChange,
-      handleEmailChange,
-      handlePasswordChange,
-      handleCheckboxChange
+      handleEnter
     } = this;
     return <SignInForm
       handleSubmit={handleSubmit.bind(this)}
-      handleSelectChange={handleSelectChange}
       errorMessage={this.state.errorMessage}
-      handleEmailChange={handleEmailChange}
-      handlePasswordChange={handlePasswordChange}
-      handleCheckboxChange={handleCheckboxChange}
+      handleEnter={handleEnter}
       checked={this.state.checked}
       isError={this.state.isError}
     />;
@@ -92,7 +80,15 @@ class SignInFormContainer extends React.Component {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({push, signIn, userLogIn, hidePopUp}, dispatch);
+  bindActionCreators({
+    push,
+    signIn,
+    userLogIn,
+    hidePopUp,
+    authenticate,
+    authpls,
+    openingPosition
+  }, dispatch);
 
 const connectedContainer =
   connect(null, mapDispatchToProps)(SignInFormContainer);

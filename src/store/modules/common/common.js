@@ -34,11 +34,12 @@ export const checkJWT = () => {
   }
 }
 
-export const showPopUp = (popUp) => {
+export const showPopUp = (popUp, data) => {
   return {
     type: SHOW_POP_UP,
     payload: {
-      popUp
+      popUp,
+      data
     }
   };
 }

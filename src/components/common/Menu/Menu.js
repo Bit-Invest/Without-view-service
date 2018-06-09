@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { MenuItem } from '@common/MenuItem';
-import { PopUpManager } from '@common/PopUpManager';
-import { PopUpRegistration } from '@common/PopUps/PopUpRegistration';
-import { PopUpComingSoon } from '@common/PopUps/PopUpComingSoon';
 
 const ROOT_CLASS = 'menu';
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Input } from '@registration/input';
-import { Checkbox } from '@registration/checkbox';
 import { Button } from '@components/common/Button';
 import { Link } from 'react-router-dom';
 
@@ -13,16 +12,18 @@ export const SignInForm = props => {
       <div className="title">Sign In</div>
       <div className='SignInForms__RegistrationForm__error-block'>{props.errorMessage}</div>
       <Input
-        onChange={props.handleEmailChange}
+        onChange={props.handleEnter}
         placeholder="Your email"
         type="text"
         isError={isError}
+        name="email"
       />
       <Input
-        onChange={props.handlePasswordChange}
+        onChange={props.handleEnter}
         placeholder="Password"
         type="password"
         isError={isError}
+        name="password"
       />
       <Button theme="gradient-img" NameBtn="Sign In" />
       <div className="transitionAccount">
