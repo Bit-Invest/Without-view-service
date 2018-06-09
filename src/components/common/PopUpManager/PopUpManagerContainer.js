@@ -8,7 +8,8 @@ import { hidePopUp } from '@store/modules/common';
 const PopUps = {
   registration: PopUpComponents.PopUpRegistration,
   comingSoon: PopUpComponents.PopUpComingSoon,
-  newProduct: PopUpComponents.PopUpNewProduct
+  newProduct: PopUpComponents.PopUpNewProduct,
+  productPage: PopUpComponents.PopUpProductPage
 };
 
 class PopUpManagerContainer extends React.Component {

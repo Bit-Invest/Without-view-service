@@ -2,14 +2,13 @@ import * as React from 'react';
 import { IconUser } from '@components/profile/IconUser/IconUser';
 import { UserName } from '@components/profile/UserName/UserName';
 import { Rating } from '@components/marketplace/Rating/Rating';
-import { Link } from 'react-router-dom';
 import { PercentResult } from '@common/PercentResult';
 
 const ROOT_CLASS = 'trader-card';
 
 export const TraderCard = props => {
   return (
-    <div className={ROOT_CLASS}>
+    <div onClick={props.onClick} className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__block-exchange`}>
         <div className={`${ROOT_CLASS}__exchange`}>{props.exchange}</div>
         <div className={`${ROOT_CLASS}__currencyPair`}>BTC/ETH</div>
@@ -51,8 +50,6 @@ export const TraderCard = props => {
           </div>
         </div>
       </div>
-      <Link to={`/product/${props.id}`}>
-      </Link>
     </div>
   );
 };

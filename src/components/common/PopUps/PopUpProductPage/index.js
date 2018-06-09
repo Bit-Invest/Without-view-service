@@ -1,0 +1,1 @@
+export { PopUpProductPage } from './PopUpProductPage';
