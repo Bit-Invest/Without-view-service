@@ -1,1 +1,1 @@
-export { TraderCard } from './TraderCard';
+export { TraderCardContainer as TraderCard } from './TraderCardContainer';
