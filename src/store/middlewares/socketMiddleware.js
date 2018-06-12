@@ -7,10 +7,16 @@ export const socketMiddleware = (io) => {
       const socket = action.payload.socket;
       switch (action.payload.socket.type) {
         case EMIT:
-          io.emit(socket.message, socket.payload);
+          io.emit(
+            socket.message,
+            socket.payload,
+            (res) => {dispatch({type: `${action.type}_SUCCESS`, payload: res})}
+          );
           break;
         case SUBSCRIBE:
-          io.on(socket.message, () => {dispatch(socket.actionType)})
+          io.on(socket.message, () => {dispatch({type: socket.actionType})})
+          break;
+        default:
           break;
       }
     }

@@ -17,7 +17,7 @@ export const Select = props => {
   };
 
   return (
-    <select onChange={handleSelectChange} className={buildRootClass()}>
+    <select name={props.name} onChange={handleSelectChange} className={buildRootClass()}>
       {props.options.map((option, index) =>
           <option value={option.value} key={index}>{option.label}</option>)}
     </select>

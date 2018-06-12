@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const ROOT_CLASS = 'profile-product';
 
@@ -22,7 +21,9 @@ export const ProfileProduct = props => {
         <div className={`${ROOT_CLASS}__img-currency-usd`}></div>
         <div className={`${ROOT_CLASS}__number`}>{props.number2}</div>
       </div>
-      <div className={`${ROOT_CLASS}__result-connect`}>{statusConnect[props.status]}</div>
+      <div className={`${ROOT_CLASS}__result-connect ${ROOT_CLASS}__result-connect_${props.status}`}>
+        {statusConnect[props.status]}
+      </div>
     </div>
   );
 }

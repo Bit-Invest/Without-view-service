@@ -1,1 +1,10 @@
-export { user, getPersonalInfo, addExchange, userLogIn, getKeys } from './user';
+export {
+  user,
+  getPersonalInfo,
+  addExchange,
+  userLogIn,
+  getKeys,
+  unauthorized,
+  authenticate,
+  authpls
+} from './user';

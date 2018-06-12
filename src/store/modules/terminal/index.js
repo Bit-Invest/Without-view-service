@@ -1,1 +1,1 @@
-export { terminal, openingPosition } from './terminal';
+export { terminal, openingPosition, testSubscribe } from './terminal';
