@@ -29,10 +29,6 @@ class SignInFormContainer extends React.Component {
     signIn: PropTypes.func,
   };
 
-  componentWillMount() {
-    this.props.openingPosition();
-  }
-
   handleSubmit = event => {
     event.preventDefault();
     this.props.hidePopUp();
@@ -72,7 +68,7 @@ class SignInFormContainer extends React.Component {
     return <SignInForm
       handleSubmit={handleSubmit.bind(this)}
       errorMessage={this.state.errorMessage}
-      handleEnter={handleEnter}
+      handleEnter={handleEnter.bind(this)}
       checked={this.state.checked}
       isError={this.state.isError}
     />;

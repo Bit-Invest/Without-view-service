@@ -20,32 +20,9 @@ export const openingPosition = (userData) => {
     payload: {
       socket: {
         type: 'emit',
-        message: 'TEST',
+        message: 'ACCOUNT_INFO',
         payload: {
-          "endpoint": {
-            "method": "ACCOUNT_INFO",
-            "payload": {
-              "name": "binance",
-              "method": "TEST",
-              "symbol": "VIABTC",
-              "side": "BUY",
-              "type": "TEST",
-              "quantity": 1,
-              "price": 0.0000102,
-              "timeInForce": "TEST",
-              "newClientOrderId": "TEST",
-              "stopPrice": 123,
-              "newOrderRespType": "TEST",
-              "icebergQty": 123,
-              "recvWindow": 123,
-              "limit": 123,
-              "orderId": 123,
-              "interval": "TEST",
-              "startTime": 123,
-              "endTime": 123,
-              "fromId": "TEST"
-            }
-          }
+          name: 'binance'
         }
       }
     }

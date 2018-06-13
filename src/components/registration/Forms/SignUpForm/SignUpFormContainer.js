@@ -101,7 +101,7 @@ class SignUpFormContainer extends React.Component {
     return <SignUpForm
       handleSubmit={handleSubmit.bind(this)}
       errorMessage={this.state.errorMessage}
-      handleEnter={handleEnter}
+      handleEnter={handleEnter.bind(this)}
       checked={this.state.checked}
       isError={this.state.isError}
     />;

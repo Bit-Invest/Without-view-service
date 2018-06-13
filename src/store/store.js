@@ -7,6 +7,7 @@ import createHistory from 'history/createBrowserHistory';
 import rootReducer from './modules';
 import { socketMiddleware } from './middlewares';
 import io from 'socket.io-client';
+import { networkError } from './modules/common';
 
 export const history = createHistory();
 
@@ -21,9 +22,11 @@ const client = axios.create({
 
 const socket = io('http://192.168.100.154');
 socket.on('connect', () => {
+  console.log('CONNECT');
   console.log(new Date());
 });
 socket.on('disconnect', () => {
+  console.log('DISCONNECT');
   console.log(new Date());
 });
 
@@ -36,7 +39,9 @@ const axiosMiddlewareConfig = {
       },
       type: `${info.action.type}_FAIL`
     };
-    info.dispatch(errorInfo);
+    errorInfo.error.message === 'Network Error' ?
+      info.dispatch(networkError()) :
+      info.dispatch(errorInfo);
     return Promise.reject(errorInfo);
   }
 };

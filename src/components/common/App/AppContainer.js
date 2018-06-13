@@ -10,7 +10,6 @@ import { userLogIn, unauthorized } from '@store/modules/user';
 
 class AppContainer extends React.Component {
   componentWillMount() {
-    this.props.unauthorized();
     let token = LocalStorage.getItem('token');
     if (token) {
       this.props.checkJWT()
