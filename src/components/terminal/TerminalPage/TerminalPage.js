@@ -4,7 +4,7 @@ import { TerminalForm } from '@terminal/TerminalForm';
 const ROOT_CLASS = 'terminal-page';
 
 export const TerminalPage = (props) => (
-  <Page isLoaded={true}>
+  <Page isLoaded={false}>
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__graph-wrap`}>
         <TerminalForm />

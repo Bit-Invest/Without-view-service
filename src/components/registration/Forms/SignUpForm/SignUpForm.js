@@ -49,7 +49,7 @@ export const SignUpForm = props => {
         placeholder="Your email"
         type="text"
         required
-        isError={isError}
+        isError={props.isErrorEmail}
         name="email"
       />
       <Input
@@ -57,10 +57,11 @@ export const SignUpForm = props => {
         placeholder="Password (min 8 characters)"
         type="password"
         required
-        isError={isError}
+        isError={props.isErrorPasword}
         name="password"
       />
-      <div className="checkboxBlock">
+      <div className="checkboxBlock"
+      onClick={props.handleCheckbox}>
         <Checkbox
           checked={props.checked}
           onChange={props.handleEnter}
