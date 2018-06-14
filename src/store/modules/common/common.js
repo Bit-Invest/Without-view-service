@@ -1,4 +1,5 @@
-import { LocalStorage } from '@common/Utils';
+import { LocalStorage, Utils } from '@common/Utils';
+import * as uniqid from 'uniqid';
 
 export const CHECK_JWT = 'common/CHECK_JWT';
 export const SHOW_POP_UP = 'common/SHOW_POP_UP';
@@ -10,7 +11,7 @@ export const REMOVE_ALERT = 'common/REMOVE_ALERT';
 const initialState = {
   currentPopUp: null,
   popUpData: null,
-  alerts: []
+  alerts: {}
 };
 
 export const common = (state = initialState, action) => {
@@ -27,25 +28,22 @@ export const common = (state = initialState, action) => {
         currentPopUp: action.payload.popUp,
         popUpData: action.payload.data
       };
-    case ADD_ALERT: {
-      let alerts = state.alerts;
-      alerts.push(action.payload);
+    case ADD_ALERT:
+      const id = uniqid();
       return {
         ...state,
-        alerts
+        alerts: {
+          ...state.alerts,
+          [id]: {
+            ...action.payload,
+            id
+          }
+        }
       };
-    }
     case REMOVE_ALERT:
-      let alerts = state.alerts;
-      alerts.splice(
-        alerts.findIndex(
-          alert => {return alert.id === action.payload}
-        ),
-        1
-      );
       return {
         ...state,
-        alerts
+        alerts: Utils.allExclude(action.payload, state.alerts)
       };
     default:
       return state;

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Avatar } from '@profile/Avatar';
+import DefaultAvatar from '@assets/images/avatar_default_circle.svg';
 
 const ROOT_CLASS = 'user-info';
 
 export const UserInfo = (props) => {
   return (
     <div className={ROOT_CLASS}>
-      <Avatar imageSrc={props.userImage} />
+      <Avatar imageSrc={props.userImage ? props.userImage : DefaultAvatar} />
       <div className={`${ROOT_CLASS}__info`}>
         <div className={`${ROOT_CLASS}__name`}>
           {props.name}&nbsp;{props.surname}

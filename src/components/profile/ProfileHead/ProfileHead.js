@@ -1,6 +1,5 @@
 import React from 'react';
 import { UserInfo } from '@profile/UserInfo';
-import UserIcon from '@assets/images/userIcon.jpg';
 
 const ROOT_CLASS = 'profile-head';
 
@@ -12,7 +11,6 @@ export const ProfileHead = props => {
         surname={props.personalInfo.surname}
         role={props.personalInfo.role}
         status="disabled"
-        userImage={UserIcon}
       />
     </div>
   );

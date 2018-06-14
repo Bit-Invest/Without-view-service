@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Menu } from '@common/Menu';
 import { PopUpManager } from '@common/PopUpManager';
+import { AlertManager } from '@common/AlertManager';
 
 const ROOT_CLASS = 'page';
 
@@ -34,6 +35,7 @@ export const Page = (props) => {
         <Menu page={props.page} />
       </div>
       <PopUpManager />
+      <AlertManager className={`${ROOT_CLASS}__alert-manager`} />
     </div>
   );
 }

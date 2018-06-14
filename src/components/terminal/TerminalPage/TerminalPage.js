@@ -13,4 +13,3 @@ export const TerminalPage = (props) => (
     </div>
   </Page>
 );
-// <TerminalGraph />

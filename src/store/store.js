@@ -12,22 +12,14 @@ import { networkError } from './modules/common';
 export const history = createHistory();
 
 const client = axios.create({
-  baseURL: 'http://192.168.100.154:3000',
+  baseURL: 'http://192.168.100.154',
   responseType: 'json',
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   }
 });
-const socket = io('http://192.168.100.154:3000');
-socket.on('connect', () => {
-  console.log('CONNECT');
-  console.log(new Date());
-});
-socket.on('disconnect', () => {
-  console.log('DISCONNECT');
-  console.log(new Date());
-});
+const socket = io('http://192.168.100.154');
 
 const axiosMiddlewareConfig = {
   onError: (info) => {
