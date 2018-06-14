@@ -28,7 +28,7 @@ class PopUpManagerContainer extends React.Component {
     let result = null;
     if (this.props.currentPopUp) {
       const PopUp = PopUps[this.props.currentPopUp];
-      result = <PopUp />
+      result = <PopUp {...this.props.popUpData} />
     }
     return result;
   }
@@ -38,7 +38,10 @@ class PopUpManagerContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({currentPopUp: state.common.currentPopUp});
+const mapStateToProps = state => ({
+  currentPopUp: state.common.currentPopUp,
+  popUpData: state.common.popUpData
+});
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({hidePopUp}, dispatch);

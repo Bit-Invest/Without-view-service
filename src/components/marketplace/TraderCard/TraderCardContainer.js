@@ -15,7 +15,9 @@ class TraderCardContainer extends React.Component {
   }
 
   onClickRoot() {
-    this.props.showPopUp('productPage');
+    this.props.showPopUp('productPage', {
+      id: this.props.id
+    });
   }
 
 }

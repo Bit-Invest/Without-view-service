@@ -9,6 +9,7 @@ export const REMOVE_ALERT = 'common/REMOVE_ALERT';
 
 const initialState = {
   currentPopUp: null,
+  popUpData: null,
   alerts: []
 };
 
@@ -17,12 +18,14 @@ export const common = (state = initialState, action) => {
     case HIDE_POP_UP:
       return {
         ...state,
-        currentPopUp: null
+        currentPopUp: null,
+        popUpData: null
       };
     case SHOW_POP_UP:
       return {
         ...state,
-        currentPopUp: action.payload.popUp
+        currentPopUp: action.payload.popUp,
+        popUpData: action.payload.data
       };
     case ADD_ALERT: {
       let alerts = state.alerts;

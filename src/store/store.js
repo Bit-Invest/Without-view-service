@@ -19,7 +19,7 @@ const client = axios.create({
     'Access-Control-Allow-Origin': '*'
   }
 });
-const socket = io('http://192.168.100.154');
+const socket = io('http://192.168.100.154:3000');
 socket.on('connect', () => {
   console.log('CONNECT');
   console.log(new Date());
