@@ -16,7 +16,6 @@ class ProfilePageContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.openingPosition();
     Promise.all([
       this.props.getPersonalInfo(),
       this.props.getKeys()

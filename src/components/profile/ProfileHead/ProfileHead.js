@@ -9,9 +9,10 @@ export const ProfileHead = props => {
   return (
     <div className={ROOT_CLASS}>
       <UserInfo
-        name='test'
-        surname='test'
-        role='test'
+        name={props.personalInfo.name}
+        surname={props.personalInfo.surname}
+        role={props.personalInfo.role}
+        status="disabled"
         userImage={UserIcon}
       />
     </div>

@@ -14,7 +14,10 @@ export const socketMiddleware = (io) => {
           );
           break;
         case SUBSCRIBE:
-          io.on(socket.message, () => {dispatch({type: socket.actionType})})
+          io.on(
+            socket.message,
+            (res) => {dispatch({type: socket.actionType, payload: res})}
+          );
           break;
         default:
           break;
