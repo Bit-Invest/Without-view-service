@@ -11,7 +11,6 @@ export class MarketplacePageContainer extends React.Component {
     super(props);
     this.state = {
       isLoaded: false,
-      isShowedPopUp: false,
       showType: ShowTypes.CARD
     };
   }
@@ -25,8 +24,6 @@ export class MarketplacePageContainer extends React.Component {
   render() {
     return (
       <MarketplacePage
-        onClickCompare={this.onClickCompare.bind(this)}
-        onClosePopUp={this.onClosePopUp.bind(this)}
         onClickCard={this.onClickCard.bind(this)}
         onClickList={this.onClickList.bind(this)}
         isLoaded={this.state.isLoaded}
@@ -43,13 +40,5 @@ export class MarketplacePageContainer extends React.Component {
 
   onClickCard() {
     this.setState({showType: ShowTypes.CARD});
-  }
-
-  onClickCompare() {
-    this.setState({isShowedPopUp: true});
-  }
-
-  onClosePopUp() {
-    this.setState({isShowedPopUp: false});
   }
 }

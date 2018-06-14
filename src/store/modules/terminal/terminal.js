@@ -1,5 +1,3 @@
-import { LocalStorage } from '@common/Utils';
-
 const initialState = {};
 
 export const OPEN_POSITION = 'terminal/OPEN_POSITION';

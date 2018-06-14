@@ -7,7 +7,10 @@ export const ProfilePage = props => {
   return (
     <Page isLoaded={props.isLoaded}>
       <ProfileHead personalInfo={props.user.personalInfo} />
-      <ListProducts onClickAddProduct={props.onClickAddProduct} products={props.user.burses} />
+      <ListProducts
+        onClickAddProduct={props.onClickAddProduct}
+        products={props.user.burses}
+      />
     </Page>
   );
 };

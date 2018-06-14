@@ -8,9 +8,9 @@ export const TerminalPage = (props) => (
   <Page isLoaded={true}>
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__graph-wrap`}>
-        <TerminalGraph />
         <TerminalForm />
       </div>
     </div>
   </Page>
 );
+// <TerminalGraph />

@@ -8,7 +8,7 @@ export const TerminalForm = () => (
 
     <div className={`${ROOT_CLASS}__radio-button-block`}>
       <div className={`${ROOT_CLASS}__radio-button`}>
-        <input className={`${ROOT_CLASS}__radio`} type="radio" checked />
+        <input className={`${ROOT_CLASS}__radio`} type="radio" />
         <div>Limit</div>
       </div>
       <div className={`${ROOT_CLASS}__radio-button`}>
