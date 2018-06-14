@@ -10,7 +10,7 @@ export const TraderCard = props => {
   return (
     <div onClick={props.onClick} className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__block-exchange`}>
-        <div className={`${ROOT_CLASS}__exchange`}>{props.exchange}</div>
+        <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
         <div className={`${ROOT_CLASS}__currencyPair`}>BTC/ETH</div>
         <div className={`${ROOT_CLASS}__save-block`}></div>
       </div>
@@ -43,7 +43,11 @@ export const TraderCard = props => {
         <IconUser />
         <div>
           <div className={`${ROOT_CLASS}__user-name-block`}>
-            <UserName name='John' surname='S.' theme='MarketPlaceName' />
+            <UserName
+              name={props.name}
+              surname={props.surname}
+              theme='MarketPlaceName'
+            />
           </div>
           <div className={`${ROOT_CLASS}__rating-block`}>
             <Rating rating={5}/>

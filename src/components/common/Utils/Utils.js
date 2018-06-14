@@ -7,3 +7,15 @@ export const allExclude = (key, obj) => {
   })
   return result;
 }
+
+export const findBurseAndChangeStatus = (burse, arr) => {
+  let result = arr;
+  result.map(stock => {
+    let res = stock;
+    if (res.stock === burse.nameStock) {
+      res.status = burse.status;
+    }
+    return res;
+  });
+  return result;
+}

@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { MarketplacePage } from './MarketplacePage';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getProducts } from '@store/modules/marketplace';
 
 const ShowTypes = {
   CARD: 'CARD',
   LIST_ELEM: 'LIST_ELEM'
 };
 
-export class MarketplacePageContainer extends React.Component {
+class MarketplacePageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,9 +19,7 @@ export class MarketplacePageContainer extends React.Component {
   }
 
   componentWillMount() {
-    setTimeout(() => {
-      this.setState({isLoaded: true});
-    }, 1000);
+    this.props.getProducts().then(() => {this.setState({isLoaded: true})});
   }
 
   render() {
@@ -29,7 +30,7 @@ export class MarketplacePageContainer extends React.Component {
         isLoaded={this.state.isLoaded}
         isShowedPopUp={this.state.isShowedPopUp}
         showType={this.state.showType}
-        cards={[{exchange: 'BTC', id: 1}, {exchange: 'LTC', id: 2}, {exchange: 'LTC', id: 3}, {exchange: 'LTC', id: 4}, {exchange: 'LTC', id: 5}, {exchange: 'LTC', id: 6}, {exchange: 'BTC', id: 7}, {exchange: 'BTC', id: 8}]}
+        cards={this.props.products}
       />
     );
   }
@@ -42,3 +43,13 @@ export class MarketplacePageContainer extends React.Component {
     this.setState({showType: ShowTypes.CARD});
   }
 }
+
+const mapStateToProps = state =>
+  {return {products: state.marketplace.products};}
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({getProducts}, dispatch);
+
+const connectedContainer =
+  connect(mapStateToProps, mapDispatchToProps)(MarketplacePageContainer);
+export { connectedContainer as MarketplacePageContainer };

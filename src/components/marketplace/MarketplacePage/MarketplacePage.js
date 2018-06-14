@@ -19,7 +19,7 @@ export const MarketplacePage = props => {
         <div className={`${ROOT_CLASS}__list`} onClick={props.onClickList}></div>
       </div>
       <div className={ROOT_CLASS}>
-        {props.cards.map(card => <ProductCard {...card} key={card.id}/>)}
+        {props.cards.map((card, index) => <ProductCard {...card} key={index}/>)}
       </div>
     </Page>
   );

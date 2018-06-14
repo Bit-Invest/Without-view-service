@@ -9,7 +9,7 @@ class TraderCardContainer extends React.Component {
     return(
       <TraderCard
         onClick={this.onClickRoot.bind(this)}
-        exchange={this.props.exchange}
+        {...this.props}
       />
     );
   }

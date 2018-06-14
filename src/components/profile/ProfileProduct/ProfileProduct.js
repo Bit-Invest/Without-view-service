@@ -6,7 +6,8 @@ const ROOT_CLASS = 'profile-product';
 
 const statusConnect = {
   pending: 'Pending',
-  disconnected: 'Disconnected'
+  disconnected: 'Disconnected',
+  connected: 'Connected'
 }
 
 export const ProfileProduct = props => {

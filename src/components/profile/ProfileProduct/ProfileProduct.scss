@@ -64,6 +64,10 @@
     line-height: normal;
     letter-spacing: normal;
     color: #ff4040;
+
+    &_connected {
+      color: #689f38;
+    }
   }
   &__exchange {
     &_binance {

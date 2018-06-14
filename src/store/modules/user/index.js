@@ -6,5 +6,6 @@ export {
   getKeys,
   unauthorized,
   authenticate,
-  authpls
+  authpls,
+  apiKeySubscribe
 } from './user';

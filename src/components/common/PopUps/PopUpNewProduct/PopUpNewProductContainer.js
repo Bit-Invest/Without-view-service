@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addExchange } from '@store/modules/user';
 import { hidePopUp } from '@store/modules/common';
-import { getKeys } from '@store/modules/user';
+import { getKeys, apiKeySubscribe } from '@store/modules/user';
 
 class PopUpNewProductContainer extends React.Component {
   constructor(props) {
@@ -32,6 +32,7 @@ class PopUpNewProductContainer extends React.Component {
   };
 
   onSuccessSubmit() {
+    this.props.apiKeySubscribe();
     this.props.getKeys();
     this.props.hidePopUp();
   }
@@ -67,7 +68,8 @@ class PopUpNewProductContainer extends React.Component {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({addExchange, hidePopUp, getKeys}, dispatch);
+  bindActionCreators(
+    {addExchange, hidePopUp, getKeys, apiKeySubscribe}, dispatch);
 
 const connectedContainer =
   connect(null, mapDispatchToProps)(PopUpNewProductContainer);

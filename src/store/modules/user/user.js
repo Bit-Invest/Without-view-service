@@ -1,5 +1,5 @@
 import { STATUS } from './status';
-import { LocalStorage } from '@common/Utils';
+import { LocalStorage, Utils } from '@common/Utils';
 
 export const GET_PERSONAL_INFO = 'user/GET_PERSONAL_INFO';
 export const GET_PERSONAL_INFO_SUCCESS = 'user/GET_PERSONAL_INFO_SUCCESS';
@@ -12,6 +12,8 @@ export const UNAUTHORIZED_SUBSCRIBE = 'user/UNAUTHORIZED_SUBSCRIBE';
 export const UNAUTHORIZED = 'user/UNAUTHORIZED';
 export const AUTHENTICATE = 'user/AUTHENTICATE';
 export const AUTH_PLS = 'user/AUTH_PLS';
+export const API_KEY_SUBSCRIBE = 'user/API_KEY_SUBSCRIBE';
+export const API_KEY_RESPONSE = 'user/API_KEY_RESPONSE';
 
 const initialState = {
   personalInfo: null,
@@ -39,9 +41,11 @@ export const user = (state = initialState, action) => {
         state,
         {burses: action.payload.data.keys}
       );
-    case UNAUTHORIZED:
-      console.log(action);
-      return state;
+    case API_KEY_RESPONSE:
+      return {
+        ...state,
+        burses: Utils.findBurseAndChangeStatus(action.payload, state.burses)
+      };
     default:
       return state;
   }
@@ -103,6 +107,19 @@ export const authpls = () => {
       }
     }
   }
+}
+
+export const apiKeySubscribe = () => {
+  return {
+    type: API_KEY_SUBSCRIBE,
+    payload: {
+      socket: {
+        message: 'keyChecked',
+        type: 'subscribe',
+        actionType: API_KEY_RESPONSE
+      }
+    }
+  };
 }
 
 export const authenticate = () => {
