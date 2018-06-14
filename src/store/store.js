@@ -20,14 +20,6 @@ const client = axios.create({
   }
 });
 const socket = io('http://192.168.100.154');
-socket.on('connect', () => {
-  console.log('CONNECT');
-  console.log(new Date());
-});
-socket.on('disconnect', () => {
-  console.log('DISCONNECT');
-  console.log(new Date());
-});
 
 const axiosMiddlewareConfig = {
   onError: (info) => {

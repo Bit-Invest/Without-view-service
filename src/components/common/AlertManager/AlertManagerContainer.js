@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 class AlertManagerContainer extends React.Component {
   render() {
-    console.log(this.props);
     return <AlertManager {...this.props} />
   }
 }

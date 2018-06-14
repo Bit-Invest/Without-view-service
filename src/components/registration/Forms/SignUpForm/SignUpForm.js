@@ -64,7 +64,7 @@ export const SignUpForm = props => {
       onClick={props.handleCheckbox}>
         <Checkbox
           checked={props.checked}
-          onChange={props.handleEnter}
+          onChange={props.handleCheckbox}
           isError={isError}
         />
         <div>
