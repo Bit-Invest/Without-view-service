@@ -23,11 +23,10 @@ const initialState = {
 export const user = (state = initialState, action) => {
   switch (action.type) {
     case GET_PERSONAL_INFO_SUCCESS:
-      return Object.assign(
-        {},
-        state,
-        {personalInfo: action.payload.data}
-      );
+      return {
+        ...state,
+        personalInfo: action.payload.data
+      };
     case USER_LOGIN:
       return Object.assign(
         {},

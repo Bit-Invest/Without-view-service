@@ -20,7 +20,8 @@ class SignInFormContainer extends React.Component {
       password: '',
       checked: true,
       errorMessage: '',
-      isError: false
+      isError: false,
+      preloader: false
     };
   }
 
@@ -36,6 +37,7 @@ class SignInFormContainer extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.hidePopUp();
+    this.preloaderFunc();
     const data = {
       email: this.state.email,
       password: this.state.password
@@ -55,7 +57,12 @@ class SignInFormContainer extends React.Component {
     this.props.push('/profile');
   }
 
+  preloaderFunc = event => {
+    this.setState({preloader: true});
+  }
+
   onErrorSubmit(err) {
+    this.setState({preloader: false});
     this.setState({errorMessage: ErrorMessage});
     this.setState({isError: true});
   }
@@ -67,10 +74,13 @@ class SignInFormContainer extends React.Component {
   render() {
     const {
       handleSubmit,
-      handleEnter
+      handleEnter,
+      preloaderFunc
     } = this;
     return <SignInForm
       handleSubmit={handleSubmit.bind(this)}
+      preloaderFunc={preloaderFunc}
+      preloader={this.state.preloader}
       errorMessage={this.state.errorMessage}
       handleEnter={handleEnter}
       checked={this.state.checked}

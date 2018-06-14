@@ -16,9 +16,9 @@ export const Button = props => {
   };
 
   return (
-    <button className={buildRootClass()} onClick={props.onClick}>
+    <button className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__btn-title`}>{NameBtn()}</div>
-      <div className={`${ROOT_CLASS}__btn-img`} />
+      <div className={`${ROOT_CLASS}__${props.preloader ? 'btn-img' : ''}`} />
     </button>
   );
 };

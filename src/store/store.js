@@ -5,8 +5,8 @@ import axiosMiddleware from 'redux-axios-middleware';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import rootReducer from './modules';
-import { socketMiddleware } from './middlewares';
-import io from 'socket.io-client';
+// import { socketMiddleware } from './middlewares';
+// import io from 'socket.io-client';
 
 export const history = createHistory();
 
@@ -19,13 +19,13 @@ const client = axios.create({
   }
 });
 
-const socket = io('http://192.168.100.154');
-socket.on('connect', () => {
-  console.log(new Date());
-});
-socket.on('disconnect', () => {
-  console.log(new Date());
-});
+// const socket = io('http://192.168.100.154');
+// socket.on('connect', () => {
+//   console.log(new Date());
+// });
+// socket.on('disconnect', () => {
+//   console.log(new Date());
+// });
 
 const axiosMiddlewareConfig = {
   onError: (info) => {
@@ -47,7 +47,7 @@ const middleware = [
   thunk,
   routerMiddleware(history),
   axiosMiddleware(client, axiosMiddlewareConfig),
-  socketMiddleware(socket)
+  // socketMiddleware(socket)
 ];
 
 if (process.env.NODE_ENV === 'development') {
