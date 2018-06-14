@@ -111,14 +111,10 @@ class SignUpFormContainer extends React.Component {
     } = this;
     return <SignUpForm
       handleSubmit={handleSubmit.bind(this)}
-      errorMessage={this.state.errorMessage}
-<<<<<<< HEAD
       preloaderFunc={preloaderFunc}
-      preloader={this.state.preloader}
       handleEnter={handleEnter}
-=======
-      handleEnter={handleEnter.bind(this)}
->>>>>>> 2a5a2c556ac0f4e570d78aa94ca199f71dcbc147
+      errorMessage={this.state.errorMessage}
+      preloader={this.state.preloader}
       checked={this.state.checked}
       isError={this.state.isError}
     />;
