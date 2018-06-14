@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { ProfileHead } from '@components/profile/ProfileHead';
 import { Chart } from '@profile/Chart';
-import { Page } from '@common/Page';
 import { IconUser } from '@components/profile/IconUser/IconUser';
 import { UserName } from '@components/profile/UserName/UserName';
 import { Rating } from '@components/marketplace/Rating/Rating';
@@ -17,9 +15,15 @@ export const PopUpProductPage = props => {
       </div>
       <Chart />
       <div className={`${ROOT_CLASS}__result-block`}>
-        <div className={`${ROOT_CLASS}__result-data`}>Week +32%</div>
-        <div className={`${ROOT_CLASS}__result-data`}>Month -15%</div>
-        <div className={`${ROOT_CLASS}__stock-exchange`}>BNANCE</div>
+        <div className={`${ROOT_CLASS}__result`}>
+          <div className={`${ROOT_CLASS}__result-data`}>Week </div>
+          <div className={`${ROOT_CLASS}__color-result`}> +32%</div>
+        </div>
+        <div className={`${ROOT_CLASS}__result`}>
+          <div className={`${ROOT_CLASS}__result-data`}>Month </div>
+          <div className={`${ROOT_CLASS}__color-result`}> +15%</div>
+        </div>
+        <div className={`${ROOT_CLASS}__stock-exchange`}>BiNANCE</div>
         <div className={`${ROOT_CLASS}__saved-block`}>
           <div className={`${ROOT_CLASS}__saved`}>SAVE</div>
           <div className={`${ROOT_CLASS}__saved-icon`}></div>

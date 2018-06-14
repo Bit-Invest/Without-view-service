@@ -5,9 +5,14 @@ import axiosMiddleware from 'redux-axios-middleware';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import rootReducer from './modules';
+<<<<<<< HEAD
+// import { socketMiddleware } from './middlewares';
+// import io from 'socket.io-client';
+=======
 import { socketMiddleware } from './middlewares';
 import io from 'socket.io-client';
 import { networkError } from './modules/common';
+>>>>>>> 2a5a2c556ac0f4e570d78aa94ca199f71dcbc147
 
 export const history = createHistory();
 
@@ -20,6 +25,15 @@ const client = axios.create({
   }
 });
 
+<<<<<<< HEAD
+// const socket = io('http://192.168.100.154');
+// socket.on('connect', () => {
+//   console.log(new Date());
+// });
+// socket.on('disconnect', () => {
+//   console.log(new Date());
+// });
+=======
 const socket = io('http://192.168.100.154');
 socket.on('connect', () => {
   console.log('CONNECT');
@@ -29,6 +43,7 @@ socket.on('disconnect', () => {
   console.log('DISCONNECT');
   console.log(new Date());
 });
+>>>>>>> 2a5a2c556ac0f4e570d78aa94ca199f71dcbc147
 
 const axiosMiddlewareConfig = {
   onError: (info) => {
@@ -52,7 +67,7 @@ const middleware = [
   thunk,
   routerMiddleware(history),
   axiosMiddleware(client, axiosMiddlewareConfig),
-  socketMiddleware(socket)
+  // socketMiddleware(socket)
 ];
 
 if (process.env.NODE_ENV === 'development') {

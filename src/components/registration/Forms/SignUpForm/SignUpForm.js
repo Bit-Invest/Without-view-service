@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const SignUpForm = props => {
   const { isError } = props;
+
   return (
     <form
       className="SignUpForms__RegistrationForm"
@@ -71,7 +72,7 @@ export const SignUpForm = props => {
           <div className="required">* Required</div>
         </div>
       </div>
-      <Button theme="gradient-img" NameBtn="Sign Up" />
+      <Button theme="gradient-img" NameBtn="Sign Up" preloader={props.preloader} />
       <div className="transitionAccount">
         Already have an account?{' '}
         <Link className='span' to={'/registration/sign-in'}>Sign In</Link>

@@ -25,7 +25,7 @@ export const SignInForm = props => {
         isError={isError}
         name="password"
       />
-      <Button theme="gradient-img" NameBtn="Sign In" />
+    <Button theme="gradient-img" NameBtn="Sign In" preloader={props.preloader} />
       <div className="transitionAccount">
         Do you have an account?{' '}
         <Link className='span' to={'/registration/sign-up'}>Sign Up</Link>

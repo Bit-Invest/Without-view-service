@@ -24,7 +24,8 @@ class SignUpFormContainer extends React.Component {
       password: '',
       checked: true,
       errorMessage: '',
-      isError: false
+      isError: false,
+      preloader: false
     };
   }
 
@@ -45,6 +46,7 @@ class SignUpFormContainer extends React.Component {
       this.passwordError();
       this.onErrorSubmit();
     } else {
+      this.preloaderFunc();
       const data = {
         select: this.state.select,
         name: this.state.name,
@@ -61,7 +63,13 @@ class SignUpFormContainer extends React.Component {
 
 
   isErrorInForm() {
-    return !(new RegExp("^[A-Za-z0-9][A-Za-z0-9.-_]*[A-Za-z0-9]*@([A-Za-z0-9]+([A-Za-z0-9-]*[A-Za-z0-9]+)*.)+[A-Za-z]*$").test(this.state.email))
+    return !(new RegExp(
+      "^[A-Za-z0-9][A-Za-z0-9.-_]*[A-Za-z0-9]*@([A-Za-z0-9]+([A-Za-z0-9-]*[A-Za-z0-9]+)*.)+[A-Za-z]*$"
+    ).test(this.state.email))
+  }
+
+  preloaderFunc = event => {
+    this.setState({preloader: true});
   }
 
   passwordError = event => {
@@ -83,6 +91,8 @@ class SignUpFormContainer extends React.Component {
   onErrorEmailDuplicat(err) {
     this.onErrorSubmit();
     this.setState({errorMessage: ErrorMessage.DUBLICATE_EMAIL });
+    this.setState({preloader: false});
+    console.log(err);
   }
 
   onErrorSubmit(err) {
@@ -96,12 +106,19 @@ class SignUpFormContainer extends React.Component {
   render() {
     const {
       handleSubmit,
-      handleEnter
+      handleEnter,
+      preloaderFunc
     } = this;
     return <SignUpForm
       handleSubmit={handleSubmit.bind(this)}
       errorMessage={this.state.errorMessage}
+<<<<<<< HEAD
+      preloaderFunc={preloaderFunc}
+      preloader={this.state.preloader}
+      handleEnter={handleEnter}
+=======
       handleEnter={handleEnter.bind(this)}
+>>>>>>> 2a5a2c556ac0f4e570d78aa94ca199f71dcbc147
       checked={this.state.checked}
       isError={this.state.isError}
     />;

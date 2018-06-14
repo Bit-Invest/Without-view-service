@@ -15,7 +15,7 @@ export const UserInfo = (props) => {
             ${ROOT_CLASS}__kyc-status_${props.status}`}>
           <div className={`${ROOT_CLASS}__kyc-icon`}></div>
           <div className={`${ROOT_CLASS}__kyc-text`}>
-            {`${props.role.toUpperCase()} APPROVED`}
+            {/*{`${props.role.toUpperCase()} APPROVED`}*/}
           </div>
         </div>
       </div>

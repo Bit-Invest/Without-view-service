@@ -15,8 +15,10 @@
   background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
+  overflow-y: auto;
 }
 .pop-up-manager__content {
+  margin-top: 30px;
   align-self: flex-end;
   background-color: #fff;
   border-radius: 5px;
@@ -25,13 +27,15 @@
 .pop-up-manager__content-wrap {
   display: flex;
   flex-direction: column;
-  align-self: center;
+  margin-top: 100px;
+  // align-self: center;
 }
 .pop-up-manager__close {
   margin-bottom: 4px;
   display: flex;
   width: max-content;
   align-self: flex-end;
+  align-items: center;
   cursor: pointer;
   color: #fff;
 }
