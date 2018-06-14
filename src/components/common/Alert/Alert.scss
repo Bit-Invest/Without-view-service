@@ -1,0 +1,48 @@
+.alert {
+  position: relative;
+  width: 400px;
+  border-radius: 5px;
+  overflow: hidden;
+
+  &__undercover {
+    height: 100%;
+
+    &_error {
+      background-color: #ff4040;
+    }
+
+    &_info {
+      background-color: #00b2ff;
+    }
+
+    &_attention {
+      background-color: #ffb300;
+    }
+
+    &_no-icon {
+      background-color: #999999;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - 2px);
+    height: calc(100% - 7px);
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__icon {
+    &_connect {
+
+    }
+    &_sign {
+
+    }
+  }
+}

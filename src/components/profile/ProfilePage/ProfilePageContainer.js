@@ -12,12 +12,10 @@ class ProfilePageContainer extends React.Component {
     super(props);
     this.state = {
       isLoaded: false,
-      isShowedPopUpNewProduct: false
     };
   }
 
   componentWillMount() {
-    this.props.testSubscribe();
     this.props.openingPosition();
     Promise.all([
       this.props.getPersonalInfo(),
