@@ -9,13 +9,6 @@ import { push } from 'react-router-redux';
 import { userLogIn, unauthorized } from '@store/modules/user';
 
 class AppContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoaded: false
-    }
-  }
-
   componentWillMount() {
     let token = LocalStorage.getItem('token');
     if (token) {
@@ -43,7 +36,6 @@ class AppContainer extends React.Component {
       <App
         push={this.props.push}
         page={this.props.page}
-        isLoaded={this.state.isLoaded}
       />
     );
   }

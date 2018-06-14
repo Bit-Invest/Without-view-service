@@ -7,30 +7,3 @@ body {
     display: none;
   }
 }
-
-.App {
-  display: flex;
-  height: 100vh;
-}
-
-.App__main {
-  width: 100%;
-}
-
-.App__main_hidden {
-  display: none;
-}
-
-.App__preloader {
-  margin: 0 auto;
-  align-self: center;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-image: url('../assets/images/preloader.gif');
-  width: 40px;
-  height: 40px;
-
-  &_hidden {
-    display: none;
-  }
-}
