@@ -24,7 +24,8 @@ class SignUpFormContainer extends React.Component {
       password: '',
       checked: true,
       errorMessage: '',
-      isError: false,
+      isErrorEmail: false,
+      isErrorPasword: false,
       preloader: false
     };
   }
@@ -38,13 +39,10 @@ class SignUpFormContainer extends React.Component {
     event.preventDefault();
     if (this.isErrorInForm()) {
       this.errorInputEmail();
-      this.onErrorSubmit();
     } else if (!this.state.checked) {
       this.checkboxError();
-      this.onErrorSubmit();
     } else if (this.state.password.length < 8) {
       this.passwordError();
-      this.onErrorSubmit();
     } else {
       this.preloaderFunc();
       const data = {
@@ -61,18 +59,28 @@ class SignUpFormContainer extends React.Component {
     }
   };
 
-
   isErrorInForm() {
     return !(new RegExp(
       "^[A-Za-z0-9][A-Za-z0-9.-_]*[A-Za-z0-9]*@([A-Za-z0-9]+([A-Za-z0-9-]*[A-Za-z0-9]+)*.)+[A-Za-z]*$"
-    ).test(this.state.email))
+    ).test(this.state.email));
   }
 
   preloaderFunc = event => {
     this.setState({preloader: true});
   }
 
+  handleCheckbox = event => {
+    this.setState({checked: !this.state.checked});
+  }
+
+  errorInputEmail = event => {
+    this.setState({isErrorEmail: true});
+    this.setState({errorMessage: ErrorMessage.EMAIL_ERROR });
+  }
+
   passwordError = event => {
+    this.setState({isErrorEmail: false});
+    this.setState({isErrorPasword: true})
     this.setState({errorMessage: ErrorMessage.PASWORD_ERROR});
   }
 
@@ -80,23 +88,14 @@ class SignUpFormContainer extends React.Component {
     this.setState({errorMessage: ErrorMessage.CHECKBOX_ERROR});
   }
 
-  errorInputEmail = event => {
-    this.setState({errorMessage: ErrorMessage.EMAIL_ERROR });
-  }
-
   onSuccessSubmit(res) {
     this.props.push('/registration/sign-in');
   }
 
   onErrorEmailDuplicat(err) {
-    this.onErrorSubmit();
+    this.errorInputEmail();
     this.setState({errorMessage: ErrorMessage.DUBLICATE_EMAIL });
     this.setState({preloader: false});
-    console.log(err);
-  }
-
-  onErrorSubmit(err) {
-    this.setState({isError: true});
   }
 
   handleEnter = event => {
@@ -107,14 +106,18 @@ class SignUpFormContainer extends React.Component {
     const {
       handleSubmit,
       handleEnter,
-      preloaderFunc
+      preloaderFunc,
+      handleCheckbox
     } = this;
     return <SignUpForm
       handleSubmit={handleSubmit.bind(this)}
       preloaderFunc={preloaderFunc}
       handleEnter={handleEnter}
+      handleCheckbox={handleCheckbox}
       errorMessage={this.state.errorMessage}
       preloader={this.state.preloader}
+      isErrorEmail={this.state.isErrorEmail}
+      isErrorPasword={this.state.isErrorPasword}
       checked={this.state.checked}
       isError={this.state.isError}
     />;
