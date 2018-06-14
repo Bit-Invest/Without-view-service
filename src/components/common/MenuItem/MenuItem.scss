@@ -39,7 +39,7 @@
       }
     }
 
-    &_save {
+    &_saved {
       &_active {
         background-image: url(../assets/images/Saved_icon_active.svg);
       }
@@ -106,7 +106,7 @@
         background-image: url(../assets/images/Marketplace_icon_active.svg);
       }
     }
-    &_save {
+    &_saved {
       &_active, &_disabled {
         background-image: url(../assets/images/Saved_icon_active.svg);
       }

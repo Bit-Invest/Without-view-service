@@ -24,7 +24,9 @@ class SignUpFormContainer extends React.Component {
       password: '',
       checked: true,
       errorMessage: '',
-      isError: false
+      isErrorEmail: false,
+      isErrorPasword: false,
+      preloader: false
     };
   }
 
@@ -37,14 +39,12 @@ class SignUpFormContainer extends React.Component {
     event.preventDefault();
     if (this.isErrorInForm()) {
       this.errorInputEmail();
-      this.onErrorSubmit();
     } else if (!this.state.checked) {
       this.checkboxError();
-      this.onErrorSubmit();
     } else if (this.state.password.length < 8) {
       this.passwordError();
-      this.onErrorSubmit();
     } else {
+      this.preloaderFunc();
       const data = {
         select: this.state.select,
         name: this.state.name,
@@ -59,12 +59,28 @@ class SignUpFormContainer extends React.Component {
     }
   };
 
-
   isErrorInForm() {
-    return !(new RegExp("^[A-Za-z0-9][A-Za-z0-9\.-_]*[A-Za-z0-9]*@([A-Za-z0-9]+([A-Za-z0-9-]*[A-Za-z0-9]+)*\.)+[A-Za-z]*$").test(this.state.email))
+    return !(new RegExp(
+      "^[A-Za-z0-9][A-Za-z0-9.-_]*[A-Za-z0-9]*@([A-Za-z0-9]+([A-Za-z0-9-]*[A-Za-z0-9]+)*.)+[A-Za-z]*$"
+    ).test(this.state.email));
+  }
+
+  preloaderFunc = event => {
+    this.setState({preloader: true});
+  }
+
+  handleCheckbox = event => {
+    this.setState({checked: !this.state.checked});
+  }
+
+  errorInputEmail = event => {
+    this.setState({isErrorEmail: true});
+    this.setState({errorMessage: ErrorMessage.EMAIL_ERROR });
   }
 
   passwordError = event => {
+    this.setState({isErrorEmail: false});
+    this.setState({isErrorPasword: true})
     this.setState({errorMessage: ErrorMessage.PASWORD_ERROR});
   }
 
@@ -72,67 +88,36 @@ class SignUpFormContainer extends React.Component {
     this.setState({errorMessage: ErrorMessage.CHECKBOX_ERROR});
   }
 
-  errorInputEmail = event => {
-    this.setState({errorMessage: ErrorMessage.EMAIL_ERROR });
-  }
-
   onSuccessSubmit(res) {
     this.props.push('/registration/sign-in');
   }
 
   onErrorEmailDuplicat(err) {
-    this.onErrorSubmit();
+    this.errorInputEmail();
     this.setState({errorMessage: ErrorMessage.DUBLICATE_EMAIL });
+    this.setState({preloader: false});
   }
 
-  onErrorSubmit(err) {
-    this.setState({isError: true});
+  handleEnter = event => {
+    this.setState({[event.target.name]: event.target.value})
   }
-
-  handleSelectChange = event => {
-    this.setState({ select: event.target.value });
-  };
-
-  handleEmailChange = event => {
-    this.setState({ email: event.target.value });
-  }
-
-  handleNameChange = event => {
-    this.setState({ name: event.target.value });
-  }
-
-  handleSurnameChange = event  => {
-    this.setState({ surname: event.target.value });
-  }
-
-  handlePasswordChange = event => {
-    this.setState({ password: event.target.value });
-  };
-
-  handleCheckboxChange = event => {
-    const { checked } = event.target;
-    this.setState({ checked: checked });
-  };
 
   render() {
     const {
       handleSubmit,
-      handleSelectChange,
-      handleNameChange,
-      handleSurnameChange,
-      handleEmailChange,
-      handlePasswordChange,
-      handleCheckboxChange
+      handleEnter,
+      preloaderFunc,
+      handleCheckbox
     } = this;
     return <SignUpForm
       handleSubmit={handleSubmit.bind(this)}
-      handleSelectChange={handleSelectChange}
+      preloaderFunc={preloaderFunc}
+      handleEnter={handleEnter}
+      handleCheckbox={handleCheckbox}
       errorMessage={this.state.errorMessage}
-      handleEmailChange={handleEmailChange}
-      handleNameChange={handleNameChange}
-      handleSurnameChange={handleSurnameChange}
-      handlePasswordChange={handlePasswordChange}
-      handleCheckboxChange={handleCheckboxChange}
+      preloader={this.state.preloader}
+      isErrorEmail={this.state.isErrorEmail}
+      isErrorPasword={this.state.isErrorPasword}
       checked={this.state.checked}
       isError={this.state.isError}
     />;

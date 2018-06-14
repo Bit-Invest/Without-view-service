@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Menu } from './Menu';
-import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
@@ -11,10 +10,6 @@ class MenuContainer extends React.Component {
     super(props);
     this.currentPage = props.page;
   }
-
-  static propTypes = {
-    page: PropTypes.string,
-  };
 
   render() {
     this.currentPage = this.props.page;

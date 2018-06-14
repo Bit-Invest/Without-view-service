@@ -7,19 +7,19 @@ import createHistory from 'history/createBrowserHistory';
 import rootReducer from './modules';
 import { socketMiddleware } from './middlewares';
 import io from 'socket.io-client';
+import { networkError } from './modules/common';
 
 export const history = createHistory();
 
 const client = axios.create({
-  baseURL: 'http://188.166.84.245:3000',
+  baseURL: 'http://37.139.25.90',
   responseType: 'json',
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   }
 });
-
-const socket = io('http://188.166.84.245:3000');
+const socket = io('http://37.139.25.90');
 
 const axiosMiddlewareConfig = {
   onError: (info) => {
@@ -30,7 +30,9 @@ const axiosMiddlewareConfig = {
       },
       type: `${info.action.type}_FAIL`
     };
-    info.dispatch(errorInfo);
+    errorInfo.error.message === 'Network Error' ?
+      info.dispatch(networkError()) :
+      info.dispatch(errorInfo);
     return Promise.reject(errorInfo);
   }
 };
@@ -40,7 +42,8 @@ const enhancers = [];
 const middleware = [
   thunk,
   routerMiddleware(history),
-  axiosMiddleware(client, axiosMiddlewareConfig)
+  axiosMiddleware(client, axiosMiddlewareConfig),
+  socketMiddleware(socket)
 ];
 
 if (process.env.NODE_ENV === 'development') {

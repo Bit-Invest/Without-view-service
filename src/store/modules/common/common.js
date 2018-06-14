@@ -1,19 +1,50 @@
-import { LocalStorage } from '@common/Utils';
+import { LocalStorage, Utils } from '@common/Utils';
+import * as uniqid from 'uniqid';
 
 export const CHECK_JWT = 'common/CHECK_JWT';
 export const SHOW_POP_UP = 'common/SHOW_POP_UP';
 export const HIDE_POP_UP = 'common/HIDE_POP_UP';
+export const NETWORK_ERROR = 'common/NETWORK_ERROR';
+export const ADD_ALERT = 'common/ADD_ALERT';
+export const REMOVE_ALERT = 'common/REMOVE_ALERT';
 
 const initialState = {
-  currentPopUp: null
+  currentPopUp: null,
+  popUpData: null,
+  alerts: {}
 };
 
 export const common = (state = initialState, action) => {
   switch (action.type) {
-    case (HIDE_POP_UP):
-      return Object.assign({}, state, {currentPopUp: null});
-    case (SHOW_POP_UP):
-      return Object.assign({}, state, {currentPopUp: action.payload.popUp});
+    case HIDE_POP_UP:
+      return {
+        ...state,
+        currentPopUp: null,
+        popUpData: null
+      };
+    case SHOW_POP_UP:
+      return {
+        ...state,
+        currentPopUp: action.payload.popUp,
+        popUpData: action.payload.data
+      };
+    case ADD_ALERT:
+      const id = uniqid();
+      return {
+        ...state,
+        alerts: {
+          ...state.alerts,
+          [id]: {
+            ...action.payload,
+            id
+          }
+        }
+      };
+    case REMOVE_ALERT:
+      return {
+        ...state,
+        alerts: Utils.allExclude(action.payload, state.alerts)
+      };
     default:
       return state;
   }
@@ -34,11 +65,12 @@ export const checkJWT = () => {
   }
 }
 
-export const showPopUp = (popUp) => {
+export const showPopUp = (popUp, data) => {
   return {
     type: SHOW_POP_UP,
     payload: {
-      popUp
+      popUp,
+      data
     }
   };
 }
@@ -46,5 +78,25 @@ export const showPopUp = (popUp) => {
 export const hidePopUp = () => {
   return {
     type: HIDE_POP_UP
+  };
+}
+
+export const networkError = () => {
+  return {
+    type: NETWORK_ERROR
+  };
+}
+
+export const addAlert = (alertProps) => {
+  return {
+    type: ADD_ALERT,
+    payload: alertProps
+  };
+}
+
+export const removeAlert = (alertId) => {
+  return {
+    type: REMOVE_ALERT,
+    payload: alertId
   };
 }

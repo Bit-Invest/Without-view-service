@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const SignUpForm = props => {
   const { isError } = props;
+
   return (
     <form
       className="SignUpForms__RegistrationForm"
@@ -14,7 +15,8 @@ export const SignUpForm = props => {
       <div className="title">Sign Up</div>
       <div className='SignUpForms__RegistrationForm__error-block'>{props.errorMessage}</div>
       <Select
-        onChange={props.handleSelectChange}
+        onChange={props.handleEnter}
+        name="select"
         options={[
           {
             value: 'trader',
@@ -27,37 +29,42 @@ export const SignUpForm = props => {
         ]}
       />
       <Input
-        onChange={props.handleNameChange}
+        onChange={props.handleEnter}
         placeholder="Your name"
         type="text"
         required
         isError={isError}
+        name="name"
       />
       <Input
-        onChange={props.handleSurnameChange}
+        onChange={props.handleEnter}
         placeholder="Your surname"
         type="text"
         required
         isError={isError}
+        name="surname"
       />
       <Input
-        onChange={props.handleEmailChange}
+        onChange={props.handleEnter}
         placeholder="Your email"
         type="text"
         required
-        isError={isError}
+        isError={props.isErrorEmail}
+        name="email"
       />
       <Input
-        onChange={props.handlePasswordChange}
+        onChange={props.handleEnter}
         placeholder="Password (min 8 characters)"
         type="password"
         required
-        isError={isError}
+        isError={props.isErrorPasword}
+        name="password"
       />
-      <div className="checkboxBlock">
+      <div className="checkboxBlock"
+      onClick={props.handleCheckbox}>
         <Checkbox
           checked={props.checked}
-          onChange={props.handleCheckboxChange}
+          onChange={props.handleCheckbox}
           isError={isError}
         />
         <div>
@@ -66,7 +73,7 @@ export const SignUpForm = props => {
           <div className="required">* Required</div>
         </div>
       </div>
-      <Button theme="gradient-img" NameBtn="Sign Up" />
+      <Button theme="gradient-img" NameBtn="Sign Up" preloader={props.preloader} />
       <div className="transitionAccount">
         Already have an account?{' '}
         <Link className='span' to={'/registration/sign-in'}>Sign In</Link>

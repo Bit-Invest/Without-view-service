@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getPersonalInfo, getKeys } from '@store/modules/user';
 import { push } from 'react-router-redux';
-import { showPopUp } from '@store/modules/common';
+import { showPopUp, addAlert } from '@store/modules/common';
+import { testSubscribe, openingPosition } from '@store/modules/terminal';
 
 class ProfilePageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoaded: false,
-      isShowedPopUpNewProduct: false
     };
   }
 
@@ -35,19 +35,14 @@ class ProfilePageContainer extends React.Component {
     this.props.showPopUp('newProduct');
   }
 
-  onClosePopUp() {
-    this.setState({isShowedPopUpNewProduct: false});
-  }
-
   render() {
-    const { onClickAddProduct, onClosePopUp } = this;
+    const { onClickAddProduct } = this;
 
     return this.state.isLoaded ? (
       <ProfilePage
         isLoaded={this.state.isLoaded}
         isShowedPopUpNewProduct={this.state.isShowedPopUpNewProduct}
         onClickAddProduct={onClickAddProduct.bind(this)}
-        onClosePopUp={onClosePopUp.bind(this)}
         user={this.props.user}
       />
     ) : null;
@@ -57,7 +52,15 @@ class ProfilePageContainer extends React.Component {
 const mapStateToProps = (state) => {return {user: state.user}};
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({getPersonalInfo, getKeys, push, showPopUp}, dispatch);
+  bindActionCreators({
+    getPersonalInfo,
+    getKeys,
+    push,
+    showPopUp,
+    openingPosition,
+    testSubscribe,
+    addAlert
+  }, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(ProfilePageContainer);

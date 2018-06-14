@@ -10,7 +10,7 @@ export const TraderCardList = props => {
   return(
     <div className={ROOT_CLASS}>
       <div>
-        <div className={`${ROOT_CLASS}__exchange`}>{props.exchange}</div>
+        <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
         <div className={`${ROOT_CLASS}__graf-list`}></div>
       </div>
       <div className={`${ROOT_CLASS}__position-result-block`}>
@@ -35,7 +35,11 @@ export const TraderCardList = props => {
         <IconUser />
         <div>
           <div className={`${ROOT_CLASS}__user-name-block`}>
-            <UserName name='John' surname='S.' theme='MarketPlaceName' />
+            <UserName
+              name={props.name}
+              surname={props.surname}
+              theme='MarketPlaceName'
+            />
           </div>
           <div className={`${ROOT_CLASS}__rating-block`}>
             <Rating rating={5}/>

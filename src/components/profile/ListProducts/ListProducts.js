@@ -16,9 +16,8 @@ export const ListProducts = props => {
 
   const renderProducts = () => {
     let res = [];
-    console.log(props.products);
-    props.products.map((product, index) => {
-      res.push(<ProfileProduct exchange={product} key={index} />);
+    props.products.forEach((product, index) => {
+      res.push(<ProfileProduct {...product} key={index} />);
     });
     return res;
   }
