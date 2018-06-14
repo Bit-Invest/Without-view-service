@@ -9,8 +9,9 @@ import 'normalize.css';
 
 export const App = (props) => {
   return (
-    <div className={`App_${props.page}`}>
-      <main>
+    <div className={`App App_${props.page}`}>
+      <div className={`App__preloader ${props.isLoaded ? 'App__preloader_hidden': ''}`}></div>
+      <main className={`App__main ${props.isLoaded ? '' : 'App__main_hidden'}`}>
         <Switch>
           <Route path="/registration" component={RegistrationPage} />
           <Route path="/profile" component={ProfilePage} />

@@ -9,6 +9,13 @@ import { push } from 'react-router-redux';
 import { userLogIn, unauthorized } from '@store/modules/user';
 
 class AppContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoaded: false
+    }
+  }
+
   componentWillMount() {
     let token = LocalStorage.getItem('token');
     if (token) {
@@ -21,17 +28,23 @@ class AppContainer extends React.Component {
   }
 
   onJWTConfirm() {
+    this.setState({isLoaded: true});
     this.props.userLogIn();
     this.props.push('/profile');
   }
 
   onJWTError() {
+    this.setState({isLoaded: true});
     this.props.push('/marketplace');
   }
 
   render() {
     return (
-      <App push={this.props.push} page={this.props.page} />
+      <App
+        push={this.props.push}
+        page={this.props.page}
+        isLoaded={this.state.isLoaded}
+      />
     );
   }
 }
