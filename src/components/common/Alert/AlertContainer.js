@@ -7,6 +7,9 @@ import { Alert } from './Alert';
 
 class AlertContainer extends React.Component {
   render() {
+    setTimeout(() => {
+      this.props.removeAlert(this.props.id);
+    }, 10000)
     return <Alert {...this.props} />
   }
 }

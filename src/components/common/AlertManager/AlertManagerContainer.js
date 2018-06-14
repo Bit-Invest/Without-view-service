@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 
 class AlertManagerContainer extends React.Component {
   render() {
-    return <AlertManager alerts={this.props.alerts} />
+    console.log(this.props);
+    return <AlertManager {...this.props} />
   }
 }
 
 const mapStateToProps = state => {
-  return state.common.alerts;
+  return {alerts: state.common.alerts};
 }
 
 const connectedContainer =
