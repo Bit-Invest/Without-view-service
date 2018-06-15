@@ -19,11 +19,17 @@
     color: #000000;
   }
 
+  &__status-wrap {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
   &__kyc-status {
     width: max-content;
     padding-right: 5px;
-    margin-top: 10px;
     border-radius: 10px;
+    margin-right: 15px;
     height: 20px;
   }
 

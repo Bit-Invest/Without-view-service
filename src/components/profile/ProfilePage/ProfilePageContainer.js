@@ -44,6 +44,7 @@ class ProfilePageContainer extends React.Component {
         isShowedPopUpNewProduct={this.state.isShowedPopUpNewProduct}
         onClickAddProduct={onClickAddProduct.bind(this)}
         user={this.props.user}
+        push={this.props.push}
       />
     ) : null;
   }

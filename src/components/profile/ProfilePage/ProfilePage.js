@@ -6,7 +6,7 @@ import { ListProducts } from '@profile/ListProducts';
 export const ProfilePage = props => {
   return (
     <Page isLoaded={props.isLoaded}>
-      <ProfileHead personalInfo={props.user.personalInfo} />
+      <ProfileHead personalInfo={props.user.personalInfo} push={props.push} />
       <ListProducts
         onClickAddProduct={props.onClickAddProduct}
         products={props.user.burses}
