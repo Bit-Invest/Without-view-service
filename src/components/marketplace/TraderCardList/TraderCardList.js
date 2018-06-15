@@ -37,7 +37,7 @@ export const TraderCardList = props => {
           <div className={`${ROOT_CLASS}__user-name-block`}>
             <UserName
               name={props.name}
-              surname={props.surname}
+              surname={`${props.surname[0]}.`}
               theme='MarketPlaceName'
             />
           </div>

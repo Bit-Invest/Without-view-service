@@ -33,7 +33,7 @@ export const SignUpForm = props => {
         placeholder="Your name"
         type="text"
         required
-        isError={isError}
+        isError={props.isErrorName}
         name="name"
       />
       <Input
@@ -41,7 +41,7 @@ export const SignUpForm = props => {
         placeholder="Your surname"
         type="text"
         required
-        isError={isError}
+        isError={props.isErrorSurName}
         name="surname"
       />
       <Input

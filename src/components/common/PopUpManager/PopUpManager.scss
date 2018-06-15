@@ -1,10 +1,10 @@
 .pop-up-manager {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  z-index: 5;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
 }
 .pop-up-manager_hidden {
   display: none;
@@ -12,10 +12,13 @@
 .pop-up-manager__undercover {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0,0,0,.6);
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
   justify-content: center;
-  overflow-y: auto;
+  position: fixed;
+  cursor: pointer;
 }
 .pop-up-manager__content {
   margin-top: 30px;
@@ -29,7 +32,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 100px;
-  // align-self: center;
+  position: relative;
 }
 .pop-up-manager__close {
   margin-bottom: 4px;
