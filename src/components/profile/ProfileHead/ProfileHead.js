@@ -11,6 +11,7 @@ export const ProfileHead = props => {
         surname={props.personalInfo.surname}
         role={props.personalInfo.role}
         status="disabled"
+        push={props.push}
       />
     </div>
   );
