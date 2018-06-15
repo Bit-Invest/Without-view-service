@@ -4,8 +4,8 @@ import { MenuItem } from '@common/MenuItem';
 const ROOT_CLASS = 'menu';
 
 const ITEMS = ['terminal', 'marketplace', 'saved', 'billing', 'profile', 'help'];
-const inDev = ['billing', 'help', 'saved'];
-const onlyRegistrated = ['terminal', 'profile'];
+const inDev = ['billing', 'help', 'saved', 'terminal'];
+const onlyRegistrated = ['profile'];
 
 export const Menu = (props) => {
   const buildRootClass = () => {

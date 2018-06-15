@@ -12,8 +12,7 @@ export const PopUpNewProduct = (props) => {
       <Select
         onChange={props.handleSelectChange}
         options={[
-          {value: 'binance', label: 'Binance'},
-          {value: 'poloniex', label: 'Poloniex'}
+          {value: 'binance', label: 'Binance'}
         ]}
         theme="new-product"
       />
