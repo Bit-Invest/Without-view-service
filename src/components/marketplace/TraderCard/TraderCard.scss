@@ -2,6 +2,7 @@
 
 .trader-card {
   position: relative;
+  margin-right: 12px;
   width: 210px;
   height: 280px;
   border-radius: 5px;
@@ -52,9 +53,6 @@
   &__user-name-block {
     display: flex;
     justify-content: center;
-  }
-  &__rating-block {
-    padding-left: 15px;
   }
   &__position-trade {
     width: 208px;
@@ -127,6 +125,9 @@
   &__href {
     color: #8560fd;
     text-decoration: underline;
+  }
+  &__icon-user-wrap {
+    margin-right: 15px;
   }
 }
 .trader-card:hover {

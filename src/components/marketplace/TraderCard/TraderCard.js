@@ -40,12 +40,14 @@ export const TraderCard = props => {
         </div>
       </div>
       <div className={`${ROOT_CLASS}__user-block`}>
-        <IconUser />
+        <div className={`${ROOT_CLASS}__icon-user-wrap`}>
+          <IconUser />
+        </div>
         <div>
           <div className={`${ROOT_CLASS}__user-name-block`}>
             <UserName
               name={props.name}
-              surname={props.surname}
+              surname={`${props.surname[0]}.`}
               theme='MarketPlaceName'
             />
           </div>
