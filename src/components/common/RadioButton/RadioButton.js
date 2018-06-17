@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const ROOT_CLASS = 'radio-button';
 
-const RadioButton = (props) => {
+export const RadioButton = (props) => {
   const buildRootClass = () => {
     return ROOT_CLASS + ' ' + `${props.isActive ? ROOT_CLASS + '_active': ''}`;
   }
