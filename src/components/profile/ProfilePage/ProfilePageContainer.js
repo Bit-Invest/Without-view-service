@@ -37,7 +37,7 @@ class ProfilePageContainer extends React.Component {
 
   render() {
     const { onClickAddProduct } = this;
-
+    console.log(this.props);
     return this.state.isLoaded ? (
       <ProfilePage
         isLoaded={this.state.isLoaded}

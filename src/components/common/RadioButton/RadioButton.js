@@ -8,7 +8,11 @@ export const RadioButton = (props) => {
   }
 
   return (
-    <div className={buildRootClass()} onClick={props.onClick}>
+    <div
+      className={buildRootClass()}
+      onClick={
+        () => {props.onChange && props.onChange(!props.isActive, props.index)}}
+    >
       <div className={`${ROOT_CLASS}__circle`}>
         <div className={`${ROOT_CLASS}__fill`}></div>
       </div>
