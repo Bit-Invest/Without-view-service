@@ -1,63 +1,42 @@
 import * as React from 'react';
 import { InputTerminal } from '../input';
 import { RadioButtonGroup } from '@common/RadioButtonGroup';
+import { Button } from '@components/common/Button';
 
 const ROOT_CLASS = 'terminal-form';
 
-export const TerminalForm = () => (
+export const TerminalForm = (props) => (
   <div className={ROOT_CLASS}>
-    <div className={`${ROOT_CLASS}__caption`}>PLACE ORDER</div>
-
-    <div className={`${ROOT_CLASS}__radio-button-block`}>
-      <RadioButtonGroup
-        radios={['Limit', 'Market']}
-      />
-    </div>
-
-    <div className={`${ROOT_CLASS}__container-form`}>
-      <div>
-        <div className={`${ROOT_CLASS}__input-block`}>
-          <div>
-            <div className={`${ROOT_CLASS}__label`}>Price</div>
-            <div className={`${ROOT_CLASS}__input`}>
-              <InputTerminal />
-            </div>
-          </div>
-          <div>
-            <div className={`${ROOT_CLASS}__label`}>Volume</div>
-            <div className={`${ROOT_CLASS}__input`}>
-              <InputTerminal />
-            </div>
+    <form onSubmit={props.handleSubmit} className={`${ROOT_CLASS}__container-form`}>
+      <div className={`${ROOT_CLASS}__input-block`}>
+        <div>
+          <div className={`${ROOT_CLASS}__label`}>Price</div>
+          <div className={`${ROOT_CLASS}__input`}>
+            <InputTerminal
+              onChange={props.handleEnter}
+              name='price'
+            />
           </div>
         </div>
-        <div className={`${ROOT_CLASS}__total-input-block`}>
-          <div className={`${ROOT_CLASS}__label`}>Total</div>
-          <InputTerminal />
+        <div>
+          <div className={`${ROOT_CLASS}__label`}>Volume</div>
+          <div className={`${ROOT_CLASS}__input`}>
+            <InputTerminal
+              onChange={props.handleEnter}
+              name='value'
+            />
+          </div>
         </div>
-        <button className={`${ROOT_CLASS}__button-buy`}>PLACE BUY ORDER</button>
       </div>
-      <div>
-        <div className={`${ROOT_CLASS}__input-block`}>
-          <div>
-            <div className={`${ROOT_CLASS}__label`}>Price</div>
-            <div className={`${ROOT_CLASS}__input`}>
-              <InputTerminal />
-            </div>
-          </div>
-          <div>
-            <div className={`${ROOT_CLASS}__label`}>Volume</div>
-            <div className={`${ROOT_CLASS}__input`}>
-              <InputTerminal />
-            </div>
-          </div>
-        </div>
-        <div className={`${ROOT_CLASS}__total-input-block`}>
-          <div className={`${ROOT_CLASS}__label`}>Total</div>
-          <InputTerminal />
-        </div>
-        <button className={`${ROOT_CLASS}__button-sell`}>PLACE SELL ORDER</button>
+      <div className={`${ROOT_CLASS}__total-input-block`}>
+        <div className={`${ROOT_CLASS}__label`}>Total</div>
+        <InputTerminal
+          onChange={props.handleEnter}
+          name='total'
+        />
       </div>
-    </div>
+      <Button theme="gradient-img" NameBtn="PLACE BUY ORDER" />
+    </form>
 
   </div>
 )
