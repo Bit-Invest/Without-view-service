@@ -35,7 +35,10 @@ export const TerminalForm = (props) => (
           name='total'
         />
       </div>
-      <Button theme="gradient-img" NameBtn="PLACE BUY ORDER" />
+      <Button
+        theme={`${props.type}-button-terminal-form`}
+        NameBtn={props.nameBtn}
+      />
     </form>
 
   </div>

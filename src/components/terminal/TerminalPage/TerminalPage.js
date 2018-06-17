@@ -19,10 +19,16 @@ export const TerminalPage = (props) => (
         </div>
         <div className={`${ROOT_CLASS}__form-block`}>
           <div className={`${ROOT_CLASS}__form`}>
-            <TerminalForm />
+            <TerminalForm
+              type='buy'
+              nameBtn='PLACE BUY ORDER'
+            />
           </div>
           <div className={`${ROOT_CLASS}__form`}>
-            <TerminalForm />
+            <TerminalForm
+              type="sell"
+              nameBtn='PLACE SELL ORDER'
+            />
           </div>
         </div>
       </div>

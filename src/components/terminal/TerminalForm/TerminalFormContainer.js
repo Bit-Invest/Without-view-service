@@ -27,6 +27,8 @@ export class TerminalFormContainer extends React.Component {
         price={this.state.price}
         value={this.state.value}
         total={this.state.total}
+        type={this.props.type}
+        nameBtn={this.props.nameBtn}
       />
     );
   }
