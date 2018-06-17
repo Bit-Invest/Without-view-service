@@ -11,6 +11,7 @@ const ProductTypes = {
 };
 
 export const MarketplacePage = props => {
+  console.log(props);
   const ProductCard = ProductTypes[props.showType];
   return (
     <Page isLoaded={props.isLoaded}>

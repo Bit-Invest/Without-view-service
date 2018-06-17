@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { InputTerminal } from '../input';
+import { RadioButtonGroup } from '@common/RadioButtonGroup';
+
 const ROOT_CLASS = 'terminal-form';
 
 export const TerminalForm = () => (
@@ -7,14 +9,9 @@ export const TerminalForm = () => (
     <div className={`${ROOT_CLASS}__caption`}>PLACE ORDER</div>
 
     <div className={`${ROOT_CLASS}__radio-button-block`}>
-      <div className={`${ROOT_CLASS}__radio-button`}>
-        <input className={`${ROOT_CLASS}__radio`} type="radio" />
-        <div>Limit</div>
-      </div>
-      <div className={`${ROOT_CLASS}__radio-button`}>
-        <input className={`${ROOT_CLASS}__radio`} type="radio" />
-        <div>Market</div>
-      </div>
+      <RadioButtonGroup
+        radios={['Limit', 'Market']}
+      />
     </div>
 
     <div className={`${ROOT_CLASS}__container-form`}>

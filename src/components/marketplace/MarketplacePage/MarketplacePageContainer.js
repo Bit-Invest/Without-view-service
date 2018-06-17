@@ -19,7 +19,7 @@ class MarketplacePageContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getProducts().then(() => {this.setState({isLoaded: true})});
+    this.props.getProducts().then(() => {console.log('dddd');this.setState({isLoaded: true})});
   }
 
   render() {
