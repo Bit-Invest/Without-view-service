@@ -19,7 +19,7 @@ class SignUpFormContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      select: 'Trader',
+      select: 'trader',
       name: '',
       surname: '',
       email: '',

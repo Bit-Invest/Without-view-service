@@ -4,7 +4,7 @@ import { MenuItem } from '@common/MenuItem';
 const ROOT_CLASS = 'menu';
 
 const ITEMS = ['terminal', 'marketplace', 'saved', 'billing', 'profile', 'help'];
-const inDev = ['billing', 'help', 'saved'];
+const inDev = ['billing', 'help', 'saved', 'terminal'];
 const onlyRegistrated = ['profile'];
 
 export const Menu = (props) => {

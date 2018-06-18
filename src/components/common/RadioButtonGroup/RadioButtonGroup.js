@@ -4,7 +4,6 @@ import { RadioButton } from '@common/RadioButton';
 const ROOT_CLASS = 'radio-button-group';
 
 export const RadioButtonGroup = (props) => {
-  console.log(props.activeRadio);
   return (
     <div className={ROOT_CLASS}>
       {props.radios.map((radio, index) =>

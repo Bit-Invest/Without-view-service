@@ -3,6 +3,7 @@ export {
   getPersonalInfo,
   addExchange,
   userLogIn,
+  userLogOut,
   getKeys,
   unauthorized,
   authenticate,

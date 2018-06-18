@@ -19,7 +19,6 @@ class TraderCardContainer extends React.Component {
       id: this.props.id
     });
   }
-
 }
 
 const mapDispatchToProps = dispatch =>
