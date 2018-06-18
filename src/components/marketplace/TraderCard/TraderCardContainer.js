@@ -25,7 +25,6 @@ class TraderCardContainer extends React.Component {
       surname: this.props.surname
     });
   }
-
 }
 
 const mapDispatchToProps = dispatch =>

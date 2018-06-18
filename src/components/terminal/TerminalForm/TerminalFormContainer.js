@@ -16,10 +16,11 @@ export class TerminalFormContainer extends React.Component {
   }
 
   handleSubmit = event => {
-
+    event.preventDefault();
+    this.props.onSubmit(this.state, this.props.type);
   }
 
-  render(){
+  render() {
     return (
       <TerminalForm
         handleSubmit={this.handleSubmit.bind(this)}
@@ -29,6 +30,7 @@ export class TerminalFormContainer extends React.Component {
         total={this.state.total}
         type={this.props.type}
         nameBtn={this.props.nameBtn}
+        orderType={this.props.orderType}
       />
     );
   }

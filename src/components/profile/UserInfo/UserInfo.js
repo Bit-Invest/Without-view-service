@@ -22,7 +22,7 @@ export const UserInfo = (props) => {
             </div>
           </div>
           <div className={`${ROOT_CLASS}__log-out-wrap`}>
-            <LogOut push={props.push} />
+            <LogOut push={props.push} logOut={props.logOut} />
           </div>
         </div>
       </div>

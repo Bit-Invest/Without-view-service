@@ -1,1 +1,1 @@
-export { terminal, openingPosition, testSubscribe } from './terminal';
+export { terminal, placeLimitOrder } from './terminal';

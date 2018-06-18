@@ -6,6 +6,7 @@ const ROOT_CLASS = 'log-out';
 export const LogOut = (props) => {
   const onClick = () => {
     LocalStorage.removeItem('token');
+    props.logOut();
     props.push('/marketplace');
   }
 

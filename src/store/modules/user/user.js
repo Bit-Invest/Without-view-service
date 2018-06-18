@@ -14,6 +14,7 @@ export const AUTHENTICATE = 'user/AUTHENTICATE';
 export const AUTH_PLS = 'user/AUTH_PLS';
 export const API_KEY_SUBSCRIBE = 'user/API_KEY_SUBSCRIBE';
 export const API_KEY_RESPONSE = 'user/API_KEY_RESPONSE';
+export const USER_LOG_OUT = 'user/USER_LOG_OUT';
 
 const initialState = {
   personalInfo: null,
@@ -46,6 +47,11 @@ export const user = (state = initialState, action) => {
         ...state,
         burses: Utils.findBurseAndChangeStatus(action.payload, state.burses)
       };
+    case USER_LOG_OUT:
+      return {
+        ...state,
+        status: STATUS.UNLOGGED_IN
+      }
     default:
       return state;
   }
@@ -153,5 +159,11 @@ export const unauthorized = () => {
 export const userLogIn = () => {
   return {
     type: USER_LOGIN,
+  };
+}
+
+export const userLogOut = () => {
+  return {
+    type: USER_LOG_OUT
   };
 }
