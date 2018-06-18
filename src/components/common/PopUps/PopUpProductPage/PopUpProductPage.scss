@@ -149,6 +149,7 @@
   &__user-name-block {
     display: flex;
     justify-content: center;
+    margin-left: 10px;
   }
   &__rating-block {
     padding-left: 15px;
@@ -163,7 +164,6 @@
     background-color: #cccccc;
   }
   &__footer-button:hover {
-
     background-color: #a4a4a4;
   }
 }

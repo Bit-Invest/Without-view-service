@@ -7,6 +7,7 @@ import { PercentResult } from '@common/PercentResult';
 const ROOT_CLASS = 'trader-card';
 
 export const TraderCard = props => {
+
   return (
     <div onClick={props.onClick} className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__block-exchange`}>

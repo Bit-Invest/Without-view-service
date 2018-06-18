@@ -12,7 +12,7 @@ import { networkError } from './modules/common';
 export const history = createHistory();
 
 const client = axios.create({
-  baseURL: 'http://192.168.100.154',
+  baseURL: 'http://37.139.25.90',
   responseType: 'json',
   headers: {
     'Content-Type': 'application/json',
