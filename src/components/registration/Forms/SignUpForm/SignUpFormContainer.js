@@ -82,26 +82,34 @@ class SignUpFormContainer extends React.Component {
   }
 
   errorInputName = event => {
-    this.setState({isErrorName: true});
-    this.setState({errorMessage: ErrorMessage.NAME_INPUT});
+    this.setState({
+      isErrorName: true,
+      errorMessage: ErrorMessage.NAME_INPUT
+    });
   }
 
   errorInputSurName = event => {
-    this.setState({isErrorName: false});
-    this.setState({isErrorSurName: true});
-    this.setState({errorMessage: ErrorMessage.SURNAME_INPUT});
+    this.setState({
+      isErrorName: false,
+      isErrorSurName: true,
+      errorMessage: ErrorMessage.SURNAME_INPUT
+    });
   }
 
   errorInputEmail = event => {
-    this.setState({isErrorSurName: false});
-    this.setState({isErrorEmail: true});
-    this.setState({errorMessage: ErrorMessage.EMAIL_ERROR });
+    this.setState({
+      isErrorSurName: false,
+      isErrorEmail: true,
+      errorMessage: ErrorMessage.EMAIL_ERROR
+    });
   }
 
   passwordError = event => {
-    this.setState({isErrorEmail: false});
-    this.setState({isErrorPasword: true})
-    this.setState({errorMessage: ErrorMessage.PASWORD_ERROR});
+    this.setState({
+      isErrorEmail: false,
+      isErrorPasword: true,
+      errorMessage: ErrorMessage.PASWORD_ERROR
+    });
   }
 
   checkboxError = event => {
@@ -114,8 +122,10 @@ class SignUpFormContainer extends React.Component {
 
   onErrorEmailDuplicat(err) {
     this.errorInputEmail();
-    this.setState({errorMessage: ErrorMessage.DUBLICATE_EMAIL });
-    this.setState({preloader: false});
+    this.setState({
+      errorMessage: ErrorMessage.DUBLICATE_EMAIL,
+      preloader: false
+    });
   }
 
   handleEnter = event => {

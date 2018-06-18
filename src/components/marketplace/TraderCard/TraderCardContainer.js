@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { TraderCard } from './TraderCard';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { TraderCard } from './TraderCard';
 import { showPopUp } from '@store/modules/common';
 
 class TraderCardContainer extends React.Component {
@@ -9,6 +9,9 @@ class TraderCardContainer extends React.Component {
     return(
       <TraderCard
         onClick={this.onClickRoot.bind(this)}
+        nameStor={this.props.nameStor}
+        name={this.props.name}
+        surname={this.props.surname}
         {...this.props}
       />
     );
@@ -16,7 +19,10 @@ class TraderCardContainer extends React.Component {
 
   onClickRoot() {
     this.props.showPopUp('productPage', {
-      id: this.props.id
+      id: this.props.id,
+      nameStor: this.props.nameStor,
+      name: this.props.name,
+      surname: this.props.surname
     });
   }
 }
