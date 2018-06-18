@@ -4,11 +4,15 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { checkJWT } from '@store/modules/common';
 import { bindActionCreators } from 'redux';
-import { LocalStorage } from '@common/Utils';
 import { push } from 'react-router-redux';
-import { userLogIn } from '@store/modules/user';
 
 class AppContainer extends React.Component {
+  componentWillMount() {
+    if (this.props.pathname === '/') {
+      this.props.push('/marketplace');
+    }
+  }
+
   render() {
     return (
       <App />
@@ -17,7 +21,7 @@ class AppContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {user: state.user};
+  return {pathname: state.router.location.pathname};
 }
 
 const mapDispatchToProps = dispatch =>

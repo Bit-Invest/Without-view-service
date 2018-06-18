@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { InputTerminal } from '../input';
-import { RadioButtonGroup } from '@common/RadioButtonGroup';
 import { Button } from '@components/common/Button';
 
 const ROOT_CLASS = 'terminal-form';
