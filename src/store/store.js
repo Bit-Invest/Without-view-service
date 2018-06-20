@@ -19,7 +19,7 @@ const client = axios.create({
     'Access-Control-Allow-Origin': '*'
   }
 });
-const socket = io('http://192.168.100.154');
+const socket = io('http://37.139.25.90');
 socket.on('disconnect', () => {
   console.log('DISCONNECT');
 })
