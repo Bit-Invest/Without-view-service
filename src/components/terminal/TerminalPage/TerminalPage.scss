@@ -1,6 +1,10 @@
 @import "../../common/Utils/Utils.scss";
 
 .terminal-page {
+  &__terminal {
+    display: flex;
+    justify-content: space-between;
+  }
   &__radio-button-block {
     padding: 0 31px;
     display: flex;
