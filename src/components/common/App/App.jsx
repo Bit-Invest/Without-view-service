@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { RegistrationPage } from '@registration/RegistrationPage';
 import { ProfilePage } from '@profile/ProfilePage';
 import { MarketplacePage } from '@components/marketplace/MarketplacePage';

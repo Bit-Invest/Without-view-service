@@ -4,7 +4,7 @@ const ROOT_CLASS = 'radio-button';
 
 export const RadioButton = (props) => {
   const buildRootClass = () => {
-    return ROOT_CLASS + ' ' + `${props.isActive ? ROOT_CLASS + '_active': ''}`;
+    return `${ROOT_CLASS} ${props.isActive ? ROOT_CLASS + '_active': ''}`;
   }
 
   return (
