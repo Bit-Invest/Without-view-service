@@ -3,7 +3,7 @@
 .menu-item {
   display: flex;
   align-items: center;
-  width: 100;
+  width: 100%;
   cursor: pointer;
   padding-left: 35px;
   padding-top: 10px;
@@ -127,4 +127,23 @@
       }
     }
   }
+}
+
+.menu-item_terminal {
+  padding: 5px 0;
+  .menu-item__title {
+    display: none;
+  }
+
+  .menu-item__icon {
+    margin: 0 auto;
+  }
+  &:hover {
+    padding: 5px 0;
+    border-left: 6px solid #685ed3;
+  }
+}
+
+.menu-item_terminal .menu-item_active {
+  border-left: 10px solid #685ed3;
 }

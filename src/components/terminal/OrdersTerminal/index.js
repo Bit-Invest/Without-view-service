@@ -1,1 +1,1 @@
-export { OrdersTerminalContainer as OrdersTerminal } from './OrdersTerminalContainer';
+export { OrdersTerminal } from './OrdersTerminal';
