@@ -5,6 +5,7 @@ import { TerminalForm } from '@terminal/TerminalForm';
 import { TradeHistory } from '@terminal/TradeHistory';
 import { OrderBook } from '@terminal/OrderBook';
 import { OrdersTerminal } from '@terminal/OrdersTerminal';
+import { TerminalGraph } from '@terminal/TerminalGraph';
 
 const ROOT_CLASS = 'terminal-page';
 
@@ -16,6 +17,7 @@ export const TerminalPage = (props) => {
           <TradeHistory />
         </div>
         <div className={`${ROOT_CLASS}__2nd-column`}>
+          <TerminalGraph />
           <OrdersTerminal />
         </div>
         <div className={`${ROOT_CLASS}__3rd-column`}>
