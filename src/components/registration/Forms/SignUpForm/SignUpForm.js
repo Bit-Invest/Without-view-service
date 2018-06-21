@@ -17,6 +17,7 @@ export const SignUpForm = props => {
       <Select
         onChange={props.handleEnter}
         name="select"
+        theme="sign-up"
         options={[
           {
             value: 'trader',

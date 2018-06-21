@@ -3,11 +3,6 @@ import React from 'react';
 const ROOT_CLASS = 'select';
 
 export const Select = props => {
-  const handleSelectChange = e => {
-    const { onChange } = props;
-
-    onChange && onChange(e);
-  };
 
   const buildRootClass = () => {
     return (
@@ -17,9 +12,16 @@ export const Select = props => {
   };
 
   return (
-    <select name={props.name} onChange={handleSelectChange} className={buildRootClass()}>
-      {props.options.map((option, index) =>
-          <option value={option.value} key={index}>{option.label}</option>)}
-    </select>
+    <div
+      name={props.name}
+      onClick={props.handleSelectChange}
+      className={buildRootClass()}
+    >
+      <div>{props.currentValue}</div>
+        <div className={`${ROOT_CLASS} ${props.isOpenend ? '' : ROOT_CLASS + '_closed'}`}>
+            {props.options.map((option, index) : null =>
+            <div value={option.value} key={index}>{option.label}</div>)}
+        </div>
+    </div>
   );
 };

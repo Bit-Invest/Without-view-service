@@ -1,25 +1,36 @@
 @import "../../common/Utils/Utils.scss";
 
 .select {
-  width: 280px;
-  height: 40px;
-  border-radius: 5px;
-  border: solid 2px #dddddd;
-  @include font(Lato);
-  font-size: 18px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #000000;
-  outline: none;
-  margin-top: 20px;
-  padding-left: 10px;
+  cursor: pointer;
+  &__sign-up {
+    width: 280px;
+    height: 40px;
+    border-radius: 5px;
+    border: solid 2px #dddddd;
+    @include font(Lato);
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+    outline: none;
+    margin-top: 20px;
+    padding-left: 10px;
+  }
   &_new-product {
     width: 560px;
     height: 40px;
     border-radius: 5px;
     border: solid 2px #dddddd;
+  }
+  &_closed {
+    display: none;
+  }
+  &_terminal {
+    width: 200px;
+    height: 50px;
+    border: 1px solid silver;
   }
 }
