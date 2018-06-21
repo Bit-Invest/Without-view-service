@@ -10,7 +10,7 @@ export const MenuItem = (props) => {
   };
 
   const buildRootClass = () => {
-    return `${ROOT_CLASS} ${props.isActive ? ROOT_CLASS + '_active': ''}`;
+    return `${ROOT_CLASS} ${ROOT_CLASS}_${props.page} ${props.isActive ? ROOT_CLASS + '_active': ''}`;
   }
 
   const onClickItem = () => {

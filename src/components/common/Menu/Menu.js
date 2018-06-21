@@ -29,6 +29,7 @@ export const Menu = (props) => {
                 }
                 push={props.push}
                 showPopUp={props.showPopUp}
+                page={props.page}
               />
             </div>
           )}
