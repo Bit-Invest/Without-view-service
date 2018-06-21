@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Page } from '@common/Page';
-import { RadioButtonGroup } from '@common/RadioButtonGroup';
 import { TerminalForm } from '@terminal/TerminalForm';
 import { TradeHistory } from '@terminal/TradeHistory';
 import { OrderBook } from '@terminal/OrderBook';

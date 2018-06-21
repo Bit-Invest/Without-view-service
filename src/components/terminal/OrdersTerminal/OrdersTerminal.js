@@ -8,7 +8,7 @@ export const OrdersTerminal = props => {
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__btn-block`}>
         <div className={`${ROOT_CLASS}__btn`}>Open Orders</div>
-        <div onClick={props.toggleState} className={`${ROOT_CLASS}__btn`}>Fill Orders</div>
+        <div onClick={props.fillOrdersShow} className={`${ROOT_CLASS}__btn`}>Fill Orders</div>
         <div className={`${ROOT_CLASS}__btn`}>Depth of Market</div>
       </div>
       <OpenOrders />

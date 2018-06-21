@@ -5,13 +5,37 @@ export class OrdersTerminalContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isOpenend: false,
+      openOrders: true,
+      fillOrdersShow: false,
+      depthMarket: false
     };
   }
 
-  toggleState = () => {
-    this.setState({ isOpened: !this.state.isOpened });
-    console.log('ok');
+  fillOrdersShow = () => {
+    this.setState({
+      openOrders: false,
+      isOpened: true,
+      depthMarket: false
+    });
+    console.log('fillOrders');
+  }
+
+  depthMarketShow = () => {
+    this.setState({
+      openOrders: false,
+      isOpened: false,
+      depthMarket: true
+    });
+    console.log('depthMarket');
+  }
+
+  openOrdersShow = () => {
+    this.setState({
+      openOrders: true,
+      isOpened: true,
+      depthMarket: false
+    });
+    console.log('openOrders');
   }
 
   render() {
