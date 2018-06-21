@@ -1,10 +1,13 @@
 @import "../../common/Utils/Utils.scss";
 
 .select {
+  position: relative;
+  height: 40px;
   cursor: pointer;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
+
   &__sign-up {
     width: 280px;
-    height: 40px;
     border-radius: 5px;
     border: solid 2px #dddddd;
     @include font(Lato);
@@ -25,12 +28,46 @@
     border-radius: 5px;
     border: solid 2px #dddddd;
   }
-  &_closed {
-    display: none;
+
+  &__options {
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    &_closed {
+      display: none;
+    }
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
+
   }
+
+  &__currentValue {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 14px;
+    padding-right: 14px;
+    height: 100%;
+    line-height: 40px;
+  }
+
+  &__option {
+    padding-left: 14px;
+    height: 40px;
+    line-height: 40px;
+    &:hover {
+      background-color: #ebe5ff;
+    }
+  }
+
   &_terminal {
     width: 200px;
-    height: 50px;
-    border: 1px solid silver;
+  }
+
+  &__arrow {
+    width: 8px;
+    height: 7.1px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(../assets/images/arrow-select.svg)
   }
 }
