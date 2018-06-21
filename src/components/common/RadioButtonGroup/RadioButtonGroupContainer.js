@@ -4,7 +4,6 @@ import { RadioButtonGroup } from './RadioButtonGroup';
 export class RadioButtonGroupContainer extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       activeRadio: 0
     };
