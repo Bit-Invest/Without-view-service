@@ -17,11 +17,27 @@ export const Select = props => {
       onClick={props.handleSelectChange}
       className={buildRootClass()}
     >
-      <div>{props.currentValue}</div>
-        <div className={`${ROOT_CLASS} ${props.isOpenend ? '' : ROOT_CLASS + '_closed'}`}>
-            {props.options.map((option, index) : null =>
-            <div value={option.value} key={index}>{option.label}</div>)}
+      <div className={`${ROOT_CLASS}__currentValue`}>
+        <div className={`${ROOT_CLASS}__value-title`}>
+          {props.currentOption.label}
         </div>
+        <div className={`${ROOT_CLASS}__arrow`}></div>
+      </div>
+      <div className={`${ROOT_CLASS}__options ${props.isOpened ? '' : ROOT_CLASS + '__options_closed'}`}>
+          {props.options.map((option, index) =>
+            <div
+              value={option.value}
+              label={option.label}
+              key={index}
+              onClick={(e) => {
+                props.onSelect({value: option.value, label: option.label})}
+              }
+              className={`${ROOT_CLASS}__option`}
+            >
+              {option.label}
+            </div>
+          )}
+      </div>
     </div>
   );
 };
