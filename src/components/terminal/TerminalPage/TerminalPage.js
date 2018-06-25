@@ -16,8 +16,8 @@ export const TerminalPage = (props) => {
           <TradeHistory />
         </div>
         <div className={`${ROOT_CLASS}__2nd-column`}>
-          <TerminalGraph />
           <TerminalHead />
+          <TerminalGraph />
           <OrdersTerminal />
         </div>
         <div className={`${ROOT_CLASS}__3rd-column`}>
