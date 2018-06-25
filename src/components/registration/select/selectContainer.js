@@ -5,7 +5,7 @@ export class selectContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isOpened: true,
+      isOpened: false,
       currentOption: {
         label: props.defaultOption ? props.defaultOption.label : '',
         value: props.defaultOption ? props.defaultOption.value : ''
@@ -20,7 +20,6 @@ export class selectContainer extends React.Component {
   }
 
   handleSelectChange = () => {
-    console.log('@@@@');
     this.setState({ isOpened: !this.state.isOpened });
   }
 

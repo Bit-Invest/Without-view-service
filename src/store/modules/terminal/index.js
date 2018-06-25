@@ -1,1 +1,1 @@
-export { terminal, placeLimitOrder } from './terminal';
+export { terminal, placeLimitOrder, tradeHistory } from './terminal';
