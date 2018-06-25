@@ -1,17 +1,21 @@
 import * as React from 'react';
-import { Inpit } from './Input';
+import { Input } from './Input';
 
 export class InputContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentValue: ''
+      currentValue: '',
+      isError: false
     };
   }
 
   render() {
     return (
-      <Input />
+      <Input
+        {...this.props}
+        onInput={this.onInput.bind(this)}
+      />
     );
   }
 
