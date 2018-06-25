@@ -14,13 +14,21 @@ export class selectContainer extends React.Component {
   }
 
   onSelect = (option) => {
-    console.log(option);
     this.props.onChange && this.props.onChange(option);
-    this.setState({currentOption: option});
+    this.setState({currentOption: option, isOpened: false});
   }
 
   handleSelectChange = () => {
-    this.setState({ isOpened: !this.state.isOpened });
+    this.setState({ isOpened: !this.state.isOpened }, () => {
+      if (this.state.isOpened) {
+        document.addEventListener('click', this.handleOutsideClick);
+      }
+    });
+  }
+
+  handleOutsideClick = () => {
+    this.setState({ isOpened: false });
+    document.removeEventListener('click', this.handleOutsideClick);
   }
 
   render() {

@@ -24,20 +24,8 @@ export const TerminalGraph = () => (
             display: true,
             position: 'right',
           }]
-        }}
-        options={{
-          scales: {
-            xAxes: [{
-              display: true,
-              position: 'bottom'
-            }],
-            yAxes: [{
-              display: true,
-              position: 'right',
-            }]
-          }
-        }}
-      />
-    </div>
+        }
+      }}
+    />
   </div>
 );
