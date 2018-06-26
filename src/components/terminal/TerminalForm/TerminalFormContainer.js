@@ -22,16 +22,7 @@ export class TerminalFormContainer extends React.Component {
 
   render() {
     return (
-      <TerminalForm
-        handleSubmit={this.handleSubmit.bind(this)}
-        handleEnter={this.handleEnter}
-        price={this.state.price}
-        value={this.state.value}
-        total={this.state.total}
-        type={this.props.type}
-        nameBtn={this.props.nameBtn}
-        orderType={this.props.orderType}
-      />
+      <TerminalForm />
     );
   }
 }

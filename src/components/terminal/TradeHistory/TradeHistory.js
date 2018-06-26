@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { HistoryList } from '@terminal/HistoryList';
+import { Utils } from '@common/Utils';
 
 const ROOT_CLASS = 'trader-history';
 
@@ -13,10 +14,16 @@ export const TradeHistory = props => {
         <div className={`${ROOT_CLASS}__name-list`}>Time</div>
       </div>
       <div className={`${ROOT_CLASS}__list`}>
-        <HistoryList />
-        <HistoryList />
-        <HistoryList />
-        <HistoryList />
+        {props.history.map((trade, index) => {
+          return (
+            <HistoryList
+              price={trade.price}
+              qty={trade.quantity}
+              time={Utils.convertDateForTerminal(trade.time)}
+              key={index}
+            />
+          )
+        })}
       </div>
     </div>
   )

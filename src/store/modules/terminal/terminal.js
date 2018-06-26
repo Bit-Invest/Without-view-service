@@ -3,18 +3,28 @@ import { LocalStorage } from '@common/Utils';
 export const PLACE_LIMIT_ORDER = 'terminal/PLACE_LIMIT_ORDER';
 export const TRADE_HISTORY_SUCCESS = 'terminal/TRADE_HISTORY_SUCCESS';
 export const TRADE_HISTORY = 'terminal/TRADE_HISTORY';
+export const ORDER_BOOK = 'terminal/ORDER_BOOK';
+export const ORDER_BOOK_SUCCESS = 'terminal/ORDER_BOOK_SUCCESS';
 
 const initialState = {
-  historyList: null
+  historyList: [],
+  orderBook: {
+    asks: [],
+    bids: []
+  }
 };
 
 export const terminal = (state = initialState, action) => {
   switch (action.type) {
     case TRADE_HISTORY_SUCCESS:
-      console.log(action);
       return {
         ...state,
         historyList: action.payload.data
+      };
+    case ORDER_BOOK_SUCCESS:
+      return {
+        ...state,
+        orderBook: action.payload.data
       };
     default:
       return state;
@@ -53,4 +63,20 @@ export const tradeHistory = (userData) => {
       }
     }
   };
+}
+
+export const orderBook = (data) => {
+  return {
+    type: ORDER_BOOK,
+    payload: {
+      request: {
+        method: 'POST',
+        url: '/api/user/orderbook',
+        data: data,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
 }

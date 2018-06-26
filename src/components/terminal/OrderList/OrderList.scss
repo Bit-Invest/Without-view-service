@@ -9,7 +9,12 @@
   &__price-currency {
     @include font(Lato);
     font-size: 12px;
-    color: #ff4040;
+    &_ask {
+      color: #ff4040;
+    }
+    &_bid {
+      color: #8bc34a;
+    }
   }
   &__volume {
     @include font(Lato);

@@ -12,11 +12,17 @@ export const OrderBook = props => {
         <div className={`${ROOT_CLASS}__name-list`}>Volume</div>
         <div className={`${ROOT_CLASS}__name-list`}>Total volume</div>
       </div>
-      <div className={`${ROOT_CLASS}__list`}>
-        <OrderList />
-        <OrderList />
-        <OrderList />
-        <OrderList />
+      <div className={`${ROOT_CLASS}__list ${ROOT_CLASS}__list_asks`}>
+        {props.asks.map((ask, index) => {
+          return (
+            <OrderList
+              price={ask.price}
+              volume={ask.quantity}
+              type="ask"
+              key={ask.price}
+            />
+          );
+        })}
       </div>
       <div className={`${ROOT_CLASS}__price-block`}>
         <div className={`${ROOT_CLASS}__name-price`}>Price.EUR</div>
@@ -25,11 +31,17 @@ export const OrderBook = props => {
           <div className={`${ROOT_CLASS}__usd-price`}>($ 7974.32){props.usdPrice}</div>
         </div>
       </div>
-      <div className={`${ROOT_CLASS}__list`}>
-        <OrderList />
-        <OrderList />
-        <OrderList />
-        <OrderList />
+      <div className={`${ROOT_CLASS}__list ${ROOT_CLASS}__list_bids`}>
+        {props.bids.map((bid, index) => {
+          return (
+            <OrderList
+              price={bid.price}
+              volume={bid.quantity}
+              type="bid"
+              key={bid.price}
+            />
+          );
+        })}
       </div>
     </div>
   )

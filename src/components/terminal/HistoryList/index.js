@@ -1,1 +1,1 @@
-export { HistoryListContainer as HistoryList } from './HistoryListContainer';
+export { HistoryList } from './HistoryList';

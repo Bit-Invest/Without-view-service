@@ -13,7 +13,7 @@ export const TerminalPage = (props) => {
     <Page isLoaded={props.isLoaded}>
       <div className={ROOT_CLASS}>
         <div className={`${ROOT_CLASS}__1st-column`}>
-          <TradeHistory />
+          <TradeHistory history={props.history} />
         </div>
         <div className={`${ROOT_CLASS}__2nd-column`}>
           <TerminalHead />
@@ -21,7 +21,10 @@ export const TerminalPage = (props) => {
           <OrdersTerminal />
         </div>
         <div className={`${ROOT_CLASS}__3rd-column`}>
-          <OrderBook />
+          <OrderBook
+            asks={props.orderBook.asks}
+            bids={props.orderBook.bids}
+          />
         </div>
       </div>
     </Page>

@@ -35,4 +35,4 @@ export const Input = (props) => (
     {renderTip(props)}
     {renderStar(props)}
   </div>
-)
+);
