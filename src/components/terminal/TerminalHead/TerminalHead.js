@@ -6,70 +6,64 @@ const ROOT_CLASS = 'terminal-head';
 export const TerminalHead = props => {
   return (
     <div className={ROOT_CLASS}>
-      <Select
-        onChange={props.handleEnter}
-        name='select'
-        theme='terminal'
-        value='Binnance'
-        defaultOption={
-          {
-            value: 'Binnance',
-            label: 'Binnance'
+      <div className={`${ROOT_CLASS}__stock-select`}>
+        <Select
+          onChange={props.handleEnter}
+          name='select'
+          theme='terminal'
+          value='Binnance'
+          defaultOption={
+            {
+              value: 'Binnance',
+              label: 'Binnance'
+            }
           }
-        }
-        options={[
-          {
-            value: 'Binnance',
-            label: 'Binnance'
-          },
-          {
-            value: 'investor',
-            label: 'Investor'
+          options={[
+            {
+              value: 'Binnance',
+              label: 'Binnance'
+            }
+          ]}
+        />
+      </div>
+      <div className={`${ROOT_CLASS}__pair-select`}>
+        <Select
+          onChange={props.handleEnter}
+          name='select'
+          theme='terminal'
+          defaultOption={
+            {
+              value: 'BTCETH',
+              label: 'BTC / ETH'
+            }
           }
-        ]}
-      />
-      <Select
-        onChange={props.handleEnter}
-        name='select'
-        theme='terminal'
-        defaultOption={
-          {
-            value: 'BTC / ETH',
-            label: 'BTC / ETH'
+          options={[
+            {
+              value: 'BTCETH',
+              label: 'BTC / ETH'
+            }
+          ]}
+        />
+      </div>
+      <div className={`${ROOT_CLASS}__type-select`}>
+        <Select
+          onChange={props.handleEnter}
+          name='select'
+          theme='terminal'
+          defaultOption={
+            {
+              value: 'Line',
+              label: 'Line'
+            }
           }
-        }
-        options={[
-          {
-            value: 'BTC / ETH',
-            label: 'BTC / ETH'
-          },
-          {
-            value: 'investor',
-            label: 'Investor'
-          }
-        ]}
-      />
-      <Select
-        onChange={props.handleEnter}
-        name='select'
-        theme='terminal'
-        defaultOption={
-          {
-            value: 'Line',
-            label: 'investor'
-          }
-        }
-        options={[
-          {
-            value: 'Line',
-            label: 'Line'
-          },
-          {
-            value: 'investor',
-            label: 'Investor'
-          }
-        ]}
-      />
+          options={[
+            {
+              value: 'Line',
+              label: 'Line'
+            }
+          ]}
+        />
+      </div>
     </div>
   )
 }

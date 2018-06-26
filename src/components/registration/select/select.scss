@@ -33,6 +33,8 @@
     position: absolute;
     width: 100%;
     background-color: #fff;
+    z-index: 1;
+
     &_closed {
       display: none;
     }
@@ -71,4 +73,12 @@
     background-repeat: no-repeat;
     background-image: url(../assets/images/arrow-select.svg)
   }
+}
+
+.select_terminal {
+  width: 100%;
+  @include font(Lato-Bold);
+  font-size: 12px;
+  box-shadow: none;
+  border-right: 1px solid #ddd;
 }
