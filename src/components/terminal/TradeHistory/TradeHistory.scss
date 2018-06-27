@@ -28,5 +28,6 @@
   }
   &__list {
     overflow-y: auto;
+    height: calc(100% - 55px);
   }
 }

@@ -10,7 +10,7 @@ export const OrderBook = props => {
       <div className={`${ROOT_CLASS}__list-block`}>
         <div className={`${ROOT_CLASS}__name-list`}>Price.EUR</div>
         <div className={`${ROOT_CLASS}__name-list`}>Volume</div>
-        <div className={`${ROOT_CLASS}__name-list`}>Total volume</div>
+        <div className={`${ROOT_CLASS}__name-list ${ROOT_CLASS}__name-list_total`}>Total volume</div>
       </div>
       <div className={`${ROOT_CLASS}__list ${ROOT_CLASS}__list_asks`}>
         {props.asks.map((ask, index) => {

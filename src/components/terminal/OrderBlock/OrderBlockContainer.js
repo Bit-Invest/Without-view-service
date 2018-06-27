@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { OrderBlock } from './OrderBlock';
 
-class OrderBlockContainer extends React.Component {
+export class OrderBlockContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -8,7 +9,16 @@ class OrderBlockContainer extends React.Component {
     };
   }
 
+  onClickType = (type) => {
+    this.setState({currentOrder: type});
+  }
+
   render() {
-    return ();
+    return (
+      <OrderBlock
+        activeType={this.state.currentOrder}
+        onClickType={this.onClickType}
+      />
+    );
   }
 }

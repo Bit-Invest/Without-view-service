@@ -1,0 +1,32 @@
+@import "../../common/Utils/Utils.scss";
+
+.order-block {
+  background-color: #fff;
+
+  &__order-types {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__order-type {
+    cursor: pointer;
+    width: 108px;
+    height: 28px;
+    border-radius: 2px;
+    @include font(Lato);
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    background-color: #cccccc;
+  }
+}
+
+.order-block__order-type_sell.order-block__order-type_active {
+  background-color: #ff4040;
+}
+.order-block__order-type_buy.order-block__order-type_active {
+  background-color: #8bc34a;
+
+}

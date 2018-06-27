@@ -17,12 +17,11 @@ export class TerminalFormContainer extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state, this.props.type);
   }
 
   render() {
     return (
-      <TerminalForm />
+      <TerminalForm type={this.props.type} />
     );
   }
 }

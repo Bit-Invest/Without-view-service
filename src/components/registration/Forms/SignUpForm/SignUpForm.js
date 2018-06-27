@@ -14,22 +14,30 @@ export const SignUpForm = props => {
       className="SignUpForms__RegistrationForm"
       onSubmit={props.handleSubmit}>
       <div className="title">Sign Up</div>
-      <div className='SignUpForms__RegistrationForm__error-block'>{props.errorMessage}</div>
-      <Select
-        onChange={props.handleEnter}
-        name="select"
-        theme="sign-up"
-        options={[
-          {
+      <div className='SignUpForms__RegistrationForm__error-block'>
+        {props.errorMessage}
+      </div>
+      <div className="SignUpForms__select-wrap">
+        <Select
+          onChange={props.handleEnter}
+          name="select"
+          theme="sign-up"
+          defaultOption={{
             value: 'trader',
             label: 'Trader'
-          },
-          {
-            value: 'investor',
-            label: 'Investor'
-          }
-        ]}
-      />
+          }}
+          options={[
+            {
+              value: 'trader',
+              label: 'Trader'
+            },
+            {
+              value: 'investor',
+              label: 'Investor'
+            }
+          ]}
+        />
+      </div>
       <div className={`SignUpForms__input-wrap`}>
         <Input
           onChange={props.handleEnter}

@@ -5,6 +5,8 @@ export const TRADE_HISTORY_SUCCESS = 'terminal/TRADE_HISTORY_SUCCESS';
 export const TRADE_HISTORY = 'terminal/TRADE_HISTORY';
 export const ORDER_BOOK = 'terminal/ORDER_BOOK';
 export const ORDER_BOOK_SUCCESS = 'terminal/ORDER_BOOK_SUCCESS';
+export const MARKET_DATA = 'terminal/MARKET_DATA';
+export const MARKET_DATA_SUCCESS = 'terminal/MARKET_DATA_SUCCESS';
 
 const initialState = {
   historyList: [],
@@ -26,6 +28,9 @@ export const terminal = (state = initialState, action) => {
         ...state,
         orderBook: action.payload.data
       };
+    case MARKET_DATA_SUCCESS:
+      console.log(action.payload);
+      return state;
     default:
       return state;
   }
@@ -73,6 +78,29 @@ export const orderBook = (data) => {
         method: 'POST',
         url: '/api/user/orderbook',
         data: data,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
+}
+
+export const marketData = () => {
+  return {
+    type: MARKET_DATA,
+    payload: {
+      request: {
+        url: '/api/user/marketdata',
+        method: 'POST',
+        data: {
+          "eventTime": {
+            "gte": 1530014465507,
+            "lt": 1530111628510
+          },
+          "symbol": "ETHBTC",
+          "nameStock": "binance"
+        },
         headers: {
           Authorization: LocalStorage.getItem('token')
         }

@@ -10,7 +10,6 @@ export const Select = props => {
       (props.theme ? ` ${ROOT_CLASS}_${props.theme}` : '')
     );
   };
-
   return (
     <div
       name={props.name}
@@ -30,7 +29,12 @@ export const Select = props => {
               label={option.label}
               key={index}
               onClick={(e) => {
-                props.onSelect({value: option.value, label: option.label})}
+                let event = e;
+                event.target.value = option.value;
+                event.payload =
+                  {value: option.value, label: option.label};
+                event.target.name = props.name;
+                props.onSelect(event)}
               }
               className={`${ROOT_CLASS}__option`}
             >

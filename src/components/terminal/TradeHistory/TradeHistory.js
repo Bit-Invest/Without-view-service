@@ -20,6 +20,7 @@ export const TradeHistory = props => {
               price={trade.price}
               qty={trade.quantity}
               time={Utils.convertDateForTerminal(trade.time)}
+              isUp={trade.isBuyerMaker}
               key={index}
             />
           )

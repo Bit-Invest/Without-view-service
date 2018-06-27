@@ -76,3 +76,13 @@
   width: 280px;
   margin-bottom: 10px;
 }
+.SignUpForms__select-wrap {
+  width: 280px;
+  margin-bottom: 10px;
+
+  .select {
+    box-shadow: none;
+    border-radius: 5px;
+    border: solid 2px #dddddd;
+  }
+}

@@ -5,5 +5,6 @@ export {
   hidePopUp,
   networkError,
   addAlert,
-  removeAlert
+  removeAlert,
+  getPairs
 } from './common';

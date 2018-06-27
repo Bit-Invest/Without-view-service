@@ -4,10 +4,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { placeLimitOrder } from '@store/modules/terminal';
 import { LocalStorage } from '@common/Utils';
-import { checkJWT } from '@store/modules/common';
+import { checkJWT, getPairs } from '@store/modules/common';
 import { push } from 'react-router-redux';
 import { userLogIn } from '@store/modules/user';
-import { orderBook, tradeHistory } from '@store/modules/terminal';
+import { orderBook, tradeHistory, marketData } from '@store/modules/terminal';
 
 const OrderTypes = ['Limit', 'Market'];
 
@@ -21,6 +21,7 @@ class TerminalPageContainer extends React.Component {
   }
 
   componentWillMount() {
+    this.props.marketData();
     this.checkRedirect().then(() => {
       Promise.all([
         this.props.orderBook({
@@ -56,7 +57,6 @@ class TerminalPageContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <TerminalPage
         currentOrder={this.state.currentOrder}
@@ -96,7 +96,9 @@ const mapDispatchToProps = dispatch =>
     push,
     userLogIn,
     orderBook,
-    tradeHistory
+    tradeHistory,
+    getPairs,
+    marketData
   }, dispatch);
 
 const connectedContainer =

@@ -1,1 +1,7 @@
-export { terminal, placeLimitOrder, tradeHistory, orderBook } from './terminal';
+export {
+  terminal,
+  placeLimitOrder,
+  tradeHistory,
+  orderBook,
+  marketData
+} from './terminal';

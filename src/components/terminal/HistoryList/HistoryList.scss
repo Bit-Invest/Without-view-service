@@ -15,6 +15,9 @@
     @include font(Lato);
     font-size: 12px;
     color: #ff4040;
+    &_up {
+      color: #8bc34a;
+    }
   }
   &__time {
     @include font(Lato);
