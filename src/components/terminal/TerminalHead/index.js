@@ -1,1 +1,1 @@
-export { TerminalHead } from './TerminalHead';
+export { TerminalHeadContainer as TerminalHead } from './TerminalHeadContainer';

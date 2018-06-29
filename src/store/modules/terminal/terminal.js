@@ -7,13 +7,26 @@ export const ORDER_BOOK = 'terminal/ORDER_BOOK';
 export const ORDER_BOOK_SUCCESS = 'terminal/ORDER_BOOK_SUCCESS';
 export const MARKET_DATA = 'terminal/MARKET_DATA';
 export const MARKET_DATA_SUCCESS = 'terminal/MARKET_DATA_SUCCESS';
+export const OPEN_ORDERS = 'terminal/OPEN_ORDERS';
+export const OPEN_ORDERS_SUCCESS = 'terminal/OPEN_ORDERS_SUCCESS';
+export const GET_PAIRS = 'terminal/GET_PAIRS';
+export const GET_PAIRS_SUCCESS = 'terminal/GET_PAIRS_SUCCESS';
 
 const initialState = {
   historyList: [],
   orderBook: {
     asks: [],
     bids: []
-  }
+  },
+  openOrders: [],
+  currentPair: {
+    symbol: "ETHBTC",
+    baseAsset: "ETH",
+    baseAssetPrecision: "8",
+    quoteAsset: "BTC",
+    quotePrecision: 8
+  },
+  pairs: []
 };
 
 export const terminal = (state = initialState, action) => {
@@ -28,8 +41,17 @@ export const terminal = (state = initialState, action) => {
         ...state,
         orderBook: action.payload.data
       };
+    case OPEN_ORDERS_SUCCESS:
+      return {
+        ...state,
+        openOrders: action.payload.data
+      };
+    case GET_PAIRS_SUCCESS:
+      return {
+        ...state,
+        pairs: action.payload.data
+      };
     case MARKET_DATA_SUCCESS:
-      console.log(action.payload);
       return state;
     default:
       return state;
@@ -104,6 +126,34 @@ export const marketData = () => {
         headers: {
           Authorization: LocalStorage.getItem('token')
         }
+      }
+    }
+  }
+}
+
+export const openOrders = (data) => {
+  return {
+    type: OPEN_ORDERS,
+    payload: {
+      request: {
+        url: '/api/user/openorders',
+        method: 'POST',
+        data: data,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
+}
+
+export const getPairs = (stock) => {
+  return {
+    type: GET_PAIRS,
+    payload: {
+      request: {
+        url: `/api/exchangeInfo`,
+        method: 'GET'
       }
     }
   }

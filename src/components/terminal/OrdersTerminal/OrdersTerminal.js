@@ -12,7 +12,7 @@ export const OrdersTerminal = props => {
         tabs={[
           {
             title: 'Open Orders',
-            content: <OpenOrders />
+            content: <OpenOrders orders={props.openOrders} />
           },
           {
             title: 'Fill Orders',

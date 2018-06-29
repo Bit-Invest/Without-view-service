@@ -21,7 +21,7 @@ export class TerminalFormContainer extends React.Component {
 
   render() {
     return (
-      <TerminalForm type={this.props.type} />
+      <TerminalForm type={this.props.type} orderType={this.props.orderType} />
     );
   }
 }

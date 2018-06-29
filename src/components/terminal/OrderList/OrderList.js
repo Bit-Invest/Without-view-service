@@ -11,7 +11,7 @@ export const OrderList = props => {
         {props.price}
       </div>
       <div className={`${ROOT_CLASS}__volume`}>{props.volume}</div>
-      <div className={`${ROOT_CLASS}__total-volume`}>{props.time}</div>
+      <div className={`${ROOT_CLASS}__total-volume`}>{props.total}</div>
     </div>
   )
 }

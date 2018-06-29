@@ -3,5 +3,7 @@ export {
   placeLimitOrder,
   tradeHistory,
   orderBook,
-  marketData
+  marketData,
+  openOrders,
+  getPairs
 } from './terminal';

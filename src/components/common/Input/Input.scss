@@ -51,10 +51,33 @@
     color: #ff4040;
   }
 }
-
+$terminalPlaceholder: #ccc;
 .input_terminal {
   border: 1px solid #ddd;
   font-size: 14px;
-  padding-left: 15px;
   border-radius: 2px;
+
+  .input__tip {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+  }
+
+  .input__input {
+    &::-webkit-input-placeholder {
+      color: $terminalPlaceholder;
+    }
+
+    &::-moz-placeholder {
+      color: $terminalPlaceholder;
+    }
+
+    &:-ms-input-placeholder {
+      color: $terminalPlaceholder;
+    }
+
+    &:-moz-placeholder {
+      color: $terminalPlaceholder;
+    }
+  }
 }

@@ -5,6 +5,7 @@
   margin: 10px 20px;
   display: flex;
   overflow-y: auto;
+  justify-content: space-between;
   &__data-list {
     width: 100px;
     margin-right: 40px;

@@ -6,6 +6,7 @@ const ROOT_CLASS = 'terminal-graph';
 export const TerminalGraph = () => (
   <div className={ROOT_CLASS}>
     <Line
+      height={120}
       data={{
         labels: ["12 jun", "13 jun", "14 jun", "15 jun", "16 jun", "17 jun"],
         datasets: [{

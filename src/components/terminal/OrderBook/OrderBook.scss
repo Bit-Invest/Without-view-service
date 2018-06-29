@@ -15,7 +15,7 @@
   &__list-block {
     display: flex;
     justify-content: space-between;
-    padding: 5px 20px 5px 10px;
+    padding: 5px 10px 5px 10px;
     margin-top: 10px;
     width: 240px;
     font-size: 12px;
@@ -26,8 +26,8 @@
     font-size: 12px;
     color: #182549;
 
-    &_total {
-      display: none;
+    &_volume {
+      margin-left: 10px;
     }
   }
   &__price-block {

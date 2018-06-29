@@ -1,16 +1,16 @@
 import * as React from 'react';
+import { OrderTimer } from '@terminal/OrderTimer';
 
 const ROOT_CLASS = 'open-order-list';
 
 export const OpenOrderList = props => {
   return (
     <div className={ROOT_CLASS}>
-      <div className={`${ROOT_CLASS}__data-list`}>4d 3h 6m 18s</div>
-      <div className={`${ROOT_CLASS}__price-list`}>0.00019210</div>
-      <div className={`${ROOT_CLASS}__data-list`}>65.839673334</div>
-      <div className={`${ROOT_CLASS}__data-list`}>65.839673334</div>
-      <div className={`${ROOT_CLASS}__data-list`}>0.01264780</div>
-      <div className={`${ROOT_CLASS}__status-list`}>close</div>
+      <OrderTimer time={props.time} />
+      <div className={`${ROOT_CLASS}__price-list`}>{props.price}</div>
+      <div className={`${ROOT_CLASS}__data-list`}>{props.origin}</div>
+      <div className={`${ROOT_CLASS}__data-list`}>{props.remain}</div>
+      <div className={`${ROOT_CLASS}__data-list`}>{props.total}</div>
     </div>
   )
 }

@@ -14,6 +14,7 @@ export class selectContainer extends React.Component {
   }
 
   onSelect = (option) => {
+    console.log(this.props.onChange);
     this.props.onChange && this.props.onChange(option);
     this.setState({currentOption: option.payload, isOpened: false});
   }

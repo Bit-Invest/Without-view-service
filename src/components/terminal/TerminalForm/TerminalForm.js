@@ -5,7 +5,6 @@ import { Input } from '@common/Input';
 const ROOT_CLASS = 'terminal-form';
 
 export const TerminalForm = (props) => {
-  console.log(props);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__quantity-wrap`}>
@@ -20,12 +19,14 @@ export const TerminalForm = (props) => {
       </div>
       <div className={`${ROOT_CLASS}__limit-wrap`}>
         <div className={`${ROOT_CLASS}__input-title ${ROOT_CLASS}__limit-title`}>
-          Limit Price
+          {props.orderType} Price
         </div>
         <Input
           theme="terminal"
           placeholder="0.00"
           tip="ETH"
+          disabled={props.orderType === 'Market' ? true : false}
+          value={props.orderType === 'Market' ? props.marketValue : ''}
         />
       </div>
       <div

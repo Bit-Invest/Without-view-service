@@ -33,3 +33,15 @@ export const convertDateForTerminal = (timestamp) => {
   const year = `${date.getFullYear().toString()[2]}${date.getFullYear().toString()[3]}`;
   return `${day}.${month}.${year}`;
 }
+
+export const convertDateForOrders = (timestamp) => {
+  const now = Date.now();
+  const diff = now - timestamp;
+  return {
+    seconds: Math.floor(diff / 1000 % 60),
+    minutes: Math.floor(diff / 1000 / 60 % 60),
+    hours: Math.floor(diff / 1000 / 60 / 60 % 24),
+    days: Math.floor(diff / 1000 / 60 / 60 / 24 % 7),
+    weeks: Math.floor(diff / 1000 / 60 / 60 / 24 / 7)
+  };
+}

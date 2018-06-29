@@ -4,6 +4,7 @@ import { OpenOrderList } from '@terminal/OpenOrderList';
 const ROOT_CLASS = 'open-orders';
 
 export const OpenOrders = props => {
+  console.log(props.orders);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__list-name`}>
@@ -14,11 +15,17 @@ export const OpenOrders = props => {
         <div className={`${ROOT_CLASS}__name`}>Total</div>
       </div>
       <div className={`${ROOT_CLASS}__hr`}></div>
-      <OpenOrderList />
-      <OpenOrderList />
-      <OpenOrderList />
-      <OpenOrderList />
-      <OpenOrderList />
+      <div className={`${ROOT_CLASS}__orders`}>
+        {props.orders.map((order, index) =>
+          <OpenOrderList
+            time={order.time}
+            price={order.price}
+            origin={order.origQty}
+            remain={order.executedQty}
+            total={order.price * order.origQty}
+          />
+        )}
+      </div>
     </div>
   )
 }

@@ -31,6 +31,7 @@ export const Input = (props) => (
       type={props.type ? props.type : ''}
       name={props.name ? props.name : ''}
       placeholder={props.placeholder ? props.placeholder : ''}
+      disabled={props.disabled}
     />
     {renderTip(props)}
     {renderStar(props)}

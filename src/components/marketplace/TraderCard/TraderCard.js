@@ -9,7 +9,7 @@ const ROOT_CLASS = 'trader-card';
 export const TraderCard = props => {
 
   return (
-    <div className={ROOT_CLASS}>
+    <div className={ROOT_CLASS} onClick={props.onClick}>
       <div className={`${ROOT_CLASS}__block-exchange`}>
         <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
         <div className={`${ROOT_CLASS}__currencyPair`}>BTC/ETH</div>

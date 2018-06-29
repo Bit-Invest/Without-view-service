@@ -4,10 +4,17 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { placeLimitOrder } from '@store/modules/terminal';
 import { LocalStorage } from '@common/Utils';
-import { checkJWT, getPairs } from '@store/modules/common';
+import { checkJWT } from '@store/modules/common';
 import { push } from 'react-router-redux';
 import { userLogIn } from '@store/modules/user';
-import { orderBook, tradeHistory, marketData } from '@store/modules/terminal';
+import {
+  orderBook,
+  tradeHistory,
+  marketData,
+  openOrders,
+  getPairs
+} from '@store/modules/terminal';
+import { Utils } from '@common/Utils';
 
 const OrderTypes = ['Limit', 'Market'];
 
@@ -21,7 +28,6 @@ class TerminalPageContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.marketData();
     this.checkRedirect().then(() => {
       Promise.all([
         this.props.orderBook({
@@ -31,10 +37,15 @@ class TerminalPageContainer extends React.Component {
         this.props.tradeHistory({
           symbol: 'ETHBTC',
           stock: 'binance'
-        })
+        }),
+        this.props.openOrders({
+          symbol: 'XLMETH',
+          stock: 'binance'
+        }),
+        this.props.getPairs()
       ]).then(() => {
         this.setState({isLoaded: true});
-      })
+      });
     });
   }
 
@@ -65,6 +76,7 @@ class TerminalPageContainer extends React.Component {
         isLoaded={this.state.isLoaded}
         history={this.props.data.historyList}
         orderBook={this.props.data.orderBook}
+        openOrders={this.props.data.openOrders}
       />
     );
   }
@@ -97,8 +109,9 @@ const mapDispatchToProps = dispatch =>
     userLogIn,
     orderBook,
     tradeHistory,
-    getPairs,
-    marketData
+    marketData,
+    openOrders,
+    getPairs
   }, dispatch);
 
 const connectedContainer =

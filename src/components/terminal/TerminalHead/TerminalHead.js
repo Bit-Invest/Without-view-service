@@ -4,11 +4,12 @@ import { Select } from '@registration/select';
 const ROOT_CLASS = 'terminal-head';
 
 export const TerminalHead = props => {
+  console.log(props);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__stock-select`}>
         <Select
-          onChange={props.handleEnter}
+          onChange={props.onSelectStock}
           name='select'
           theme='terminal'
           value='Binnance'
@@ -28,13 +29,14 @@ export const TerminalHead = props => {
       </div>
       <div className={`${ROOT_CLASS}__pair-select`}>
         <Select
-          onChange={props.handleEnter}
+          onChange={props.onSelectPair}
           name='select'
           theme='terminal'
           defaultOption={
             {
-              value: 'BTCETH',
-              label: 'BTC / ETH'
+              value: props.currentPair.symbol,
+              label: `${props.currentPair.baseAsset}${' '}
+                / ${props.currentPair.quoteAsset}`
             }
           }
           options={[

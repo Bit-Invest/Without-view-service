@@ -7,8 +7,6 @@ export const HIDE_POP_UP = 'common/HIDE_POP_UP';
 export const NETWORK_ERROR = 'common/NETWORK_ERROR';
 export const ADD_ALERT = 'common/ADD_ALERT';
 export const REMOVE_ALERT = 'common/REMOVE_ALERT';
-export const GET_PAIRS = 'common/GET_PAIRS';
-export const GET_PAIRS_SUCCESS = 'common/GET_PAIRS_SUCCESS';
 
 const initialState = {
   currentPopUp: null,
@@ -47,9 +45,6 @@ export const common = (state = initialState, action) => {
         ...state,
         alerts: Utils.allExclude(action.payload, state.alerts)
       };
-    case GET_PAIRS_SUCCESS:
-      console.log(action.payload);
-      return state;
     default:
       return state;
   }
@@ -104,16 +99,4 @@ export const removeAlert = (alertId) => {
     type: REMOVE_ALERT,
     payload: alertId
   };
-}
-
-export const getPairs = (stock) => {
-  return {
-    type: GET_PAIRS,
-    payload: {
-      request: {
-        url: `/api/exchangeInfo`,
-        method: 'GET'
-      }
-    }
-  }
 }

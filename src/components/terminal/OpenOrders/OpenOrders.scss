@@ -8,11 +8,11 @@
   &__list-name {
     padding:10px 20px;
     display: flex;
+    justify-content: space-between;
   }
   &__name {
     @include font(Lato-Bold);
-    margin-right: 40px;
-    width: 100px;
+    width: 70px;
     height: 16px;
     font-size: 14px;
     color: #000000;
