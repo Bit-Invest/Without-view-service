@@ -45,3 +45,8 @@ export const convertDateForOrders = (timestamp) => {
     weeks: Math.floor(diff / 1000 / 60 / 60 / 24 / 7)
   };
 }
+
+export const convertTimeForLabel = (timestamp) => {
+  const date = new Date(timestamp);
+  return `${date.getHours() <= 9 ? '0' + date.getHours() : date.getHours()}:${date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()}`;
+}

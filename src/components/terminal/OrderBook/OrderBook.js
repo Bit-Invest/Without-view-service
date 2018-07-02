@@ -5,7 +5,8 @@ const ROOT_CLASS = 'order-book';
 
 const formatTotal = (total) => {
   const totalArr = total.split('.');
-  return `${totalArr[0]}.${totalArr[1].substring(0, 3)}${totalArr[1].length < 3 ? fillZeros(3 - totalArr[1].length) : ''}`;
+  const result = totalArr.length > 1 ? `${totalArr[0]}.${totalArr[1].substring(0, 3)}${totalArr[1].length < 3 ? fillZeros(3 - totalArr[1].length) : ''}` : totalArr[0];
+  return result;
 }
 
 const fillZeros = (num) => {

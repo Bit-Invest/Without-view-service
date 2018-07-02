@@ -5,5 +5,6 @@ export {
   orderBook,
   marketData,
   openOrders,
-  getPairs
+  getPairs,
+  setCurrentPair
 } from './terminal';

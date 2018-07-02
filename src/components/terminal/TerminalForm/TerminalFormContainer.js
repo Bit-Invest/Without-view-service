@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { TerminalForm } from './TerminalForm';
+import { connect } from 'react-redux';
 
-export class TerminalFormContainer extends React.Component {
+class TerminalFormContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -21,7 +22,20 @@ export class TerminalFormContainer extends React.Component {
 
   render() {
     return (
-      <TerminalForm type={this.props.type} orderType={this.props.orderType} />
+      <TerminalForm
+        type={this.props.type}
+        orderType={this.props.orderType}
+        currentPair={this.props.currentPair}
+      />
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {currentPair: state.terminal.currentPair};
+}
+
+const connectedContainer =
+  connect(mapStateToProps, null)(TerminalFormContainer);
+
+export { connectedContainer as TerminalFormContainer };

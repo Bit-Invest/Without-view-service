@@ -11,6 +11,7 @@ export const OPEN_ORDERS = 'terminal/OPEN_ORDERS';
 export const OPEN_ORDERS_SUCCESS = 'terminal/OPEN_ORDERS_SUCCESS';
 export const GET_PAIRS = 'terminal/GET_PAIRS';
 export const GET_PAIRS_SUCCESS = 'terminal/GET_PAIRS_SUCCESS';
+export const SET_CURRENT_PAIR = 'terminal/SET_CURRENT_PAIR';
 
 const initialState = {
   historyList: [],
@@ -26,7 +27,12 @@ const initialState = {
     quoteAsset: "BTC",
     quotePrecision: 8
   },
-  pairs: []
+  pairs: [],
+  currentStock: 'binance',
+  chart: {
+    lables: [],
+    values: []
+  }
 };
 
 export const terminal = (state = initialState, action) => {
@@ -51,8 +57,16 @@ export const terminal = (state = initialState, action) => {
         ...state,
         pairs: action.payload.data
       };
+    case SET_CURRENT_PAIR:
+      return {
+        ...state,
+        currentPair: action.payload
+      };
     case MARKET_DATA_SUCCESS:
-      return state;
+      return {
+        ...state,
+        chart: action.payload.data
+      };
     default:
       return state;
   }
@@ -108,21 +122,14 @@ export const orderBook = (data) => {
   }
 }
 
-export const marketData = () => {
+export const marketData = (data) => {
   return {
     type: MARKET_DATA,
     payload: {
       request: {
         url: '/api/user/marketdata',
         method: 'POST',
-        data: {
-          "eventTime": {
-            "gte": 1530014465507,
-            "lt": 1530111628510
-          },
-          "symbol": "ETHBTC",
-          "nameStock": "binance"
-        },
+        data: data,
         headers: {
           Authorization: LocalStorage.getItem('token')
         }
@@ -157,4 +164,11 @@ export const getPairs = (stock) => {
       }
     }
   }
+}
+
+export const setCurrentPair = (pair) => {
+  return {
+    type: SET_CURRENT_PAIR,
+    payload: pair
+  };
 }

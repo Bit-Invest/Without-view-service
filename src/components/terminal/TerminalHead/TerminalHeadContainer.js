@@ -2,21 +2,19 @@ import * as React from 'react';
 import { TerminalHead } from './TerminalHead';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { setCurrentPair } from '@store/modules/terminal';
 
 class TerminalHeadContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentPair: props.currentPair
-    };
-  }
 
   onSelectPair = (event) => {
-    console.log(event);
+    const newCurrentPair = this.props.pairs.find(pair => {
+      return event.payload.value === pair.symbol;
+    });
+    this.props.setCurrentPair(newCurrentPair);
+    this.props.loadData(newCurrentPair);
   }
 
   onSelectStock = (event) => {
-    console.log(event);
   }
 
   render() {
@@ -24,13 +22,13 @@ class TerminalHeadContainer extends React.Component {
       <TerminalHead
         onSelectPair={this.onSelectPair}
         onSelectStock={this.onSelectStock}
-        currentPair={this.state.currentPair}
-        pairs={this.props.pairs.map(pair =>
-          {
+        currentPair={this.props.currentPair}
+        pairs={this.props.pairs.map(pair => {
+          return {
             value: pair.symbol,
             label: `${pair.baseAsset} / ${pair.quoteAsset}`
-          }
-        )}
+          };
+        })}
       />
     );
   }
@@ -44,7 +42,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({}, dispatch);
+  bindActionCreators({setCurrentPair}, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(TerminalHeadContainer);

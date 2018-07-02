@@ -14,7 +14,6 @@ import {
   openOrders,
   getPairs
 } from '@store/modules/terminal';
-import { Utils } from '@common/Utils';
 
 const OrderTypes = ['Limit', 'Market'];
 
@@ -28,25 +27,11 @@ class TerminalPageContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.checkRedirect().then(() => {
-      Promise.all([
-        this.props.orderBook({
-          symbol: 'ETHBTC',
-          stock: 'binance'
-        }),
-        this.props.tradeHistory({
-          symbol: 'ETHBTC',
-          stock: 'binance'
-        }),
-        this.props.openOrders({
-          symbol: 'XLMETH',
-          stock: 'binance'
-        }),
-        this.props.getPairs()
-      ]).then(() => {
+    this.checkRedirect()
+      .then(this.loadData.bind(this))
+      .then(() => {
         this.setState({isLoaded: true});
       });
-    });
   }
 
   checkRedirect() {
@@ -67,6 +52,34 @@ class TerminalPageContainer extends React.Component {
     });
   }
 
+  loadData(opt_currentPair) {
+    const currentPair =
+      opt_currentPair ? opt_currentPair : this.props.data.currentPair;
+    return Promise.all([
+      this.props.marketData({
+        symbol: currentPair.symbol,
+        nameStock: 'binance',
+        eventTime: {
+          gte: Date.now() - 86400000,
+          lt: Date.now()
+        }
+      }),
+      this.props.orderBook({
+        symbol: currentPair.symbol,
+        stock: 'binance'
+      }),
+      this.props.tradeHistory({
+        symbol: currentPair.symbol,
+        stock: 'binance'
+      }),
+      this.props.openOrders({
+        symbol: currentPair.symbol,
+        stock: 'binance'
+      }),
+      this.props.getPairs()
+    ]);
+  }
+
   render() {
     return (
       <TerminalPage
@@ -77,6 +90,9 @@ class TerminalPageContainer extends React.Component {
         history={this.props.data.historyList}
         orderBook={this.props.data.orderBook}
         openOrders={this.props.data.openOrders}
+        loadData={this.loadData.bind(this)}
+        currentPair={this.props.currentPair}
+        chart={this.props.data.chart}
       />
     );
   }

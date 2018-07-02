@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button } from '@components/common/Button';
 import { Input } from '@common/Input';
 
 const ROOT_CLASS = 'terminal-form';
@@ -14,7 +13,7 @@ export const TerminalForm = (props) => {
         <Input
           theme="terminal"
           placeholder="0.00"
-          tip="BTC"
+          tip={props.currentPair.baseAsset}
         />
       </div>
       <div className={`${ROOT_CLASS}__limit-wrap`}>
@@ -24,7 +23,7 @@ export const TerminalForm = (props) => {
         <Input
           theme="terminal"
           placeholder="0.00"
-          tip="ETH"
+          tip={props.currentPair.quoteAsset}
           disabled={props.orderType === 'Market' ? true : false}
           value={props.orderType === 'Market' ? props.marketValue : ''}
         />

@@ -4,7 +4,6 @@ import { Select } from '@registration/select';
 const ROOT_CLASS = 'terminal-head';
 
 export const TerminalHead = props => {
-  console.log(props);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__stock-select`}>
@@ -39,12 +38,7 @@ export const TerminalHead = props => {
                 / ${props.currentPair.quoteAsset}`
             }
           }
-          options={[
-            {
-              value: 'BTCETH',
-              label: 'BTC / ETH'
-            }
-          ]}
+          options={props.pairs}
         />
       </div>
       <div className={`${ROOT_CLASS}__type-select`}>
