@@ -7,6 +7,7 @@ export const HIDE_POP_UP = 'common/HIDE_POP_UP';
 export const NETWORK_ERROR = 'common/NETWORK_ERROR';
 export const ADD_ALERT = 'common/ADD_ALERT';
 export const REMOVE_ALERT = 'common/REMOVE_ALERT';
+export const SOCKET_SUBSCRIBE = 'common/SOCKET_SUBSCRIBE';
 
 const initialState = {
   currentPopUp: null,
@@ -99,4 +100,19 @@ export const removeAlert = (alertId) => {
     type: REMOVE_ALERT,
     payload: alertId
   };
+}
+
+export const socketSubscribe = (data) => {
+  return {
+    type: SOCKET_SUBSCRIBE,
+    payload: {
+      socket: {
+        type: 'subscribe',
+        message: data.message,
+        payload: {
+          callback: data.callback
+        }
+      }
+    }
+  }
 }

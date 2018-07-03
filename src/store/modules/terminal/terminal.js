@@ -12,6 +12,10 @@ export const OPEN_ORDERS_SUCCESS = 'terminal/OPEN_ORDERS_SUCCESS';
 export const GET_PAIRS = 'terminal/GET_PAIRS';
 export const GET_PAIRS_SUCCESS = 'terminal/GET_PAIRS_SUCCESS';
 export const SET_CURRENT_PAIR = 'terminal/SET_CURRENT_PAIR';
+export const SET_CURRENT_STOCK = 'terminal/SET_CURRENT_STOCK';
+export const ORDER_FINISH_SUBSCRIBE = 'terminal/ORDER_FINISH_SUBSCRIBE';
+export const ORDER_FINISHED = 'terminal/ORDER_FINISHED';
+export const ORDER_ERROR = 'terminal/ORDER_ERROR';
 
 const initialState = {
   historyList: [],
@@ -21,10 +25,10 @@ const initialState = {
   },
   openOrders: [],
   currentPair: {
-    symbol: "ETHBTC",
-    baseAsset: "ETH",
+    symbol: "XLMETH",
+    baseAsset: "XLM",
     baseAssetPrecision: "8",
-    quoteAsset: "BTC",
+    quoteAsset: "ETH",
     quotePrecision: 8
   },
   pairs: [],
@@ -67,6 +71,13 @@ export const terminal = (state = initialState, action) => {
         ...state,
         chart: action.payload.data
       };
+    case SET_CURRENT_STOCK:
+      return {
+        ...state,
+        currentStock: action.payload
+      };
+    case ORDER_FINISHED:
+      return state;
     default:
       return state;
   }
@@ -79,12 +90,7 @@ export const placeLimitOrder = (orderData) => {
       socket: {
         type: 'emit',
         message: 'ORDER_LIMIT',
-        payload: {
-          jwt: LocalStorage.getItem('token'),
-          endpoint: {
-            payload: orderData
-          }
-        }
+        payload: orderData
       }
     }
   }
@@ -170,5 +176,12 @@ export const setCurrentPair = (pair) => {
   return {
     type: SET_CURRENT_PAIR,
     payload: pair
+  };
+}
+
+export const setCurrentStock = (stock) => {
+  return {
+    type: SET_CURRENT_STOCK,
+    payload: stock
   };
 }

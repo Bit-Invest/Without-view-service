@@ -18,7 +18,6 @@ class TraderCardContainer extends React.Component {
   }
 
   onClickRoot() {
-    console.log('ON_CLICK_TRADE_CARD');
     this.props.showPopUp('productPage', {
       id: this.props.id,
       nameStor: this.props.nameStor,

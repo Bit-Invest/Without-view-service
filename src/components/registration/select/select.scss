@@ -34,7 +34,7 @@
     width: 100%;
     background-color: #fff;
     overflow-y: auto;
-    height: 200px;
+    max-height: 200px;
     z-index: 1;
 
     &_closed {

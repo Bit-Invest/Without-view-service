@@ -8,5 +8,7 @@ export {
   unauthorized,
   authenticate,
   authpls,
-  apiKeySubscribe
+  apiKeySubscribe,
+  subscribeOnTrader,
+  getSubscribedProducts
 } from './user';

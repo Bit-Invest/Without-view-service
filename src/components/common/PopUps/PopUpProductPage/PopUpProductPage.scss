@@ -161,7 +161,11 @@
     @include font(Lato-Bold);
     font-size: 18px;
     color: #ffffff;
-    background-color: #cccccc;
+    background: linear-gradient(45deg,#8560fd 15%,#638df7 100%);
+
+    &_hide {
+      display: none;
+    }
   }
   &__footer-button:hover {
     background-color: #a4a4a4;

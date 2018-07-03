@@ -6,5 +6,6 @@ export {
   marketData,
   openOrders,
   getPairs,
-  setCurrentPair
+  setCurrentPair,
+  setCurrentStock
 } from './terminal';

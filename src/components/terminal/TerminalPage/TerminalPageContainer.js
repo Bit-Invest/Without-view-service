@@ -2,7 +2,6 @@ import * as React from 'react';
 import { TerminalPage } from './TerminalPage';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { placeLimitOrder } from '@store/modules/terminal';
 import { LocalStorage } from '@common/Utils';
 import { checkJWT } from '@store/modules/common';
 import { push } from 'react-router-redux';
@@ -14,8 +13,11 @@ import {
   openOrders,
   getPairs
 } from '@store/modules/terminal';
+import { getKeys } from '@store/modules/user';
 
 const OrderTypes = ['Limit', 'Market'];
+
+const DAY = 86400000;
 
 class TerminalPageContainer extends React.Component {
   constructor(props) {
@@ -56,25 +58,26 @@ class TerminalPageContainer extends React.Component {
     const currentPair =
       opt_currentPair ? opt_currentPair : this.props.data.currentPair;
     return Promise.all([
+      this.props.getKeys(),
       this.props.marketData({
         symbol: currentPair.symbol,
-        nameStock: 'binance',
+        nameStock: this.props.data.currentStock,
         eventTime: {
-          gte: Date.now() - 86400000,
+          gte: Date.now() - DAY,
           lt: Date.now()
         }
       }),
       this.props.orderBook({
         symbol: currentPair.symbol,
-        stock: 'binance'
+        stock: this.props.data.currentStock
       }),
       this.props.tradeHistory({
         symbol: currentPair.symbol,
-        stock: 'binance'
+        stock: this.props.data.currentStock
       }),
       this.props.openOrders({
         symbol: currentPair.symbol,
-        stock: 'binance'
+        stock: this.props.data.currentStock
       }),
       this.props.getPairs()
     ]);
@@ -84,8 +87,6 @@ class TerminalPageContainer extends React.Component {
     return (
       <TerminalPage
         currentOrder={this.state.currentOrder}
-        onChangeRadio={this.onChangeRadio.bind(this)}
-        placeOrder={this.onPlaceOrder.bind(this)}
         isLoaded={this.state.isLoaded}
         history={this.props.data.historyList}
         orderBook={this.props.data.orderBook}
@@ -97,20 +98,6 @@ class TerminalPageContainer extends React.Component {
     );
   }
 
-  onChangeRadio(index) {
-    this.setState({currentOrder: OrderTypes[index]});
-  }
-
-  onPlaceOrder(orderInfo, type) {
-    this.props.placeLimitOrder({
-      name: 'binance',
-      method: this.state.currentOrder.toUpperCase(),
-      symbol: 'LTCBTC',
-      side: type.toUpperCase(),
-      quantity: orderInfo.data,
-      price: orderInfo.price
-    });
-  }
 }
 
 const mapStateToProps = state => {
@@ -119,7 +106,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
-    placeLimitOrder,
     checkJWT,
     push,
     userLogIn,
@@ -127,7 +113,8 @@ const mapDispatchToProps = dispatch =>
     tradeHistory,
     marketData,
     openOrders,
-    getPairs
+    getPairs,
+    getKeys
   }, dispatch);
 
 const connectedContainer =

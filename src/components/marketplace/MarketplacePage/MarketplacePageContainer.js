@@ -5,7 +5,12 @@ import { bindActionCreators } from 'redux';
 import { getProducts } from '@store/modules/marketplace';
 import { LocalStorage } from '@common/Utils';
 import { checkJWT } from '@store/modules/common';
-import { userLogIn } from '@store/modules/user';
+import {
+  userLogIn,
+  getKeys,
+  getSubscribedProducts,
+  getPersonalInfo
+} from '@store/modules/user';
 
 const ShowTypes = {
   CARD: 'CARD',
@@ -27,11 +32,17 @@ class MarketplacePageContainer extends React.Component {
   }
 
   afterLoading() {
-    this.setState({isLoaded: true});
+
     const token = LocalStorage.getItem('token');
     if (token) {
       this.props.checkJWT()
-        .then(this.props.userLogIn);
+        .then(this.props.userLogIn)
+        .then(this.props.getKeys)
+        .then(this.props.getSubscribedProducts)
+        .then(this.props.getPersonalInfo)
+        .then(() => {this.setState({isLoaded: true});})
+    } else {
+      this.setState({isLoaded: true});
     }
   }
 
@@ -61,7 +72,14 @@ const mapStateToProps = state =>
   {return {products: state.marketplace.products};}
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({getProducts, checkJWT, userLogIn}, dispatch);
+  bindActionCreators({
+    getProducts,
+    checkJWT,
+    userLogIn,
+    getKeys,
+    getSubscribedProducts,
+    getPersonalInfo
+  }, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(MarketplacePageContainer);

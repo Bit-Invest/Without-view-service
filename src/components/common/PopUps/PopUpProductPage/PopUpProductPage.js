@@ -64,8 +64,23 @@ export const PopUpProductPage = props => {
             </div>
           </div>
         </div>
-        <button className={`${ROOT_CLASS}__footer-button`}>Connect Now</button>
+        <button
+          className={buildButtonClass(props)}
+          onClick={props.onClickConnect}
+        >
+          Connect Now
+        </button>
       </div>
     </div>
   )
+}
+
+const buildButtonClass = (props) => {
+  const buttonClass = `${ROOT_CLASS}__footer-button`;
+  return `${buttonClass} ${isNeedHide(props) ? buttonClass + '_hide' : ''}`
+}
+
+const isNeedHide = (props) => {
+  return !props.personalInfo ||
+    props.personalInfo.role === 'trader' || props.isNeedHide;
 }
