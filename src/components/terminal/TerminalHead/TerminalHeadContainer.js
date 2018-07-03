@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TerminalHead } from './TerminalHead';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setCurrentPair } from '@store/modules/terminal';
+import { setCurrentPair, setCurrentStock } from '@store/modules/terminal';
 
 class TerminalHeadContainer extends React.Component {
 
@@ -15,6 +15,7 @@ class TerminalHeadContainer extends React.Component {
   }
 
   onSelectStock = (event) => {
+    this.props.setCurrentStock(event.payload.value);
   }
 
   render() {
@@ -42,7 +43,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({setCurrentPair}, dispatch);
+  bindActionCreators({setCurrentPair, setCurrentStock}, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(TerminalHeadContainer);

@@ -14,6 +14,9 @@ export const TerminalForm = (props) => {
           theme="terminal"
           placeholder="0.00"
           tip={props.currentPair.baseAsset}
+          name="value"
+          onChange={props.handleEnter}
+          value={props.value}
         />
       </div>
       <div className={`${ROOT_CLASS}__limit-wrap`}>
@@ -25,12 +28,14 @@ export const TerminalForm = (props) => {
           placeholder="0.00"
           tip={props.currentPair.quoteAsset}
           disabled={props.orderType === 'Market' ? true : false}
-          value={props.orderType === 'Market' ? props.marketValue : ''}
+          value={props.orderType === 'Market' ? props.marketValue : props.price}
+          name="price"
+          onChange={props.handleEnter}
         />
       </div>
       <div
         className={`${ROOT_CLASS}__button ${ROOT_CLASS}__button_${props.type}`}
-        onClick={props.onClickButton}
+        onClick={props.handleSubmit}
       >
         PLACE {props.type.toUpperCase()} ORDER
       </div>

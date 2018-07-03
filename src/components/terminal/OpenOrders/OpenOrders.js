@@ -22,6 +22,7 @@ export const OpenOrders = props => {
             origin={order.origQty}
             remain={order.executedQty}
             total={order.price * order.origQty}
+            key={index}
           />
         )}
       </div>

@@ -1,4 +1,4 @@
-import { EMIT, SUBSCRIBE } from './types';
+import { EMIT, SUBSCRIBE, UNSUBSCRIBE_ALL } from './types';
 
 export const socketMiddleware = (io) => {
 
@@ -16,8 +16,11 @@ export const socketMiddleware = (io) => {
         case SUBSCRIBE:
           io.on(
             socket.message,
-            (res) => {dispatch({type: socket.actionType, payload: res})}
+            socket.payload.callback
           );
+          break;
+        case UNSUBSCRIBE_ALL:
+          io.removeAllListeners(socket.message);
           break;
         default:
           break;
