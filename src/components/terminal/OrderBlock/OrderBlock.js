@@ -3,7 +3,7 @@ import { TerminalForm } from '@terminal/TerminalForm';
 
 const ROOT_CLASS = 'order-block';
 
-const orderTypes = ['Market', 'Limit'];
+const orderTypes = ['Limit'];
 const types = ['buy', 'sell'];
 
 export const OrderBlock = (props) => (

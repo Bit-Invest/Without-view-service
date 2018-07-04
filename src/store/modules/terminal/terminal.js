@@ -54,7 +54,7 @@ export const terminal = (state = initialState, action) => {
     case OPEN_ORDERS_SUCCESS:
       return {
         ...state,
-        openOrders: action.payload.data
+        openOrders: action.payload.data.error ? [] : action.payload.data
       };
     case GET_PAIRS_SUCCESS:
       return {

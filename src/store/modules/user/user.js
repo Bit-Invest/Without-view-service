@@ -125,6 +125,7 @@ export const authpls = () => {
 }
 
 export const apiKeySubscribe = () => {
+  console.log('ssss');
   return {
     type: API_KEY_SUBSCRIBE,
     payload: {

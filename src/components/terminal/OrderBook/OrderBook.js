@@ -40,11 +40,6 @@ export const OrderBook = props => {
         })}
       </div>
       <div className={`${ROOT_CLASS}__price-block`}>
-        <div className={`${ROOT_CLASS}__name-price`}>Price.EUR</div>
-        <div className={`${ROOT_CLASS}__currency-block`}>
-          <div className={`${ROOT_CLASS}__eur-price`}>€ 6493.1{props.eurPrice}</div>
-          <div className={`${ROOT_CLASS}__usd-price`}>($ 7974.32){props.usdPrice}</div>
-        </div>
       </div>
       <div className={`${ROOT_CLASS}__list ${ROOT_CLASS}__list_bids`}>
         {props.bids.map((bid, index) => {
