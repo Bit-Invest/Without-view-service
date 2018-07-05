@@ -40,7 +40,7 @@ class PopUpNewProductContainer extends React.Component {
   onErrorSubmit() {}
 
   handleSelectChange(event) {
-    this.setState({ select: event.target.value });
+    this.setState({ select: event.payload.value });
   }
 
   handleAPIChange(event) {

@@ -4,48 +4,28 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { checkJWT } from '@store/modules/common';
 import { bindActionCreators } from 'redux';
-import { LocalStorage } from '@common/Utils';
 import { push } from 'react-router-redux';
-import { userLogIn, unauthorized } from '@store/modules/user';
 
 class AppContainer extends React.Component {
   componentWillMount() {
-    let token = LocalStorage.getItem('token');
-    if (token) {
-      this.props.checkJWT()
-        .then(this.onJWTConfirm.bind(this))
-        .catch(this.onJWTError.bind(this))
-    } else {
-      this.onJWTError();
+    if (this.props.pathname === '/') {
+      this.props.push('/marketplace');
     }
-  }
-
-  onJWTConfirm() {
-    this.setState({isLoaded: true});
-    this.props.userLogIn();
-    this.props.push('/profile');
-  }
-
-  onJWTError() {
-    this.setState({isLoaded: true});
-    this.props.push('/marketplace');
   }
 
   render() {
     return (
-      <App
-        push={this.props.push}
-        page={this.props.page}
-      />
+      <App />
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {page: state.router.location.pathname.split('/')[1]};
+const mapStateToProps = (state) => {
+  return {pathname: state.router.location.pathname};
 }
+
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({checkJWT, push, userLogIn, unauthorized}, dispatch);
+  bindActionCreators({checkJWT, push}, dispatch);
 const connectedContainer =
   withRouter(connect(mapStateToProps, mapDispatchToProps)(AppContainer));
 export { connectedContainer as AppContainer };

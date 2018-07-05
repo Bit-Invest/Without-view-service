@@ -3,9 +3,12 @@ export {
   getPersonalInfo,
   addExchange,
   userLogIn,
+  userLogOut,
   getKeys,
   unauthorized,
   authenticate,
   authpls,
-  apiKeySubscribe
+  apiKeySubscribe,
+  subscribeOnTrader,
+  getSubscribedProducts
 } from './user';

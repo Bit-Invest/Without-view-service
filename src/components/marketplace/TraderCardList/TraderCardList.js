@@ -8,7 +8,7 @@ const ROOT_CLASS = 'card-list';
 
 export const TraderCardList = props => {
   return(
-    <div className={ROOT_CLASS}>
+    <div onClick={props.onClick} className={ROOT_CLASS}>
       <div>
         <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
         <div className={`${ROOT_CLASS}__graf-list`}></div>
@@ -37,7 +37,7 @@ export const TraderCardList = props => {
           <div className={`${ROOT_CLASS}__user-name-block`}>
             <UserName
               name={props.name}
-              surname={props.surname}
+              surname={`${props.surname[0]}.`}
               theme='MarketPlaceName'
             />
           </div>

@@ -8,18 +8,15 @@ export const PopUpManager = (props) => {
   }
   return (
     <div className={buildRootClass()}>
-      <div className={`${ROOT_CLASS}__undercover`}>
-        <div className={`${ROOT_CLASS}__content-wrap`}>
-          <div
-            className={`${ROOT_CLASS}__close`}
-            onClick={props.onClickClose}
-          >
-            <div className={`${ROOT_CLASS}__close-title`}>Close</div>
-            <div className={`${ROOT_CLASS}__check`} alt="close"></div>
-          </div>
-          <div className={`${ROOT_CLASS}__content`}>
-            {props.children}
-          </div>
+      <div onClick={props.onClickClose} className={`${ROOT_CLASS}__undercover`}>
+      </div>
+      <div className={`${ROOT_CLASS}__content-wrap`}>
+        <div onClick={props.onClickClose} className={`${ROOT_CLASS}__close`}>
+          <div className={`${ROOT_CLASS}__close-title`}>Close</div>
+          <div className={`${ROOT_CLASS}__check`} alt="close"></div>
+        </div>
+        <div className={`${ROOT_CLASS}__content`}>
+          {props.children}
         </div>
       </div>
     </div>

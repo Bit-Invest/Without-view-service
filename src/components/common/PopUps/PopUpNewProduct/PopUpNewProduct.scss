@@ -1,6 +1,7 @@
 @import "src/components/common/Utils/Utils.scss";
 
 .pop-up-new-product {
+  border-radius: 5px;
   width: 600px;
   // height: 560px;
   background-color: #ffffff;
@@ -26,5 +27,8 @@
     line-height: normal;
     letter-spacing: normal;
     color: #8560fd;
+  }
+  .select {
+    box-shadow: none;
   }
 }

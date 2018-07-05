@@ -9,7 +9,7 @@ import 'normalize.css';
 
 export const App = (props) => {
   return (
-    <div className={`App App_${props.page}`}>
+    <div className={`App`}>
       <main className="App__main">
         <Switch>
           <Route path="/registration" component={RegistrationPage} />

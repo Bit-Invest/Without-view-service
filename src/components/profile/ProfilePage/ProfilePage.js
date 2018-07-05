@@ -6,10 +6,14 @@ import { ListProducts } from '@profile/ListProducts';
 export const ProfilePage = props => {
   return (
     <Page isLoaded={props.isLoaded}>
-      <ProfileHead personalInfo={props.user.personalInfo} />
+      <ProfileHead
+        personalInfo={props.user.personalInfo ? props.user.personalInfo : {}}
+        push={props.push}
+        logOut={props.userLogOut}
+      />
       <ListProducts
         onClickAddProduct={props.onClickAddProduct}
-        products={props.user.burses}
+        products={props.user.burses ? props.user.burses : []}
       />
     </Page>
   );

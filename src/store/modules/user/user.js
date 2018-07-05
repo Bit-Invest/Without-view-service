@@ -14,11 +14,16 @@ export const AUTHENTICATE = 'user/AUTHENTICATE';
 export const AUTH_PLS = 'user/AUTH_PLS';
 export const API_KEY_SUBSCRIBE = 'user/API_KEY_SUBSCRIBE';
 export const API_KEY_RESPONSE = 'user/API_KEY_RESPONSE';
+export const USER_LOG_OUT = 'user/USER_LOG_OUT';
+export const SUBSCRIBE_ON_TRADER = 'user/SUBSCRIBE_ON_TRADER';
+export const GET_SUBSCRIBED_PRODUCTS = 'user/GET_SUBSCRIBED_PRODUCTS';
+export const GET_SUBSCRIBED_PRODUCTS_SUCCESS =
+  'user/GET_SUBSCRIBED_PRODUCTS_SUCCESS';
 
 const initialState = {
   personalInfo: null,
   status: STATUS.UNLOGGED_IN,
-  burses: null,
+  burses: [],
   products: []
 };
 
@@ -45,6 +50,16 @@ export const user = (state = initialState, action) => {
       return {
         ...state,
         burses: Utils.findBurseAndChangeStatus(action.payload, state.burses)
+      };
+    case USER_LOG_OUT:
+      return {
+        ...state,
+        status: STATUS.UNLOGGED_IN
+      };
+    case GET_SUBSCRIBED_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        products: action.payload.data.products
       };
     default:
       return state;
@@ -110,6 +125,7 @@ export const authpls = () => {
 }
 
 export const apiKeySubscribe = () => {
+  console.log('ssss');
   return {
     type: API_KEY_SUBSCRIBE,
     payload: {
@@ -153,5 +169,42 @@ export const unauthorized = () => {
 export const userLogIn = () => {
   return {
     type: USER_LOGIN,
+  };
+}
+
+export const userLogOut = () => {
+  return {
+    type: USER_LOG_OUT
+  };
+}
+
+export const subscribeOnTrader = (data) => {
+  return {
+    type: SUBSCRIBE_ON_TRADER,
+    payload: {
+      request: {
+        method: 'POST',
+        url: '/api/user/subscribe',
+        data: data,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  };
+}
+
+export const getSubscribedProducts = () => {
+  return {
+    type: GET_SUBSCRIBED_PRODUCTS,
+    payload: {
+      request: {
+        method: 'GET',
+        url: '/api/user/issubscribe',
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
   };
 }

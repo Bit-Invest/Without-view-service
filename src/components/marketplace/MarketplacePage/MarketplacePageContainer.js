@@ -3,6 +3,14 @@ import { MarketplacePage } from './MarketplacePage';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getProducts } from '@store/modules/marketplace';
+import { LocalStorage } from '@common/Utils';
+import { checkJWT } from '@store/modules/common';
+import {
+  userLogIn,
+  getKeys,
+  getSubscribedProducts,
+  getPersonalInfo
+} from '@store/modules/user';
 
 const ShowTypes = {
   CARD: 'CARD',
@@ -19,7 +27,23 @@ class MarketplacePageContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getProducts().then(() => {this.setState({isLoaded: true})});
+    this.props.getProducts()
+      .then(this.afterLoading.bind(this));
+  }
+
+  afterLoading() {
+
+    const token = LocalStorage.getItem('token');
+    if (token) {
+      this.props.checkJWT()
+        .then(this.props.userLogIn)
+        .then(this.props.getKeys)
+        .then(this.props.getSubscribedProducts)
+        .then(this.props.getPersonalInfo)
+        .then(() => {this.setState({isLoaded: true});})
+    } else {
+      this.setState({isLoaded: true});
+    }
   }
 
   render() {
@@ -48,7 +72,14 @@ const mapStateToProps = state =>
   {return {products: state.marketplace.products};}
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({getProducts}, dispatch);
+  bindActionCreators({
+    getProducts,
+    checkJWT,
+    userLogIn,
+    getKeys,
+    getSubscribedProducts,
+    getPersonalInfo
+  }, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(MarketplacePageContainer);

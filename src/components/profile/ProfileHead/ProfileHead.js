@@ -9,8 +9,10 @@ export const ProfileHead = props => {
       <UserInfo
         name={props.personalInfo.name}
         surname={props.personalInfo.surname}
-        role={props.personalInfo.role}
+        role={props.personalInfo.role ? props.personalInfo.role : ''}
         status="disabled"
+        push={props.push}
+        logOut={props.logOut}
       />
     </div>
   );

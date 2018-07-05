@@ -149,6 +149,7 @@
   &__user-name-block {
     display: flex;
     justify-content: center;
+    margin-left: 10px;
   }
   &__rating-block {
     padding-left: 15px;
@@ -160,10 +161,18 @@
     @include font(Lato-Bold);
     font-size: 18px;
     color: #ffffff;
-    background-color: #cccccc;
+    background: linear-gradient(45deg,#8560fd 15%,#638df7 100%);
+
+    &_hide {
+      display: none;
+    }
   }
   &__footer-button:hover {
-
     background-color: #a4a4a4;
+  }
+  &__chart {
+    margin: 0 auto;
+    width: 681px;
+    height: 384px;
   }
 }

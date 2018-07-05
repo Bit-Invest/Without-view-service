@@ -1,1 +1,1 @@
-export { TerminalPage } from './TerminalPage';
+export { TerminalPageContainer as TerminalPage } from './TerminalPageContainer';

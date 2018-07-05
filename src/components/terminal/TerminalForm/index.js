@@ -1,1 +1,1 @@
-export {  TerminalForm } from './TerminalForm';
+export { TerminalFormContainer as TerminalForm } from './TerminalFormContainer';

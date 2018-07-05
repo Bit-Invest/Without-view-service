@@ -4,10 +4,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { signInAction as signIn } from '@store/modules/registration';
-import { userLogIn, authenticate, authpls } from '@store/modules/user';
+import { userLogIn, authenticate } from '@store/modules/user';
 import { hidePopUp } from '@store/modules/common';
 import { LocalStorage } from '@common/Utils';
-import { openingPosition } from '@store/modules/terminal';
 import PropTypes from 'prop-types';
 
 const ErrorMessage = 'Incorrect email or password';
@@ -48,8 +47,6 @@ class SignInFormContainer extends React.Component {
     res.payload.data &&
       LocalStorage.setItem('token', res.payload.data.token);
     this.props.userLogIn();
-    this.props.authpls();
-    this.props.authenticate();
     this.props.push('/profile');
   }
 
@@ -58,9 +55,11 @@ class SignInFormContainer extends React.Component {
   }
 
   onErrorSubmit(err) {
-    this.setState({preloader: false});
-    this.setState({errorMessage: ErrorMessage});
-    this.setState({isError: true});
+    this.setState({
+      preloader: false,
+      errorMessage: ErrorMessage,
+      isError: true
+    });
   }
 
   handleEnter = event => {
@@ -91,9 +90,7 @@ const mapDispatchToProps = dispatch =>
     signIn,
     userLogIn,
     hidePopUp,
-    authenticate,
-    authpls,
-    openingPosition
+    authenticate
   }, dispatch);
 
 const connectedContainer =

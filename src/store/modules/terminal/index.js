@@ -1,1 +1,11 @@
-export { terminal, openingPosition, testSubscribe } from './terminal';
+export {
+  terminal,
+  placeLimitOrder,
+  tradeHistory,
+  orderBook,
+  marketData,
+  openOrders,
+  getPairs,
+  setCurrentPair,
+  setCurrentStock
+} from './terminal';
