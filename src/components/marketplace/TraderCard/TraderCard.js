@@ -3,6 +3,8 @@ import { IconUser } from '@components/profile/IconUser/IconUser';
 import { UserName } from '@components/profile/UserName/UserName';
 import { Rating } from '@components/marketplace/Rating/Rating';
 import { PercentResult } from '@common/PercentResult';
+import { Line } from 'react-chartjs-2';
+import { Utils } from '@common/Utils';
 
 const ROOT_CLASS = 'trader-card';
 
@@ -15,7 +17,44 @@ export const TraderCard = props => {
         <div className={`${ROOT_CLASS}__currencyPair`}>BTC/ETH</div>
         <div className={`${ROOT_CLASS}__save-block`}></div>
       </div>
-      <div className={`${ROOT_CLASS}__graf`}></div>
+      <div className={`${ROOT_CLASS}__graf`}>
+        <Line
+          height={80}
+          width={208}
+          data={{
+            labels: ['', '', '', '', ''],
+            datasets: [{
+              data: [
+                {x: 20, y: Utils.randomInt(0, 100)},
+                {x: 30, y: Utils.randomInt(0, 100)},
+                {x: 40, y: Utils.randomInt(0, 100)},
+                {x: 50, y: Utils.randomInt(0, 100)},
+                {x: 60, y: Utils.randomInt(0, 100)}
+              ],
+              backgroundColor: 'rgba(133, 96, 253, 0.4)',
+              borderColor: '#8560fd',
+              pointRadius: 1,
+              borderWidth: 1
+            }],
+
+          }}
+          options={{
+            legend: {
+              display: false
+            },
+            scales: {
+              xAxes: [{
+                display: false,
+                position: 'bottom'
+              }],
+              yAxes: [{
+                display: false,
+                position: 'right'
+              }]
+            }
+          }}
+        />
+      </div>
       <div className={`${ROOT_CLASS}__result-block`}>
         <div className={`${ROOT_CLASS}__result-block-data`} >
           <div className={`${ROOT_CLASS}__block-data`}>Week &nbsp;</div>
@@ -37,7 +76,7 @@ export const TraderCard = props => {
         </div>
         <div className={`${ROOT_CLASS}__position-trade-block`}>
           <div>Investors</div>
-          <div className={`${ROOT_CLASS}__dynamic-info`}>167</div>
+          <div className={`${ROOT_CLASS}__dynamic-info`}>{props.followersCount}</div>
         </div>
       </div>
       <div className={`${ROOT_CLASS}__user-block`}>

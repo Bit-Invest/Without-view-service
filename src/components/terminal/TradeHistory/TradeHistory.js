@@ -5,6 +5,7 @@ import { Utils } from '@common/Utils';
 const ROOT_CLASS = 'trader-history';
 
 export const TradeHistory = props => {
+  console.log(props);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__caption`}>TRADE HISTORY</div>
@@ -20,7 +21,7 @@ export const TradeHistory = props => {
               price={trade.price}
               qty={trade.quantity}
               time={Utils.convertDateForTerminal(trade.time)}
-              isUp={trade.isBuyerMaker}
+              isUp={trade.maker}
               key={index}
             />
           )

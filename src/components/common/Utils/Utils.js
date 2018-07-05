@@ -50,3 +50,7 @@ export const convertTimeForLabel = (timestamp) => {
   const date = new Date(timestamp);
   return `${date.getHours() <= 9 ? '0' + date.getHours() : date.getHours()}:${date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()}`;
 }
+
+export const randomInt = (start, end) => {
+  return Math.floor(Math.random() * (start - end)) + end;
+}

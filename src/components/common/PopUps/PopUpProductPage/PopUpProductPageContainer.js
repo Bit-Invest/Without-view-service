@@ -3,6 +3,7 @@ import { PopUpProductPage } from './PopUpProductPage';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { subscribeOnTrader } from '@store/modules/user';
+import { hidePopUp } from '@store/modules/common';
 
 class PopUpProductPageContainer extends React.Component {
   render() {
@@ -21,7 +22,7 @@ class PopUpProductPageContainer extends React.Component {
       "key": this.props.userStocks.find(stock => {
         return stock.stock === this.props.nameStor
       }).id
-    });
+    }).then(() => {this.props.hidePopUp()});
   }
 }
 
@@ -33,7 +34,7 @@ const mapStateToProps = state => {
   };
 }
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({subscribeOnTrader}, dispatch);
+  bindActionCreators({subscribeOnTrader, hidePopUp}, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(PopUpProductPageContainer);
