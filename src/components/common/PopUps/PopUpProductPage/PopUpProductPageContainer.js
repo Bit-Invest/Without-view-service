@@ -2,8 +2,13 @@ import * as React from 'react';
 import { PopUpProductPage } from './PopUpProductPage';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { subscribeOnTrader } from '@store/modules/user';
+import {
+  subscribeOnTrader,
+  unsubscribeTrader,
+  getSubscribedProducts
+} from '@store/modules/user';
 import { hidePopUp } from '@store/modules/common';
+import { getProducts } from '@store/modules/marketplace';
 
 class PopUpProductPageContainer extends React.Component {
   render() {
@@ -11,7 +16,9 @@ class PopUpProductPageContainer extends React.Component {
       <PopUpProductPage
         {...this.props}
         onClickConnect={this.onClickConnect}
+        onClickDisconnect={this.onClickDisconnect}
         isNeedHide={this.props.products.indexOf(this.props.id) >= 0}
+        isNeedHideDisc={this.props.products.indexOf(this.props.id) < 0}
       />
     );
   }
@@ -22,7 +29,22 @@ class PopUpProductPageContainer extends React.Component {
       "key": this.props.userStocks.find(stock => {
         return stock.stock === this.props.nameStor
       }).id
-    }).then(() => {this.props.hidePopUp()});
+    }).then(this.onFinishConnect);
+  }
+
+  onClickDisconnect = () => {
+    this.props.unsubscribeTrader({
+      "product": this.props.id,
+      "key": this.props.userStocks.find(stock => {
+        return stock.stock === this.props.nameStor
+      }).id
+    }).then(this.onFinishConnect);
+  }
+
+  onFinishConnect = () => {
+    this.props.getSubscribedProducts();
+    this.props.getProducts();
+    this.props.hidePopUp();
   }
 }
 
@@ -34,7 +56,13 @@ const mapStateToProps = state => {
   };
 }
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({subscribeOnTrader, hidePopUp}, dispatch);
+  bindActionCreators({
+    unsubscribeTrader,
+    subscribeOnTrader,
+    hidePopUp,
+    getSubscribedProducts,
+    getProducts
+  }, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(PopUpProductPageContainer);

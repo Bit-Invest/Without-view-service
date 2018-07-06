@@ -14,7 +14,9 @@ export const Menu = (props) => {
     return `${ROOT_CLASS} ${ROOT_CLASS}_${props.page}`;
   }
   const items = props.user.personalInfo ?
-    (props.user.personalInfo.role === 'trader' ? TRADER_ITEMS : INVESTOR_ITEMS) :
+    (props.user.personalInfo.role === 'trader' && props.user.burses.find(burse => {
+      return burse.status === 'valid';
+    }) ? TRADER_ITEMS : INVESTOR_ITEMS) :
     ITEMS;
   return (
     <div className={buildRootClass()}>

@@ -22,7 +22,9 @@ class TraderCardContainer extends React.Component {
       id: this.props.id,
       nameStor: this.props.nameStor,
       name: this.props.name,
-      surname: this.props.surname
+      surname: this.props.surname,
+      info: this.props.info,
+      followersCount: this.props.followersCount
     });
   }
 }

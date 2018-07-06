@@ -162,6 +162,25 @@
     font-size: 18px;
     color: #ffffff;
     background: linear-gradient(45deg,#8560fd 15%,#638df7 100%);
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    &_hide {
+      display: none;
+    }
+  }
+  &__disconnect-button {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    @include font(Lato-Bold);
+    font-size: 18px;
+    background-color: #ff4040;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
 
     &_hide {
       display: none;

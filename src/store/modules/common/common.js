@@ -77,7 +77,6 @@ export const showPopUp = (popUp, data) => {
 }
 
 export const hidePopUp = () => {
-  console.log('HIDE_POP_UP');
   return {
     type: HIDE_POP_UP
   };

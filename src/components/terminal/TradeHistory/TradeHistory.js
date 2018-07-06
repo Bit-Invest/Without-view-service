@@ -5,7 +5,6 @@ import { Utils } from '@common/Utils';
 const ROOT_CLASS = 'trader-history';
 
 export const TradeHistory = props => {
-  console.log(props);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__caption`}>TRADE HISTORY</div>

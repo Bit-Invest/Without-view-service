@@ -12,7 +12,8 @@ class PopUpNewProductContainer extends React.Component {
     this.state = {
       select: 'binance',
       ApiKey: '',
-      secretKey: ''
+      secretKey: '',
+      info: ''
     };
   }
 
@@ -22,22 +23,17 @@ class PopUpNewProductContainer extends React.Component {
       key: {
         name: this.state.select,
         key: this.state.ApiKey,
-        apiSecret: this.state.secretKey
+        apiSecret: this.state.secretKey,
+        info: this.state.info
       }
     };
     const { addExchange } = this.props;
-    addExchange(data)
-      .then(this.onSuccessSubmit.bind(this))
-      .catch(this.onErrorSubmit.bind(this));
-  };
-
-  onSuccessSubmit() {
+    addExchange(data);
     this.props.apiKeySubscribe();
     this.props.getKeys();
     this.props.hidePopUp();
-  }
+  };
 
-  onErrorSubmit() {}
 
   handleSelectChange(event) {
     this.setState({ select: event.payload.value });
@@ -51,20 +47,31 @@ class PopUpNewProductContainer extends React.Component {
     this.setState({ secretKey: event.target.value });
   }
 
+  handleAreaChange(event) {
+    this.setState({ info: event.target.value });
+  }
+
   render() {
     const {
       handleSubmit,
       handleSelectChange,
       handleAPIChange,
-      handleSecretKeyChange
+      handleSecretKeyChange,
+      handleAreaChange
     } = this;
     return <PopUpNewProduct
       handleSubmit={handleSubmit.bind(this)}
       handleSelectChange={handleSelectChange.bind(this)}
       handleAPIChange={handleAPIChange.bind(this)}
       handleSecretKeyChange={handleSecretKeyChange.bind(this)}
+      handleAreaChange={handleAreaChange.bind(this)}
+      role={this.props.role}
     />;
   }
+}
+
+const mapStateToProps = state => {
+  return {role: state.user.personalInfo.role};
 }
 
 const mapDispatchToProps = dispatch =>
@@ -72,6 +79,6 @@ const mapDispatchToProps = dispatch =>
     {addExchange, hidePopUp, getKeys, apiKeySubscribe}, dispatch);
 
 const connectedContainer =
-  connect(null, mapDispatchToProps)(PopUpNewProductContainer);
+  connect(mapStateToProps, mapDispatchToProps)(PopUpNewProductContainer);
 
 export {connectedContainer as PopUpNewProductContainer};

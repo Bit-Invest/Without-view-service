@@ -10,5 +10,6 @@ export {
   authpls,
   apiKeySubscribe,
   subscribeOnTrader,
-  getSubscribedProducts
+  getSubscribedProducts,
+  unsubscribeTrader
 } from './user';
