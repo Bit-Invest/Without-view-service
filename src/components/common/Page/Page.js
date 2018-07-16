@@ -21,14 +21,12 @@ export const Page = (props) => {
   return (
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__content-wrap`}>
-        <div className={`${ROOT_CLASS}__content`}>
-          <div className={`${preloaderClass}`}></div>
-          <div className={`${childClass}`}>
-            {props.children}
-          </div>
+        <div className={`${preloaderClass}`}></div>
+        <div className={`${childClass}`}>
+          {props.children}
         </div>
         <div className={`${ROOT_CLASS}__disclaimer`}>
-          © 2018 Cindx | Privacy Policy & Terms of Service
+          CINDX 2018 All rights reserved
         </div>
       </div>
       <div className={`${ROOT_CLASS}__menu-wrap`}>

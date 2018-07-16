@@ -28,8 +28,8 @@ class PopUpNewProductContainer extends React.Component {
       }
     };
     const { addExchange } = this.props;
-    addExchange(data);
     this.props.apiKeySubscribe();
+    addExchange(data);
     this.props.getKeys();
     this.props.hidePopUp();
   };
