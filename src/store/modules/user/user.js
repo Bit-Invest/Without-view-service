@@ -16,9 +16,13 @@ export const API_KEY_SUBSCRIBE = 'user/API_KEY_SUBSCRIBE';
 export const API_KEY_RESPONSE = 'user/API_KEY_RESPONSE';
 export const USER_LOG_OUT = 'user/USER_LOG_OUT';
 export const SUBSCRIBE_ON_TRADER = 'user/SUBSCRIBE_ON_TRADER';
+export const SUBSCRIBE_ON_TRADER_SUCCESS = 'user/SUBSCRIBE_ON_TRADER_SUCCESS';
 export const GET_SUBSCRIBED_PRODUCTS = 'user/GET_SUBSCRIBED_PRODUCTS';
 export const GET_SUBSCRIBED_PRODUCTS_SUCCESS =
   'user/GET_SUBSCRIBED_PRODUCTS_SUCCESS';
+export const API_KEY_SUBSCRIBE_SUCCESS = 'user/API_KEY_SUBSCRIBE_SUCCESS';
+export const UNSUBSCRIBE_TRADER = 'user/UNSUBSCRIBE_TRADER';
+export const UNSUBSCRIBE_TRADER_SUCCESS = 'user/UNSUBSCRIBE_TRADER_SUCCESS';
 
 const initialState = {
   personalInfo: null,
@@ -60,6 +64,17 @@ export const user = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload.data.products
+      };
+    case API_KEY_SUBSCRIBE_SUCCESS:
+      return {
+        ...state,
+        burses: state.burses.map(burse => {
+          let result = burse;
+          if (burse.stock === action.payload.nameStock) {
+            result.status = action.payload.status;
+          }
+          return result;
+        })
       };
     default:
       return state;
@@ -125,7 +140,6 @@ export const authpls = () => {
 }
 
 export const apiKeySubscribe = () => {
-  console.log('ssss');
   return {
     type: API_KEY_SUBSCRIBE,
     payload: {
@@ -192,6 +206,22 @@ export const subscribeOnTrader = (data) => {
       }
     }
   };
+}
+
+export const unsubscribeTrader = (data) => {
+  return {
+    type: UNSUBSCRIBE_TRADER,
+    payload: {
+      request: {
+        method: 'POST',
+        url: '/api/user/unsubscribe',
+        data: data,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
 }
 
 export const getSubscribedProducts = () => {

@@ -28,6 +28,13 @@
     letter-spacing: normal;
     color: #8560fd;
   }
+  &__textarea {
+    height: 140px;
+    margin-top: 20px;
+    &_hidden {
+      display: none;
+    }
+  }
   .select {
     box-shadow: none;
   }

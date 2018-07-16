@@ -16,7 +16,11 @@ export const socketMiddleware = (io) => {
         case SUBSCRIBE:
           io.on(
             socket.message,
-            socket.payload.callback
+            socket.payload ?
+              socket.payload.callback :
+              (res) => {
+                dispatch({type: `${action.type}_SUCCESS`, payload: res});
+              }
           );
           break;
         case UNSUBSCRIBE_ALL:

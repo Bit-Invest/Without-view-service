@@ -70,7 +70,7 @@ export const PopUpProductPage = props => {
       </div>
       <div className={`${ROOT_CLASS}__description-block`}>
         <div className={`${ROOT_CLASS}__description`}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum  Read more...
+          {props.info}
         </div>
       </div>
       <div className={`${ROOT_CLASS}__position-container`}>
@@ -84,7 +84,7 @@ export const PopUpProductPage = props => {
         </div>
         <div className={`${ROOT_CLASS}__position-block`}>
           <div>Investors</div>
-          <div>167</div>
+          <div>{props.followersCount}</div>
         </div>
       </div>
       <div className={`${ROOT_CLASS}__footer-block`}>
@@ -109,14 +109,30 @@ export const PopUpProductPage = props => {
         >
           Connect Now
         </button>
+        <button
+          className={buildDisconnectClass(props)}
+          onClick={props.onClickDisconnect}
+        >
+          Disconnect
+        </button>
       </div>
     </div>
   )
 }
 
+const buildDisconnectClass = (props) => {
+  const buttonClass = `${ROOT_CLASS}__disconnect-button`;
+  return `${buttonClass} ${isNeedHideDisc(props) ? buttonClass + '_hide' : ''}`;
+}
+
+const isNeedHideDisc = (props) => {
+  return !props.personalInfo ||
+    props.personalInfo.role === 'trader' || props.isNeedHideDisc;
+}
+
 const buildButtonClass = (props) => {
   const buttonClass = `${ROOT_CLASS}__footer-button`;
-  return `${buttonClass} ${isNeedHide(props) ? buttonClass + '_hide' : ''}`
+  return `${buttonClass} ${isNeedHide(props) ? buttonClass + '_hide' : ''}`;
 }
 
 const isNeedHide = (props) => {
