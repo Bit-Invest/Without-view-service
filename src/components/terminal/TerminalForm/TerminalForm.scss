@@ -3,34 +3,34 @@
 .terminal-form {
   width: 100%;
   &__input-title {
-    @include font(Lato-Bold);
-    font-size: 12px;
+    @include font(Geometria);
+    font-size: 14px;
     line-height: normal;
-    color: #000000;
+    color: #888e9c;
     line-height: 20px;
-  }
-
-  &__limit-wrap {
-    margin-top: 10px;
     margin-bottom: 10px;
   }
 
+  &__limit-wrap {
+    margin-top: 15px;
+    margin-bottom: 28px;
+  }
+
   &__button {
-    @include font(Lato-Bold);
-    height: 28px;
+    @include font(Geometria-Bold);
+    height: 43px;
     color: #fff;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
-    line-height: 28px;
-    border-radius: 2px;
+    line-height: 43px;
 
     &_buy {
-      background-color: #8bc34a;
+      background-color: rgba(137, 224, 125, 0.23);
     }
 
     &_sell {
-      background-color: #ff4040;
+      background-color: rgba(242, 109, 125, 0.23);
     }
   }
 }

@@ -53,17 +53,24 @@
 }
 $terminalPlaceholder: #ccc;
 .input_terminal {
-  border: 1px solid #ddd;
+  border: none;
   font-size: 14px;
-  border-radius: 2px;
-
+  height: 49px;
+  background-color: #302d48;
+  border-radius: 0;
   .input__tip {
     position: absolute;
-    right: 10px;
-    top: 7px;
+    right: 19px;
+    top: 15px;
+    @include font(Geometria-Bold);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.2);
   }
 
   .input__input {
+    @include font(Geometria-Bold);
+    font-size: 14px;
+    color: #fff;
     &::-webkit-input-placeholder {
       color: $terminalPlaceholder;
     }
