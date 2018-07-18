@@ -66,6 +66,15 @@ class SignInFormContainer extends React.Component {
     this.setState({[event.target.name]: event.target.value});
   };
 
+  onClickDemo = (event) => {
+    event.preventDefault();
+    this.props.signIn({
+      email: 'guest@mail.com',
+      password: '12345678'
+    }).then(this.onSuccessSubmit.bind(this))
+    .catch(this.onErrorSubmit.bind(this));
+  }
+
   render() {
     const {
       handleSubmit,
@@ -80,6 +89,7 @@ class SignInFormContainer extends React.Component {
       handleEnter={handleEnter.bind(this)}
       checked={this.state.checked}
       isError={this.state.isError}
+      onClickDemo={this.onClickDemo}
     />;
   }
 }
