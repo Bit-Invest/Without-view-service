@@ -4,6 +4,7 @@ import { OpenOrderList } from '@terminal/OpenOrderList';
 const ROOT_CLASS = 'open-orders';
 
 export const OpenOrders = props => {
+  console.log(props.orders);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__list-name`}>

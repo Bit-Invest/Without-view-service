@@ -18,6 +18,7 @@ const fillZeros = (num) => {
 }
 
 export const OrderBook = props => {
+  console.log(props);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__caption`}>ORDERBOOK</div>

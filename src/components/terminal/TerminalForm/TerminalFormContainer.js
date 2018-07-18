@@ -54,6 +54,7 @@ class TerminalFormContainer extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log('#####');
     this.props.placeLimitOrder({
       jwt: LocalStorage.getItem('token'),
       key: this.props.currentProduct.id,
