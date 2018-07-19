@@ -1,27 +1,34 @@
 @import "../Utils/Utils.scss";
 
-.tabs, .tabs_order-list {
+.tabs.tabs_order-list {
+  background-color: rgba(29, 27, 40, .3);
+  height: 100%;
+  padding-top: 20px;
   .tabs {
     &__buttons-wrap {
-      height: 30px;
-      background-color: #f1f1f1;
+      margin-left: 16px;
+      height: 43px;
+      background-color: transparent;
     }
-
+    &__content-wrap {
+      margin-top: 10px;
+    }
     &__button {
+      padding: 0px 20px;
       display: inline-block;
       vertical-align: top;
-      width: 90px;
-      height: 30px;
-      background-color: #cebffe;
-      line-height: 30px;
-      font-size: 12px;
+      background-color: #403467;
+      height: 43px;
+      line-height: 43px;
+      font-size: 14px;
       text-align: center;
       color: #fff;
       cursor: pointer;
-      @include font(Lato-Bold);
+      @include font(Geometria);
+      opacity: 0.3;
 
       &_active {
-        background-color: #8560fd;
+        opacity: 1;
       }
     }
   }

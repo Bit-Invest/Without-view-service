@@ -8,11 +8,10 @@ export const OpenOrders = props => {
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__list-name`}>
-        <div className={`${ROOT_CLASS}__name`}>Order date</div>
-        <div className={`${ROOT_CLASS}__name`}>Price BTC</div>
-        <div className={`${ROOT_CLASS}__name`}>Origin</div>
-        <div className={`${ROOT_CLASS}__name`}>Remain</div>
-        <div className={`${ROOT_CLASS}__name`}>Total</div>
+        <div className={`${ROOT_CLASS}__name`}>PRICE, EUR</div>
+        <div className={`${ROOT_CLASS}__name`}>VOLUME</div>
+        <div className={`${ROOT_CLASS}__name`}>VOLUME</div>
+        <div className={`${ROOT_CLASS}__name`}>TOTAL</div>
       </div>
       <div className={`${ROOT_CLASS}__hr`}></div>
       <div className={`${ROOT_CLASS}__orders`}>

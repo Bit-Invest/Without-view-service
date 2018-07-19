@@ -1,0 +1,15 @@
+@import "../../common/Utils/Utils.scss";
+
+.products {
+  &__title {
+    @include font(Geometria-Bold);
+    font-size: 20px;
+    color: #888e9c;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 43px;
+  }
+}

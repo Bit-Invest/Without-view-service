@@ -79,8 +79,19 @@
 
 .select_terminal {
   width: 100%;
-  @include font(Lato-Bold);
-  font-size: 12px;
+  height: 64px;
+  background-color: rgba(255, 255, 255, 0.03);
+  @include font(Geometria-Bold);
+  font-size: 14px;
   box-shadow: none;
-  border-right: 1px solid #ddd;
+  // border-right: 1px solid #ddd;
+  color: #fff;
+  .select {
+    &__options {
+      background-color: #241d35;
+    }
+    &__option:hover {
+      background-color: #363648;
+    }
+  }
 }

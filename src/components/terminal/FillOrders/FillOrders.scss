@@ -1,21 +1,21 @@
 @import "../../common/Utils/Utils.scss";
 
 .fill-orders{
-    width: auto;
-    height: 262px;
-    background-color: #ffffff;
-    border: solid 1px #f1f1f1;
+  padding: 0 24px;
+  width: auto;
+  height: 262px;
   &__list-name {
-    padding:10px 20px;
+    height: 38px;
+    line-height: 38px;
     display: flex;
+    justify-content: space-between;
   }
   &__name {
-    @include font(Lato-Bold);
-    margin-right: 40px;
-    width: 100px;
-    height: 16px;
-    font-size: 14px;
-    color: #000000;
+    @include font(Geometria);
+    // width: 70px;
+    height: 12px;
+    font-size: 12px;
+    color: #888e9c;
   }
   &__hr {
     background-color: #f1f1f1;

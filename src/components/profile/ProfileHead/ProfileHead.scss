@@ -1,11 +1,33 @@
 @import "../../common/Utils/Utils.scss";
 
 .profile-head {
+  background-color: rgba(255, 255, 255, 0.03);
   display: flex;
   justify-content: space-between;
-  padding: 28px 30px 30px 25px;
+  align-items: center;
+  padding: 24px 36px 16px 21px;
 
   &__units {
     display: flex;
+  }
+
+  &__user-wrap {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__unit {
+    margin-left: 30px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  &__log-out {
+    align-self: flex-end;
+    cursor: pointer;
+    margin-bottom: 13px;
+    margin-left: 24px;
   }
 }

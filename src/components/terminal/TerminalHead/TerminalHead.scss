@@ -1,8 +1,8 @@
 .terminal-head {
   width: 100%;
-  height: 30px;
-  background-color: #ffffff;
-  margin-bottom: 5px;
+  height: 64px;
+  background-color: rgba(255, 255, 255, 0.03);
+  margin-bottom: 16px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   display: flex;
@@ -17,5 +17,9 @@
 
   &__type-select {
     width: 94px;
+  }
+
+  .select {
+    background-color: transparent;
   }
 }
