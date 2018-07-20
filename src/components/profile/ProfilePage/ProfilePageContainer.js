@@ -11,6 +11,7 @@ import {
 import { push } from 'react-router-redux';
 import { showPopUp, checkJWT } from '@store/modules/common';
 import { LocalStorage } from '@common/Utils';
+import { getProducts } from '@store/modules/marketplace';
 
 class ProfilePageContainer extends React.Component {
   constructor(props) {
@@ -39,7 +40,8 @@ class ProfilePageContainer extends React.Component {
     this.props.userLogIn();
     Promise.all([
       this.props.getPersonalInfo(),
-      this.props.getKeys()
+      this.props.getKeys(),
+      this.props.getProducts()
     ]).then(this.onLoadPersonalInfo.bind(this))
       .catch(this.onFailPersonalInfo.bind(this));
 
@@ -67,12 +69,35 @@ class ProfilePageContainer extends React.Component {
         user={this.props.user}
         push={this.props.push}
         userLogOut={this.props.userLogOut}
+        products={this.props.products}
+        investors={[
+          {
+            name: "Ivan",
+            surname: "Ivanov",
+            role: "investor"
+          },
+          {
+            name: "Oleg",
+            surname: "Olegov",
+            role: "investor"
+          },
+          {
+            name: "George",
+            surname: "Kozlov",
+            role: "investor"
+          }
+        ]}
       />
     );
   }
 }
 
-const mapStateToProps = (state) => {return {user: state.user}};
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    products: state.marketplace.products
+  };
+};
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
@@ -82,7 +107,8 @@ const mapDispatchToProps = dispatch =>
     showPopUp,
     checkJWT,
     userLogIn,
-    userLogOut
+    userLogOut,
+    getProducts
   }, dispatch);
 
 const connectedContainer =

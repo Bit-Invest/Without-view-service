@@ -12,6 +12,12 @@
   cursor: pointer;
   overflow: hidden;
 
+  &__title {
+    display: none;
+    @include font(Geometria);
+    color: #ffffff;
+    font-size: 16px;
+  }
   &__header {
     display: flex;
     justify-content: space-between;
@@ -83,4 +89,28 @@
 .trader-card:hover {
   background-color: rgba(255, 255, 255, 0.1);
 
+}
+
+.trader-card_trader {
+  padding-top: 64px;
+  background-color: rgba(255, 255, 255, 0.02);
+
+  .trader-card {
+    &__header {
+      display: none;
+    }
+
+    &__title {
+      display: block;
+    }
+
+    &__exchanges {
+      display: none;
+    }
+  }
+
+}
+
+.trader-card_investor {
+  background-color: rgba(29, 27, 40, 0.3);
 }

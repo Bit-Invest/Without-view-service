@@ -72,3 +72,14 @@
     }
   }
 }
+
+.rating_investor {
+  flex-direction: column;
+  .rating__votes {
+    align-self: flex-end;
+    margin-top: 11px;
+  }
+  .rating__stars {
+    margin: 0;
+  }
+}

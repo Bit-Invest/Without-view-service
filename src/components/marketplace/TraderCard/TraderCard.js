@@ -12,14 +12,20 @@ import { TraderStat } from '@marketplace/TraderStat';
 const ROOT_CLASS = 'trader-card';
 
 export const TraderCard = props => {
-  console.log(props);
+  const buildRootClass = () => {
+    return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;
+  }
+
   return (
-    <div className={ROOT_CLASS} onClick={props.onClick}>
+    <div className={buildRootClass()} onClick={props.onClick}>
       <div className={`${ROOT_CLASS}__header`}>
         <div className={`${ROOT_CLASS}__user-block`}>
           <User name={props.name} surname={props.surname} theme="small" role="Trader" />
         </div>
         <div className={`${ROOT_CLASS}__saved ${ROOT_CLASS}__saved_${props.saved ? 'saved' : 'unsaved'}`}></div>
+      </div>
+      <div className={`${ROOT_CLASS}__title`}>
+        {props.title ? props.title : ''}
       </div>
       <div className={`${ROOT_CLASS}__exchanges`}>
         <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
@@ -43,39 +49,3 @@ export const TraderCard = props => {
     </div>
   );
 };
-
-// <Line
-//   height={80}
-//   width={208}
-//   data={{
-//     labels: ['', '', '', '', ''],
-//     datasets: [{
-//       data: [
-//         {x: 20, y: Utils.randomInt(0, 100)},
-//         {x: 30, y: Utils.randomInt(0, 100)},
-//         {x: 40, y: Utils.randomInt(0, 100)},
-//         {x: 50, y: Utils.randomInt(0, 100)},
-//         {x: 60, y: Utils.randomInt(0, 100)}
-//       ],
-//       borderColor: '#d36bf5',
-//       pointRadius: 1,
-//       borderWidth: 2
-//     }],
-//
-//   }}
-//   options={{
-//     legend: {
-//       display: false
-//     },
-//     scales: {
-//       xAxes: [{
-//         display: false,
-//         position: 'bottom'
-//       }],
-//       yAxes: [{
-//         display: false,
-//         position: 'right'
-//       }]
-//     }
-//   }}
-// />
