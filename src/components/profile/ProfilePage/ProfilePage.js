@@ -5,11 +5,12 @@ import { ListProducts } from '@profile/ListProducts';
 import { ProfileChart } from '@profile/ProfileChart';
 import { Products } from '@profile/Products';
 import { Investor } from '@profile/Investor';
-
+import { Apis } from '@profile/Apis';
 
 const ROOT_CLASS = 'profile-page';
 
 export const ProfilePage = props => {
+  console.log(props);
   const renderInvestors = () => {
     let result = null;
     if (props.user.personalInfo && props.user.personalInfo.role === 'trader') {
@@ -49,6 +50,20 @@ export const ProfilePage = props => {
           />
         </div>
         {renderInvestors()}
+        <div className={`${ROOT_CLASS}__apis`}>
+          <Apis
+            keys={[
+              {
+                stock: 'binance',
+                baseAmount: 18.7,
+                baseCurrency: 'BTC',
+                secondAmount: 182,
+                secondCurrency: 'USD',
+                status: 'valid'
+              }
+            ]}
+          />
+        </div>
       </div>
     </Page>
   );

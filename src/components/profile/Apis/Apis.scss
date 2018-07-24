@@ -1,0 +1,16 @@
+@import "../../common/Utils/Utils.scss";
+
+.apis {
+  &__head {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__list {
+    margin-top: 36px;
+  }
+  &__title {
+    @include font(Geometria-Bold);
+    font-size: 20px;
+    color: #888e9c;
+  }
+}
