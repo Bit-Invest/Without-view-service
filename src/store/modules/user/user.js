@@ -23,6 +23,8 @@ export const GET_SUBSCRIBED_PRODUCTS_SUCCESS =
 export const API_KEY_SUBSCRIBE_SUCCESS = 'user/API_KEY_SUBSCRIBE_SUCCESS';
 export const UNSUBSCRIBE_TRADER = 'user/UNSUBSCRIBE_TRADER';
 export const UNSUBSCRIBE_TRADER_SUCCESS = 'user/UNSUBSCRIBE_TRADER_SUCCESS';
+export const GET_MY_PRODUCTS = 'user/GET_MY_PRODUCTS';
+export const GET_MY_PRODUCTS_SUCCESS = 'user/GET_MY_PRODUCTS_SUCCESS';
 
 const initialState = {
   personalInfo: null,
