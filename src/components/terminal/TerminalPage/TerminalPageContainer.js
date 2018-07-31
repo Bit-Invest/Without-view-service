@@ -25,7 +25,7 @@ class TerminalPageContainer extends React.Component {
     this.state = {
       currentOrder: 'Limit',
       isLoaded: false
-    }
+    };
   }
 
   componentWillMount() {
@@ -94,6 +94,7 @@ class TerminalPageContainer extends React.Component {
         loadData={this.loadData.bind(this)}
         currentPair={this.props.currentPair}
         chart={this.props.data.chart}
+        currentChartType={this.props.data.currentChartType}
       />
     );
   }

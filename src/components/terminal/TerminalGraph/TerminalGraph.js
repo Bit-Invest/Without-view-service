@@ -2,66 +2,63 @@ import * as React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Utils } from '@common/Utils';
 import { StockCandleChart } from '@common/StockCandleChart';
+import { StockAreaChart } from '@common/StockAreaChart';
 
 const ROOT_CLASS = 'terminal-graph';
 
+const mapCandle = (point) => {
+  const { open, close, high, low } = point;
+
+  return {
+    open: +open,
+    close: +close,
+    high: +high,
+    low: +low,
+    date: new Date(point.eventTime).getTime()
+  };
+}
+
+const mapArea = (point) => {
+  const { close, eventTime } = point;
+
+  return {
+    date: new Date(eventTime).getTime(),
+    close: +close
+  };
+}
+
+const chartType = {
+  area: {
+    component: StockAreaChart,
+    mapFunc: mapArea
+  },
+  candle: {
+    component: StockCandleChart,
+    mapFunc: mapCandle
+  }
+};
+
+const parseData = (data, type) => {
+  return data.map(chartType[type].mapFunc);
+}
+
 export const TerminalGraph = (props) => {
-  const now = Date.now();
-  return (
+  const { chart, type } = props;
+  const data = chart ? parseData(chart, type) : [];
+  const Chart = chartType[type].component;
+  return data.length > 0 ? (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__graph-wrap`}>
-        <StockCandleChart
-          width={643}
+        <Chart
+          width={document.documentElement.clientWidth - 800}
           height={391}
-          type="svg"
-          data={[
-            {
-              high: 25.835021381744056,
-              low: 25.411360259406774,
-              open: 25.436282332605284,
-              date: now - 60000 * 60 * 24,
-              close: 25.710416
-            },
-            {
-              high: 28.835021381744056,
-              low: 28.411360259406774,
-              open: 28.436282332605284,
-              date: now - 60000 * 60 * 48,
-              close: 28.710416
-            },
-            {
-              high: 31.835021381744056,
-              low: 31.411360259406774,
-              open: 31.436282332605284,
-              date: now - 60000 * 60 * 72,
-              close: 31.710416
-            },
-            {
-              high: 33.835021381744056,
-              low: 33.411360259406774,
-              open: 33.436282332605284,
-              date: now - 60000 * 60 * 96,
-              close: 33.710416
-            },
-            {
-              high: 29.835021381744056,
-              low: 29.411360259406774,
-              open: 29.436282332605284,
-              date: now - 60000 * 60 * 120,
-              close: 29.710416
-            },
-            {
-              high: 23.835021381744056,
-              low: 23.411360259406774,
-              open: 23.436282332605284,
-              date: now - 60000 * 60 * 144,
-              close: 23.710416
-            }
-          ].reverse()}
+          type="canvas+svg"
+          data={data}
+          range={200}
         />
       </div>
     </div>
-  );
+  ) : null;
 };
 
 // const createTestData = () => {

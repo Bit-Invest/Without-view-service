@@ -12,7 +12,8 @@ import { networkError } from './modules/common';
 export const history = createHistory();
 
 const client = axios.create({
-  baseURL: 'http://37.139.25.90',
+  // baseURL: 'http://37.139.25.90:8080',
+  baseURL: 'http://192.168.100.154',
   responseType: 'json',
   headers: {
     'Content-Type': 'application/json',
@@ -20,7 +21,8 @@ const client = axios.create({
   }
 });
 
-const socket = io('http://37.139.25.90');
+// const socket = io('http://37.139.25.90:8080');
+const socket = io('http://192.168.100.154');
 socket.on('disconnect', () => {
   console.log('DISCONNECT');
 })

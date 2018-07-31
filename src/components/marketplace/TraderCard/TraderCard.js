@@ -8,6 +8,7 @@ import { Utils } from '@common/Utils';
 import { User } from '@common/User';
 import { Unit } from '@common/Unit';
 import { TraderStat } from '@marketplace/TraderStat';
+import { StockAreaChart } from '@common/StockAreaChart';
 
 const ROOT_CLASS = 'trader-card';
 
@@ -15,6 +16,7 @@ export const TraderCard = props => {
   const buildRootClass = () => {
     return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;
   }
+  const now = Date.now();
 
   return (
     <div className={buildRootClass()} onClick={props.onClick}>
@@ -31,7 +33,35 @@ export const TraderCard = props => {
         <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
         <div className={`${ROOT_CLASS}__pair`}>BTC/ETH</div>
       </div>
-      <div className={`${ROOT_CLASS}__chart`}/>
+      <div className={`${ROOT_CLASS}__chart-wrap ${props.isLoaded ? ROOT_CLASS + '__chart-wrap_loaded' : ''}`}>
+        <div className={`${ROOT_CLASS}__preloader`}/>
+        <div className={`${ROOT_CLASS}__chart`}>
+          <StockAreaChart
+            width={339}
+            height={157}
+            type="hybrid"
+            data={[{
+              date: now - 60000,
+              close: 20
+            }, {
+              date: now - 120000,
+              close: 30
+            }, {
+              date: now - 180000,
+              close: 40
+            }, {
+              date: now - 240000,
+              close: 50
+            }, {
+              date: now - 300000,
+              close: 60
+            }, {
+              date: now - 360000,
+              close: 70
+            }].reverse()}
+          />
+        </div>
+      </div>
       <div className={`${ROOT_CLASS}__units`}>
         <div className={`${ROOT_CLASS}__unit`}>
           <Unit title="week" count={32} size="market" />

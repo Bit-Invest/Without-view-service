@@ -3,8 +3,24 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TraderCard } from './TraderCard';
 import { showPopUp } from '@store/modules/common';
+import { tradeHistory } from '@store/modules/marketplace';
 
 class TraderCardContainer extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoaded: false
+    };
+  }
+
+  componentWillMount() {
+    this.props.tradeHistory({
+      keyId: this.props.id
+    }).then(() => {this.setState({isLoaded: true})});
+  }
+
   render() {
     return(
       <TraderCard
@@ -12,6 +28,7 @@ class TraderCardContainer extends React.Component {
         nameStor={this.props.nameStor}
         name={this.props.name}
         surname={this.props.surname}
+        isLoaded={this.state.isLoaded}
         {...this.props}
       />
     );
@@ -30,7 +47,7 @@ class TraderCardContainer extends React.Component {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({showPopUp}, dispatch);
+  bindActionCreators({showPopUp, tradeHistory}, dispatch);
 
 const connectedContainer =
   connect(null, mapDispatchToProps)(TraderCardContainer);
