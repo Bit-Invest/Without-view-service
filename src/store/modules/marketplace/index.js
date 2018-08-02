@@ -1,1 +1,1 @@
-export { marketplace, getProducts } from './marketplace';
+export { marketplace, getProducts, tradeHistory } from './marketplace';

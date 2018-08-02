@@ -48,10 +48,33 @@
     text-align: left;
     color: #b0a5ff;
   }
-  &__chart {
+
+  &__preloader {
+    align-self: center;
+    justify-self: center;
+    width: 25px;
+    height: 25px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(../assets/images/trader-card-preloader.gif);
+  }
+  &__chart-wrap {
+    display: flex;
     margin-top: 34px;
     height: 157px;
     border: solid 1px #545862;
+
+    &_loaded {
+      .trader-card__preloader {
+        display: none;
+      }
+      .trader-card__chart {
+        display: block;
+      }
+    }
+  }
+  &__chart {
+    display: none;
   }
   &__saved {
     width: 37px;

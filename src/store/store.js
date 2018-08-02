@@ -21,6 +21,7 @@ const client = axios.create({
 });
 
 const socket = io('http://37.139.25.90:8080');
+// const socket = io('http://37.139.25.90:8080');
 socket.on('disconnect', () => {
   console.log('DISCONNECT');
 })

@@ -54,3 +54,12 @@ export const convertTimeForLabel = (timestamp) => {
 export const randomInt = (start, end) => {
   return Math.floor(Math.random() * (start - end)) + end;
 }
+
+export const parseTradeHistory = (history) => {
+  return history.labels.map((label, index) => {
+    return {
+      date: label,
+      close: history.values[index]
+    };
+  });
+}

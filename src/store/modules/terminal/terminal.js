@@ -16,6 +16,7 @@ export const SET_CURRENT_STOCK = 'terminal/SET_CURRENT_STOCK';
 export const ORDER_FINISH_SUBSCRIBE = 'terminal/ORDER_FINISH_SUBSCRIBE';
 export const ORDER_FINISHED = 'terminal/ORDER_FINISHED';
 export const ORDER_ERROR = 'terminal/ORDER_ERROR';
+export const SET_CURRENT_CHART_TYPE = 'terminal/SET_CURRENT_CHART_TYPE';
 
 const initialState = {
   historyList: [],
@@ -33,10 +34,8 @@ const initialState = {
   },
   pairs: [],
   currentStock: 'binance',
-  chart: {
-    lables: [],
-    values: []
-  }
+  currentChartType: 'candle',
+  chart: []
 };
 
 export const terminal = (state = initialState, action) => {
@@ -75,6 +74,11 @@ export const terminal = (state = initialState, action) => {
       return {
         ...state,
         currentStock: action.payload
+      };
+    case SET_CURRENT_CHART_TYPE:
+      return {
+        ...state,
+        currentChartType: action.payload
       };
     case ORDER_FINISHED:
       return state;
@@ -183,5 +187,12 @@ export const setCurrentStock = (stock) => {
   return {
     type: SET_CURRENT_STOCK,
     payload: stock
+  };
+}
+
+export const setCurrentChartType = (chartType) => {
+  return {
+    type: SET_CURRENT_CHART_TYPE,
+    payload: chartType
   };
 }
