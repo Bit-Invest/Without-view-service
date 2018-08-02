@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Utils } from '@common/Utils';
+// import { ChartCanvas, Chart, series } from "react-stockcharts";
+
+// const { LineSeries, ScatterSeries, CircleMarker, SquareMarker, TriangleMarker } = series;
 
 const ROOT_CLASS = 'terminal-graph';
 
@@ -39,6 +42,7 @@ export const TerminalGraph = (props) => {
             }
           }}
         />
+
       </div>
     </div>
   );

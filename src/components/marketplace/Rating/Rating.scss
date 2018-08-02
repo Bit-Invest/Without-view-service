@@ -16,6 +16,9 @@
     line-height: normal;
     letter-spacing: 0.7px;
     text-align: left;
+    &_hidden {
+      display: none;
+    }
   }
 
   &__full-circle {

@@ -5,6 +5,8 @@ import { UserName } from '@components/profile/UserName/UserName';
 import { Rating } from '@components/marketplace/Rating/Rating';
 import { Line } from 'react-chartjs-2';
 import { Utils } from '@common/Utils';
+import { User } from '@common/User';
+import { Unit } from '@common/Unit';
 
 const ROOT_CLASS = 'product-page';
 
@@ -55,18 +57,12 @@ export const PopUpProductPage = props => {
       </div>
       <div className={`${ROOT_CLASS}__result-block`}>
         <div className={`${ROOT_CLASS}__result`}>
-          <div className={`${ROOT_CLASS}__result-data`}>Week </div>
-          <div className={`${ROOT_CLASS}__color-result`}> +32%</div>
+          <Unit title="week" count="32" size="market"/>
         </div>
         <div className={`${ROOT_CLASS}__result`}>
-          <div className={`${ROOT_CLASS}__result-data`}>Month </div>
-          <div className={`${ROOT_CLASS}__color-result`}> +15%</div>
+          <Unit title="month" count="-15" size="market"/>
         </div>
-        <div className={`${ROOT_CLASS}__stock-exchange`}>BiNANCE</div>
-        <div className={`${ROOT_CLASS}__saved-block`}>
-          <div className={`${ROOT_CLASS}__saved`}>SAVE</div>
-          <div className={`${ROOT_CLASS}__saved-icon`}></div>
-        </div>
+        <div className={`${ROOT_CLASS}__stock-exchange`}>BINANCE</div>
       </div>
       <div className={`${ROOT_CLASS}__description-block`}>
         <div className={`${ROOT_CLASS}__description`}>
@@ -75,33 +71,25 @@ export const PopUpProductPage = props => {
       </div>
       <div className={`${ROOT_CLASS}__position-container`}>
         <div className={`${ROOT_CLASS}__position-block`}>
-          <div>Horizon</div>
-          <div>LONG</div>
+          <span>Horizon</span>{' '}
+          <span>LONG</span>
         </div>
         <div className={`${ROOT_CLASS}__position-block`}>
-          <div>Fees</div>
-          <div>10%</div>
+          <span>Fees{' '}</span>
+          <span>10%</span>
         </div>
         <div className={`${ROOT_CLASS}__position-block`}>
-          <div>Investors</div>
-          <div>{props.followersCount}</div>
+          <span>Investors{' '}</span>
+          <span>{props.followersCount}</span>
         </div>
       </div>
       <div className={`${ROOT_CLASS}__footer-block`}>
         <div className={`${ROOT_CLASS}__user-block`}>
-          <IconUser />
-          <div>
-            <div className={`${ROOT_CLASS}__user-name-block`}>
-              <UserName
-                name={props.name}
-                surname={`${props.surname[0]}.`}
-                theme='MarketPlaceName'
-              />
-            </div>
-            <div className={`${ROOT_CLASS}__rating-block`}>
-              <Rating rating={5}/>
-            </div>
-          </div>
+          <User
+            name={props.name}
+            surname={`${props.surname[0]}.`}
+            theme="small"
+          />
         </div>
         <button
           className={buildButtonClass(props)}
@@ -139,3 +127,17 @@ const isNeedHide = (props) => {
   return !props.personalInfo ||
     props.personalInfo.role === 'trader' || props.isNeedHide;
 }
+
+// {/*<IconUser />
+// <div>
+//   <div className={`${ROOT_CLASS}__user-name-block`}>
+//     <UserName
+//       name={props.name}
+//       surname={`${props.surname[0]}.`}
+//       theme='MarketPlaceName'
+//     />
+//   </div>
+//   <div className={`${ROOT_CLASS}__rating-block`}>
+//     <Rating rating={5}/>
+//   </div>
+// </div>*/}

@@ -13,7 +13,8 @@ class PopUpNewProductContainer extends React.Component {
       select: 'binance',
       ApiKey: '',
       secretKey: '',
-      info: ''
+      info: '',
+      nameProduct: 'My product'
     };
   }
 
@@ -24,7 +25,8 @@ class PopUpNewProductContainer extends React.Component {
         name: this.state.select,
         key: this.state.ApiKey,
         apiSecret: this.state.secretKey,
-        info: this.state.info
+        info: this.state.info,
+        productName: this.state.productName
       }
     };
     const { addExchange } = this.props;

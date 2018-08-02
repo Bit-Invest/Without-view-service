@@ -22,7 +22,7 @@ export const Rating = props => {
 
   return (
     <div className={buildRootClass()}>
-      <div className={`${ROOT_CLASS}__role`}>
+      <div className={`${ROOT_CLASS}__role ${props.role ? '' : ROOT_CLASS + '__role_hidden'}`}>
         {props.role}
       </div>
       <div className={`${ROOT_CLASS}__stars`}>

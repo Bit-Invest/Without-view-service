@@ -61,7 +61,7 @@ class TerminalPageContainer extends React.Component {
       this.props.getKeys(),
       this.props.marketData({
         symbol: currentPair.symbol,
-        nameStock: this.props.data.currentStock,
+        stock: this.props.data.currentStock,
         eventTime: {
           gte: Date.now() - DAY,
           lt: Date.now()
