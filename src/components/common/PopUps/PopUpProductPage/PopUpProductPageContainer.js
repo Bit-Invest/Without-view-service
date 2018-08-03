@@ -52,7 +52,10 @@ const mapStateToProps = state => {
   return {
     userStocks: state.user.burses,
     personalInfo: state.user.personalInfo,
-    products: state.user.products
+    products: state.user.products,
+    hasKey: state.user.burses.findIndex((burse) => {
+      return burse.status === 'valid';
+    }) >= 0
   };
 }
 const mapDispatchToProps = dispatch =>

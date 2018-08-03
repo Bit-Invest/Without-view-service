@@ -6,7 +6,8 @@ export const GET_HISTORY = 'marketplace/GET_HISTORY';
 export const GET_HISTORY_SUCCESS = 'marketplace/GET_HISTORY_SUCCESS';
 
 const initialState = {
-  products: []
+  products: [],
+  historyData: {}
 }
 
 export const marketplace = (state = initialState, action) => {
@@ -17,20 +18,13 @@ export const marketplace = (state = initialState, action) => {
         products: action.payload.data
       };
     case GET_HISTORY_SUCCESS:
-      console.log(action.payload.data);
       const history = Utils.parseTradeHistory(action.payload.data.graph[0]);
       return {
         ...state,
-        products: state.products.map(product => {
-          let result = product;
-          if (product.id === action.payload.data.productId) {
-            result = {
-              ...product,
-              history
-            };
-          }
-          return result;
-        })
+        historyData: {
+          ...state.historyData,
+          [action.payload.data.productId]: history
+        }
       };
     default:
       return state;

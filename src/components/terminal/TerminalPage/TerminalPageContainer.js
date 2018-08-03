@@ -11,7 +11,8 @@ import {
   tradeHistory,
   marketData,
   openOrders,
-  getPairs
+  getPairs,
+  fillOrders
 } from '@store/modules/terminal';
 import { getKeys } from '@store/modules/user';
 
@@ -61,7 +62,7 @@ class TerminalPageContainer extends React.Component {
       this.props.getKeys(),
       this.props.marketData({
         symbol: currentPair.symbol,
-        stock: this.props.data.currentStock,
+        nameStock: this.props.data.currentStock,
         eventTime: {
           gte: Date.now() - DAY,
           lt: Date.now()
@@ -78,6 +79,11 @@ class TerminalPageContainer extends React.Component {
       this.props.openOrders({
         symbol: currentPair.symbol,
         stock: this.props.data.currentStock
+      }),
+      this.props.fillOrders({
+        symbol: currentPair.symbol,
+        stock: this.props.data.currentStock,
+        keyId: this.props.burse ? this.props.burse[0] : ''
       }),
       this.props.getPairs()
     ]);
@@ -102,7 +108,10 @@ class TerminalPageContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {data: state.terminal};
+  return {
+    data: state.terminal,
+    burse: state.user.burses[0]
+  };
 }
 
 const mapDispatchToProps = dispatch =>
@@ -115,7 +124,8 @@ const mapDispatchToProps = dispatch =>
     marketData,
     openOrders,
     getPairs,
-    getKeys
+    getKeys,
+    fillOrders
   }, dispatch);
 
 const connectedContainer =

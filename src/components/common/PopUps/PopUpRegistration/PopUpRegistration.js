@@ -14,7 +14,9 @@ export const PopUpRegistration = (props) => {
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ...
         </div>
         <Link to={'/registration/sign-up'}>
-          <Button className={`${ROOT_CLASS}__button`} theme="theme-gradient-popUp" NameBtn="Join now"/>
+          <div className={`${ROOT_CLASS}__button`}>
+            <Button theme="gradient-img" NameBtn="Join now"/>
+          </div>
         </Link>
         <div className={`${ROOT_CLASS}__sign-in`}>Already have an account?{' '}
         <Link className='span' to={'/registration/sign-in'}>Sign In</Link></div>

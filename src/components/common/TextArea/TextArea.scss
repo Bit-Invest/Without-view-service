@@ -3,37 +3,34 @@
 .textarea {
   width: 100%;
   height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: none;
 
   &__textarea {
     resize: none;
     width: 100%;
     height: 100%;
-    border-radius: 5px;
-    border: solid 2px #dddddd;
-    @include font(Lato-Light);
-    font-size: 18px;
-    padding: 10px 14px;
-    color: #000;
+    @include font(Geometria);
+    font-size: 12px;
+    padding: 22px 16px;
+    color: #a697be;
     outline: none;
-
-    &::-webkit-textarea-placeholder {
-      @include font(Lato-Light);
-      color: #666666;
+    border: none;
+    &::-webkit-input-placeholder {
+      color: #a697be;
     }
 
     &::-moz-placeholder {
-      @include font(Lato-Light);
-      color: #666666;
+      color: #a697be;
     }
 
-    &:-ms-textarea-placeholder {
-      @include font(Lato-Light);
-      color: #666666;
+    &:-ms-input-placeholder {
+      color: #a697be;
     }
 
     &:-moz-placeholder {
-      @include font(Lato-Light);
-      color: #666666;
+      color: #a697be;
     }
   }
 }

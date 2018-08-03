@@ -25,8 +25,7 @@
   margin-top: 30px;
   margin-bottom: 50px;
   align-self: flex-end;
-  background-color: #fff;
-  border-radius: 5px;
+  background-image: linear-gradient(to top, #3a2f64, #4a3c6b 47%, #755c7a);
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
 }
 .pop-up-manager__content-wrap {
@@ -36,11 +35,17 @@
   position: relative;
 }
 .pop-up-manager__close {
-  margin-bottom: 4px;
+  top: -12px;
+  right: -39px;
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  border-radius: 100%;
+  background-color: #5b57a3;
   display: flex;
-  width: max-content;
-  align-self: flex-end;
   align-items: center;
+  justify-content: center;
+  opacity: 0.5;
   cursor: pointer;
   color: #fff;
 }

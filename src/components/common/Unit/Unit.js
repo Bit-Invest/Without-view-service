@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { PercentResult } from '@common/PercentResult';
+import { Utils } from '@common/Utils';
 
 const ROOT_CLASS = 'unit';
 
 export const Unit = (props) => {
   const buildRootClass = () => {
-    return `${ROOT_CLASS} ${ROOT_CLASS}_${props.size}`;
+    return `${ROOT_CLASS} ${ROOT_CLASS}_${props.size} ${Utils.UNDEVELOPED}`;
   }
 
   return (

@@ -36,6 +36,9 @@ class PopUpNewProductContainer extends React.Component {
     this.props.hidePopUp();
   };
 
+  handleNameChange(event) {
+    this.setState({ nameProduct: event.target.value });
+  }
 
   handleSelectChange(event) {
     this.setState({ select: event.payload.value });
@@ -59,7 +62,8 @@ class PopUpNewProductContainer extends React.Component {
       handleSelectChange,
       handleAPIChange,
       handleSecretKeyChange,
-      handleAreaChange
+      handleAreaChange,
+      handleNameChange
     } = this;
     return <PopUpNewProduct
       handleSubmit={handleSubmit.bind(this)}
@@ -67,6 +71,7 @@ class PopUpNewProductContainer extends React.Component {
       handleAPIChange={handleAPIChange.bind(this)}
       handleSecretKeyChange={handleSecretKeyChange.bind(this)}
       handleAreaChange={handleAreaChange.bind(this)}
+      handleNameChange={handleNameChange.bind(this)}
       role={this.props.role}
     />;
   }

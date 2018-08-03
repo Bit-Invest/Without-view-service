@@ -4,7 +4,6 @@ import { TraderCard } from '@marketplace/TraderCard';
 const ROOT_CLASS = 'products';
 
 export const Products = (props) => {
-  console.log(props);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__header`}>

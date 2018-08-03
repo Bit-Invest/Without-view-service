@@ -17,16 +17,6 @@ export const Api = (props) => {
           {status[props.status]}
         </div>
       </div>
-      <div className={`${ROOT_CLASS}__currencies`}>
-        <div className={`${ROOT_CLASS}__base`}>
-          <span className={`${ROOT_CLASS}__amount`}>{props.baseAmount}</span>{' '}
-          <span className={`${ROOT_CLASS}__currency`}>{props.baseCurrency}</span>
-        </div>
-        <div className={`${ROOT_CLASS}__second`}>
-          <span className={`${ROOT_CLASS}__amount`}>{props.secondAmount}</span>{' '}
-          <span className={`${ROOT_CLASS}__currency`}>{props.secondCurrency}</span>
-        </div>
-      </div>
     </div>
   );
 }

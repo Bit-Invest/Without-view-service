@@ -6,7 +6,9 @@ import {
   getPersonalInfo,
   getKeys,
   userLogIn,
-  userLogOut
+  userLogOut,
+  getMyProducts,
+  getMyInvestors
 } from '@store/modules/user';
 import { push } from 'react-router-redux';
 import { showPopUp, checkJWT } from '@store/modules/common';
@@ -41,10 +43,10 @@ class ProfilePageContainer extends React.Component {
     Promise.all([
       this.props.getPersonalInfo(),
       this.props.getKeys(),
-      this.props.getProducts()
+      this.props.getMyProducts(),
+      this.props.getMyInvestors()
     ]).then(this.onLoadPersonalInfo.bind(this))
       .catch(this.onFailPersonalInfo.bind(this));
-
   }
 
   onFailPersonalInfo(err) {
@@ -69,24 +71,9 @@ class ProfilePageContainer extends React.Component {
         user={this.props.user}
         push={this.props.push}
         userLogOut={this.props.userLogOut}
-        products={this.props.products}
-        investors={[
-          {
-            name: "Ivan",
-            surname: "Ivanov",
-            role: "investor"
-          },
-          {
-            name: "Oleg",
-            surname: "Olegov",
-            role: "investor"
-          },
-          {
-            name: "George",
-            surname: "Kozlov",
-            role: "investor"
-          }
-        ]}
+        products={this.props.user.myProducts}
+        keys={this.props.user.burses}
+        investors={this.props.user.investors}
       />
     );
   }
@@ -94,8 +81,7 @@ class ProfilePageContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
-    products: state.marketplace.products
+    user: state.user
   };
 };
 
@@ -108,7 +94,9 @@ const mapDispatchToProps = dispatch =>
     checkJWT,
     userLogIn,
     userLogOut,
-    getProducts
+    getProducts,
+    getMyProducts,
+    getMyInvestors
   }, dispatch);
 
 const connectedContainer =

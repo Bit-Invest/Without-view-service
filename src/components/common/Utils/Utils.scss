@@ -8,3 +8,8 @@
 @mixin font($font) {
   font-family: $font, sans-serif;
 }
+
+.utils__undeveloped {
+  opacity: 0.2;
+  cursor: not-allowed;
+}

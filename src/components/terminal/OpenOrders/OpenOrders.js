@@ -4,11 +4,10 @@ import { OpenOrderList } from '@terminal/OpenOrderList';
 const ROOT_CLASS = 'open-orders';
 
 export const OpenOrders = props => {
-  console.log(props.orders);
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__list-name`}>
-        <div className={`${ROOT_CLASS}__name`}>PRICE, EUR</div>
+        <div className={`${ROOT_CLASS}__name`}>PRICE</div>
         <div className={`${ROOT_CLASS}__name`}>VOLUME</div>
         <div className={`${ROOT_CLASS}__name`}>VOLUME</div>
         <div className={`${ROOT_CLASS}__name`}>TOTAL</div>

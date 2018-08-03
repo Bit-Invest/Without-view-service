@@ -1,3 +1,5 @@
+export const UNDEVELOPED = 'utils__undeveloped';
+
 export const allExclude = (key, obj) => {
   let result = {};
   Object.keys(obj).forEach(item => {

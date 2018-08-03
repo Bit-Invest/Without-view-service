@@ -8,5 +8,6 @@ export {
   getPairs,
   setCurrentPair,
   setCurrentStock,
-  setCurrentChartType
+  setCurrentChartType,
+  fillOrders
 } from './terminal';

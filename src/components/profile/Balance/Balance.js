@@ -11,12 +11,12 @@ export const Balance = (props) => {
           {props.baseCurrency}
         </span>
       </div>
-      <div className={`${ROOT_CLASS}__second`}>
-        {props.second}{' '}
-        <span className={`${ROOT_CLASS}__currency`}>
-          {props.secondCurrency}
-        </span>
-      </div>
     </div>
   );
 }
+// <div className={`${ROOT_CLASS}__second`}>
+//   {props.second}{' '}
+//   <span className={`${ROOT_CLASS}__currency`}>
+//     {props.secondCurrency}
+//   </span>
+// </div>

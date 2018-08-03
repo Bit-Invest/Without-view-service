@@ -5,6 +5,13 @@ import { scaleTime } from "d3-scale";
 import { last, timeIntervalBarWidth } from "react-stockcharts/lib/utils";
 import { utcDay } from "d3-time";
 import { XAxis, YAxis } from "react-stockcharts/lib/axes";
+import {
+	CrossHairCursor,
+	MouseCoordinateX,
+	MouseCoordinateY,
+} from "react-stockcharts/lib/coordinates";
+import { format } from "d3-format";
+import { timeFormat } from "d3-time-format";
 
 const ROOT_CLASS = 'stock-candle-chart';
 
@@ -41,8 +48,30 @@ export const StockCandleChart = (props) => {
         xExtents={xExtents}
       >
         <Chart id={1} yExtents={d => [d.high, d.low]}>
-          <XAxis axisAt="bottom" orient="bottom" ticks={5} stroke="rgba(255, 255, 255, 0)" tickStroke="#FFFFFF" {...xGrid} />
-          <YAxis axisAt="left" orient="left" ticks={5} stroke="rgba(255, 255, 255, 0)" tickStroke="#FFFFFF" {...yGrid} />
+          <XAxis
+						axisAt="bottom"
+						orient="bottom"
+						ticks={5}
+						stroke="rgba(255, 255, 255, 0)"
+						tickStroke="#FFFFFF"
+						{...xGrid}
+					/>
+          <YAxis
+						axisAt="left"
+						orient="left"
+						ticks={5}
+						stroke="rgba(255, 255, 255, 0)"
+						tickStroke="#FFFFFF"
+						{...yGrid}
+					/>
+          <MouseCoordinateX
+						at="bottom"
+						orient="bottom"
+						displayFormat={timeFormat("%Y-%m-%d")} />
+					<MouseCoordinateY
+						at="left"
+						orient="right"
+						displayFormat={format(".6f")} />
           <CandlestickSeries width={5}/>
         </Chart>
       </ChartCanvas>

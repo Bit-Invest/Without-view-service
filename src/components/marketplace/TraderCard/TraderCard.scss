@@ -63,7 +63,8 @@
     margin-top: 34px;
     height: 157px;
     border: solid 1px #545862;
-
+    background: repeating-linear-gradient( transparent,transparent 37px, #343340c2 39px ), repeating-linear-gradient( 90deg, transparent,transparent 47px, #29283291 48px );
+    
     &_loaded {
       .trader-card__preloader {
         display: none;
@@ -75,6 +76,7 @@
   }
   &__chart {
     display: none;
+    margin-left: -80px;
   }
   &__saved {
     width: 37px;
@@ -83,10 +85,10 @@
     background-size: 100%;
 
     &_saved {
-      background-image: url(../assets/images/star-marketplace.svg);
+      background-image: url(../assets/images/star-saved-1.svg);
     }
     &_unsaved {
-      background-image: url(../assets/images/star-marketplace-empty.svg);
+      background-image: url(../assets/images/star-saved-2.svg);
     }
   }
   &__units {

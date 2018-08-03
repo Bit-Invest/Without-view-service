@@ -3,7 +3,6 @@ import { Line } from 'react-chartjs-2';
 import { Utils } from '@common/Utils';
 import { StockCandleChart } from '@common/StockCandleChart';
 import { StockAreaChart } from '@common/StockAreaChart';
-
 const ROOT_CLASS = 'terminal-graph';
 
 const mapCandle = (point) => {
@@ -43,6 +42,7 @@ const parseData = (data, type) => {
 }
 
 export const TerminalGraph = (props) => {
+  console.log(props);
   const { chart, type } = props;
   const data = chart ? parseData(chart, type) : [];
   const Chart = chartType[type].component;
@@ -52,9 +52,10 @@ export const TerminalGraph = (props) => {
         <Chart
           width={document.documentElement.clientWidth - 800}
           height={391}
-          type="canvas+svg"
+          type="hybrid"
           data={data}
           range={200}
+          axes
         />
 
       </div>

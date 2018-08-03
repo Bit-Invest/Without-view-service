@@ -10,10 +10,15 @@ import { Apis } from '@profile/Apis';
 const ROOT_CLASS = 'profile-page';
 
 export const ProfilePage = props => {
-  console.log(props);
+  const isNeedInvestors = () => {
+    return props.user.personalInfo &&
+      props.user.personalInfo.role === 'trader' &&
+      props.investors &&
+      props.investors.length > 0;
+  }
   const renderInvestors = () => {
     let result = null;
-    if (props.user.personalInfo && props.user.personalInfo.role === 'trader') {
+    if (isNeedInvestors()) {
       result = (
         <div className={`${ROOT_CLASS}__investors`}>
           <div className={`${ROOT_CLASS}__investors-title`}>
@@ -21,7 +26,7 @@ export const ProfilePage = props => {
           </div>
           <div className={`${ROOT_CLASS}__investors-list`}>
             {props.investors.map((investor, index) =>
-              <div className={`${ROOT_CLASS}__investor`}>
+              <div className={`${ROOT_CLASS}__investor`} key={index}>
                 <Investor {...investor} />
               </div>
             )}
@@ -30,6 +35,23 @@ export const ProfilePage = props => {
       );
     }
     return result;
+  }
+
+  const renderProducts = () => {
+    return props.products && props.products.length > 0 ?
+      (
+        <Products
+          role={props.user.personalInfo ? props.user.personalInfo.role : ''}
+          products={props.products}
+        />
+      ) : null;
+  }
+
+  const renderChart = () => {
+    return props.products && props.products.length ?
+      (
+        <ProfileChart products={props.products} />
+      ) : null;
   }
 
   return (
@@ -41,27 +63,15 @@ export const ProfilePage = props => {
           logOut={props.userLogOut}
         />
         <div className={`${ROOT_CLASS}__chart-wrap`}>
-          <ProfileChart />
+          {renderChart()}
         </div>
         <div className={`${ROOT_CLASS}__products`}>
-          <Products
-            role={props.user.personalInfo ? props.user.personalInfo.role : ''}
-            products={props.products}
-          />
+          {renderProducts()}
         </div>
         {renderInvestors()}
         <div className={`${ROOT_CLASS}__apis`}>
           <Apis
-            keys={[
-              {
-                stock: 'binance',
-                baseAmount: 18.7,
-                baseCurrency: 'BTC',
-                secondAmount: 182,
-                secondCurrency: 'USD',
-                status: 'valid'
-              }
-            ]}
+            keys={props.keys}
           />
         </div>
       </div>

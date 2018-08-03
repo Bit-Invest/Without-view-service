@@ -18,13 +18,17 @@ class TraderCardContainer extends React.Component {
   componentWillMount() {
     this.props.tradeHistory({
       keyId: this.props.id
-    }).then(() => {this.setState({isLoaded: true})});
+    })
+      .then(() => {
+        this.setState({isLoaded: true});
+      });
   }
 
   render() {
-    return(
+    console.log(this.props);
+    return (
       <TraderCard
-        onClick={this.onClickRoot.bind(this)}
+        onClick={this.onClickRoot}
         nameStor={this.props.nameStor}
         name={this.props.name}
         surname={this.props.surname}
@@ -34,22 +38,29 @@ class TraderCardContainer extends React.Component {
     );
   }
 
-  onClickRoot() {
+  onClickRoot = () => {
     this.props.showPopUp('productPage', {
       id: this.props.id,
       nameStor: this.props.nameStor,
       name: this.props.name,
       surname: this.props.surname,
       info: this.props.info,
-      followersCount: this.props.followersCount
+      followersCount: this.props.followersCount,
+      history: this.props.history[this.props.id]
     });
-  }
+  };
+}
+
+const mapStateToProps = state => {
+  return {
+    history: state.marketplace.historyData
+  };
 }
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({showPopUp, tradeHistory}, dispatch);
 
 const connectedContainer =
-  connect(null, mapDispatchToProps)(TraderCardContainer);
+  connect(mapStateToProps, mapDispatchToProps)(TraderCardContainer);
 
 export {connectedContainer as TraderCardContainer};

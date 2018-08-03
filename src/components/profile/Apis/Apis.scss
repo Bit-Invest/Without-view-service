@@ -13,4 +13,12 @@
     font-size: 20px;
     color: #888e9c;
   }
+
+  &__placeholder {
+    margin: 0 auto;
+    width: max-content;
+    @include font(Geometria);
+    font-size: 24px;
+    color: #888e9c;
+  }
 }

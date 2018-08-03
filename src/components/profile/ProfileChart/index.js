@@ -1,1 +1,1 @@
-export { ProfileChart } from './ProfileChart';
+export { ProfileChartContainer as ProfileChart } from './ProfileChartContainer';

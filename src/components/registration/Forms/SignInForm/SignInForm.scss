@@ -13,8 +13,8 @@
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  margin-bottom: 10px;
-  color: #000000;
+  margin-bottom: 12px;
+  color: #fff;
 }
 .SignInForms__RegistrationForm .checkboxBlock {
   display: flex;
@@ -40,14 +40,14 @@
 .SignInForms__RegistrationForm .transitionAccount {
   width: 280px;
   height: 60px;
-  @include font(Lato);
-  font-size: 16px;
+  @include font(Geometria);
+  font-size: 14px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #000000;
+  color: #888e9c;
   margin-top: 20px;
   text-align: center;
 }
@@ -59,7 +59,7 @@
   margin-top: 10px;
 }
 .SignInForms__RegistrationForm .transitionAccount .span {
-  color: #8560fd;
+  color: #fff;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -78,4 +78,7 @@
 .SignInForms__RegistrationForm .infoHref span {
   text-decoration: underline;
   cursor: pointer;
+}
+.SignInForms__RegistrationForm .button-wrap {
+  width: 280px;
 }

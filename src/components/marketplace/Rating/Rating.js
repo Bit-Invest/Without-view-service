@@ -1,4 +1,5 @@
 import React from 'react';
+import { Utils } from '@common/Utils';
 
 const ROOT_CLASS = 'rating';
 
@@ -17,7 +18,7 @@ export const Rating = props => {
   }
 
   const buildRootClass = () => {
-    return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;
+    return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''} ${Utils.UNDEVELOPED}`;
   }
 
   return (

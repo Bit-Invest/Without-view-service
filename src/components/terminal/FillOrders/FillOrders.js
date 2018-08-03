@@ -8,7 +8,7 @@ export const FillOrders = props => {
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__list-name`}>
         <div className={`${ROOT_CLASS}__name`}>Order date</div>
-        <div className={`${ROOT_CLASS}__name`}>Price BTC</div>
+        <div className={`${ROOT_CLASS}__name`}>Price</div>
         <div className={`${ROOT_CLASS}__name`}>Quantity</div>
         <div className={`${ROOT_CLASS}__name`}>Total</div>
       </div>

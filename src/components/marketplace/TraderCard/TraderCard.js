@@ -16,10 +16,20 @@ export const TraderCard = props => {
   const buildRootClass = () => {
     return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;
   }
-  const now = Date.now();
+  const renderStock = () => {
+    return props.history[props.id] ?
+      (<StockAreaChart
+        width={445}
+        height={157}
+        type="hybrid"
+        zoom={false}
+        data={props.history[props.id]}
+      />) :
+      null;
+  }
 
   return (
-    <div className={buildRootClass()} onClick={props.onClick}>
+    <div className={buildRootClass()} onClick={props.onClick ? props.onClick : () => {}}>
       <div className={`${ROOT_CLASS}__header`}>
         <div className={`${ROOT_CLASS}__user-block`}>
           <User name={props.name} surname={props.surname} theme="small" role="Trader" />
@@ -27,39 +37,16 @@ export const TraderCard = props => {
         <div className={`${ROOT_CLASS}__saved ${ROOT_CLASS}__saved_${props.saved ? 'saved' : 'unsaved'}`}></div>
       </div>
       <div className={`${ROOT_CLASS}__title`}>
-        {props.title ? props.title : ''}
+        {props.nameProduct ? props.nameProduct : ''}
       </div>
       <div className={`${ROOT_CLASS}__exchanges`}>
         <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
-        <div className={`${ROOT_CLASS}__pair`}>BTC/ETH</div>
+        <div className={`${ROOT_CLASS}__pair`}>BTC</div>
       </div>
       <div className={`${ROOT_CLASS}__chart-wrap ${props.isLoaded ? ROOT_CLASS + '__chart-wrap_loaded' : ''}`}>
         <div className={`${ROOT_CLASS}__preloader`}/>
         <div className={`${ROOT_CLASS}__chart`}>
-          <StockAreaChart
-            width={339}
-            height={157}
-            type="hybrid"
-            data={[{
-              date: now - 60000,
-              close: 20
-            }, {
-              date: now - 120000,
-              close: 30
-            }, {
-              date: now - 180000,
-              close: 40
-            }, {
-              date: now - 240000,
-              close: 50
-            }, {
-              date: now - 300000,
-              close: 60
-            }, {
-              date: now - 360000,
-              close: 70
-            }].reverse()}
-          />
+          {renderStock()}
         </div>
       </div>
       <div className={`${ROOT_CLASS}__units`}>
@@ -72,8 +59,8 @@ export const TraderCard = props => {
       </div>
       <div className={`${ROOT_CLASS}__delimiter`}/>
       <div className={`${ROOT_CLASS}__stats`}>
-        <TraderStat name="Horizon" value="Long" />
-        <TraderStat name="Fees" value="10%" />
+        <TraderStat name="Horizon" value="Long" className={`${Utils.UNDEVELOPED}`}/>
+        <TraderStat name="Fees" value="10%" className={`${Utils.UNDEVELOPED}`}/>
         <TraderStat name="Investors" value={props.followersCount} />
       </div>
     </div>

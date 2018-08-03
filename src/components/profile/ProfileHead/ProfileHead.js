@@ -19,20 +19,6 @@ export const ProfileHead = props => {
           <LogOut push={props.push} logOut={props.logOut} />
         </div>
       </div>
-      <div className={`${ROOT_CLASS}__units`}>
-        <div className={`${ROOT_CLASS}__unit`}>
-          <Unit size="profile" title="week" count={32}/>
-        </div>
-        <div className={`${ROOT_CLASS}__unit`}>
-          <Unit size="profile" title="month" count={-15}/>
-        </div>
-        <div className={`${ROOT_CLASS}__unit`}>
-          <Unit size="profile" title="6 month" count={-15}/>
-        </div>
-        <div className={`${ROOT_CLASS}__unit`}>
-          <Unit size="profile" title="1 year" count={20}/>
-        </div>
-      </div>
     </div>
   );
 };
