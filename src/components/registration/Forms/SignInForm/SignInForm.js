@@ -8,8 +8,8 @@ export const SignInForm = props => {
   return (
     <form
       className="SignInForms__RegistrationForm"
-      onSubmit={props.handleSubmit}>
-      <div className="title">SIGN IN</div>
+    >
+      <div className="title">Sign In</div>
       <div className='SignInForms__RegistrationForm__error-block'>{props.errorMessage}</div>
       <div className="SignInForms__input-wrap">
         <Input
@@ -29,8 +29,11 @@ export const SignInForm = props => {
           name="password"
         />
       </div>
-      <div className={`button-wrap`}>
-        <Button theme="gradient-img" NameBtn="Sign In" preloader={props.preloader} />
+      <div className="button-wrap">
+        <Button theme="gradient-img" NameBtn="Sign In" preloader={props.preloader} onClick={props.handleSubmit} />
+      </div>
+      <div className="button-wrap">
+        <Button theme="gradient-img" NameBtn="Demo" preloader={props.preloader} onClick={props.onClickDemo}/>
       </div>
       <div className="transitionAccount">
         Do you have an account?{' '}
