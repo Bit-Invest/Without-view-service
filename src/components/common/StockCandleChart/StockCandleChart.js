@@ -14,11 +14,16 @@ const ROOT_CLASS = 'stock-candle-chart';
 
 export const StockCandleChart = (props) => {
   const { data, width, height, type } = props;
-  const xAccessor = d => d.date;
-  const xExtents = [
-    xAccessor(data[0]),
-		xAccessor(data[data.length - 1])
-	];
+	const isNeedShow = data && data.length > 2;
+	let xAccessor = null;
+	let xExtents = null;
+	if (isNeedShow) {
+		xAccessor = d => d.date;
+		xExtents = [
+			xAccessor(data[0]),
+			xAccessor(data[data.length - 1])
+		];
+	}
   const xGrid = {
     innerTickSize: -1 * height,
     tickStrokeDasharray: 'Solid',
@@ -31,7 +36,7 @@ export const StockCandleChart = (props) => {
     tickStrokeOpacity: 0.1,
     tickStrokeWidth: 1
   };
-  return (
+  return isNeedShow ? (
     <div className={ROOT_CLASS}>
       <ChartCanvas
         width={width}
@@ -73,5 +78,5 @@ export const StockCandleChart = (props) => {
         </Chart>
       </ChartCanvas>
     </div>
-  );
+  ) : null;
 }

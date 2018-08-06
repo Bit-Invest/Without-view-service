@@ -12,7 +12,7 @@ export const TraderCard = props => {
     return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;
   }
   const renderStock = () => {
-    return props.history[props.id] ?
+    return props.history[props.id] && props.history[props.id].length > 2 ?
       (<StockAreaChart
         width={445}
         height={157}
