@@ -21,7 +21,7 @@ export const Menu = (props) => {
   return (
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__items`}>
-        <div className={`${ROOT_CLASS}__logo`}></div>
+        <div><div className={`${ROOT_CLASS}__logo`}></div></div>
           {items.map((item, index) => renderItem(props, item, index))}
       </div>
     </div>

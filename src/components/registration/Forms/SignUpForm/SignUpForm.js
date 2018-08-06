@@ -13,7 +13,7 @@ export const SignUpForm = props => {
     <form
       className="SignUpForms__RegistrationForm"
       onSubmit={props.handleSubmit}>
-      <div className="title">Sign Up</div>
+      <div className="title">SIGN UP</div>
       <div className='SignUpForms__RegistrationForm__error-block'>
         {props.errorMessage}
       </div>
@@ -79,7 +79,7 @@ export const SignUpForm = props => {
         />
       </div>
       <div className="checkboxBlock"
-      onClick={props.handleCheckbox}>
+        onClick={props.handleCheckbox}>
         <Checkbox
           checked={props.checked}
           onChange={props.handleCheckbox}
@@ -91,7 +91,9 @@ export const SignUpForm = props => {
           <div className="required">* Required</div>
         </div>
       </div>
-      <Button theme="gradient-img" NameBtn="Sign Up" preloader={props.preloader} />
+      <div className={`button-wrap`}>
+        <Button theme="gradient-img" NameBtn="Sign Up" preloader={props.preloader} />
+      </div>
       <div className="transitionAccount">
         Already have an account?{' '}
         <Link className='span' to={'/registration/sign-in'}>Sign In</Link>

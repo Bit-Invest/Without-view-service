@@ -12,7 +12,6 @@ export const LogOut = (props) => {
 
   return (
     <div className={ROOT_CLASS} onClick={onClick}>
-      <div className={`${ROOT_CLASS}__icon`}></div>
       <div className={`${ROOT_CLASS}__title`}>LOG OUT</div>
     </div>
   );

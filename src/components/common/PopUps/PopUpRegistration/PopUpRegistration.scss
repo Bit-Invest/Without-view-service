@@ -5,8 +5,6 @@
   width: 700px;
   height: 370px;
   border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
   &__img {
     width: 280px;
     height: 370px;
@@ -18,41 +16,47 @@
     padding: 74px 40px;
   }
   &__tittle {
-    @include font(Lato);
+    @include font(Geometria-Bold);
     font-size: 22px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: #000000;
+    color: #fff;
     margin-bottom: 18px;
   }
   &__info {
-    @include font(Lato);
+    @include font(Geometria);
     font-size: 16px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: #000000;
+    color: #fff;
     margin-bottom: 30px;
   }
   &__sign-in {
     margin-top: 22px;
-    @include font(Lato);
-    font-size: 16px;
+    @include font(Geometria);
+    font-size: 14px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: #000000;
+    color: #888e9c;
     & a {
-      color: #8560fd;
+      color: #fff;
       text-decoration: underline;
       cursor: pointer;
     }
+  }
+  &__button {
+    width: 260px;
+  }
+  a {
+    text-decoration: none;
   }
 }

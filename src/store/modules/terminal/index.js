@@ -7,5 +7,8 @@ export {
   openOrders,
   getPairs,
   setCurrentPair,
-  setCurrentStock
+  setCurrentStock,
+  setCurrentChartType,
+  fillOrders,
+  cancelOrder
 } from './terminal';

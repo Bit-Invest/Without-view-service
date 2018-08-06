@@ -11,11 +11,10 @@ import {
   tradeHistory,
   marketData,
   openOrders,
-  getPairs
+  getPairs,
+  fillOrders
 } from '@store/modules/terminal';
 import { getKeys } from '@store/modules/user';
-
-const OrderTypes = ['Limit', 'Market'];
 
 const DAY = 86400000;
 
@@ -25,7 +24,7 @@ class TerminalPageContainer extends React.Component {
     this.state = {
       currentOrder: 'Limit',
       isLoaded: false
-    }
+    };
   }
 
   componentWillMount() {
@@ -57,30 +56,35 @@ class TerminalPageContainer extends React.Component {
   loadData(opt_currentPair) {
     const currentPair =
       opt_currentPair ? opt_currentPair : this.props.data.currentPair;
-    return Promise.all([
-      this.props.getKeys(),
-      this.props.marketData({
-        symbol: currentPair.symbol,
-        nameStock: this.props.data.currentStock,
-        eventTime: {
-          gte: Date.now() - DAY,
-          lt: Date.now()
-        }
-      }),
-      this.props.orderBook({
-        symbol: currentPair.symbol,
-        stock: this.props.data.currentStock
-      }),
-      this.props.tradeHistory({
-        symbol: currentPair.symbol,
-        stock: this.props.data.currentStock
-      }),
-      this.props.openOrders({
-        symbol: currentPair.symbol,
-        stock: this.props.data.currentStock
-      }),
-      this.props.getPairs()
-    ]);
+    return this.props.getKeys().then((res) => {
+      return Promise.all([
+        this.props.marketData({
+          symbol: currentPair.symbol,
+          nameStock: this.props.data.currentStock,
+          eventTime: {
+            gte: Date.now() - DAY,
+            lt: Date.now()
+          }
+        }),
+        this.props.orderBook({
+          symbol: currentPair.symbol,
+          stock: this.props.data.currentStock
+        }),
+        this.props.tradeHistory({
+          symbol: currentPair.symbol,
+          stock: this.props.data.currentStock
+        }),
+        this.props.openOrders({
+          symbol: currentPair.symbol,
+          stock: this.props.data.currentStock
+        }),
+        this.props.fillOrders({
+          symbol: currentPair.symbol,
+          stock: this.props.data.currentStock,
+          keyId: res.payload.data.keys[0].id
+        }),
+        this.props.getPairs()
+    ])});
   }
 
   render() {
@@ -91,9 +95,11 @@ class TerminalPageContainer extends React.Component {
         history={this.props.data.historyList}
         orderBook={this.props.data.orderBook}
         openOrders={this.props.data.openOrders}
+        fillOrders={this.props.data.fillOrders}
         loadData={this.loadData.bind(this)}
         currentPair={this.props.currentPair}
         chart={this.props.data.chart}
+        currentChartType={this.props.data.currentChartType}
       />
     );
   }
@@ -101,7 +107,10 @@ class TerminalPageContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {data: state.terminal};
+  return {
+    data: state.terminal,
+    burse: state.user.burses[0]
+  };
 }
 
 const mapDispatchToProps = dispatch =>
@@ -114,7 +123,8 @@ const mapDispatchToProps = dispatch =>
     marketData,
     openOrders,
     getPairs,
-    getKeys
+    getKeys,
+    fillOrders
   }, dispatch);
 
 const connectedContainer =

@@ -2,7 +2,11 @@ import * as React from 'react';
 import { TerminalHead } from './TerminalHead';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setCurrentPair, setCurrentStock } from '@store/modules/terminal';
+import {
+  setCurrentPair,
+  setCurrentStock,
+  setCurrentChartType
+} from '@store/modules/terminal';
 
 class TerminalHeadContainer extends React.Component {
 
@@ -18,11 +22,16 @@ class TerminalHeadContainer extends React.Component {
     this.props.setCurrentStock(event.payload.value);
   }
 
+  onSelectChartType = (event) => {
+    this.props.setCurrentChartType(event.payload.value);
+  }
+
   render() {
     return (
       <TerminalHead
         onSelectPair={this.onSelectPair}
         onSelectStock={this.onSelectStock}
+        onSelectChartType={this.onSelectChartType}
         currentPair={this.props.currentPair}
         pairs={this.props.pairs.map(pair => {
           return {
@@ -43,7 +52,12 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({setCurrentPair, setCurrentStock}, dispatch);
+  bindActionCreators(
+    {
+      setCurrentPair,
+      setCurrentStock,
+      setCurrentChartType
+    }, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(TerminalHeadContainer);

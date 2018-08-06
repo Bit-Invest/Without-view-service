@@ -11,5 +11,8 @@ export {
   apiKeySubscribe,
   subscribeOnTrader,
   getSubscribedProducts,
-  unsubscribeTrader
+  unsubscribeTrader,
+  balance,
+  getMyProducts,
+  getMyInvestors
 } from './user';

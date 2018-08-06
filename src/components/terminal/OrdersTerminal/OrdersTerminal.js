@@ -11,12 +11,12 @@ export const OrdersTerminal = props => {
       <Tabs
         tabs={[
           {
-            title: 'Open Orders',
+            title: 'OPEN ORDERS',
             content: <OpenOrders orders={props.openOrders} />
           },
           {
-            title: 'Fill Orders',
-            content: <FillOrders />
+            title: 'FILL ORDERS',
+            content: <FillOrders orders={props.fillOrders} />
           }
         ]}
       />

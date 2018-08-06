@@ -12,7 +12,6 @@ export const PopUpManager = (props) => {
       </div>
       <div className={`${ROOT_CLASS}__content-wrap`}>
         <div onClick={props.onClickClose} className={`${ROOT_CLASS}__close`}>
-          <div className={`${ROOT_CLASS}__close-title`}>Close</div>
           <div className={`${ROOT_CLASS}__check`} alt="close"></div>
         </div>
         <div className={`${ROOT_CLASS}__content`}>

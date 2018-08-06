@@ -6,11 +6,14 @@ import {
   getPersonalInfo,
   getKeys,
   userLogIn,
-  userLogOut
+  userLogOut,
+  getMyProducts,
+  getMyInvestors
 } from '@store/modules/user';
 import { push } from 'react-router-redux';
 import { showPopUp, checkJWT } from '@store/modules/common';
 import { LocalStorage } from '@common/Utils';
+import { getProducts } from '@store/modules/marketplace';
 
 class ProfilePageContainer extends React.Component {
   constructor(props) {
@@ -39,10 +42,11 @@ class ProfilePageContainer extends React.Component {
     this.props.userLogIn();
     Promise.all([
       this.props.getPersonalInfo(),
-      this.props.getKeys()
+      this.props.getKeys(),
+      this.props.getMyProducts(),
+      this.props.getMyInvestors()
     ]).then(this.onLoadPersonalInfo.bind(this))
       .catch(this.onFailPersonalInfo.bind(this));
-
   }
 
   onFailPersonalInfo(err) {
@@ -67,12 +71,19 @@ class ProfilePageContainer extends React.Component {
         user={this.props.user}
         push={this.props.push}
         userLogOut={this.props.userLogOut}
+        products={this.props.user.myProducts}
+        keys={this.props.user.burses}
+        investors={this.props.user.investors}
       />
     );
   }
 }
 
-const mapStateToProps = (state) => {return {user: state.user}};
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  };
+};
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
@@ -82,7 +93,10 @@ const mapDispatchToProps = dispatch =>
     showPopUp,
     checkJWT,
     userLogIn,
-    userLogOut
+    userLogOut,
+    getProducts,
+    getMyProducts,
+    getMyInvestors
   }, dispatch);
 
 const connectedContainer =

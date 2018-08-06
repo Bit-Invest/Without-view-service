@@ -23,12 +23,20 @@ export const GET_SUBSCRIBED_PRODUCTS_SUCCESS =
 export const API_KEY_SUBSCRIBE_SUCCESS = 'user/API_KEY_SUBSCRIBE_SUCCESS';
 export const UNSUBSCRIBE_TRADER = 'user/UNSUBSCRIBE_TRADER';
 export const UNSUBSCRIBE_TRADER_SUCCESS = 'user/UNSUBSCRIBE_TRADER_SUCCESS';
+export const GET_MY_PRODUCTS = 'user/GET_MY_PRODUCTS';
+export const GET_MY_PRODUCTS_SUCCESS = 'user/GET_MY_PRODUCTS_SUCCESS';
+export const BALANCE = 'user/BALANCE';
+export const BALANCE_SUCCESS = 'user/BALANCE_SUCCESS';
+export const GET_MY_INVESTORS = 'user/GET_MY_INVESTORS';
+export const GET_MY_INVESTORS_SUCCESS = 'user/GET_MY_INVESTORS_SUCCESS';
 
 const initialState = {
   personalInfo: null,
   status: STATUS.UNLOGGED_IN,
   burses: [],
-  products: []
+  products: [],
+  investors: [],
+  myProducts: []
 };
 
 export const user = (state = initialState, action) => {
@@ -76,6 +84,18 @@ export const user = (state = initialState, action) => {
           return result;
         })
       };
+    case GET_MY_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        myProducts: action.payload.data
+      };
+    case GET_MY_INVESTORS_SUCCESS:
+      return {
+        ...state,
+        investors: action.payload.data
+      };
+    case BALANCE_SUCCESS:
+      return state;
     default:
       return state;
   }
@@ -231,6 +251,51 @@ export const getSubscribedProducts = () => {
       request: {
         method: 'GET',
         url: '/api/user/issubscribe',
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  };
+}
+
+export const balance = (productId) => {
+  return {
+    type: BALANCE,
+    payload: {
+      request: {
+        method: 'GET',
+        url: `/api/user/balance?product=${productId}`,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
+}
+
+export const getMyProducts = () => {
+  return {
+    type: GET_MY_PRODUCTS,
+    payload: {
+      request: {
+        method: 'GET',
+        url: '/api/user/getmyproducts',
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
+}
+
+export const getMyInvestors = () => {
+  return {
+    type: GET_MY_INVESTORS,
+    payload: {
+      request: {
+        method: 'GET',
+        url: '/api/user/myinvestors',
         headers: {
           Authorization: LocalStorage.getItem('token')
         }

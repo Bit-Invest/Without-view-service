@@ -4,26 +4,36 @@
   margin-top: 5px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  background-color: #fff;
-  padding: 10px 10px 19px 11px;
+  background-color: rgba(29, 27, 40, 0.3);
+  padding: 10px 15px 19px 15px;
   &__order-types {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 14px;
     display: flex;
     justify-content: space-between;
   }
 
   &__order-type {
     cursor: pointer;
-    width: 108px;
-    height: 28px;
-    border-radius: 2px;
+    width: 143px;
+    height: 43px;
     @include font(Lato);
     font-size: 14px;
     color: #fff;
     text-align: center;
-    line-height: 28px;
-    background-color: #cccccc;
+    line-height: 43px;
+    background-color: #302d48;
+
+    &_active {
+      background-color: #33304b;
+    }
+
+    &_buy {
+      color: rgba(137, 224, 125, 0.4);
+    }
+    &_sell {
+      color: rgba(242, 109, 125, 0.4);
+    }
   }
 
   &__order-buttons {
@@ -33,30 +43,32 @@
   }
 
   &__order-button {
-    width: 220px;
-    height: 28px;
-    background-color: rgba(133, 96, 253, 0.4);
+    width: 100%;
+    height: 43px;
+    background-color: #403467;
+    opacity: 0.3;
     font-size: 14px;
     color: #fff;
     cursor: pointer;
-    @include font(Lato-Bold);
-    line-height: 28px;
+    @include font(Geometria);
+    line-height: 43px;
     text-align: center;
 
     &_active {
-      background-color: #8560fd;
+      background-color: #403467;
+      opacity: 1;
     }
   }
 
   &__form-wrap {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 }
 
 .order-block__order-type_sell.order-block__order-type_active {
-  background-color: #ff4040;
+  color: rgba(242, 109, 125, 1);
 }
 .order-block__order-type_buy.order-block__order-type_active {
-  background-color: #8bc34a;
+  color: rgba(137, 224, 125, 1);
 
 }

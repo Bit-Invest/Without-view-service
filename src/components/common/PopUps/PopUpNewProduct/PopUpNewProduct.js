@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@components/common/Button';
 import { Select } from '@registration/select';
-import { Input } from '@registration/input';
+import { Input } from '@common/Input';
 import { TextArea } from '@common/TextArea';
 
 const ROOT_CLASS = 'pop-up-new-product';
@@ -9,28 +9,41 @@ const ROOT_CLASS = 'pop-up-new-product';
 export const PopUpNewProduct = (props) => {
   return (
     <form className={ROOT_CLASS} onSubmit={props.handleSubmit}>
-      <div className={`${ROOT_CLASS}__tittle`}>New Product</div>
-      <Select
-        onChange={props.handleSelectChange}
-        options={[
-          {value: 'binance', label: 'Binance'}
-        ]}
-        theme="new-product"
-      />
-      <Input
-        onChange={props.handleAPIChange}
-        placeholder="API Key"
-        type="text"
-        theme="input-new-product"
-        required
-      />
-      <Input
-        onChange={props.handleSecretKeyChange}
-        placeholder="secret key"
-        type="text"
-        theme="input-new-product"
-        required
-      />
+      <div className={`${ROOT_CLASS}__title`}>NEW PRODUCT</div>
+      <div className={`${ROOT_CLASS}__select-wrap`}>
+        <Select
+          onChange={props.handleSelectChange}
+          defaultOption={{value: 'binance', label: 'Binance'}}
+          options={[
+            {value: 'binance', label: 'Binance'}
+          ]}
+          theme="sign-up"
+        />
+      </div>
+      <div className={`${ROOT_CLASS}__input-wrap ${ROOT_CLASS}__input-wrap_name`}>
+        <Input
+          onChange={props.handleNameChange}
+          placeholder="Name of product"
+          type="text"
+          required
+        />
+      </div>
+      <div className={`${ROOT_CLASS}__input-wrap ${ROOT_CLASS}__input-wrap_api`}>
+        <Input
+          onChange={props.handleAPIChange}
+          placeholder="API Key"
+          type="text"
+          required
+        />
+      </div>
+      <div className={`${ROOT_CLASS}__input-wrap ${ROOT_CLASS}__input-wrap_secret`}>
+        <Input
+          onChange={props.handleSecretKeyChange}
+          placeholder="secret key"
+          type="text"
+          required
+        />
+      </div>
       <div className={`${ROOT_CLASS}__textarea ${props.role !== 'trader' ? ROOT_CLASS + '__textarea_hidden' : ''}`}>
         <TextArea
           onChange={props.handleAreaChange}
@@ -39,13 +52,17 @@ export const PopUpNewProduct = (props) => {
           }}
         />
       </div>
-      <Button
-        className={`${ROOT_CLASS}__button`}
-        theme="pop-up-new-product"
-        NameBtn="Add Product"
-      />
-      <div className={`${ROOT_CLASS}__key`}>
-        Where to get API Key?
+      <div className={`${ROOT_CLASS}__footer`}>
+        <div className={`${ROOT_CLASS}__button-wrap`}>
+          <Button
+            className={`${ROOT_CLASS}__button`}
+            theme="gradient-img"
+            NameBtn="Add Product"
+          />
+        </div>
+        <div className={`${ROOT_CLASS}__key`}>
+          Where to get API Key?
+        </div>
       </div>
     </form>
   );

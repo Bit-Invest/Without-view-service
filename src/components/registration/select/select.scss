@@ -2,25 +2,34 @@
 
 .select {
   position: relative;
-  height: 40px;
+  height: 46px;
   cursor: pointer;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
 
-  &__sign-up {
+  &_sign-up {
     width: 280px;
-    border-radius: 5px;
-    border: solid 2px #dddddd;
-    @include font(Lato);
-    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    @include font(Geometria-Medium);
+    font-size: 12px;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: #000000;
+    color: #a697be;
     outline: none;
     margin-top: 20px;
-    padding-left: 10px;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    .select__arrow {
+      width: 10px;
+      height: 5px;
+      background-image: url(../assets/images/arrow-select2.svg);
+    }
+    .select__current-value {
+      padding-right: 9px;
+    }
   }
   &_new-product {
     width: 560px;
@@ -31,6 +40,7 @@
 
   &__options {
     position: absolute;
+    left: 0;
     width: 100%;
     background-color: #fff;
     overflow-y: auto;
@@ -79,8 +89,20 @@
 
 .select_terminal {
   width: 100%;
-  @include font(Lato-Bold);
-  font-size: 12px;
+  height: 64px;
+  background-color: rgba(255, 255, 255, 0.03);
+  @include font(Geometria-Bold);
+  font-size: 14px;
   box-shadow: none;
-  border-right: 1px solid #ddd;
+  // border-right: 1px solid #ddd;
+  color: #fff;
+  .select {
+    &__options {
+      z-index: 11;
+      background-color: #241d35;
+    }
+    &__option:hover {
+      background-color: #363648;
+    }
+  }
 }

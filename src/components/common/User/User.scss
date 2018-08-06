@@ -1,0 +1,26 @@
+@import "../Utils/Utils";
+
+.user {
+  display: flex;
+  align-items: center;
+
+  &__avatar-wrap {
+    margin-right: 22px;
+  }
+
+  &__name-wrap {
+    @include font(Geometria);
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.8px;
+    text-align: left;
+    color: #ffffff;
+  }
+
+  &__rating {
+    margin-top: 12px;
+  }
+}

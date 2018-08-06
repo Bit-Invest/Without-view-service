@@ -32,7 +32,6 @@ class MarketplacePageContainer extends React.Component {
   }
 
   afterLoading() {
-
     const token = LocalStorage.getItem('token');
     if (token) {
       this.props.checkJWT()

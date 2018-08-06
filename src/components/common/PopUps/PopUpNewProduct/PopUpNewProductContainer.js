@@ -13,7 +13,8 @@ class PopUpNewProductContainer extends React.Component {
       select: 'binance',
       ApiKey: '',
       secretKey: '',
-      info: ''
+      info: '',
+      nameProduct: 'My product'
     };
   }
 
@@ -24,16 +25,20 @@ class PopUpNewProductContainer extends React.Component {
         name: this.state.select,
         key: this.state.ApiKey,
         apiSecret: this.state.secretKey,
-        info: this.state.info
+        info: this.state.info,
+        productName: this.state.productName
       }
     };
     const { addExchange } = this.props;
-    addExchange(data);
     this.props.apiKeySubscribe();
+    addExchange(data);
     this.props.getKeys();
     this.props.hidePopUp();
   };
 
+  handleNameChange(event) {
+    this.setState({ nameProduct: event.target.value });
+  }
 
   handleSelectChange(event) {
     this.setState({ select: event.payload.value });
@@ -57,7 +62,8 @@ class PopUpNewProductContainer extends React.Component {
       handleSelectChange,
       handleAPIChange,
       handleSecretKeyChange,
-      handleAreaChange
+      handleAreaChange,
+      handleNameChange
     } = this;
     return <PopUpNewProduct
       handleSubmit={handleSubmit.bind(this)}
@@ -65,6 +71,7 @@ class PopUpNewProductContainer extends React.Component {
       handleAPIChange={handleAPIChange.bind(this)}
       handleSecretKeyChange={handleSecretKeyChange.bind(this)}
       handleAreaChange={handleAreaChange.bind(this)}
+      handleNameChange={handleNameChange.bind(this)}
       role={this.props.role}
     />;
   }

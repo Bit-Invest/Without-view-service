@@ -5,8 +5,7 @@ const ROOT_CLASS = 'menu-item';
 export const MenuItem = (props) => {
   const buildIconClass = () => {
     const iconClass = `${ROOT_CLASS}__icon`;
-    return `${iconClass} ${iconClass}_${props.type}_${props.isActive ?
-        'active' : 'disabled'}`;
+    return `${iconClass} ${iconClass}_${props.type}`;
   };
 
   const buildRootClass = () => {

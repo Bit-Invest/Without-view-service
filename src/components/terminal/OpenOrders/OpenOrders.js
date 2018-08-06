@@ -1,31 +1,35 @@
 import * as React from 'react';
 import { OpenOrderList } from '@terminal/OpenOrderList';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const ROOT_CLASS = 'open-orders';
 
 export const OpenOrders = props => {
   return (
     <div className={ROOT_CLASS}>
-      <div className={`${ROOT_CLASS}__list-name`}>
-        <div className={`${ROOT_CLASS}__name`}>Order date</div>
-        <div className={`${ROOT_CLASS}__name`}>Price BTC</div>
-        <div className={`${ROOT_CLASS}__name`}>Origin</div>
-        <div className={`${ROOT_CLASS}__name`}>Remain</div>
-        <div className={`${ROOT_CLASS}__name`}>Total</div>
-      </div>
-      <div className={`${ROOT_CLASS}__hr`}></div>
-      <div className={`${ROOT_CLASS}__orders`}>
-        {props.orders.map((order, index) =>
-          <OpenOrderList
-            time={order.time}
-            price={order.price}
-            origin={order.origQty}
-            remain={order.executedQty}
-            total={order.price * order.origQty}
-            key={index}
-          />
-        )}
-      </div>
+      <Scrollbars style={{width: document.documentElement.clientWidth - 835}}>
+        <div className={`${ROOT_CLASS}__list-name`}>
+          <div className={`${ROOT_CLASS}__name`}>PRICE</div>
+          <div className={`${ROOT_CLASS}__name`}>VOLUME</div>
+          <div className={`${ROOT_CLASS}__name`}>VOLUME</div>
+          <div className={`${ROOT_CLASS}__name`}>TOTAL</div>
+        </div>
+        <div className={`${ROOT_CLASS}__hr`}></div>
+        <div className={`${ROOT_CLASS}__orders`}>
+          {props.orders.map((order, index) =>
+            <OpenOrderList
+              time={order.time}
+              price={order.price}
+              origin={order.origQty}
+              remain={order.executedQty}
+              total={order.price * order.origQty}
+              symbol={order.symbol}
+              id={order.orderId}
+              key={index}
+            />
+          )}
+        </div>
+      </Scrollbars>
     </div>
   )
 }

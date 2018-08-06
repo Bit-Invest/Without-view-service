@@ -9,7 +9,7 @@ export const SignInForm = props => {
     <form
       className="SignInForms__RegistrationForm"
       onSubmit={props.handleSubmit}>
-      <div className="title">Sign In</div>
+      <div className="title">SIGN IN</div>
       <div className='SignInForms__RegistrationForm__error-block'>{props.errorMessage}</div>
       <div className="SignInForms__input-wrap">
         <Input
@@ -29,7 +29,9 @@ export const SignInForm = props => {
           name="password"
         />
       </div>
-    <Button theme="gradient-img" NameBtn="Sign In" preloader={props.preloader} />
+      <div className={`button-wrap`}>
+        <Button theme="gradient-img" NameBtn="Sign In" preloader={props.preloader} />
+      </div>
       <div className="transitionAccount">
         Do you have an account?{' '}
         <Link className='span' to={'/registration/sign-up'}>Sign Up</Link>
