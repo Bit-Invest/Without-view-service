@@ -39,8 +39,6 @@ class PopUpNewProductContainer extends React.Component {
   };
 
   checkData(data) {
-    console.log('WWWWWWWWWWWWWW');
-    console.log(data);
     if (data.key.nameProduct.length > 50) {
       this.setState({
         error: {
@@ -58,7 +56,6 @@ class PopUpNewProductContainer extends React.Component {
       })
       return false;
     } else {
-      console.log('QQQQQQQQQQQQQQQQQQQQQQQQQQ');
       return true;
     }
   }
