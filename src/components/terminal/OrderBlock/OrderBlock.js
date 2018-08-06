@@ -21,7 +21,7 @@ export const OrderBlock = (props) => (
           }}
           key={index}
         >
-          {orderType}
+          {orderType.toUpperCase()}
         </div>
       )}
     </div>

@@ -2,7 +2,7 @@
 
 .percent-result {
   display: inline;
-  @include font(Lato-Bold);
+  @include font(Geometria);
   line-height: normal;
 }
 
@@ -10,14 +10,18 @@
   font-size: 18px;
 }
 
+.percent-result_market {
+  font-size: 14px;
+}
+
 .percent-result_small {
   font-size: 12px;
 }
 
 .percent-result_red {
-  color: #ff4040;
+  color: #f26d7d;
 }
 
 .percent-result_green {
-  color: #8bc34a;
+  color: #89e07d;
 }

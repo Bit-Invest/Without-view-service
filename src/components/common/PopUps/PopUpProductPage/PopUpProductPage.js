@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { Chart } from '@profile/Chart';
-import { IconUser } from '@components/profile/IconUser/IconUser';
-import { UserName } from '@components/profile/UserName/UserName';
-import { Rating } from '@components/marketplace/Rating/Rating';
-import { Line } from 'react-chartjs-2';
 import { Utils } from '@common/Utils';
+import { User } from '@common/User';
+import { Unit } from '@common/Unit';
+import { StockAreaChart } from '@common/StockAreaChart';
 
 const ROOT_CLASS = 'product-page';
 
@@ -13,60 +11,30 @@ export const PopUpProductPage = props => {
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__block-exchange`}>
         <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
-        <div className={`${ROOT_CLASS}__currencyPair`}>BTC/ETH</div>
+        <div className={`${ROOT_CLASS}__currencyPair`}>BTC</div>
       </div>
       <div className={`${ROOT_CLASS}__chart`}>
-        <Line
-          height={384}
+        <StockAreaChart
           width={681}
-          data={{
-            labels: ['1 July', '2 July', '3 July', '4 July', '5 July'],
-            datasets: [{
-              data: [
-                {x: 10, y: Utils.randomInt(0, 100)},
-                {x: 20, y: Utils.randomInt(0, 100)},
-                {x: 30, y: Utils.randomInt(0, 100)},
-                {x: 40, y: Utils.randomInt(0, 100)},
-                {x: 50, y: Utils.randomInt(0, 100)}
-              ],
-              backgroundColor: 'rgba(133, 96, 253, 0.4)',
-              borderColor: '#8560fd',
-              pointRadius: 1,
-              borderWidth: 1
-            }],
-
+          height={384}
+          type="hybrid"
+          zoom={false}
+          data={props.history}
+          stockProps={{
+            stroke: "#494a4e",
+            tickStroke: "rgba(255, 255, 255, 0.2)"
           }}
-          options={{
-            legend: {
-              display: false
-            },
-            scales: {
-              xAxes: [{
-                display: true,
-                position: 'bottom'
-              }],
-              yAxes: [{
-                display: true,
-                position: 'right'
-              }]
-            }
-          }}
+          axes
         />
       </div>
       <div className={`${ROOT_CLASS}__result-block`}>
         <div className={`${ROOT_CLASS}__result`}>
-          <div className={`${ROOT_CLASS}__result-data`}>Week </div>
-          <div className={`${ROOT_CLASS}__color-result`}> +32%</div>
+          <Unit title="week" count="32" size="market"/>
         </div>
         <div className={`${ROOT_CLASS}__result`}>
-          <div className={`${ROOT_CLASS}__result-data`}>Month </div>
-          <div className={`${ROOT_CLASS}__color-result`}> +15%</div>
+          <Unit title="month" count="-15" size="market"/>
         </div>
-        <div className={`${ROOT_CLASS}__stock-exchange`}>BiNANCE</div>
-        <div className={`${ROOT_CLASS}__saved-block`}>
-          <div className={`${ROOT_CLASS}__saved`}>SAVE</div>
-          <div className={`${ROOT_CLASS}__saved-icon`}></div>
-        </div>
+        <div className={`${ROOT_CLASS}__stock-exchange`}>BINANCE</div>
       </div>
       <div className={`${ROOT_CLASS}__description-block`}>
         <div className={`${ROOT_CLASS}__description`}>
@@ -74,34 +42,26 @@ export const PopUpProductPage = props => {
         </div>
       </div>
       <div className={`${ROOT_CLASS}__position-container`}>
-        <div className={`${ROOT_CLASS}__position-block`}>
-          <div>Horizon</div>
-          <div>LONG</div>
+        <div className={`${ROOT_CLASS}__position-block ${Utils.UNDEVELOPED}`}>
+          <span>Horizon</span>{' '}
+          <span>LONG</span>
+        </div>
+        <div className={`${ROOT_CLASS}__position-block ${Utils.UNDEVELOPED}`}>
+          <span>Fees{' '}</span>
+          <span>10%</span>
         </div>
         <div className={`${ROOT_CLASS}__position-block`}>
-          <div>Fees</div>
-          <div>10%</div>
-        </div>
-        <div className={`${ROOT_CLASS}__position-block`}>
-          <div>Investors</div>
-          <div>{props.followersCount}</div>
+          <span>Investors{' '}</span>
+          <span>{props.followersCount}</span>
         </div>
       </div>
       <div className={`${ROOT_CLASS}__footer-block`}>
         <div className={`${ROOT_CLASS}__user-block`}>
-          <IconUser />
-          <div>
-            <div className={`${ROOT_CLASS}__user-name-block`}>
-              <UserName
-                name={props.name}
-                surname={`${props.surname[0]}.`}
-                theme='MarketPlaceName'
-              />
-            </div>
-            <div className={`${ROOT_CLASS}__rating-block`}>
-              <Rating rating={5}/>
-            </div>
-          </div>
+          <User
+            name={props.name}
+            surname={`${props.surname[0]}.`}
+            theme="small"
+          />
         </div>
         <button
           className={buildButtonClass(props)}
@@ -137,5 +97,5 @@ const buildButtonClass = (props) => {
 
 const isNeedHide = (props) => {
   return !props.personalInfo ||
-    props.personalInfo.role === 'trader' || props.isNeedHide;
+    props.personalInfo.role === 'trader' || props.isNeedHide || !props.hasKey;
 }

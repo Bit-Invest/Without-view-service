@@ -43,19 +43,23 @@ export const TerminalHead = props => {
       </div>
       <div className={`${ROOT_CLASS}__type-select`}>
         <Select
-          onChange={props.handleEnter}
+          onChange={props.onSelectChartType}
           name='select'
           theme='terminal'
           defaultOption={
             {
-              value: 'Line',
-              label: 'Line'
+              value: 'candle',
+              label: 'Candles'
             }
           }
           options={[
             {
-              value: 'Line',
+              value: 'area',
               label: 'Line'
+            },
+            {
+              value: 'candle',
+              label: 'Candles'
             }
           ]}
         />

@@ -16,6 +16,10 @@ export const SET_CURRENT_STOCK = 'terminal/SET_CURRENT_STOCK';
 export const ORDER_FINISH_SUBSCRIBE = 'terminal/ORDER_FINISH_SUBSCRIBE';
 export const ORDER_FINISHED = 'terminal/ORDER_FINISHED';
 export const ORDER_ERROR = 'terminal/ORDER_ERROR';
+export const SET_CURRENT_CHART_TYPE = 'terminal/SET_CURRENT_CHART_TYPE';
+export const FILL_ORDERS = 'terminal/FILL_ORDERS';
+export const FILL_ORDERS_SUCCESS = 'terminal/FILL_ORDERS_SUCCESS';
+export const CANCEL_ORDER = 'terminal/CANCEL_ORDER';
 
 const initialState = {
   historyList: [],
@@ -24,6 +28,7 @@ const initialState = {
     bids: []
   },
   openOrders: [],
+  fillOrders: [],
   currentPair: {
     symbol: "XLMETH",
     baseAsset: "XLM",
@@ -33,10 +38,8 @@ const initialState = {
   },
   pairs: [],
   currentStock: 'binance',
-  chart: {
-    lables: [],
-    values: []
-  }
+  currentChartType: 'candle',
+  chart: []
 };
 
 export const terminal = (state = initialState, action) => {
@@ -75,6 +78,16 @@ export const terminal = (state = initialState, action) => {
       return {
         ...state,
         currentStock: action.payload
+      };
+    case SET_CURRENT_CHART_TYPE:
+      return {
+        ...state,
+        currentChartType: action.payload
+      };
+    case FILL_ORDERS_SUCCESS:
+      return {
+        ...state,
+        fillOrders: action.payload.data
       };
     case ORDER_FINISHED:
       return state;
@@ -184,4 +197,45 @@ export const setCurrentStock = (stock) => {
     type: SET_CURRENT_STOCK,
     payload: stock
   };
+}
+
+export const setCurrentChartType = (chartType) => {
+  return {
+    type: SET_CURRENT_CHART_TYPE,
+    payload: chartType
+  };
+}
+
+export const fillOrders = (data) => {
+  console.log('FILL');
+  console.log(data);
+  return {
+    type: FILL_ORDERS,
+    payload: {
+      request: {
+        method: 'POST',
+        url: '/api/user/filledorders',
+        data: data,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
+}
+
+export const cancelOrder = (data) => {
+  return {
+    type: CANCEL_ORDER,
+    payload: {
+      request: {
+        method: 'POST',
+        url: '/api/user/cancelorder',
+        data: data,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
 }

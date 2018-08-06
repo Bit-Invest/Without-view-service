@@ -11,10 +11,12 @@ export const PopUpRegistration = (props) => {
       <div className={`${ROOT_CLASS}__content-block`}>
         <div className={`${ROOT_CLASS}__tittle`}>Registration</div>
         <div className={`${ROOT_CLASS}__info`}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ...
+          Register to access the basic functions of the product. There is also a transition to the demo mode.
         </div>
-        <Link to={'/registration/sign-up'}>
-          <Button className={`${ROOT_CLASS}__button`} theme="theme-gradient-popUp" NameBtn="Join now"/>
+        <Link to={'/registration/sign-up'} className={`${ROOT_CLASS}__link`}>
+          <div className={`${ROOT_CLASS}__button`}>
+            <Button theme="gradient-img" NameBtn="Join now"/>
+          </div>
         </Link>
         <div className={`${ROOT_CLASS}__sign-in`}>Already have an account?{' '}
         <Link className='span' to={'/registration/sign-in'}>Sign In</Link></div>

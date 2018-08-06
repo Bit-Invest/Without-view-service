@@ -1,1 +1,1 @@
-export { TerminalGraph } from './TerminalGraph';
+export { TerminalGraphContainer as TerminalGraph } from './TerminalGraphContainer';

@@ -1,149 +1,108 @@
 @import "src/components/common/Utils/Utils.scss";
 
 .menu-item {
+  padding-top: 17px;
+  padding-bottom: 17px;
   display: flex;
   align-items: center;
+  flex-direction: column;
   width: 100%;
   cursor: pointer;
-  padding-left: 35px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+
   &__title {
-    @include font(Lato-Bold);
-    font-size: 14px;
+    margin-top: 18px;
+    @include font(Geometria-Light);
+    font-size: 12px;
     font-weight: bold;
-    color: #9ba7d1;
     outline: none;
+    line-height: normal;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: #ffffff;
   }
   &__icon {
-    width: 40px;
-    height: 40px;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-right: 20px;
     &_terminal {
-      &_active {
-        background-image: url(../assets/images/Terminal_icon_active.svg);
-      }
-      &_disabled {
-        background-image: url(../assets/images/Terminal_icon.svg);
-      }
+      width: 41px;
+      height: 34px;
+      background-image: url('../assets/images/terminal-icon.svg');
     }
 
     &_marketplace {
-      &_active {
-        background-image: url(../assets/images/Marketplace_icon_active.svg);
-      }
-      &_disabled {
-        background-image: url(../assets/images/Marketplace_icon.svg);
-      }
+      width: 41px;
+      height: 41px;
+      background-image: url('../assets/images/marketplace-icon.svg');
     }
 
     &_saved {
-      &_active {
-        background-image: url(../assets/images/Saved_icon_active.svg);
-      }
-      &_disabled {
-        background-image: url(../assets/images/Saved_icon.svg);
-      }
+      width: 41px;
+      height: 40px;
+      background-image: url('../assets/images/saved-icon.svg');
     }
 
     &_billing {
-      &_active {
-        background-image: url(../assets/images/Billing_icon_active.svg);
-      }
-      &_disabled {
-        background-image: url(../assets/images/Billing_icon.svg);
-      }
+      width: 35px;
+      height: 41px;
+      background-image: url('../assets/images/billing-icon.svg');
     }
 
     &_profile {
-      &_active {
-        background-image: url(../assets/images/Profile_icon_active.svg);
-      }
-      &_disabled {
-        background-image: url(../assets/images/Profile_icon.svg);
-      }
+      width: 41px;
+      height: 41px;
+      background-image: url('../assets/images/profile-icon.svg');
     }
 
     &_help {
-      &_active {
-        background-image: url(../assets/images/Help_icon_active.svg);
-      }
-      &_disabled {
-        background-image: url(../assets/images/Help_icon.svg);
-      }
+      width: 43px;
+      height: 44px;
+      background-image: url('../assets/images/help-icon.svg');
     }
   }
 }
 
 .menu-item_active {
-  background-color: #0b142d;
-  border-left: 6px solid #685ed3;
-  padding-left: 29px;
-
-  .menu-item__title {
-    color: #ffffff;
-  }
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .menu-item:hover {
-  background-color: #0b142d;
-  border-left: 6px solid #685ed3;
-  padding-left: 29px;
-
-  .menu-item__title {
-    color: #ffffff;
-  }
-
-  .menu-item__icon {
-    &_terminal {
-      &_active, &_disabled {
-        background-image: url(../assets/images/Terminal_icon_active.svg);
-      }
-    }
-    &_marketplace {
-      &_active, &_disabled {
-        background-image: url(../assets/images/Marketplace_icon_active.svg);
-      }
-    }
-    &_saved {
-      &_active, &_disabled {
-        background-image: url(../assets/images/Saved_icon_active.svg);
-      }
-    }
-    &_billing {
-      &_active, &_disabled {
-        background-image: url(../assets/images/Billing_icon_active.svg);
-      }
-    }
-    &_profile {
-      &_active, &_disabled {
-        background-image: url(../assets/images/Profile_icon_active.svg);
-      }
-    }
-    &_help {
-      &_active, &_disabled {
-        background-image: url(../assets/images/Help_icon_active.svg);
-      }
-    }
-  }
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .menu-item_terminal {
-  padding: 5px 0;
+  padding: 24px 0 23px;
+
+  .menu-item__icon {
+    &_terminal {
+      width: 29px;
+      height: 24px;
+    }
+
+    &_marketplace {
+      width: 27px;
+      height: 27px;
+    }
+
+    &_saved {
+      width: 27px;
+      height: 26px;
+    }
+
+    &_billing {
+      width: 24px;
+      height: 29px;
+    }
+
+    &_profile {
+      width: 28px;
+      height: 28px;
+    }
+
+    &_help {
+      width: 30px;
+      height: 31px;
+    }
+  }
   .menu-item__title {
     display: none;
   }
-
-  .menu-item__icon {
-    margin: 0 auto;
-  }
-  &:hover {
-    padding: 5px 0;
-    border-left: 6px solid #685ed3;
-  }
-}
-
-.menu-item_terminal .menu-item_active {
-  border-left: 10px solid #685ed3;
 }

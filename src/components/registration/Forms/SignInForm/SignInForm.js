@@ -29,8 +29,12 @@ export const SignInForm = props => {
           name="password"
         />
       </div>
-      <Button theme="gradient-img" NameBtn="Sign In" preloader={props.preloader} onClick={props.handleSubmit} />
-      <Button theme="gradient-img" NameBtn="Demo" preloader={props.preloader} onClick={props.onClickDemo}/>
+      <div className="button-wrap">
+        <Button theme="gradient-img" NameBtn="Sign In" preloader={props.preloader} onClick={props.handleSubmit} />
+      </div>
+      <div className="button-wrap">
+        <Button theme="gradient-img" NameBtn="Demo" preloader={props.preloader} onClick={props.onClickDemo}/>
+      </div>
       <div className="transitionAccount">
         Do you have an account?{' '}
         <Link className='span' to={'/registration/sign-up'}>Sign Up</Link>

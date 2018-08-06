@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TerminalForm } from './TerminalForm';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { placeLimitOrder } from '@store/modules/terminal';
+import { placeLimitOrder, openOrders } from '@store/modules/terminal';
 import { LocalStorage } from '@common/Utils';
 import { socketSubscribe, addAlert } from '@store/modules/common';
 
@@ -41,6 +41,10 @@ class TerminalFormContainer extends React.Component {
       type: 'info',
       iconType: 'graph',
       description: 'Order placed'
+    });
+    this.props.openOrders({
+      symbol: this.props.currentPair.symbol,
+      stock: this.props.currentStock
     });
   }
 
@@ -84,14 +88,20 @@ class TerminalFormContainer extends React.Component {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({placeLimitOrder, socketSubscribe, addAlert}, dispatch);
+  bindActionCreators({
+    placeLimitOrder,
+    socketSubscribe,
+    addAlert,
+    openOrders
+  }, dispatch);
 
 const mapStateToProps = state => {
   return {
     currentProduct: state.user.burses.find(burse => {
       return burse.stock === state.terminal.currentStock;
     }),
-    currentPair: state.terminal.currentPair
+    currentPair: state.terminal.currentPair,
+    currentStock: state.terminal.currentStock
   };
 }
 

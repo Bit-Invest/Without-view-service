@@ -18,9 +18,18 @@ export const TerminalPage = (props) => {
           <OrderBlock />
         </div>
         <div className={`${ROOT_CLASS}__2nd-column`}>
-          <TerminalHead currentPair={props.currentPair} loadData={props.loadData}/>
-          <TerminalGraph chart={props.chart} />
-          <OrdersTerminal openOrders={props.openOrders} />
+          <TerminalHead
+            currentPair={props.currentPair}
+            loadData={props.loadData}
+          />
+          <TerminalGraph
+            chart={props.chart}
+            type={props.currentChartType}
+          />
+          <OrdersTerminal
+            openOrders={props.openOrders}
+            fillOrders={props.fillOrders}
+          />
         </div>
         <div className={`${ROOT_CLASS}__3rd-column`}>
           <OrderBook

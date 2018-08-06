@@ -1,6 +1,7 @@
 @import "../../common/Utils/Utils.scss";
 
 .terminal-page {
+  padding: 23px 20px 0 20px;
   &__terminal {
     display: flex;
     justify-content: space-between;
@@ -30,16 +31,16 @@
 
   &__1st-column {
     @extend %column;
-    width: 240px;
+    width: 320px;
   }
 
   &__3rd-column {
     display: none;
-    width: 240px;
+    width: 320px;
   }
 
   &__2nd-column {
-    margin-left: 5px;
+    margin-left: 13px;
     @extend %column;
     width: calc(100% - 245px);
     overflow: hidden;
@@ -54,8 +55,8 @@
     }
 
     &__2nd-column {
-      margin-right: 5px;
-      width: calc(100% - 490px);
+      margin-right: 13px;
+      width: calc(100% - 666px);
     }
   }
 }

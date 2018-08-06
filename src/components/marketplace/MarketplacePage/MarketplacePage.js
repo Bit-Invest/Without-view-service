@@ -14,10 +14,6 @@ export const MarketplacePage = props => {
   const ProductCard = ProductTypes[props.showType];
   return (
     <Page isLoaded={props.isLoaded}>
-      <div className={`${ROOT_CLASS}__filter`}>
-        <div className={`${ROOT_CLASS}__card`} onClick={props.onClickCard}></div>
-        <div className={`${ROOT_CLASS}__list`} onClick={props.onClickList}></div>
-      </div>
       <div className={ROOT_CLASS}>
         {props.cards.map((card, index) => <ProductCard {...card} key={index}/>)}
       </div>

@@ -3,132 +3,139 @@
 .trader-card {
   position: relative;
   margin-right: 12px;
-  width: 210px;
-  height: 280px;
+  width: 400px;
+  height: 534px;
   border-radius: 5px;
-  background-color: #ffffff;
-  border: solid 1px #cccccc;
+  background-color: rgba(255, 255, 255, 0.02);
   margin-top: 20px;
-  padding: 10px 0;
+  padding: 48px 36px 70px 25px;
   cursor: pointer;
   overflow: hidden;
-  &__block-exchange {
+
+  &__title {
+    display: none;
+    @include font(Geometria);
+    color: #ffffff;
+    font-size: 16px;
+  }
+  &__header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+  }
+  &__exchanges {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    @include font(Geometria);
+    font-size: 16px;
+  }
+  &__pair {
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #888e9c;
   }
   &__exchange {
-    padding-left: 10px;
-    @include font(Lato-Bold);
-    font-size: 12px;
-    color: #000000;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #b0a5ff;
   }
-  &__save-block {
-    position: absolute;
-    top: 0;
-    left: 175px;
-    width: 20px;
-    height: 24px;
-    background-image: url(../assets/images/saved-flag-active.png);
-    background-size: cover;
+
+  &__preloader {
+    align-self: center;
+    justify-self: center;
+    width: 25px;
+    height: 25px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(../assets/images/trader-card-preloader.gif);
   }
-  &__currencyPair {
-    @include font(Lato);
-    font-size: 12px;
-    color: #cccccc;
-    padding-left: 10px;
-  }
-  &__graf {
-    width: 208px;
-    height: 80px;
-    margin-top: 15px;
-  }
-  &__user-block {
+  &__chart-wrap {
     display: flex;
-    align-items: center;
-    padding-left: 15px;
-    margin-top: 12px;
+    margin-top: 34px;
+    height: 157px;
+    border: solid 1px #545862;
+    background: repeating-linear-gradient( transparent,transparent 37px, #343340c2 39px ), repeating-linear-gradient( 90deg, transparent,transparent 47px, #29283291 48px );
+    
+    &_loaded {
+      .trader-card__preloader {
+        display: none;
+      }
+      .trader-card__chart {
+        display: block;
+      }
+    }
   }
-  &__user-name-block {
-    display: flex;
-    justify-content: center;
+  &__chart {
+    display: none;
+    margin-left: -80px;
   }
-  &__position-trade {
-    width: 208px;
-    height: 40px;
-    background-color: #eeeeee;
+  &__saved {
+    width: 37px;
+    height: 37px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    &_saved {
+      background-image: url(../assets/images/star-saved-1.svg);
+    }
+    &_unsaved {
+      background-image: url(../assets/images/star-saved-2.svg);
+    }
+  }
+  &__units {
     display: flex;
-    align-items: center;
+    margin-top: 26px;
+  }
+  &__unit {
+    margin-right: 39px;
+  }
+  &__delimiter {
+    margin-top: 25px;
+    height: 1px;
+    background-color: #898989;
+    opacity: 0.1;
+  }
+
+  &__stats {
+    margin-top: 29px;
+    display: flex;
     justify-content: space-between;
-    padding: 0 12px;
-  }
-  &__position-trade-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    @include font(Lato-Light);
-    font-size: 12px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.41;
-    letter-spacing: normal;
-    color: #666666;
-  }
-  &__dynamic-info {
-    @include font(Lato-Bold);
-  }
-  &__result-block {
-    display: flex;
-    justify-content: space-around;
-    margin: 12px 0;
-  }
-  &__result-block-data {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-  }
-  &__block-data {
-    display: inline;
-    @include font(Lato-Light);
-    font-size: 12px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #000000;
-  }
-  &__block-result {
-    font-size: 16px;
-    font-weight: 300;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #8bc34a;
-  }
-  &__info-block {
-    width: 180px;
-    @include font(Lato);
-    font-size: 14px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #666666;
-    margin: 0px 15px 15px;
-  }
-  &__href {
-    color: #8560fd;
-    text-decoration: underline;
-  }
-  &__icon-user-wrap {
-    margin-right: 15px;
   }
 }
 .trader-card:hover {
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.15);
-  border: solid 1px #8560fd;
+  background-color: rgba(255, 255, 255, 0.1);
+
+}
+
+.trader-card_trader {
+  padding-top: 64px;
+  background-color: rgba(255, 255, 255, 0.02);
+
+  .trader-card {
+    &__header {
+      display: none;
+    }
+
+    &__title {
+      display: block;
+    }
+
+    &__exchanges {
+      display: none;
+    }
+  }
+
+}
+
+.trader-card_investor {
+  background-color: rgba(29, 27, 40, 0.3);
 }
