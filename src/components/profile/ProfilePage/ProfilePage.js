@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Page } from '@components/common/Page';
 import { ProfileHead } from '@components/profile/ProfileHead';
-import { ListProducts } from '@profile/ListProducts';
 import { ProfileChart } from '@profile/ProfileChart';
 import { Products } from '@profile/Products';
 import { Investor } from '@profile/Investor';

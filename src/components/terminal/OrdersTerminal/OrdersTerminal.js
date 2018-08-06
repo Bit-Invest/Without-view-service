@@ -16,7 +16,7 @@ export const OrdersTerminal = props => {
           },
           {
             title: 'FILL ORDERS',
-            content: <FillOrders />
+            content: <FillOrders orders={props.fillOrders} />
           }
         ]}
       />

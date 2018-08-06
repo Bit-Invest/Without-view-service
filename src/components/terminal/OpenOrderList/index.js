@@ -1,1 +1,2 @@
-export { OpenOrderList } from './OpenOrderList';
+export { OpenOrderListContainer as OpenOrderList } from
+  './OpenOrderListContainer';

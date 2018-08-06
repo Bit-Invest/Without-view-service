@@ -1,9 +1,4 @@
 import * as React from 'react';
-import { IconUser } from '@components/profile/IconUser/IconUser';
-import { UserName } from '@components/profile/UserName/UserName';
-import { Rating } from '@components/marketplace/Rating/Rating';
-import { PercentResult } from '@common/PercentResult';
-import { Line } from 'react-chartjs-2';
 import { Utils } from '@common/Utils';
 import { User } from '@common/User';
 import { Unit } from '@common/Unit';
@@ -32,7 +27,12 @@ export const TraderCard = props => {
     <div className={buildRootClass()} onClick={props.onClick ? props.onClick : () => {}}>
       <div className={`${ROOT_CLASS}__header`}>
         <div className={`${ROOT_CLASS}__user-block`}>
-          <User name={props.name} surname={props.surname} theme="small" role="Trader" />
+          <User
+            name={props.name}
+            surname={props.surname}
+            theme="small"
+            role="Trader"
+          />
         </div>
         <div className={`${ROOT_CLASS}__saved ${ROOT_CLASS}__saved_${props.saved ? 'saved' : 'unsaved'}`}></div>
       </div>

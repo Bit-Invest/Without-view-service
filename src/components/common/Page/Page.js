@@ -10,7 +10,7 @@ export const Page = (props) => {
     return `${ROOT_CLASS} ${ROOT_CLASS}_${props.page}`;
   }
 
-  let preloaderClass = `${ROOT_CLASS}__preloader`;
+  let preloaderClass = `${ROOT_CLASS}__preloader-wrap`;
   let childClass = `${ROOT_CLASS}__child`;
   if (props.isLoaded) {
     preloaderClass += ` ${preloaderClass}_hidden`;
@@ -21,7 +21,9 @@ export const Page = (props) => {
   return (
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__content-wrap`}>
-        <div className={`${preloaderClass}`}></div>
+        <div className={`${preloaderClass}`}>
+          <div className={`${ROOT_CLASS}__preloader`}></div>
+        </div>
         <div className={`${childClass}`}>
           {props.children}
         </div>

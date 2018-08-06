@@ -10,7 +10,6 @@ import { OrderBlock } from '@terminal/OrderBlock';
 const ROOT_CLASS = 'terminal-page';
 
 export const TerminalPage = (props) => {
-  let graphRef = null;
   return (
     <Page isLoaded={props.isLoaded}>
       <div className={ROOT_CLASS}>
@@ -27,7 +26,10 @@ export const TerminalPage = (props) => {
             chart={props.chart}
             type={props.currentChartType}
           />
-          <OrdersTerminal openOrders={props.openOrders} />
+          <OrdersTerminal
+            openOrders={props.openOrders}
+            fillOrders={props.fillOrders}
+          />
         </div>
         <div className={`${ROOT_CLASS}__3rd-column`}>
           <OrderBook

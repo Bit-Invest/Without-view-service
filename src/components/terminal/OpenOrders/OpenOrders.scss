@@ -3,8 +3,10 @@
 .open-orders {
   padding: 0 16px;
   width: auto;
-  height: 302px;
+  height: 311px;
+  overflow: auto;
   &__list-name {
+    padding-right: 180px;
     height: 38px;
     line-height: 38px;
     display: flex;

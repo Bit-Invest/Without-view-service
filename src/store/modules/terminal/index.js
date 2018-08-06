@@ -9,5 +9,6 @@ export {
   setCurrentPair,
   setCurrentStock,
   setCurrentChartType,
-  fillOrders
+  fillOrders,
+  cancelOrder
 } from './terminal';

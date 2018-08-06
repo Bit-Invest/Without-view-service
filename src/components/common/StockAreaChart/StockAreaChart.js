@@ -5,7 +5,6 @@ import { scaleTime } from "d3-scale";
 import { XAxis, YAxis } from "react-stockcharts/lib/axes";
 import { curveMonotoneX } from "d3-shape";
 import {
-	CrossHairCursor,
 	MouseCoordinateX,
 	MouseCoordinateY,
 } from "react-stockcharts/lib/coordinates";
@@ -55,7 +54,7 @@ const renderAxes = (props) => {
 }
 
 export const StockAreaChart = (props) => {
-  const { data, width, height, range, zoom } = props;
+  const { data, width, height, zoom } = props;
   const xAccessor = d => d.date;
   return (
     <div className={ROOT_CLASS}>

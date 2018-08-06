@@ -3,7 +3,8 @@
 .fill-orders{
   padding: 0 24px;
   width: auto;
-  height: 262px;
+  height: 311px;
+  overflow: auto;
   &__list-name {
     height: 38px;
     line-height: 38px;

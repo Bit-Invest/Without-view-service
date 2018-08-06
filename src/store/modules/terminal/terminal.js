@@ -19,6 +19,7 @@ export const ORDER_ERROR = 'terminal/ORDER_ERROR';
 export const SET_CURRENT_CHART_TYPE = 'terminal/SET_CURRENT_CHART_TYPE';
 export const FILL_ORDERS = 'terminal/FILL_ORDERS';
 export const FILL_ORDERS_SUCCESS = 'terminal/FILL_ORDERS_SUCCESS';
+export const CANCEL_ORDER = 'terminal/CANCEL_ORDER';
 
 const initialState = {
   historyList: [],
@@ -206,12 +207,30 @@ export const setCurrentChartType = (chartType) => {
 }
 
 export const fillOrders = (data) => {
+  console.log('FILL');
+  console.log(data);
   return {
     type: FILL_ORDERS,
     payload: {
       request: {
         method: 'POST',
         url: '/api/user/filledorders',
+        data: data,
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
+}
+
+export const cancelOrder = (data) => {
+  return {
+    type: CANCEL_ORDER,
+    payload: {
+      request: {
+        method: 'POST',
+        url: '/api/user/cancelorder',
         data: data,
         headers: {
           Authorization: LocalStorage.getItem('token')

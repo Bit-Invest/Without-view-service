@@ -2,11 +2,8 @@ import * as React from 'react';
 import { ChartCanvas, Chart } from "react-stockcharts";
 import { CandlestickSeries } from "react-stockcharts/lib/series";
 import { scaleTime } from "d3-scale";
-import { last, timeIntervalBarWidth } from "react-stockcharts/lib/utils";
-import { utcDay } from "d3-time";
 import { XAxis, YAxis } from "react-stockcharts/lib/axes";
 import {
-	CrossHairCursor,
 	MouseCoordinateX,
 	MouseCoordinateY,
 } from "react-stockcharts/lib/coordinates";
@@ -16,7 +13,7 @@ import { timeFormat } from "d3-time-format";
 const ROOT_CLASS = 'stock-candle-chart';
 
 export const StockCandleChart = (props) => {
-  const { data, width, height, type, range } = props;
+  const { data, width, height, type } = props;
   const xAccessor = d => d.date;
   const xExtents = [
     xAccessor(data[0]),

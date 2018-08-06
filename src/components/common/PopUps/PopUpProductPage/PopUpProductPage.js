@@ -1,9 +1,4 @@
 import * as React from 'react';
-import { Chart } from '@profile/Chart';
-import { IconUser } from '@components/profile/IconUser/IconUser';
-import { UserName } from '@components/profile/UserName/UserName';
-import { Rating } from '@components/marketplace/Rating/Rating';
-import { Line } from 'react-chartjs-2';
 import { Utils } from '@common/Utils';
 import { User } from '@common/User';
 import { Unit } from '@common/Unit';
