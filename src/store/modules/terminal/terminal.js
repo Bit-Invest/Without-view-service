@@ -115,7 +115,7 @@ export const tradeHistory = (userData) => {
     payload: {
       request: {
         method: 'POST',
-        url: '/api/user/tradeshistory',
+        url: '/api/recenttrades',
         data: userData,
         headers: {
           Authorization: LocalStorage.getItem('token')
@@ -131,7 +131,7 @@ export const orderBook = (data) => {
     payload: {
       request: {
         method: 'POST',
-        url: '/api/user/orderbook',
+        url: '/api/orderbook',
         data: data,
         headers: {
           Authorization: LocalStorage.getItem('token')
@@ -146,7 +146,7 @@ export const marketData = (data) => {
     type: MARKET_DATA,
     payload: {
       request: {
-        url: '/api/user/marketdata',
+        url: '/api/marketdata',
         method: 'POST',
         data: data,
         headers: {
