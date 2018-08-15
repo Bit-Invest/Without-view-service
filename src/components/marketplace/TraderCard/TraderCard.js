@@ -40,7 +40,7 @@ export const TraderCard = props => {
         {props.nameProduct ? props.nameProduct : ''}
       </div>
       <div className={`${ROOT_CLASS}__exchanges`}>
-        <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
+        <div className={`${ROOT_CLASS}__exchange`}>{props.stockName}</div>
         <div className={`${ROOT_CLASS}__pair`}>BTC</div>
       </div>
       <div className={`${ROOT_CLASS}__chart-wrap ${props.isLoaded ? ROOT_CLASS + '__chart-wrap_loaded' : ''}`}>
