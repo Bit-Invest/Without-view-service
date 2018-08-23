@@ -10,7 +10,7 @@ export const TraderCardList = props => {
   return(
     <div onClick={props.onClick} className={ROOT_CLASS}>
       <div>
-        <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
+        <div className={`${ROOT_CLASS}__exchange`}>{props.stockName}</div>
         <div className={`${ROOT_CLASS}__graf-list`}></div>
       </div>
       <div className={`${ROOT_CLASS}__position-result-block`}>

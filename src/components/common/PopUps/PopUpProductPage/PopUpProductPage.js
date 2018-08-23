@@ -10,7 +10,7 @@ export const PopUpProductPage = props => {
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__block-exchange`}>
-        <div className={`${ROOT_CLASS}__exchange`}>{props.nameStor}</div>
+        <div className={`${ROOT_CLASS}__exchange`}>{props.stockName}</div>
         <div className={`${ROOT_CLASS}__currencyPair`}>BTC</div>
       </div>
       <div className={`${ROOT_CLASS}__chart`}>

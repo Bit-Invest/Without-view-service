@@ -25,18 +25,18 @@ class PopUpProductPageContainer extends React.Component {
 
   onClickConnect = () => {
     this.props.subscribeOnTrader({
-      "product": this.props.id,
+      "productId": this.props.id,
       "key": this.props.userStocks.find(stock => {
-        return stock.stock === this.props.nameStor
+        return stock.stock === this.props.stockName
       }).id
     }).then(this.onFinishConnect);
   }
 
   onClickDisconnect = () => {
     this.props.unsubscribeTrader({
-      "product": this.props.id,
+      "productId": this.props.id,
       "key": this.props.userStocks.find(stock => {
-        return stock.stock === this.props.nameStor
+        return stock.stock === this.props.stockName
       }).id
     }).then(this.onFinishConnect);
   }

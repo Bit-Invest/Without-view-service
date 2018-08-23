@@ -9,7 +9,7 @@ class TraderCardListContainer extends React.Component {
     return(
       <TraderCardList
         onClick={this.onClickRoot.bind(this)}
-        nameStor={this.props.nameStor}
+        stockName={this.props.stockName}
         name={this.props.name}
         surname={this.props.surname}
         {...this.props}
@@ -20,7 +20,7 @@ class TraderCardListContainer extends React.Component {
   onClickRoot() {
     this.props.showPopUp('productPage', {
       id: this.props.id,
-      nameStor: this.props.nameStor,
+      stockName: this.props.stockName,
       name: this.props.name,
       surname: this.props.surname,
       info: this.props.info,
