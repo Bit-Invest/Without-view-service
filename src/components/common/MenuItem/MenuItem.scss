@@ -1,8 +1,8 @@
 @import "src/components/common/Utils/Utils.scss";
 
 .menu-item {
-  padding-top: 17px;
-  padding-bottom: 17px;
+  padding-top: 13px;
+  padding-bottom: 13px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -12,7 +12,7 @@
   &__title {
     margin-top: 18px;
     @include font(Geometria-Light);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     outline: none;
     line-height: normal;
@@ -24,38 +24,38 @@
     background-size: cover;
     background-repeat: no-repeat;
     &_terminal {
-      width: 41px;
-      height: 34px;
+      width: 20px;
+      height: 17px;
       background-image: url('../assets/images/terminal-icon.svg');
     }
 
     &_marketplace {
-      width: 41px;
-      height: 41px;
+      width: 20px;
+      height: 20px;
       background-image: url('../assets/images/marketplace-icon.svg');
     }
 
     &_saved {
-      width: 41px;
-      height: 40px;
+      width: 20px;
+      height: 20px;
       background-image: url('../assets/images/saved-icon.svg');
     }
 
     &_billing {
-      width: 35px;
-      height: 41px;
+      width: 20px;
+      height: 23px;
       background-image: url('../assets/images/billing-icon.svg');
     }
 
     &_profile {
-      width: 41px;
-      height: 41px;
+      width: 20px;
+      height: 20px;
       background-image: url('../assets/images/profile-icon.svg');
     }
 
     &_help {
-      width: 43px;
-      height: 44px;
+      width: 20px;
+      height: 20px;
       background-image: url('../assets/images/help-icon.svg');
     }
   }
