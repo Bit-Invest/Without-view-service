@@ -11,17 +11,17 @@ export const TerminalHead = props => {
           onChange={props.onSelectStock}
           name='select'
           theme='terminal'
-          value='Binnance'
+          value='Binance'
           defaultOption={
             {
-              value: 'Binnance',
-              label: 'Binnance'
+              value: 'Binance',
+              label: 'Binance'
             }
           }
           options={[
             {
-              value: 'Binnance',
-              label: 'Binnance'
+              value: 'Binance',
+              label: 'Binance'
             }
           ]}
         />
