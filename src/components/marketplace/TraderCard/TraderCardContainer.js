@@ -17,7 +17,7 @@ class TraderCardContainer extends React.Component {
 
   componentWillMount() {
     this.props.tradeHistory({
-      keyId: this.props.id
+      productId: this.props.id
     })
       .then(() => {
         this.setState({isLoaded: true});
