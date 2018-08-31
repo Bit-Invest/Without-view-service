@@ -56,7 +56,7 @@ const renderAxes = (props) => {
 export const StockAreaChart = (props) => {
   const { data, width, height, zoom } = props;
   const xAccessor = d => d.date;
-  return (
+  return props.data && props.data.length > 2 ? (
     <div className={ROOT_CLASS}>
       <ChartCanvas
         width={width}
@@ -89,5 +89,5 @@ export const StockAreaChart = (props) => {
         </Chart>
       </ChartCanvas>
     </div>
-  );
+  ) : null;
 }

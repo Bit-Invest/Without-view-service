@@ -16,7 +16,7 @@ import {
 } from '@store/modules/terminal';
 import { getKeys } from '@store/modules/user';
 
-const DAY = 86400000;
+const FOUR_HOURS = 14400000;
 
 class TerminalPageContainer extends React.Component {
   constructor(props) {
@@ -60,9 +60,9 @@ class TerminalPageContainer extends React.Component {
       return Promise.all([
         this.props.marketData({
           symbol: currentPair.symbol,
-          nameStock: this.props.data.currentStock,
+          stock: this.props.data.currentStock,
           eventTime: {
-            gte: Date.now() - DAY,
+            gte: Date.now() - FOUR_HOURS,
             lt: Date.now()
           }
         }),

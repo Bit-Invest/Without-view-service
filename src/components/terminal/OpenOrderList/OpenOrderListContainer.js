@@ -14,7 +14,8 @@ class OpenOrderListContainer extends React.Component {
   onClickClose = () => {
     this.props.cancelOrder({
       symbol: this.props.symbol,
-      orderId: this.props.id
+      orderId: this.props.id,
+      stockName: this.props.currentStock
     }).then(() => {
       this.props.openOrders({
         symbol: this.props.symbol,

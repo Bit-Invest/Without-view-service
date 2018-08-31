@@ -10,6 +10,9 @@ export const PopUpNewProduct = (props) => {
   return (
     <form className={ROOT_CLASS} onSubmit={props.handleSubmit}>
       <div className={`${ROOT_CLASS}__title`}>NEW PRODUCT</div>
+      <div className={`${ROOT_CLASS}__error ${!props.isError ? ROOT_CLASS + '__error_hidden' : ''}`}>
+        {props.errorMessage}
+      </div>
       <div className={`${ROOT_CLASS}__select-wrap`}>
         <Select
           onChange={props.handleSelectChange}
@@ -23,7 +26,7 @@ export const PopUpNewProduct = (props) => {
       <div className={`${ROOT_CLASS}__input-wrap ${ROOT_CLASS}__input-wrap_name`}>
         <Input
           onChange={props.handleNameChange}
-          placeholder="Name of product"
+          placeholder="Name of product (50 characters maximum)"
           type="text"
           required
         />
@@ -48,7 +51,7 @@ export const PopUpNewProduct = (props) => {
         <TextArea
           onChange={props.handleAreaChange}
           areaProps={{
-            placeholder: 'Description of your strategy min 500 characters'
+            placeholder: 'Description of your strategy min 250 characters'
           }}
         />
       </div>

@@ -3,8 +3,8 @@ import { PopUpNewProduct } from './PopUpNewProduct';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addExchange } from '@store/modules/user';
-import { hidePopUp } from '@store/modules/common';
-import { getKeys, apiKeySubscribe } from '@store/modules/user';
+import { hidePopUp, socketSubscribe } from '@store/modules/common';
+import { getKeys, getMyProducts } from '@store/modules/user';
 
 class PopUpNewProductContainer extends React.Component {
   constructor(props) {
@@ -14,7 +14,11 @@ class PopUpNewProductContainer extends React.Component {
       ApiKey: '',
       secretKey: '',
       info: '',
-      nameProduct: 'My product'
+      nameProduct: 'My product',
+      error: {
+        isError: false,
+        errorMessage: ''
+      }
     };
   }
 
@@ -26,15 +30,48 @@ class PopUpNewProductContainer extends React.Component {
         key: this.state.ApiKey,
         apiSecret: this.state.secretKey,
         info: this.state.info,
-        productName: this.state.productName
+        nameProduct: this.state.nameProduct
       }
     };
-    const { addExchange } = this.props;
-    this.props.apiKeySubscribe();
-    addExchange(data);
-    this.props.getKeys();
-    this.props.hidePopUp();
+    if (this.checkData(data)) {
+      this.sendData(data);
+    }
   };
+
+  checkData(data) {
+    if (data.key.nameProduct.length > 50) {
+      this.setState({
+        error: {
+          isError: true,
+          errorMessage: 'Name is longer than 50 symbols'
+        }
+      });
+      return false;
+    } else if (data.key.info.length > 250) {
+      this.setState({
+        error: {
+          isError: true,
+          errorMessage: 'Product description is longer than 250 symbols'
+        }
+      })
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  sendData(data) {
+    const { addExchange } = this.props;
+    this.props.socketSubscribe({
+      message: 'keyChecked',
+      callback: () => {
+        this.props.getKeys();
+        this.props.getMyProducts();
+      }
+    })
+    addExchange(data);
+    this.props.hidePopUp();
+  }
 
   handleNameChange(event) {
     this.setState({ nameProduct: event.target.value });
@@ -73,6 +110,8 @@ class PopUpNewProductContainer extends React.Component {
       handleAreaChange={handleAreaChange.bind(this)}
       handleNameChange={handleNameChange.bind(this)}
       role={this.props.role}
+      isError={this.state.error.isError}
+      errorMessage={this.state.error.errorMessage}
     />;
   }
 }
@@ -83,7 +122,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
-    {addExchange, hidePopUp, getKeys, apiKeySubscribe}, dispatch);
+    {addExchange, hidePopUp, getKeys, socketSubscribe, getMyProducts}, dispatch);
 
 const connectedContainer =
   connect(mapStateToProps, mapDispatchToProps)(PopUpNewProductContainer);
