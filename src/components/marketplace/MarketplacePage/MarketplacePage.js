@@ -15,7 +15,7 @@ export const MarketplacePage = props => {
   return (
     <Page isLoaded={props.isLoaded}>
       <div className={ROOT_CLASS}>
-        {props.cards.map((card, index) => <ProductCard {...card} key={index}/>)}
+        {props.cards.map((card, index) => <ProductCard {...card} positionID={index} key={index}/>)}
       </div>
     </Page>
   );

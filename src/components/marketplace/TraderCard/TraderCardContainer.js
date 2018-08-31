@@ -25,7 +25,7 @@ class TraderCardContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(true)
     return (
       <TraderCard
         onClick={this.onClickRoot}
@@ -33,6 +33,7 @@ class TraderCardContainer extends React.Component {
         name={this.props.name}
         surname={this.props.surname}
         isLoaded={this.state.isLoaded}
+        positionID={this.props.positionID}
         {...this.props}
       />
     );
@@ -46,7 +47,8 @@ class TraderCardContainer extends React.Component {
       surname: this.props.surname,
       info: this.props.info,
       followersCount: this.props.followersCount,
-      history: this.props.history[this.props.id]
+      history: this.props.history[this.props.id],
+      positionID: this.props.positionID
     });
   };
 }

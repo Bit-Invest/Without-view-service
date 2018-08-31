@@ -19,10 +19,11 @@ export const TraderCard = props => {
         type="hybrid"
         zoom={false}
         data={props.history[props.id]}
+        name={props.name}
+        id={props.id}
       />) :
       null;
   }
-
   return (
     <div className={buildRootClass()} onClick={props.onClick ? props.onClick : () => {}}>
       <div className={`${ROOT_CLASS}__header`}>
@@ -30,6 +31,7 @@ export const TraderCard = props => {
           <User
             name={props.name}
             surname={props.surname}
+            positionID={props.positionID}
             theme="small"
             role="Trader"
           />

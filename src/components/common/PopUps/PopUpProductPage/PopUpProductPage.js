@@ -61,6 +61,7 @@ export const PopUpProductPage = props => {
             name={props.name}
             surname={`${props.surname[0]}.`}
             theme="small"
+            positionID={props.positionID}
           />
         </div>
         <button
