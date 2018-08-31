@@ -30,10 +30,10 @@ const initialState = {
   openOrders: [],
   fillOrders: [],
   currentPair: {
-    symbol: "XLMETH",
-    baseAsset: "XLM",
+    symbol: "ETHBTC",
+    baseAsset: "ETH",
     baseAssetPrecision: "8",
-    quoteAsset: "ETH",
+    quoteAsset: "BTC",
     quotePrecision: 8
   },
   pairs: [],
