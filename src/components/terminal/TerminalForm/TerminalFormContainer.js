@@ -13,14 +13,24 @@ class TerminalFormContainer extends React.Component {
       price: '',
       value: '',
       total: ''
-    }
+    };
+
     props.socketSubscribe({
       message: 'ORDER_LIMIT_SUCCESS',
       callback: this.onOrderSuccess
     });
+
     props.socketSubscribe({
       message: 'ORDER_LIMIT_ERR',
       callback: this.onOrderError
+    });
+  }
+
+  defaultCallbackOrder = () => {
+    this.props.addAlert({
+      type: 'error',
+      iconType: 'face',
+      description: 'In demo mode, you can not place orders, sorry.'
     });
   }
 
@@ -29,6 +39,9 @@ class TerminalFormContainer extends React.Component {
   }
 
   onOrderError = res => {
+    this.defaultCallbackOrder();
+
+    return false;
     this.props.addAlert({
       type: 'error',
       iconType: 'face',
@@ -37,6 +50,9 @@ class TerminalFormContainer extends React.Component {
   }
 
   onOrderSuccess = res => {
+    this.defaultCallbackOrder();
+
+    return false;
     this.props.addAlert({
       type: 'info',
       iconType: 'graph',
@@ -57,6 +73,9 @@ class TerminalFormContainer extends React.Component {
   }
 
   handleSubmit = event => {
+    this.defaultCallbackOrder();
+
+    return false;
     event.preventDefault();
     this.props.placeLimitOrder({
       jwt: LocalStorage.getItem('token'),
