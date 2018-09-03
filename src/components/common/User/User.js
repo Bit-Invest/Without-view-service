@@ -11,7 +11,6 @@ export const User = (props) => {
     return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;
   }
 
-  console.log(props)
   return (
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__avatar-wrap`}>
@@ -23,8 +22,8 @@ export const User = (props) => {
         </div>
         <div className={`${ROOT_CLASS}__rating`}>
           <Rating
-            rating={3}
-            votes={83}
+            rating={props.raiting}
+            votes={props.comment}
             theme={props.theme === 'small' ? 'marketplace' : 'profile'}
             role={props.role}
           />
