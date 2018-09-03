@@ -6,7 +6,6 @@ export const ProfileChartButton = (props) => {
   const buildRootClass = () => {
     return `${ROOT_CLASS} ${props.isActive ? ROOT_CLASS + '_active' : ''}`;
   }
-
   return (
     <div
       className={buildRootClass()}

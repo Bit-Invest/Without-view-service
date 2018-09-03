@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar } from '@profile/Avatar';
-// import DefaultIcon from '@assets/images/profile-icon.svg';
+import DefaultIcon from '@assets/images/profile-icon.svg';
 import { Rating } from '@marketplace/Rating';
 import avatarArr from './importAvatars'
 
@@ -14,7 +14,7 @@ export const User = (props) => {
   return (
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__avatar-wrap`}>
-        <Avatar imageSrc={avatarArr[props.imageSrc] ? avatarArr[props.imageSrc] : null} theme={props.theme}/>
+        <Avatar imageSrc={avatarArr[props.imageSrc] ? avatarArr[props.imageSrc] : DefaultIcon} theme={props.theme}/>
       </div>
       <div className={`${ROOT_CLASS}__info`}>
         <div className={`${ROOT_CLASS}__name-wrap`}>
@@ -23,7 +23,7 @@ export const User = (props) => {
         <div className={`${ROOT_CLASS}__rating`}>
           <Rating
             rating={props.raiting}
-            votes={props.comment}
+            votes={props.comment !== undefined ? props.comment : 0}
             theme={props.theme === 'small' ? 'marketplace' : 'profile'}
             role={props.role}
           />

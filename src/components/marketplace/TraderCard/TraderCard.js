@@ -10,10 +10,16 @@ const ROOT_CLASS = 'trader-card';
 
 const TraderCard = props => {
   const card = props.products.filter(el => el.id === props.id)
-  const raiting = card[0].raitingTrader !== undefined ? card[0].raitingTrader.raiting : 0
-  const comment = card[0].raitingTrader !== undefined ? card[0].raitingTrader.comment : 0
-  const week = card[0].statesTrader !== undefined ? card[0].statesTrader.week : 0
-  const month = card[0].statesTrader !== undefined ? card[0].statesTrader.month : 0
+  let raiting = 0
+  let comment = 0
+  let week = 0
+  let month = 0
+  if (card.length > 0) {
+    raiting = card[0].raitingTrader !== undefined ? card[0].raitingTrader.raiting : 0
+    comment = card[0].raitingTrader !== undefined ? card[0].raitingTrader.comment : 0
+    week = card[0].statesTrader !== undefined ? card[0].statesTrader.week : 0
+    month = card[0].statesTrader !== undefined ? card[0].statesTrader.month : 0
+  }
   
   const buildRootClass = () => {
     return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;

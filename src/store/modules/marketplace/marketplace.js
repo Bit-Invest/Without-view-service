@@ -829,7 +829,7 @@ export const marketplace = (state = initialState, action) => {
     case GET_PRODUCTS_SUCCESS:
       return {
         ...state,
-        products: state.products.concat(action.payload.data)
+        products: initialState.products.concat(action.payload.data)
       };
     case GET_HISTORY_SUCCESS:
       const history = Utils.parseTradeHistory(action.payload.data.graph[0]);
