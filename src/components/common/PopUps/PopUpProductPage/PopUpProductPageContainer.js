@@ -53,6 +53,7 @@ const mapStateToProps = state => {
     userStocks: state.user.burses,
     personalInfo: state.user.personalInfo,
     products: state.user.products,
+    productsManager: state.marketplace.products,
     hasKey: state.user.burses.findIndex((burse) => {
       return burse.status === 'valid';
     }) >= 0

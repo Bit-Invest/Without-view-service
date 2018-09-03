@@ -7,6 +7,10 @@ import { StockAreaChart } from '@common/StockAreaChart';
 const ROOT_CLASS = 'product-page';
 
 export const PopUpProductPage = props => {
+  const card = props.productsManager.filter(el => el.id === props.id)
+  const week = card[0].statesTrader !== undefined ? card[0].statesTrader.week : 0
+  const month = card[0].statesTrader !== undefined ? card[0].statesTrader.month : 0
+
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__block-exchange`}>
@@ -29,10 +33,10 @@ export const PopUpProductPage = props => {
       </div>
       <div className={`${ROOT_CLASS}__result-block`}>
         <div className={`${ROOT_CLASS}__result`}>
-          <Unit title="week" count="32" size="market"/>
+          <Unit title="week" count={week} size="market"/>
         </div>
         <div className={`${ROOT_CLASS}__result`}>
-          <Unit title="month" count="-15" size="market"/>
+          <Unit title="month" count={month} size="market"/>
         </div>
         <div className={`${ROOT_CLASS}__stock-exchange`}>BINANCE</div>
       </div>
@@ -42,11 +46,11 @@ export const PopUpProductPage = props => {
         </div>
       </div>
       <div className={`${ROOT_CLASS}__position-container`}>
-        <div className={`${ROOT_CLASS}__position-block ${Utils.UNDEVELOPED}`}>
+        <div className={`${ROOT_CLASS}__position-block`}>
           <span>Horizon</span>{' '}
           <span>LONG</span>
         </div>
-        <div className={`${ROOT_CLASS}__position-block ${Utils.UNDEVELOPED}`}>
+        <div className={`${ROOT_CLASS}__position-block`}>
           <span>Fees{' '}</span>
           <span>10%</span>
         </div>

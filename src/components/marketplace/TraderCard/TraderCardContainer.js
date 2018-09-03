@@ -22,10 +22,10 @@ class TraderCardContainer extends React.Component {
       .then(() => {
         this.setState({isLoaded: true});
       });
+    this.setState({isLoaded: true});
   }
 
   render() {
-    console.log(true)
     return (
       <TraderCard
         onClick={this.onClickRoot}

@@ -11,10 +11,11 @@ export const User = (props) => {
     return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;
   }
 
+  console.log(props)
   return (
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__avatar-wrap`}>
-        <Avatar imageSrc={avatarArr[props.positionID] ? avatarArr[props.positionID] : null} theme={props.theme}/>
+        <Avatar imageSrc={avatarArr[props.imageSrc] ? avatarArr[props.imageSrc] : null} theme={props.theme}/>
       </div>
       <div className={`${ROOT_CLASS}__info`}>
         <div className={`${ROOT_CLASS}__name-wrap`}>

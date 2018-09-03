@@ -6,7 +6,7 @@ const ROOT_CLASS = 'unit';
 
 export const Unit = (props) => {
   const buildRootClass = () => {
-    return `${ROOT_CLASS} ${ROOT_CLASS}_${props.size} ${Utils.UNDEVELOPED}`;
+    return `${ROOT_CLASS} ${ROOT_CLASS}_${props.size}`;
   }
 
   return (
