@@ -10,6 +10,8 @@ export const PopUpProductPage = props => {
   const card = props.productsManager.filter(el => el.id === props.id)
   const week = card[0].statesTrader !== undefined ? card[0].statesTrader.week : 0
   const month = card[0].statesTrader !== undefined ? card[0].statesTrader.month : 0
+  const raiting = card[0].raitingTrader !== undefined ? card[0].raitingTrader.raiting : 0
+  const comment = card[0].raitingTrader !== undefined ? card[0].raitingTrader.comment : 0
 
   return (
     <div className={ROOT_CLASS}>
@@ -38,7 +40,7 @@ export const PopUpProductPage = props => {
         <div className={`${ROOT_CLASS}__result`}>
           <Unit title="month" count={month} size="market"/>
         </div>
-        <div className={`${ROOT_CLASS}__stock-exchange`}>BINANCE</div>
+        <div className={`${ROOT_CLASS}__stock-exchange`}>{ card[0].stockName }</div>
       </div>
       <div className={`${ROOT_CLASS}__description-block`}>
         <div className={`${ROOT_CLASS}__description`}>
@@ -48,11 +50,11 @@ export const PopUpProductPage = props => {
       <div className={`${ROOT_CLASS}__position-container`}>
         <div className={`${ROOT_CLASS}__position-block`}>
           <span>Horizon</span>{' '}
-          <span>LONG</span>
+          <span>{ card[0].horizon }</span>
         </div>
         <div className={`${ROOT_CLASS}__position-block`}>
           <span>Fees{' '}</span>
-          <span>10%</span>
+          <span>{ card[0].fees }</span>
         </div>
         <div className={`${ROOT_CLASS}__position-block`}>
           <span>Investors{' '}</span>
@@ -66,6 +68,9 @@ export const PopUpProductPage = props => {
             surname={`${props.surname[0]}.`}
             theme="small"
             positionID={props.positionID}
+            imageSrc={`${props.name.toUpperCase()}_${props.surname.toUpperCase()}`}
+            raiting={raiting}
+            comment={comment}
           />
         </div>
         <button

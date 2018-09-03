@@ -9,6 +9,12 @@ import { connect } from 'react-redux';
 const ROOT_CLASS = 'trader-card';
 
 const TraderCard = props => {
+  const card = props.products.filter(el => el.id === props.id)
+  const raiting = card[0].raitingTrader !== undefined ? card[0].raitingTrader.raiting : 0
+  const comment = card[0].raitingTrader !== undefined ? card[0].raitingTrader.comment : 0
+  const week = card[0].statesTrader !== undefined ? card[0].statesTrader.week : 0
+  const month = card[0].statesTrader !== undefined ? card[0].statesTrader.month : 0
+  
   const buildRootClass = () => {
     return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;
   }
@@ -26,11 +32,6 @@ const TraderCard = props => {
       null;
   }
   const buildWeekMonth = () => {
-    const card = props.products.filter(el => el.id === props.id)
-    const week = card[0].statesTrader !== undefined ? card[0].statesTrader.week : 0
-    const month = card[0].statesTrader !== undefined ? card[0].statesTrader.month : 0
-    console.log(card)
-
     return (
       <div className={`${ROOT_CLASS}__units`}>
         <div className={`${ROOT_CLASS}__unit`}>
@@ -53,6 +54,8 @@ const TraderCard = props => {
             imageSrc={`${props.name.toUpperCase()}_${props.surname.toUpperCase()}`}
             theme="small"
             role="Trader"
+            raiting={raiting}
+            comment={comment}
           />
         </div>
         <div className={`${ROOT_CLASS}__saved ${ROOT_CLASS}__saved_${props.saved ? 'saved' : 'unsaved'}`}></div>
@@ -73,8 +76,8 @@ const TraderCard = props => {
       { buildWeekMonth() }
       <div className={`${ROOT_CLASS}__delimiter`}/>
       <div className={`${ROOT_CLASS}__stats`}>
-        <TraderStat name="Horizon" value="Long"/>
-        <TraderStat name="Fees" value="10%"/>
+        <TraderStat name="Horizon" value={props.horizon}/>
+        <TraderStat name="Fees" value={props.fees}/>
         <TraderStat name="Investors" value={props.followersCount} />
       </div>
     </div>

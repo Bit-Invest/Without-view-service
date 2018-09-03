@@ -10,11 +10,13 @@ const initialState = {
     {
       "followersCount": 10,
       "id": "5bdw1dc6d7272vd4c3b9bc41",
-      "info": "ZIMMERMAN product information",
+      "info": "Counter trend medium-term trading strategy, based on the game on trade levels.",
       "name": "MARK",
-      "nameProduct": "Product",
+      "nameProduct": "Counter Trend",
       "stockName": "binance",
       "surname": "ZIMMERMAN",
+      'horizon': 'Long',
+      'fees': '10%',
       raitingTrader: {
         raiting: 1.7,
         comment: 110
@@ -27,11 +29,13 @@ const initialState = {
     {
       "followersCount": 50,
       "id": "6bdw1dc6d7272vd4c3b9bc41",
-      "info": "JEFFERY product information",
+      "info": "The strategy is based on working with low-liquid instruments but high growth potential.",
       "name": "EDWARD",
-      "nameProduct": "Product",
+      "nameProduct": "Penny Stock",
       "stockName": "binance",
       "surname": "JEFFERY",
+      'horizon': 'Long',
+      'fees': '5%',
       raitingTrader: {
         raiting: 4.3,
         comment: 15
@@ -44,11 +48,13 @@ const initialState = {
     {
       "followersCount": 2,
       "id": "7bdw1dc6d7272vd4c3b9bc41",
-      "info": "COURTENAY product information",
+      "info": "A trading strategy based on working with the tools, listing of which is expected for the major Crypto exchanges. The selection of tools takes place automatically by means of a trading bot which tracks the movement of assets by key wallets exchanges.",
       "name": "CURTIS",
-      "nameProduct": "Product",
+      "nameProduct": "Listing",
       "stockName": "binance",
       "surname": "COURTENAY",
+      'horizon': 'Long',
+      'fees': '30%',
       raitingTrader: {
         raiting: 4.7,
         comment: 11
@@ -61,11 +67,13 @@ const initialState = {
     {
       "followersCount": 23,
       "id": "8bdw1dc6d7272vd4c3b9bc41",
-      "info": "HOWARD product information",
+      "info": "A long-term strategy of investments in basic crypto assets and anticorrelated assets to hedge risks.",
       "name": "KERMIT",
-      "nameProduct": "Product",
+      "nameProduct": "Hedge",
       "stockName": "binance",
       "surname": "HOWARD",
+      'horizon': 'Long',
+      'fees': '17%',
       raitingTrader: {
         raiting: 2.9,
         comment: 53
@@ -78,11 +86,13 @@ const initialState = {
     {
       "followersCount": 11,
       "id": "9bdw1dc6d7272vd4c3b9bc41",
-      "info": "CHESHIRE product information",
+      "info": "This strategy is based on ETH as an underlying asset of a trading system. The strategy is based on a certain correlation of projects which are based on tokens ERC20 and ETH.",
       "name": "EMIL",
-      "nameProduct": "Product",
+      "nameProduct": "Ethereum Basis",
       "stockName": "binance",
       "surname": "CHESHIRE",
+      'horizon': 'Long',
+      'fees': '78%',
       raitingTrader: {
         raiting: 3.3,
         comment: 1
