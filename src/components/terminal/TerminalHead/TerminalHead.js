@@ -48,8 +48,8 @@ export const TerminalHead = props => {
           theme='terminal'
           defaultOption={
             {
-              value: 'candle',
-              label: 'Candles'
+              value: 'area',
+              label: 'Line'
             }
           }
           options={[

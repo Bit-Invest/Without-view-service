@@ -6,6 +6,7 @@ import { LocalStorage } from '@common/Utils';
 import { checkJWT } from '@store/modules/common';
 import { push } from 'react-router-redux';
 import { userLogIn } from '@store/modules/user';
+import Tour from 'reactour';
 import {
   orderBook,
   tradeHistory,
@@ -18,12 +19,55 @@ import { getKeys } from '@store/modules/user';
 
 const FOUR_HOURS = 14400000;
 
+const tourConfig = [
+  {
+    selector: '.select_terminal:nth-of-type(1)',
+    content: `Exchange selector`,
+    accentColor: '#f2f2f2'
+  },
+  {
+    selector: '.trader-card:nth-of-type(1) .trader-card__chart-wrap.trader-card__chart-wrap_loaded',
+    content: "Indicator of profitability",
+  },
+  {
+    selector: '.trader-card:nth-of-type(1) .trader-card__exchange',
+    content: 'Exchange where the product is allocated',
+  },
+  {
+    selector: '.trader-card:nth-of-type(1) .user__name-wrap',
+    content: `Investment products provided by asset managers`,
+  },
+  {
+    selector: '.trader-card:nth-of-type(1) .trader-card__pair',
+    content: `Basic asset`,
+  },
+  {
+    selector: '.trader-card:nth-of-type(1) .trader-card__units',
+    content: `Profitability of the strategy`,
+  },
+  {
+    selector: '.trader-card:nth-of-type(1) .trader-stat:nth-of-type(1)',
+    content: `The period of implementation`,
+  },
+  {
+    selector: '.trader-card:nth-of-type(1) .trader-stat:nth-of-type(2)',
+    content: `The fees to be paid to asset manager for successful trades`,
+  }, 
+  {
+    selector: '.trader-card:nth-of-type(1) .trader-stat:nth-of-type(3)',
+    content: `The number of investors connected`,
+  },
+];
+
 class TerminalPageContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentOrder: 'Limit',
-      isLoaded: false
+      isLoaded: false,
+
+      isTourOpen: false,
+      isShowingMore: false,
     };
   }
 
@@ -31,7 +75,7 @@ class TerminalPageContainer extends React.Component {
     this.checkRedirect()
       .then(this.loadData.bind(this))
       .then(() => {
-        this.setState({isLoaded: true});
+        this.callbackLoaded();
       });
   }
 
@@ -87,20 +131,55 @@ class TerminalPageContainer extends React.Component {
     ])});
   }
 
+  callbackLoaded = () => {
+    this.setState({
+      isLoaded: true,
+      isTourOpen: true
+    });
+  }
+
+  toggleShowMore = () => {
+    this.setState(prevState => ({
+      isShowingMore: !prevState.isShowingMore,
+    }))
+  }
+
+  closeTour = () => {
+    this.setState({ isTourOpen: false })
+  }
+
+  openTour = () => {
+    this.setState({ isTourOpen: true })
+  }
+
   render() {
+    const { isTourOpen, isShowingMore } = this.state;
+    const accentColor = '#5cb7b7';
+
     return (
-      <TerminalPage
-        currentOrder={this.state.currentOrder}
-        isLoaded={this.state.isLoaded}
-        history={this.props.data.historyList}
-        orderBook={this.props.data.orderBook}
-        openOrders={this.props.data.openOrders}
-        fillOrders={this.props.data.fillOrders}
-        loadData={this.loadData.bind(this)}
-        currentPair={this.props.currentPair}
-        chart={this.props.data.chart}
-        currentChartType={this.props.data.currentChartType}
-      />
+      <React.Fragment>
+        <Tour
+          onRequestClose={this.closeTour}
+          steps={tourConfig}
+          isOpen={isTourOpen}
+          maskClassName="mask"
+          className="helper"
+          rounded={5}
+          accentColor={accentColor}
+        />
+        <TerminalPage
+          currentOrder={this.state.currentOrder}
+          isLoaded={this.state.isLoaded}
+          history={this.props.data.historyList}
+          orderBook={this.props.data.orderBook}
+          openOrders={this.props.data.openOrders}
+          fillOrders={this.props.data.fillOrders}
+          loadData={this.loadData.bind(this)}
+          currentPair={this.props.currentPair}
+          chart={this.props.data.chart}
+          currentChartType={this.props.data.currentChartType}
+        />
+      </React.Fragment>
     );
   }
 

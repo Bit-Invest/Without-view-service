@@ -37,6 +37,7 @@ export const ProfilePage = props => {
   }
 
   const renderProducts = () => {
+    return [];
     return props.products && props.products.length > 0 ?
       (
         <Products

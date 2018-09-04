@@ -38,7 +38,7 @@ const initialState = {
   },
   pairs: [],
   currentStock: 'binance',
-  currentChartType: 'candle',
+  currentChartType: 'area',
   chart: []
 };
 
