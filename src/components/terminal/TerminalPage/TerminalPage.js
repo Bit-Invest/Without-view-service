@@ -25,6 +25,7 @@ export const TerminalPage = (props) => {
           <TerminalGraph
             chart={props.chart}
             type={props.currentChartType}
+            dateFilterValue={props.dateFilterValue}
           />
           <OrdersTerminal
             openOrders={props.openOrders}

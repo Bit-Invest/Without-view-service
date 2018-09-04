@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Select } from '@registration/select';
+import TerminalDateFilter  from '../TerminalDateFilter/TerminalDateFilter'
 
 const ROOT_CLASS = 'terminal-head';
 
 export const TerminalHead = props => {
   return (
     <div className={ROOT_CLASS}>
-      <div className={`${ROOT_CLASS}__stock-select`}>
+      {/* <div className={`${ROOT_CLASS}__stock-select`}>
         <Select
           onChange={props.onSelectStock}
           name='select'
@@ -25,45 +26,48 @@ export const TerminalHead = props => {
             }
           ]}
         />
-      </div>
-      <div className={`${ROOT_CLASS}__pair-select`}>
-        <Select
-          onChange={props.onSelectPair}
-          name='select'
-          theme='terminal'
-          defaultOption={
-            {
-              value: props.currentPair.symbol,
-              label: `${props.currentPair.baseAsset}${' '}
-                / ${props.currentPair.quoteAsset}`
+      </div> */}
+      <div className={`${ROOT_CLASS}__wrapper-selects`}>
+        <div className={`${ROOT_CLASS}__pair-select`}>
+          <Select
+            onChange={props.onSelectPair}
+            name='select'
+            theme='terminal'
+            defaultOption={
+              {
+                value: props.currentPair.symbol,
+                label: `${props.currentPair.baseAsset}${' '}
+                  / ${props.currentPair.quoteAsset}`
+              }
             }
-          }
-          options={props.pairs}
-        />
-      </div>
-      <div className={`${ROOT_CLASS}__type-select`}>
-        <Select
-          onChange={props.onSelectChartType}
-          name='select'
-          theme='terminal'
-          defaultOption={
-            {
-              value: 'area',
-              label: 'Line'
+            options={props.pairs}
+          />
+        </div>
+        <div className={`${ROOT_CLASS}__type-select`}>
+          <Select
+            onChange={props.onSelectChartType}
+            name='select'
+            theme='terminal'
+            defaultOption={
+              {
+                value: 'area',
+                label: 'Line'
+              }
             }
-          }
-          options={[
-            {
-              value: 'area',
-              label: 'Line'
-            },
-            {
-              value: 'candle',
-              label: 'Candles'
-            }
-          ]}
-        />
+            options={[
+              {
+                value: 'area',
+                label: 'Line'
+              },
+              {
+                value: 'candle',
+                label: 'Candles'
+              }
+            ]}
+          />
+        </div>
       </div>
+      <TerminalDateFilter />
     </div>
   )
 }

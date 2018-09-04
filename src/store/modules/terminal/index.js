@@ -10,5 +10,6 @@ export {
   setCurrentStock,
   setCurrentChartType,
   fillOrders,
-  cancelOrder
+  cancelOrder,
+  changeDateFilter
 } from './terminal';

@@ -174,6 +174,7 @@ class TerminalPageContainer extends React.Component {
           currentPair={this.props.currentPair}
           chart={this.props.data.chart}
           currentChartType={this.props.data.currentChartType}
+          dateFilterValue={this.props.data.dateFilterValue}
         />
       </React.Fragment>
     );
@@ -184,7 +185,7 @@ class TerminalPageContainer extends React.Component {
 const mapStateToProps = state => {
   return {
     data: state.terminal,
-    burse: state.user.burses[0]
+    burse: state.user.burses[0],
   };
 }
 
