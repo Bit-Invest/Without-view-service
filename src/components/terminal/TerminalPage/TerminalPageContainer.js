@@ -21,42 +21,38 @@ const FOUR_HOURS = 14400000;
 
 const tourConfig = [
   {
-    selector: '.select_terminal:nth-of-type(1)',
+    selector: '.terminal-head__stock-select',
     content: `Exchange selector`,
     accentColor: '#f2f2f2'
   },
   {
-    selector: '.trader-card:nth-of-type(1) .trader-card__chart-wrap.trader-card__chart-wrap_loaded',
-    content: "Indicator of profitability",
+    selector: '.terminal-head__pair-select',
+    content: "Assets pair",
   },
   {
-    selector: '.trader-card:nth-of-type(1) .trader-card__exchange',
-    content: 'Exchange where the product is allocated',
+    selector: '.terminal-head__type-select',
+    content: 'Chart type',
   },
   {
-    selector: '.trader-card:nth-of-type(1) .user__name-wrap',
-    content: `Investment products provided by asset managers`,
+    selector: '.order-book__block.order-book__block_bids',
+    content: `Order book shows the demand and upply for the asset`,
   },
   {
-    selector: '.trader-card:nth-of-type(1) .trader-card__pair',
-    content: `Basic asset`,
+    selector: '.trader-history__caption',
+    content: `All the last trades for the pair`,
   },
   {
-    selector: '.trader-card:nth-of-type(1) .trader-card__units',
-    content: `Profitability of the strategy`,
+    selector: '.terminal-graph',
+    content: `Here are the charts which provide the price dynamics of selected asset`,
   },
   {
-    selector: '.trader-card:nth-of-type(1) .trader-stat:nth-of-type(1)',
-    content: `The period of implementation`,
+    selector: '.tabs__button:nth-of-type(1)',
+    content: `The list of open and closed orders `,
   },
   {
-    selector: '.trader-card:nth-of-type(1) .trader-stat:nth-of-type(2)',
-    content: `The fees to be paid to asset manager for successful trades`,
+    selector: '.order-block__order-types',
+    content: `Here you can arrange the trade operations`,
   }, 
-  {
-    selector: '.trader-card:nth-of-type(1) .trader-stat:nth-of-type(3)',
-    content: `The number of investors connected`,
-  },
 ];
 
 class TerminalPageContainer extends React.Component {

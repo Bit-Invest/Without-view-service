@@ -73,7 +73,7 @@ class MarketplacePageContainer extends React.Component {
   componentWillMount() {
     const { products } = this.props;
 
-    if (!products.length) {
+    if (products.length<6) {
       this.props.getProducts()
         .then(this.afterLoading.bind(this));
     } else {
