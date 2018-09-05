@@ -2,6 +2,7 @@ import * as React from 'react';
 // import { Checkbox } from '@registration/checkbox';
 // import { Select } from '@registration/select';
 import { Button } from '@components/common/Button';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ROOT_CLASS = 'kyc-step2';
 
@@ -17,20 +18,20 @@ export const KycStep2 = props => {
       </div>
       <div className={`${ROOT_CLASS}__circle-text-block`}>
         <div className={`${ROOT_CLASS}__circle-text-filled`}>
-          Proof of identity
+          { objectLangs[lng]['KycStep2#1'] }
         </div>
         <div className={`${ROOT_CLASS}__circle-text`}>
-          Selfie with the proof
+          { objectLangs[lng]['KycStep2#2'] }
         </div>
         <div className={`${ROOT_CLASS}__circle-text`}>
-          Proof of adress
+          { objectLangs[lng]['KycStep2#3'] }
         </div>
       </div>
       <div className={`${ROOT_CLASS}__info`}>
-        Please take a photo of your passport. The photo should be bright and clear, and all corners of your document must be visible.
+        { objectLangs[lng]['KycStep2#4'] }
       </div>
-      <Button theme="gradient-img" NameBtn="Proceed" />
-      <div className={`${ROOT_CLASS}__href`}>Go Back</div>
+      <Button theme="gradient-img" NameBtn={ objectLangs[lng]['KycStep2#1'] } />
+      <div className={`${ROOT_CLASS}__href`}>{ objectLangs[lng]['KycStep2#5'] }</div>
     </div>
   );
 };

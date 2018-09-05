@@ -18,7 +18,7 @@ export const Rating = props => {
   }
 
   const buildRootClass = () => {
-    return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''} ${Utils.UNDEVELOPED}`;
+    return `${ROOT_CLASS} ${props.theme ? ROOT_CLASS + '_' + props.theme : ''}`;
   }
 
   return (

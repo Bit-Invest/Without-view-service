@@ -6,6 +6,7 @@
   justify-content: space-between;
   @include font(Geometria);
   color: #888e9c;
+  position: relative;
 
   &__role {
     margin-right: 7px;
@@ -19,6 +20,14 @@
     &_hidden {
       display: none;
     }
+  }
+
+  &__content-full-star {
+    position: absolute;
+  }
+
+  &__content-empty-star {
+
   }
 
   &__full-circle {

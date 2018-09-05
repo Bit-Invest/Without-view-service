@@ -6,6 +6,7 @@
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   display: flex;
+  justify-content: space-between;
 
   &__stock-select {
     width: 125px;
@@ -17,6 +18,10 @@
 
   &__type-select {
     width: 94px;
+  }
+
+  &__wrapper-selects {
+    display: flex;
   }
 
   .select {

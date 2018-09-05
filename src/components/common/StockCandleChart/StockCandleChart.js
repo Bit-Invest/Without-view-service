@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { ChartCanvas, Chart } from "react-stockcharts";
 import { CandlestickSeries } from "react-stockcharts/lib/series";
+import { timeIntervalBarWidth } from "react-stockcharts/lib/utils";
+import { utcMinute } from "d3-time";
 import { scaleTime } from "d3-scale";
 import { XAxis, YAxis } from "react-stockcharts/lib/axes";
 import {
@@ -74,7 +76,7 @@ export const StockCandleChart = (props) => {
 						at="left"
 						orient="right"
 						displayFormat={format(".6f")} />
-          <CandlestickSeries width={5}/>
+          <CandlestickSeries width={timeIntervalBarWidth(utcMinute)}/>
         </Chart>
       </ChartCanvas>
     </div>

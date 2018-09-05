@@ -17,6 +17,10 @@ class ProfileChartContainer extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    this.onClickProduct(this.props.products[0].nameProduct, this.props.products[0].id)
+  }
+
   onClickProduct = (title, id) => {
     this.props.tradeHistory({productId: id}).then((res) => {
       this.setState({currentData: Utils.parseTradeHistory(res.payload.data.graph[0])});

@@ -20,6 +20,7 @@ export const SET_CURRENT_CHART_TYPE = 'terminal/SET_CURRENT_CHART_TYPE';
 export const FILL_ORDERS = 'terminal/FILL_ORDERS';
 export const FILL_ORDERS_SUCCESS = 'terminal/FILL_ORDERS_SUCCESS';
 export const CANCEL_ORDER = 'terminal/CANCEL_ORDER';
+export const CHANGE_DATE_FILTER  = 'terminal/CHANGE_DATE_FILTER'
 
 const initialState = {
   historyList: [],
@@ -27,6 +28,7 @@ const initialState = {
     asks: [],
     bids: []
   },
+  dateFilterValue: '4_hour',
   openOrders: [],
   fillOrders: [],
   currentPair: {
@@ -38,7 +40,7 @@ const initialState = {
   },
   pairs: [],
   currentStock: 'binance',
-  currentChartType: 'candle',
+  currentChartType: 'area',
   chart: []
 };
 
@@ -89,6 +91,11 @@ export const terminal = (state = initialState, action) => {
         ...state,
         fillOrders: action.payload.data
       };
+    case CHANGE_DATE_FILTER:
+      return {
+        ...state,
+        dateFilterValue: action.dateFilter
+      }
     case ORDER_FINISHED:
       return state;
     default:
@@ -204,6 +211,13 @@ export const setCurrentChartType = (chartType) => {
     type: SET_CURRENT_CHART_TYPE,
     payload: chartType
   };
+}
+
+export const changeDateFilter = (value) => {
+  return {
+    type: CHANGE_DATE_FILTER,
+    dateFilter: value
+  }
 }
 
 export const fillOrders = (data) => {

@@ -43,6 +43,7 @@ export const TerminalGraph = (props) => {
   const { chart, type } = props;
   const data = chart ? parseData(chart, type) : [];
   const Chart = chartType[type].component;
+  
   return data.length > 0 ? (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__graph-wrap`}>

@@ -3,13 +3,14 @@ import { Button } from '@components/common/Button';
 import { Select } from '@registration/select';
 import { Input } from '@common/Input';
 import { TextArea } from '@common/TextArea';
+import { objectLangs, lng } from '../../../../lngs/index'
 
 const ROOT_CLASS = 'pop-up-new-product';
 
 export const PopUpNewProduct = (props) => {
   return (
     <form className={ROOT_CLASS} onSubmit={props.handleSubmit}>
-      <div className={`${ROOT_CLASS}__title`}>NEW PRODUCT</div>
+      <div className={`${ROOT_CLASS}__title`}>{ objectLangs[lng]['PopUpNewProduct#1'] }</div>
       <div className={`${ROOT_CLASS}__error ${!props.isError ? ROOT_CLASS + '__error_hidden' : ''}`}>
         {props.errorMessage}
       </div>
@@ -26,7 +27,7 @@ export const PopUpNewProduct = (props) => {
       <div className={`${ROOT_CLASS}__input-wrap ${ROOT_CLASS}__input-wrap_name`}>
         <Input
           onChange={props.handleNameChange}
-          placeholder="Name of product (50 characters maximum)"
+          placeholder={ objectLangs[lng]['PopUpNewProduct#3'] }
           type="text"
           required
         />
@@ -34,7 +35,7 @@ export const PopUpNewProduct = (props) => {
       <div className={`${ROOT_CLASS}__input-wrap ${ROOT_CLASS}__input-wrap_api`}>
         <Input
           onChange={props.handleAPIChange}
-          placeholder="API Key"
+          placeholder={ objectLangs[lng]['PopUpNewProduct#4'] }
           type="text"
           required
         />
@@ -42,7 +43,7 @@ export const PopUpNewProduct = (props) => {
       <div className={`${ROOT_CLASS}__input-wrap ${ROOT_CLASS}__input-wrap_secret`}>
         <Input
           onChange={props.handleSecretKeyChange}
-          placeholder="secret key"
+          placeholder={ objectLangs[lng]['PopUpNewProduct#5'] }
           type="text"
           required
         />
@@ -51,7 +52,7 @@ export const PopUpNewProduct = (props) => {
         <TextArea
           onChange={props.handleAreaChange}
           areaProps={{
-            placeholder: 'Description of your strategy min 250 characters'
+            placeholder: objectLangs[lng]['PopUpNewProduct#6']
           }}
         />
       </div>
@@ -60,11 +61,11 @@ export const PopUpNewProduct = (props) => {
           <Button
             className={`${ROOT_CLASS}__button`}
             theme="gradient-img"
-            NameBtn="Add Product"
+            NameBtn={ objectLangs[lng]['PopUpNewProduct#7'] }
           />
         </div>
         <div className={`${ROOT_CLASS}__key`}>
-          Where to get API Key?
+          { objectLangs[lng]['PopUpNewProduct#2'] }
         </div>
       </div>
     </form>

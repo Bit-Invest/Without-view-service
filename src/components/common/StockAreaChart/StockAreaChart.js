@@ -68,6 +68,7 @@ export const StockAreaChart = (props) => {
         ratio={1}
         xExtents={[xAccessor(data[0]), xAccessor(data[data.length - 1])]}
         zoomEvent={zoom}
+        type='hybrid'
       >
         <Chart id={0} yExtents={d => d.close}>
           {renderAxes(props)}

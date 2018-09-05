@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { placeLimitOrder, openOrders } from '@store/modules/terminal';
 import { LocalStorage } from '@common/Utils';
 import { socketSubscribe, addAlert } from '@store/modules/common';
+import { objectLangs, lng } from '../../../lngs/index'
 
 class TerminalFormContainer extends React.Component {
   constructor(props){
@@ -13,14 +14,24 @@ class TerminalFormContainer extends React.Component {
       price: '',
       value: '',
       total: ''
-    }
+    };
+
     props.socketSubscribe({
-      message: 'ORDER_LIMIT_SUCCESS',
+      message: objectLangs[lng]['TerminalFormContainer#1'],
       callback: this.onOrderSuccess
     });
+
     props.socketSubscribe({
-      message: 'ORDER_LIMIT_ERR',
+      message: objectLangs[lng]['TerminalFormContainer#2'],
       callback: this.onOrderError
+    });
+  }
+
+  defaultCallbackOrder = () => {
+    this.props.addAlert({
+      type: 'error',
+      iconType: 'face',
+      description: objectLangs[lng]['TerminalFormContainer#3']
     });
   }
 
@@ -29,6 +40,9 @@ class TerminalFormContainer extends React.Component {
   }
 
   onOrderError = res => {
+    this.defaultCallbackOrder();
+
+    return false;
     this.props.addAlert({
       type: 'error',
       iconType: 'face',
@@ -37,6 +51,9 @@ class TerminalFormContainer extends React.Component {
   }
 
   onOrderSuccess = res => {
+    this.defaultCallbackOrder();
+
+    return false;
     this.props.addAlert({
       type: 'info',
       iconType: 'graph',
@@ -57,6 +74,9 @@ class TerminalFormContainer extends React.Component {
   }
 
   handleSubmit = event => {
+    this.defaultCallbackOrder();
+
+    return false;
     event.preventDefault();
     this.props.placeLimitOrder({
       jwt: LocalStorage.getItem('token'),

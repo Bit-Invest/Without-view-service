@@ -7,16 +7,14 @@ import { bindActionCreators } from 'redux';
 import { push } from 'react-router-redux';
 
 class AppContainer extends React.Component {
-  componentWillMount() {
-    if (this.props.pathname === '/') {
-      this.props.push('/marketplace');
-    }
+  constructor() {
+    super();
   }
 
   render() {
     return (
       <App />
-    );
+    )
   }
 }
 
