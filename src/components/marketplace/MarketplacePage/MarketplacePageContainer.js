@@ -12,6 +12,7 @@ import {
   getSubscribedProducts,
   getPersonalInfo
 } from '@store/modules/user';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ShowTypes = {
   CARD: 'CARD',
@@ -21,40 +22,40 @@ const ShowTypes = {
 const tourConfig = [
   {
     selector: '.trader-card:nth-of-type(1) ',
-    content: `Product Card`,
+    content: objectLangs[lng]['MarketplacePageContainer#1'],
     accentColor: '#f2f2f2'
   },
   {
     selector: '.trader-card:nth-of-type(1) .trader-card__chart-wrap.trader-card__chart-wrap_loaded',
-    content: "Indicator of profitability",
+    content: objectLangs[lng]['MarketplacePageContainer#2'],
   },
   {
     selector: '.trader-card:nth-of-type(1) .trader-card__exchange',
-    content: 'Exchange where the product is allocated',
+    content: objectLangs[lng]['MarketplacePageContainer#3'],
   },
   {
     selector: '.trader-card:nth-of-type(1) .user__name-wrap',
-    content: `Investment products provided by asset managers`,
+    content: objectLangs[lng]['MarketplacePageContainer#4'],
   },
   {
     selector: '.trader-card:nth-of-type(1) .trader-card__pair',
-    content: `Basic asset`,
+    content: objectLangs[lng]['MarketplacePageContainer#5'],
   },
   {
     selector: '.trader-card:nth-of-type(1) .trader-card__units',
-    content: `Profitability of the strategy`,
+    content: objectLangs[lng]['MarketplacePageContainer#6'],
   },
   {
     selector: '.trader-card:nth-of-type(1) .trader-stat:nth-of-type(1)',
-    content: `The period of implementation`,
+    content: objectLangs[lng]['MarketplacePageContainer#7'],
   },
   {
     selector: '.trader-card:nth-of-type(1) .trader-stat:nth-of-type(2)',
-    content: `The fees to be paid to asset manager for successful trades`,
+    content: objectLangs[lng]['MarketplacePageContainer#8'],
   }, 
   {
     selector: '.trader-card:nth-of-type(1) .trader-stat:nth-of-type(3)',
-    content: `The number of investors connected`,
+    content: objectLangs[lng]['MarketplacePageContainer#9'],
   },
 ];
 

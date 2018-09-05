@@ -5,6 +5,7 @@ import { Input } from '@common/Input';
 import { Checkbox } from '@registration/checkbox';
 import { Button } from '@components/common/Button';
 import { Link } from 'react-router-dom';
+import { objectLangs, lng } from '../../../../lngs/index'
 
 export const SignUpForm = props => {
   const { isError } = props;
@@ -13,7 +14,7 @@ export const SignUpForm = props => {
     <form
       className="SignUpForms__RegistrationForm"
       onSubmit={props.handleSubmit}>
-      <div className="title">SIGN UP</div>
+      <div className="title">{ objectLangs[lng]['SignUpForm#1'] }</div>
       <div className='SignUpForms__RegistrationForm__error-block'>
         {props.errorMessage}
       </div>
@@ -41,7 +42,7 @@ export const SignUpForm = props => {
       <div className={`SignUpForms__input-wrap`}>
         <Input
           onChange={props.handleEnter}
-          placeholder="Your name"
+          placeholder={ objectLangs[lng]['SignUpForm#2'] }
           type="text"
           required
           isError={props.isErrorName}
@@ -51,7 +52,7 @@ export const SignUpForm = props => {
       <div className={`SignUpForms__input-wrap`}>
         <Input
           onChange={props.handleEnter}
-          placeholder="Your surname"
+          placeholder={ objectLangs[lng]['SignUpForm#3'] }
           type="text"
           required
           isError={props.isErrorSurName}
@@ -61,7 +62,7 @@ export const SignUpForm = props => {
       <div className={`SignUpForms__input-wrap`}>
         <Input
           onChange={props.handleEnter}
-          placeholder="Your email"
+          placeholder={ objectLangs[lng]['SignUpForm#4'] }
           type="text"
           required
           isError={props.isErrorEmail}
@@ -71,7 +72,7 @@ export const SignUpForm = props => {
       <div className={`SignUpForms__input-wrap`}>
         <Input
           onChange={props.handleEnter}
-          placeholder="Password (min 8 characters)"
+          placeholder={ objectLangs[lng]['SignUpForm#5'] }
           type="password"
           required
           isError={props.isErrorPasword}
@@ -86,17 +87,16 @@ export const SignUpForm = props => {
           isError={isError}
         />
         <div>
-          I give my consent to process and store my personal data for the
-          purpose of verifying my identity.
-          <div className="required">* Required</div>
+          { objectLangs[lng]['SignUpForm#6'] }
+          <div className="required">{ objectLangs[lng]['SignUpForm#7'] }</div>
         </div>
       </div>
       <div className={`button-wrap`}>
         <Button theme="gradient-img" NameBtn="Sign Up" preloader={props.preloader} />
       </div>
       <div className="transitionAccount">
-        Already have an account?{' '}
-        <Link className='span' to={'/registration/sign-in'}>Sign In</Link>
+      { objectLangs[lng]['SignUpForm#8'] }{' '}
+        <Link className='span' to={'/registration/sign-in'}>{ objectLangs[lng]['SignUpForm#9'] }</Link>
       </div>
     </form>
   );

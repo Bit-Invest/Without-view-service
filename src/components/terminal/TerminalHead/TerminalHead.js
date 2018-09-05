@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Select } from '@registration/select';
 import TerminalDateFilter  from '../TerminalDateFilter/TerminalDateFilter'
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ROOT_CLASS = 'terminal-head';
 
@@ -51,17 +52,17 @@ export const TerminalHead = props => {
             defaultOption={
               {
                 value: 'area',
-                label: 'Line'
+                label: objectLangs[lng]['TerminalHead#1']
               }
             }
             options={[
               {
                 value: 'area',
-                label: 'Line'
+                label: objectLangs[lng]['TerminalHead#1']
               },
               {
                 value: 'candle',
-                label: 'Candles'
+                label: objectLangs[lng]['TerminalHead#2']
               }
             ]}
           />

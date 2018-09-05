@@ -18,6 +18,7 @@ import {
   fillOrders
 } from '@store/modules/terminal';
 import { getKeys } from '@store/modules/user';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const FOUR_HOURS = moment().subtract(4, 'hour').format()
 const ONE_DAY = moment().subtract(1, 'day').format()
@@ -26,36 +27,36 @@ const ONE_WEEK = moment().subtract(1, 'week').format()
 const tourConfig = [
   {
     selector: '.terminal-head__stock-select',
-    content: `Exchange selector`,
+    content: objectLangs[lng]['TerminalPageContainer#1'],
     accentColor: '#f2f2f2'
   },
   {
     selector: '.terminal-head__pair-select',
-    content: "Assets pair",
+    content: objectLangs[lng]['TerminalPageContainer#2'],
   },
   {
     selector: '.terminal-head__type-select',
-    content: 'Chart type',
+    content: objectLangs[lng]['TerminalPageContainer#3'],
   },
   {
     selector: '.order-book__block.order-book__block_bids',
-    content: `Order book shows the demand and upply for the asset`,
+    content: objectLangs[lng]['TerminalPageContainer#4'],
   },
   {
     selector: '.trader-history__caption',
-    content: `All the last trades for the pair`,
+    content: objectLangs[lng]['TerminalPageContainer#5'],
   },
   {
     selector: '.terminal-graph',
-    content: `Here are the charts which provide the price dynamics of selected asset`,
+    content: objectLangs[lng]['TerminalPageContainer#6'],
   },
   {
     selector: '.tabs__button:nth-of-type(1)',
-    content: `The list of open and closed orders `,
+    content: objectLangs[lng]['TerminalPageContainer#7'],
   },
   {
     selector: '.order-block__order-types',
-    content: `Here you can arrange the trade operations`,
+    content: objectLangs[lng]['TerminalPageContainer#8'],
   }, 
 ];
 

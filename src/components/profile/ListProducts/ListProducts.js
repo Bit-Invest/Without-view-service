@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@components/common/Button';
 import { ProfileProduct } from '../ProfileProduct';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ROOT_CLASS = 'list-products';
 
@@ -9,7 +10,7 @@ export const ListProducts = props => {
   const renderTitle = () => {
     return (
       <div className={`${ROOT_CLASS}__list-title`}>
-        You need to add new API Keys
+        { objectLangs[lng]['ListProducts#1'] }
       </div>
     );
   }
@@ -34,12 +35,12 @@ export const ListProducts = props => {
     <div>
       <div className={ROOT_CLASS}>
         <div className={`${ROOT_CLASS}__button-block`}>
-          <div className={`${ROOT_CLASS}__caption`}>Current Fund’s API</div>
+          <div className={`${ROOT_CLASS}__caption`}>{ objectLangs[lng]['ListProducts#2'] }</div>
           <div className={`${ROOT_CLASS}__button-block`}>
-            <div className={`${ROOT_CLASS}__help`}>Where to get API Key?</div>
+            <div className={`${ROOT_CLASS}__help`}>{ objectLangs[lng]['ListProducts#3'] }</div>
             <Button
               theme='product-btn'
-              NameBtn="Add new API"
+              NameBtn={ objectLangs[lng]['ListProducts#4'] }
               onClick={() => {props.onClickAddProduct()}}
             />
           </div>

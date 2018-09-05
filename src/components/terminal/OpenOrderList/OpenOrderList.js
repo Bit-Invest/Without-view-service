@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ROOT_CLASS = 'open-order-list';
 
@@ -9,7 +10,7 @@ export const OpenOrderList = props => {
       <div className={`${ROOT_CLASS}__data-list ${ROOT_CLASS}__data-list_origin`}>{props.origin}</div>
       <div className={`${ROOT_CLASS}__data-list ${ROOT_CLASS}__data-list_2nd-volume`}>{props.remain}</div>
       <div className={`${ROOT_CLASS}__data-list`}>{props.total}</div>
-      <div className={`${ROOT_CLASS}__close`} onClick={props.onClickClose}>Close</div>
+      <div className={`${ROOT_CLASS}__close`} onClick={props.onClickClose}>{ objectLangs[lng]['OpenOrderList#1'] }</div>
     </div>
   )
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from '@registration/input';
 import { Button } from '@components/common/Button';
 import { Link } from 'react-router-dom';
+import { objectLangs, lng } from '../../../../lngs/index'
 
 export const SignInForm = props => {
   const { isError } = props;
@@ -9,12 +10,12 @@ export const SignInForm = props => {
     <form
       className="SignInForms__RegistrationForm"
     >
-      <div className="title">Sign In</div>
+      <div className="title">{ objectLangs[lng]['SignInForm#1'] }</div>
       <div className='SignInForms__RegistrationForm__error-block'>{props.errorMessage}</div>
       <div className="SignInForms__input-wrap">
         <Input
           onChange={props.handleEnter}
-          placeholder="Your email"
+          placeholder={ objectLangs[lng]['SignInForm#2'] }
           type="text"
           isError={isError}
           name="email"
@@ -23,21 +24,21 @@ export const SignInForm = props => {
       <div className="SignInForms__input-wrap">
         <Input
           onChange={props.handleEnter}
-          placeholder="Password"
+          placeholder={ objectLangs[lng]['SignInForm#3'] }
           type="password"
           isError={isError}
           name="password"
         />
       </div>
       <div className="button-wrap">
-        <Button theme="gradient-img" NameBtn="Sign In" preloader={props.preloader} onClick={props.handleSubmit} />
+        <Button theme="gradient-img" NameBtn={ objectLangs[lng]['SignInForm#1'] } preloader={props.preloader} onClick={props.handleSubmit} />
       </div>
       <div className="button-wrap">
-        <Button theme="gradient-img" NameBtn="Demo" preloader={props.preloader} onClick={props.onClickDemo}/>
+        <Button theme="gradient-img" NameBtn={ objectLangs[lng]['SignInForm#6'] } preloader={props.preloader} onClick={props.onClickDemo}/>
       </div>
       <div className="transitionAccount">
-        Do you have an account?{' '}
-        <Link className='span' to={'/registration/sign-up'}>Sign Up</Link>
+        { objectLangs[lng]['SignInForm#4'] }{' '}
+        <Link className='span' to={'/registration/sign-up'}>{ objectLangs[lng]['SignInForm#5'] }</Link>
       </div>
     </form>
   );

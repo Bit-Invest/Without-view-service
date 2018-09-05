@@ -2,6 +2,7 @@ import * as React from 'react';
 import { OpenOrders } from '@terminal/OpenOrders';
 import { FillOrders } from '@terminal/FillOrders';
 import { Tabs } from '@common/Tabs';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ROOT_CLASS = 'orders-limit';
 
@@ -11,11 +12,11 @@ export const OrdersTerminal = props => {
       <Tabs
         tabs={[
           {
-            title: 'OPEN ORDERS',
+            title: objectLangs[lng]['OrdersTerminal#1'],
             content: <OpenOrders orders={props.openOrders} />
           },
           {
-            title: 'FILL ORDERS',
+            title: objectLangs[lng]['OrdersTerminal#2'],
             content: <FillOrders orders={props.fillOrders} />
           }
         ]}

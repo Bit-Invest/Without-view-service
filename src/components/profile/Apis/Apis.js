@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { AddProduct } from '@profile/AddProduct';
 import { Api } from '@profile/Api';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ROOT_CLASS = 'apis';
 
@@ -14,14 +15,14 @@ export const Apis = (props) => {
             key={index}
           />
         )
-      ) : (<div className={`${ROOT_CLASS}__placeholder`}>You need to add new API Keys</div>);
+      ) : (<div className={`${ROOT_CLASS}__placeholder`}>{ objectLangs[lng]['Apis#1'] }</div>);
   }
 
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__head`}>
         <div className={`${ROOT_CLASS}__title`}>
-          CURRENT FUND’S API
+          { objectLangs[lng]['Apis#2'] }
         </div>
         <AddProduct />
       </div>

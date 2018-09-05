@@ -6,6 +6,7 @@ import {
   ResetPasswordForm as ResetPassword,
   CheckEmailForm
 } from '@registration/Forms';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ROOT_CLASS = 'registration-page';
 
@@ -24,8 +25,8 @@ export const RegistrationPage = props => {
           </Switch>
         </div>
         <div className={`${ROOT_CLASS}__disclaimer`}>
-          © 2018 Cindx | <span>Privacy Policy</span> &{' '}
-          <span>Terms of Service</span>
+          { objectLangs[lng]['RegistrationPage#1'] } | <span>{ objectLangs[lng]['RegistrationPage#2'] }</span> &{' '}
+          <span>{ objectLangs[lng]['RegistrationPage#3'] }</span>
         </div>
       </div>
       <div className={`${ROOT_CLASS}__picture-column`} />

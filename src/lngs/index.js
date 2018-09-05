@@ -1,7 +1,11 @@
 import en from './en'
+import ru from './ru'
+import zn from './zn'
 
 export const objectLangs = {
-    en
+    en,
+    ru,
+    zn
 }
 
 export const list_lngs = 'en'

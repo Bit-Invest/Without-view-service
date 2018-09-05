@@ -1,4 +1,5 @@
 import React from 'react';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ROOT_CLASS = 'inputEmail';
 
@@ -20,7 +21,7 @@ export const Input = props => {
     if (props.needForgot) {
       return (
         <div className="inputEmail__forgot" onClick={props.onClickForgot}>
-          Forgot?
+          { objectLangs[lng]['Input#1'] }
         </div>
       );
     }

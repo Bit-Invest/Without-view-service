@@ -76,7 +76,6 @@ export const StockCandleChart = (props) => {
 						at="left"
 						orient="right"
 						displayFormat={format(".6f")} />
-          {/* <CandlestickSeries width={5}/> */}
           <CandlestickSeries width={timeIntervalBarWidth(utcMinute)}/>
         </Chart>
       </ChartCanvas>

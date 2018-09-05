@@ -1,4 +1,4 @@
-const en = {
+const zn = {
     // registration
     'SignInForm#1': 'Sign In',
     'SignInForm#2': 'Your email',
@@ -168,4 +168,4 @@ const en = {
     'PopUpRegistration#5': 'Sign In',
 }
 
-export default en
+export default zn

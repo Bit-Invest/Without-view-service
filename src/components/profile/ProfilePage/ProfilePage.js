@@ -5,6 +5,7 @@ import { ProfileChart } from '@profile/ProfileChart';
 import { Products } from '@profile/Products';
 import { Investor } from '@profile/Investor';
 import { Apis } from '@profile/Apis';
+import { objectLangs, lng } from '../../../lngs/index'
 
 const ROOT_CLASS = 'profile-page';
 
@@ -21,7 +22,7 @@ export const ProfilePage = props => {
       result = (
         <div className={`${ROOT_CLASS}__investors`}>
           <div className={`${ROOT_CLASS}__investors-title`}>
-            YOUR INVESTORS
+            { objectLangs[lng]['ProfilePage#1'] }
           </div>
           <div className={`${ROOT_CLASS}__investors-list`}>
             {props.investors.map((investor, index) =>

@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { placeLimitOrder, openOrders } from '@store/modules/terminal';
 import { LocalStorage } from '@common/Utils';
 import { socketSubscribe, addAlert } from '@store/modules/common';
+import { objectLangs, lng } from '../../../lngs/index'
 
 class TerminalFormContainer extends React.Component {
   constructor(props){
@@ -16,12 +17,12 @@ class TerminalFormContainer extends React.Component {
     };
 
     props.socketSubscribe({
-      message: 'ORDER_LIMIT_SUCCESS',
+      message: objectLangs[lng]['TerminalFormContainer#1'],
       callback: this.onOrderSuccess
     });
 
     props.socketSubscribe({
-      message: 'ORDER_LIMIT_ERR',
+      message: objectLangs[lng]['TerminalFormContainer#2'],
       callback: this.onOrderError
     });
   }
@@ -30,7 +31,7 @@ class TerminalFormContainer extends React.Component {
     this.props.addAlert({
       type: 'error',
       iconType: 'face',
-      description: 'In demo mode, you can not place orders, sorry.'
+      description: objectLangs[lng]['TerminalFormContainer#3']
     });
   }
 

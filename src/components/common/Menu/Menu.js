@@ -3,9 +3,12 @@ import { MenuItem } from '@common/MenuItem';
 
 const ROOT_CLASS = 'menu';
 
-const INVESTOR_ITEMS = ['marketplace', 'saved', 'billing', 'profile', 'help'];
-const TRADER_ITEMS = ['terminal', 'marketplace', 'saved', 'billing', 'profile', 'help'];
-const ITEMS = ['terminal', 'marketplace', 'saved', 'billing', 'profile', 'help'];
+// const INVESTOR_ITEMS = ['marketplace', 'saved', 'billing', 'profile', 'help'];
+const INVESTOR_ITEMS = ['marketplace', 'profile'];
+// const TRADER_ITEMS = ['terminal', 'marketplace', 'saved', 'billing', 'profile', 'help'];
+const TRADER_ITEMS = ['terminal', 'marketplace', 'profile'];
+// const ITEMS = ['terminal', 'marketplace', 'saved', 'billing', 'profile', 'help'];
+const ITEMS = ['terminal', 'marketplace', 'profile'];
 const inDev = ['billing', 'help', 'saved'];
 const onlyRegistrated = ['profile'];
 

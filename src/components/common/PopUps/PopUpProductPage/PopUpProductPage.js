@@ -3,6 +3,7 @@ import { Utils } from '@common/Utils';
 import { User } from '@common/User';
 import { Unit } from '@common/Unit';
 import { StockAreaChart } from '@common/StockAreaChart';
+import { objectLangs, lng } from '../../../../lngs/index'
 
 const ROOT_CLASS = 'product-page';
 
@@ -49,15 +50,15 @@ export const PopUpProductPage = props => {
       </div>
       <div className={`${ROOT_CLASS}__position-container`}>
         <div className={`${ROOT_CLASS}__position-block`}>
-          <span>Horizon</span>{' '}
+          <span>{ objectLangs[lng]['PopUpProductPage#1'] }</span>{' '}
           <span>{ card[0].horizon }</span>
         </div>
         <div className={`${ROOT_CLASS}__position-block`}>
-          <span>Fees{' '}</span>
+          <span>{ objectLangs[lng]['PopUpProductPage#2'] }{' '}</span>
           <span>{ card[0].fees }</span>
         </div>
         <div className={`${ROOT_CLASS}__position-block`}>
-          <span>Investors{' '}</span>
+          <span>{ objectLangs[lng]['PopUpProductPage#3'] }{' '}</span>
           <span>{props.followersCount}</span>
         </div>
       </div>
@@ -77,13 +78,13 @@ export const PopUpProductPage = props => {
           className={buildButtonClass(props)}
           onClick={props.onClickConnect}
         >
-          Connect Now
+          { objectLangs[lng]['PopUpProductPage#4'] }
         </button>
         <button
           className={buildDisconnectClass(props)}
           onClick={props.onClickDisconnect}
         >
-          Disconnect
+          { objectLangs[lng]['PopUpProductPage#5'] }
         </button>
       </div>
     </div>
