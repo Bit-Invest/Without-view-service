@@ -33,6 +33,7 @@ class TerminalHeadContainer extends React.Component {
         onSelectStock={this.onSelectStock}
         onSelectChartType={this.onSelectChartType}
         currentPair={this.props.currentPair}
+        changeDateFilterValue={this.props.changeDateFilterValue}
         pairs={this.props.pairs.map(pair => {
           return {
             value: pair.symbol,

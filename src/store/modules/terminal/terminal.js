@@ -28,7 +28,7 @@ const initialState = {
     asks: [],
     bids: []
   },
-  dateFilterValue: '',
+  dateFilterValue: '4_hour',
   openOrders: [],
   fillOrders: [],
   currentPair: {

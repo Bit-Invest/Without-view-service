@@ -21,11 +21,11 @@ export const TerminalPage = (props) => {
           <TerminalHead
             currentPair={props.currentPair}
             loadData={props.loadData}
+            changeDateFilterValue={props.changeDateFilterValue}
           />
           <TerminalGraph
             chart={props.chart}
             type={props.currentChartType}
-            dateFilterValue={props.dateFilterValue}
           />
           <OrdersTerminal
             openOrders={props.openOrders}

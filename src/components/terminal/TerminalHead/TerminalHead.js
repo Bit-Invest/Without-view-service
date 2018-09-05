@@ -7,27 +7,27 @@ const ROOT_CLASS = 'terminal-head';
 export const TerminalHead = props => {
   return (
     <div className={ROOT_CLASS}>
-      {/* <div className={`${ROOT_CLASS}__stock-select`}>
-        <Select
-          onChange={props.onSelectStock}
-          name='select'
-          theme='terminal'
-          value='Binance'
-          defaultOption={
-            {
-              value: 'Binance',
-              label: 'Binance'
-            }
-          }
-          options={[
-            {
-              value: 'Binance',
-              label: 'Binance'
-            }
-          ]}
-        />
-      </div> */}
       <div className={`${ROOT_CLASS}__wrapper-selects`}>
+        <div className={`${ROOT_CLASS}__stock-select`}>
+          <Select
+            onChange={props.onSelectStock}
+            name='select'
+            theme='terminal'
+            value='Binance'
+            defaultOption={
+              {
+                value: 'Binance',
+                label: 'Binance'
+              }
+            }
+            options={[
+              {
+                value: 'Binance',
+                label: 'Binance'
+              }
+            ]}
+          />
+        </div>
         <div className={`${ROOT_CLASS}__pair-select`}>
           <Select
             onChange={props.onSelectPair}
@@ -67,7 +67,9 @@ export const TerminalHead = props => {
           />
         </div>
       </div>
-      <TerminalDateFilter />
+      <TerminalDateFilter
+        changeDateFilterValue={props.changeDateFilterValue}
+      />
     </div>
   )
 }

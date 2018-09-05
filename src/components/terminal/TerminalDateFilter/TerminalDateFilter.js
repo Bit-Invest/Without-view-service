@@ -11,23 +11,17 @@ class TerminalDateFilter extends Component {
         this.state = {}
     }
 
-    changeDateFilter = (param) => {
-        if (param !== this.props.dateFilterValue) {
-            this.props.changeDateFilter(param)
-        }
-    }
-
     render() {
         return (
             <div className={ROOT_CLASS}>
-                <div className={`${ROOT_CLASS}__block ${this.props.dateFilterValue === 'min' ? `${ROOT_CLASS}__active` : ''}`} onClick={() => this.changeDateFilter('min')}>
-                    <span className={`${ROOT_CLASS}__value`}>1 MIN</span>
+                <div className={`${ROOT_CLASS}__block ${this.props.dateFilterValue === '4_hour' ? `${ROOT_CLASS}__active` : ''}`} onClick={() => this.props.changeDateFilterValue('4_hour')}>
+                    <span className={`${ROOT_CLASS}__value`}>4 HOUR</span>
                 </div>
-                <div className={`${ROOT_CLASS}__block ${this.props.dateFilterValue === '30_min' ? `${ROOT_CLASS}__active` : ''}`} onClick={() => this.changeDateFilter('30_min')}>
-                    <span className={`${ROOT_CLASS}__value`}>30 MIN</span>
+                <div className={`${ROOT_CLASS}__block ${this.props.dateFilterValue === '1_day' ? `${ROOT_CLASS}__active` : ''}`} onClick={() => this.props.changeDateFilterValue('1_day')}>
+                    <span className={`${ROOT_CLASS}__value`}>1 DAY</span>
                 </div>
-                <div className={`${ROOT_CLASS}__block ${this.props.dateFilterValue === 'hr' ? `${ROOT_CLASS}__active` : ''}`} onClick={() => this.changeDateFilter('hr')}>
-                    <span className={`${ROOT_CLASS}__value`}>1 HR</span>
+                <div className={`${ROOT_CLASS}__block ${this.props.dateFilterValue === '1_week' ? `${ROOT_CLASS}__active` : ''}`} onClick={() => this.props.changeDateFilterValue('1_week')}>
+                    <span className={`${ROOT_CLASS}__value`}>1 WEEK</span>
                 </div>
             </div>
         )
@@ -40,6 +34,4 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({changeDateFilter}, dispatch)
-
-export default connect(mapStateToProps, mapDispatchToProps)(TerminalDateFilter)
+export default connect(mapStateToProps)(TerminalDateFilter)
