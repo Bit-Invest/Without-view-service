@@ -29,12 +29,14 @@ export const Select = props => {
               label={option.label}
               key={index}
               onClick={(e) => {
-                let event = e;
-                event.target.value = option.value;
-                event.payload =
-                  {value: option.value, label: option.label};
-                event.target.name = props.name;
-                props.onSelect(event)}
+                if (option.value === 'binance') {
+                  let event = e;
+                  event.target.value = option.value;
+                  event.payload =
+                    {value: option.value, label: option.label};
+                  event.target.name = props.name;
+                  props.onSelect(event)}
+                }
               }
               className={`${ROOT_CLASS}__option`}
             >

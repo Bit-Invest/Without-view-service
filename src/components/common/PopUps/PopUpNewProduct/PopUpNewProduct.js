@@ -19,7 +19,9 @@ export const PopUpNewProduct = (props) => {
           onChange={props.handleSelectChange}
           defaultOption={{value: 'binance', label: 'Binance'}}
           options={[
-            {value: 'binance', label: 'Binance'}
+            {value: 'binance', label: 'Binance'},
+            {value: 'bank', label: 'Bank'},
+            {value: 'birza', label: 'Birza'},
           ]}
           theme="sign-up"
         />
