@@ -20,8 +20,8 @@ export const PopUpNewProduct = (props) => {
           defaultOption={{value: 'binance', label: 'Binance'}}
           options={[
             {value: 'binance', label: 'Binance'},
-            {value: 'bank', label: 'Bank'},
-            {value: 'birza', label: 'Birza'},
+            {value: 'bank', label: 'Bank', visibled: true},
+            {value: 'birza', label: 'Birza', visibled: true},
           ]}
           theme="sign-up"
         />

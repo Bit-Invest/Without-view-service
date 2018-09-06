@@ -29,7 +29,7 @@ export const Select = props => {
               label={option.label}
               key={index}
               onClick={(e) => {
-                if (option.value === 'binance') {
+                if (!option.visibled) {
                   let event = e;
                   event.target.value = option.value;
                   event.payload =

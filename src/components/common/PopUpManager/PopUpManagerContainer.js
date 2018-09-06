@@ -13,6 +13,18 @@ const PopUps = {
 };
 
 class PopUpManagerContainer extends React.Component {
+  componentDidMount = () => {
+    window.addEventListener('click', this._closePopUp)
+  }
+
+  _closePopUp = (e) => {
+    if (this.props.currentPopUp) {
+      if (e.target.className === 'pop-up-manager') {
+        this.onClickClose()
+      }
+    }
+  }
+
   render() {
     return (
       <PopUpManager
