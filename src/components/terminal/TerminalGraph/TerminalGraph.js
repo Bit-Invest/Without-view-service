@@ -53,6 +53,7 @@ export const TerminalGraph = (props) => {
           type="hybrid"
           data={data}
           range={200}
+          isTermanal={true}
           axes
         />
 
