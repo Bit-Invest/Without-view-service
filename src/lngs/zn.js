@@ -168,12 +168,12 @@ const zn = {
   'PopUpRegistration#4': '现在加入',
   'PopUpRegistration#5': '登录',
 
-  'Profile#1': '投资组合的整体规模',
-  'Profile#2': '整体性能曲线图',
-  'Profile#3': '实施策略',
-  'Profile#4': '投资组合的整体规模',
-  'Profile#5': '整体性能曲线图',
-  'Profile#6': '钱包调配的交易所',
+  'ProfilePageContainer#1': '投资组合的整体规模',
+  'ProfilePageContainer#2': '整体性能曲线图',
+  'ProfilePageContainer#3': '实施策略',
+  'ProfilePageContainer#4': '投资组合的整体规模',
+  'ProfilePageContainer#5': '整体性能曲线图',
+  'ProfilePageContainer#6': '钱包调配的交易所',
 
   //тут гугл транслате был))
   'Menu#1': '終奌站',

@@ -14,7 +14,9 @@ export const RegistrationPage = props => {
   return (
     <div className={ROOT_CLASS}>
       <div className={`${ROOT_CLASS}__form-column`}>
-        <div className={`${ROOT_CLASS}__logo`} />
+        <div className={`${ROOT_CLASS}__logo`} onClick={()=>{
+          window.location = "https://cindx.io/";
+        }} />
         <div className={`${ROOT_CLASS}__form`}>
           <Redirect from="/registration" to="/registration/sign-in" />
           <Switch>
