@@ -1,6 +1,13 @@
 import * as React from 'react';
+import { objectLangs, lng } from '../../../lngs/index';
 
 const ROOT_CLASS = 'menu-item';
+
+const linkedMenuStr = {
+  'marketplace': 'Menu#2',
+  'profile': 'Menu#3',
+  'terminal': 'Menu#1'
+};
 
 export const MenuItem = (props) => {
   const buildIconClass = () => {
@@ -28,7 +35,7 @@ export const MenuItem = (props) => {
     <div className={buildRootClass()} onClick={onClickItem}>
       <div className={buildIconClass()}></div>
       <div className={`${ROOT_CLASS}__title`}>
-        {props.type.toUpperCase()}
+        { objectLangs[lng][linkedMenuStr[props.type]].toUpperCase() }
       </div>
     </div>
   );
