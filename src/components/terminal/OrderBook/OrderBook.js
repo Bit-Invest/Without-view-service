@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { OrderList } from '@terminal/OrderList';
 import { Select } from '@registration/select';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars'; 
+import { objectLangs, lng } from '../../../lngs/index';
 
 const ROOT_CLASS = 'order-book';
 
@@ -29,12 +30,12 @@ export const OrderBook = props => {
           theme="terminal"
           defaultOption={{
             value: 'order-book',
-            label: 'ORDER BOOK'
+            label: objectLangs[lng]['OrderBook#4']
           }}
           options={[
             {
               value: 'order-book',
-              label: 'ORDER BOOK'
+              label: objectLangs[lng]['OrderBook#4']
             }
           ]}
         />
@@ -42,13 +43,13 @@ export const OrderBook = props => {
       <div className={`${ROOT_CLASS}__block ${ROOT_CLASS}__block_bids`}>
         <div className={`${ROOT_CLASS}__header ${ROOT_CLASS}__header_bids`}>
           <div className={`${ROOT_CLASS}__header-title ${ROOT_CLASS}__header-title_price`}>
-            PRICE EUR
+            { objectLangs[lng]['FillOrders#2'] }
           </div>
           <div className={`${ROOT_CLASS}__header-title`}>
-            VOLUME
+            { objectLangs[lng]['OrderBook#2'] }
           </div>
           <div className={`${ROOT_CLASS}__header-title`}>
-            TOTAL
+            { objectLangs[lng]['OrderBook#3'] }
           </div>
         </div>
         <div className={`${ROOT_CLASS}__list ${ROOT_CLASS}__list_bids`}>
@@ -70,13 +71,13 @@ export const OrderBook = props => {
       <div className={`${ROOT_CLASS}__block ${ROOT_CLASS}__block_asks`}>
         <div className={`${ROOT_CLASS}__header ${ROOT_CLASS}__header_asks`}>
           <div className={`${ROOT_CLASS}__header-title ${ROOT_CLASS}__header-title_price`}>
-            PRICE EUR
+            { objectLangs[lng]['FillOrders#2'] }
           </div>
           <div className={`${ROOT_CLASS}__header-title`}>
-            VOLUME
+            { objectLangs[lng]['OrderBook#2'] }
           </div>
           <div className={`${ROOT_CLASS}__header-title`}>
-            TOTAL
+            { objectLangs[lng]['OrderBook#3'] }
           </div>
         </div>
         <div className={`${ROOT_CLASS}__list ${ROOT_CLASS}__list_asks`}>

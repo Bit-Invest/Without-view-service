@@ -24,7 +24,9 @@ export const Menu = (props) => {
   return (
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__items`}>
-        <div><div className={`${ROOT_CLASS}__logo`}></div></div>
+        <div><div className={`${ROOT_CLASS}__logo`} onClick={()=>{
+          window.location = "https://cindx.io/";
+        }}></div></div>
           {items.map((item, index) => renderItem(props, item, index))}
       </div>
     </div>

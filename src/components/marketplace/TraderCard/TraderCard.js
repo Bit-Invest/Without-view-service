@@ -5,6 +5,8 @@ import { Unit } from '@common/Unit';
 import { TraderStat } from '@marketplace/TraderStat';
 import { StockAreaChart } from '@common/StockAreaChart';
 import { connect } from 'react-redux';
+import { objectLangs, lng } from '../../../lngs/index';
+
 
 const ROOT_CLASS = 'trader-card';
 
@@ -41,10 +43,10 @@ const TraderCard = props => {
     return (
       <div className={`${ROOT_CLASS}__units`}>
         <div className={`${ROOT_CLASS}__unit`}>
-          <Unit title="week" count={week} size="market" />
+          <Unit title={objectLangs[lng]['TraderCardList#1']} count={week} size="market" />
         </div>
         <div className={`${ROOT_CLASS}__unit`}>
-          <Unit title="month" count={month} size="market" />
+          <Unit title={objectLangs[lng]['TraderCardList#2']} count={month} size="market" />
         </div>
       </div>
     )
@@ -82,9 +84,9 @@ const TraderCard = props => {
       { buildWeekMonth() }
       <div className={`${ROOT_CLASS}__delimiter`}/>
       <div className={`${ROOT_CLASS}__stats`}>
-        <TraderStat name="Horizon" value={props.horizon}/>
-        <TraderStat name="Fees" value={props.fees}/>
-        <TraderStat name="Investors" value={props.followersCount} />
+        <TraderStat name={objectLangs[lng]['TraderCardList#4']} value={props.horizon}/>
+        <TraderStat name={objectLangs[lng]['TraderCardList#5']} value={props.fees}/>
+        <TraderStat name={objectLangs[lng]['TraderCardList#6']} value={props.followersCount} />
       </div>
     </div>
   );

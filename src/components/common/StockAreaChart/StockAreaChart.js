@@ -10,6 +10,7 @@ import {
 } from "react-stockcharts/lib/coordinates";
 import { format } from "d3-format";
 import { timeFormat } from "d3-time-format";
+import { TrendLine } from "react-stockcharts/lib/interactive";
 
 const ROOT_CLASS = 'stock-area-chart';
 
@@ -53,42 +54,71 @@ const renderAxes = (props) => {
     null;
 }
 
-export const StockAreaChart = (props) => {
-  const { data, width, height, zoom } = props;
-  const xAccessor = d => d.date
-  return props.data && props.data.length > 2 ? (
-    <div className={ROOT_CLASS}>
-      <ChartCanvas
-        width={width}
-        height={height}
-        seriesName="MSFT"
-        data={data}
-        xAccessor={xAccessor}
-        xScale={scaleTime()}
-        ratio={1}
-        xExtents={[xAccessor(data[0]), xAccessor(data[data.length - 1])]}
-        zoomEvent={zoom}
-        type='hybrid'
-      >
-        <Chart id={0} yExtents={d => d.close}>
-          {renderAxes(props)}
-          <MouseCoordinateX
-            at="bottom"
-            orient="bottom"
-            displayFormat={timeFormat("%H:%M:%S")} />
-          <MouseCoordinateY
-            at="left"
-            orient="right"
-            displayFormat={format(".6f")} />
-          <AreaSeries
-            yAccessor={d => d.close}
-            stroke="#d36bf5"
-            strokeWidth={2}
-            fill="rgba(0, 0, 0, 0)"
-            interpolation={curveMonotoneX}
-          />
-        </Chart>
-      </ChartCanvas>
-    </div>
-  ) : null;
+export class StockAreaChart extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      enableTrendLine: false,
+			trends: [],
+    }
+  }
+
+  onDrawCompleteChart = (trends) => {
+    this.setState({
+      enableTrendLine: false,
+      trends
+    });
+  }
+
+  render() {
+    const { data, width, height, zoom } = this.props;
+    const xAccessor = d => d.date
+    return this.props.data && this.props.data.length > 2 ? (
+      <div className={ROOT_CLASS}>
+        { this.props.isTermanal ? <button className="stock-area-chart__drawing-line" onClick={() => this.setState({enableTrendLine: true})}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="28" height="28"><g fillRule="nonzero"><path d="M7.354 21.354l14-14-.707-.707-14 14z"></path><path d="M22.5 7c.828 0 1.5-.672 1.5-1.5s-.672-1.5-1.5-1.5-1.5.672-1.5 1.5.672 1.5 1.5 1.5zm0 1c-1.381 0-2.5-1.119-2.5-2.5s1.119-2.5 2.5-2.5 2.5 1.119 2.5 2.5-1.119 2.5-2.5 2.5zM5.5 24c.828 0 1.5-.672 1.5-1.5s-.672-1.5-1.5-1.5-1.5.672-1.5 1.5.672 1.5 1.5 1.5zm0 1c-1.381 0-2.5-1.119-2.5-2.5s1.119-2.5 2.5-2.5 2.5 1.119 2.5 2.5-1.119 2.5-2.5 2.5z"></path></g></svg></button> : null }
+        <ChartCanvas
+          width={width}
+          height={height}
+          seriesName="MSFT"
+          data={data}
+          xAccessor={xAccessor}
+          xScale={scaleTime()}
+          ratio={1}
+          xExtents={[xAccessor(data[0]), xAccessor(data[data.length - 1])]}
+          zoomEvent={zoom}
+          type='hybrid'
+        >
+          <Chart id={0} yExtents={d => d.close}>
+            {renderAxes(this.props)}
+            <MouseCoordinateX
+              at="bottom"
+              orient="bottom"
+              displayFormat={timeFormat("%H:%M:%S")} />
+            <MouseCoordinateY
+              at="left"
+              orient="right"
+              displayFormat={format(".6f")} />
+            <AreaSeries
+              yAccessor={d => d.close}
+              stroke="#d36bf5"
+              strokeWidth={2}
+              fill="rgba(0, 0, 0, 0)"
+              interpolation={curveMonotoneX}
+            />
+            { this.props.isTermanal ?
+              <TrendLine
+                enabled={this.state.enableTrendLine}
+                type="RAY"
+                snap={false}
+                onComplete={this.onDrawCompleteChart}
+                trends={this.state.trends}
+              /> :
+              null 
+            }
+          </Chart>
+        </ChartCanvas>
+      </div>
+    ) : null;
+  }
 }
