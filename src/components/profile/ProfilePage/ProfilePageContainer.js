@@ -100,7 +100,7 @@ class ProfilePageContainer extends React.Component {
   openTour = () => {
     setTimeout(() => {
       this.setState({ isTourOpen: true })
-    }, 150)
+    }, 300)
   }
 
   render() {

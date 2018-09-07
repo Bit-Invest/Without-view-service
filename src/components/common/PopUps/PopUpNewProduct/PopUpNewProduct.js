@@ -20,8 +20,24 @@ export const PopUpNewProduct = (props) => {
           defaultOption={{value: 'binance', label: 'Binance'}}
           options={[
             {value: 'binance', label: 'Binance'},
-            {value: 'bank', label: 'Bank', visibled: true},
-            {value: 'birza', label: 'Birza', visibled: true},
+            {value: 'abucoins', label: 'Abucoins', visibled: true},
+            {value: 'bitfinex', label: 'Bitfinex', visibled: true},
+            {value: 'bitthumb', label: 'Bitthumb', visibled: true},
+            {value: 'bitstamp', label: 'Bitstamp', visibled: true},
+            {value: 'bittrex', label: 'Bittrex', visibled: true},
+            {value: 'bleutrade', label: 'Bleutrade', visibled: true},
+            {value: 'cryptopia', label: 'Cryptopia', visibled: true},
+            {value: 'gdax', label: 'Gdax', visibled: true},
+            {value: 'gemini', label: 'Gemini', visibled: true},
+            {value: 'hitBTC', label: 'HitBTC', visibled: true},
+            {value: 'huobi', label: 'Huobi', visibled: true},
+            {value: 'kraken', label: 'Kraken', visibled: true},
+            {value: 'kuCoin', label: 'KuCoin', visibled: true},
+            {value: 'livecoin', label: 'Livecoin', visibled: true},
+            {value: 'okex', label: 'Okex', visibled: true},
+            {value: 'poloniex', label: 'Poloniex', visibled: true},
+            {value: 'bitmex', label: 'Bitmex', visibled: true},
+            {value: 'exmo', label: 'Exmo', visibled: true},
           ]}
           theme="sign-up"
         />
