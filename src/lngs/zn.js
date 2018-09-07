@@ -35,7 +35,7 @@ const zn = {
     'Input#1': 'Forgot?',
 
     // marketplace
-    'MarketplacePageContainer#1': 'Product Card',
+    'MarketplacePageContainer#1': 'Product Card ZN',
     'MarketplacePageContainer#2': 'Indicator of profitability',
     'MarketplacePageContainer#3': 'Exchange where the product is allocated',
     'MarketplacePageContainer#4': 'Investment products provided by asset managers',
