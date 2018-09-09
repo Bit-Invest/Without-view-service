@@ -181,6 +181,12 @@ const en = {
   'Profile#5': 'The overall performance chart',
   'Profile#6': 'Exchanges where the wallet is allocated',
 
+  'MobileStub#1': 'Team about product',
+  'MobileStub#2': 'Watch video',
+  'MobileStub#3': 'JOIN PRE-SALE',
+  'MobileStub#4': 'Follow Us:',
+  'MobileStub#5': 'MVP is available on desktop only',
+
   //тут гугл транслате был))
   'Menu#1': 'Terminal',
   'Menu#2': 'Marketplace',
