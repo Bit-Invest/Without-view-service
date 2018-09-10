@@ -16,13 +16,16 @@ class TraderCardContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.tradeHistory({
-      productId: this.props.id
-    })
-      .then(() => {
-        this.setState({isLoaded: true});
-      });
-    this.setState({isLoaded: true});
+    if (this.props.isTestData) {
+      this.setState({isLoaded: true});
+    } else {
+      this.props.tradeHistory({
+        productId: this.props.id
+      })
+        .then(() => {
+          this.setState({isLoaded: true});
+        });
+    }
   }
 
   render() {

@@ -17,6 +17,7 @@ const initialState = {
       "surname": "ZIMMERMAN",
       'horizon': 'Long',
       'fees': '10%',
+      isTestData: true,
       raitingTrader: {
         raiting: 1.7,
         comment: 110
@@ -36,6 +37,7 @@ const initialState = {
       "surname": "JEFFERY",
       'horizon': 'Long',
       'fees': '5%',
+      isTestData: true,
       raitingTrader: {
         raiting: 4.3,
         comment: 15
@@ -55,6 +57,7 @@ const initialState = {
       "surname": "COURTENAY",
       'horizon': 'Long',
       'fees': '30%',
+      isTestData: true,
       raitingTrader: {
         raiting: 4.7,
         comment: 11
@@ -74,6 +77,7 @@ const initialState = {
       "surname": "HOWARD",
       'horizon': 'Long',
       'fees': '17%',
+      isTestData: true,
       raitingTrader: {
         raiting: 2.9,
         comment: 53
@@ -93,6 +97,7 @@ const initialState = {
       "surname": "CHESHIRE",
       'horizon': 'Long',
       'fees': '78%',
+      isTestData: true,
       raitingTrader: {
         raiting: 3.3,
         comment: 1
@@ -110,6 +115,7 @@ const initialState = {
     //   "nameProduct": "Product",
     //   "stockName": "binance",
     //   "surname": "TANNER",
+    //   isTestData: true,
     //   statesTrader: {
     //     month: '15',
     //     week: '-25'
@@ -820,9 +826,9 @@ initialState.historyData['9bdw1dc6d7272vd4c3b9bc41'] = initialState.historyData[
   return { date: el.date, close: Math.random() * 0.001 }
 })
 
-initialState.historyData['11dw1dc6d7272vd4c3b9bc41'] = initialState.historyData['11dw1dc6d7272vd4c3b9bc41'].map(el => {
-  return { date: el.date, close: Math.random() * 0.001 }
-})
+// initialState.historyData['11dw1dc6d7272vd4c3b9bc41'] = initialState.historyData['11dw1dc6d7272vd4c3b9bc41'].map(el => {
+//   return { date: el.date, close: Math.random() * 0.001 }
+// })
 
 export const marketplace = (state = initialState, action) => {
   switch (action.type) {
