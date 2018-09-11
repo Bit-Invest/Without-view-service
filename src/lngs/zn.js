@@ -175,6 +175,12 @@ const zn = {
   'ProfilePageContainer#5': '整体性能曲线图',
   'ProfilePageContainer#6': '钱包调配的交易所',
 
+  'MobileStub#1': '关于产品',
+  'MobileStub#2': '看视频',
+  'MobileStub#3': '参加代币销售',
+  'MobileStub#4': '跟着我们',
+  'MobileStub#5': 'MVP仅能于桌面适用',
+
   //тут гугл транслате был))
   'Menu#1': '終奌站',
   'Menu#2': '市井',

@@ -13,6 +13,8 @@ import linkedin_icon from '../../../assets/images/socials/linkedin_icon.png'
 import github_icon from '../../../assets/images/socials/github_icon.png'
 import weibo_icon from '../../../assets/images/socials/weibo_icon.png'
 
+import { objectLangs, lng } from '../../../lngs/index'
+
 const ROOT_NAME = 'mobile-stub'
 
 class MobileStub extends Component {
@@ -24,9 +26,9 @@ class MobileStub extends Component {
         return (
             <div className={ROOT_NAME}>
                 <img src={logo} className={`${ROOT_NAME}__logo`} />
-                <div className={`${ROOT_NAME}__header`}>Team about product</div>
+                <div className={`${ROOT_NAME}__header`}>{ objectLangs[lng]['MobileStub#1'] }</div>
                 <div className={`${ROOT_NAME}__block-video`}>
-                    <div className={`${ROOT_NAME}__watch`}>Watch video</div>
+                    <div className={`${ROOT_NAME}__watch`}>{ objectLangs[lng]['MobileStub#2'] }</div>
                     <div className={`${ROOT_NAME}__video`}>
                         { this.state.isOpenFrame ?
                             <iframe src="https://player.vimeo.com/video/286746544?autoplay=1" frameBorder="0" allowFullScreen></iframe> :
@@ -35,10 +37,10 @@ class MobileStub extends Component {
                     </div>
                 </div>
                 <a href="https://my.cindx.io/" target="_blank" className={`${ROOT_NAME}__block-button`}>
-                    <div>JOIN PRE-SALE</div>
+                    <div>{ objectLangs[lng]['MobileStub#3'] }</div>
                 </a>
                 <div className={`${ROOT_NAME}__block-social`}>
-                    <div className={`${ROOT_NAME}__follow`}>Follow Us:</div>
+                    <div className={`${ROOT_NAME}__follow`}>{ objectLangs[lng]['MobileStub#4'] }</div>
                     <div className={`${ROOT_NAME}__socials`}>
                         <a target="_blank" href="https://bitcointalk.org/index.php?topic=4421275.0">
                             <img className="icon" src={bitcointalk_icon} alt={"CINDEX"}/>
