@@ -22,6 +22,8 @@
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-NGW8N3H');
     </script>
+    <link rel="stylesheet" href="https://hosted-sip.civic.com/css/civic-modal.min.css">
+    <script src="https://hosted-sip.civic.com/js/civic.sip.min.js"></script>
     <!-- End Google Tag Manager -->
   </head>
   <body>
@@ -36,5 +38,27 @@
       To begin the development, run `npm start`.
       To create a production bundle, use `npm run build`.
     -->
+    <script>
+      // window.onload = function() {
+      //   var civicSip = new civic.sip({ appId: 'oq8wrG4sy' })
+      //   var button = document.querySelector('#signupButton')
+
+      //   button.addEventListener('click', function() {
+      //     civicSip.signup({
+      //       style: 'popup',
+      //       scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
+      //     })
+      //   })
+
+      //   civicSip.on('auth-code-received', function (event) {
+          // encoded JWT Token is sent to the server
+          // var jwtToken = event.response
+          // console.log(jwtToken)
+
+          // Your function to pass JWT token to your server
+          // sendAuthCode(jwtToken);
+      //   })
+      // }
+    </script>
   </body>
 </html>
