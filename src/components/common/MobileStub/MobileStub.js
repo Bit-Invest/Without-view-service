@@ -26,7 +26,7 @@ class MobileStub extends Component {
         return (
             <div className={ROOT_NAME}>
                 <img src={logo} className={`${ROOT_NAME}__logo`} />
-                <div className={`${ROOT_NAME}__header`}>{ objectLangs[lng]['MobileStub#1'] }</div>
+                <div className={`${ROOT_NAME}__header`}>{ objectLangs[lng]['MobileStub#5'] }</div>
                 <div className={`${ROOT_NAME}__block-video`}>
                     <div className={`${ROOT_NAME}__watch`}>{ objectLangs[lng]['MobileStub#2'] }</div>
                     <div className={`${ROOT_NAME}__video`}>
