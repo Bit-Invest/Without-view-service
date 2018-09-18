@@ -186,7 +186,7 @@ const pt = {
 	'MobileStub#2': 'Ver vídeo',
 	'MobileStub#3': 'Junte-pré-venda',
 	'MobileStub#4': 'Siga-nos:',
-	'MobileStub#5': 'MVP está disponível apenas na área de trabalho',
+	'MobileStub#5': 'MVP está disponível na área de trabalho',
 
 	//тут гугл транслате был))
 	'Menu#1': 'Terminal',
