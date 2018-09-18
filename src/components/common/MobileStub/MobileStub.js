@@ -56,7 +56,7 @@ class MobileStub extends Component {
             return (
                 <div key={i} >
                     <div className={`${ROOT_NAME}__key-wrapper`}>
-                        <div className={`${ROOT_NAME}__header`}>
+                        <div className={`${ROOT_NAME}__header ${ROOT_NAME}__${lng}`}>
                             { el.header }
                         </div>
                         <div className={`${ROOT_NAME}__block-video`}>
