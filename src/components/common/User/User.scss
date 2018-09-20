@@ -18,23 +18,54 @@
     letter-spacing: 0.8px;
     text-align: left;
     color: #ffffff;
-    margin-bottom: 20px;
+  }
+
+  &__approved {
+    margin-top: 8px;
   }
 
   &__rating {
     margin-top: 12px;
   }
+}
 
-  &__approved {
-    font-size: 14px;
-    position: absolute;
-  }
+.civic-button-a {
+  margin: 0;
+  padding: 8px 70px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #3AB14B, #439CDE);
+  color: #fff;
+  border: 0;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 
-  &__approved-active {
-    color: green;
-  }
+.civic-button-approved {
+  margin: 0;
+  padding: 8px 70px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #3AB14B, #439CDE);
+  color: #fff;
+  border: 0;
+  font-size: 14px;
+  outline: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 
-  &__approved-error {
-    color: #c10000;
-  }
+.civic-button-a:hover {
+  background: linear-gradient(90deg, #439CDE, #3AB14B);
+}
+
+.svg-civic-icon {
+  height: 22px;
+  width: 22px;
+  margin-right: 8px;
+  position: absolute;
+  left: 8px;
 }
