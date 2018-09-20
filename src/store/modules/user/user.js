@@ -29,6 +29,8 @@ export const BALANCE = 'user/BALANCE';
 export const BALANCE_SUCCESS = 'user/BALANCE_SUCCESS';
 export const GET_MY_INVESTORS = 'user/GET_MY_INVESTORS';
 export const GET_MY_INVESTORS_SUCCESS = 'user/GET_MY_INVESTORS_SUCCESS';
+export const SEND_KYC  = 'user/SEND_KYC'
+export const SEND_KYC_SUCCESS  = 'user/SEND_KYC_SUCCESS'
 
 const initialState = {
   personalInfo: null,
@@ -94,6 +96,8 @@ export const user = (state = initialState, action) => {
         ...state,
         investors: action.payload.data
       };
+    case SEND_KYC_SUCCESS:
+      return state
     case BALANCE_SUCCESS:
       return state;
     default:
@@ -145,6 +149,21 @@ export const getKeys = () => {
       }
     }
   };
+}
+
+export const sendKYC = (jwtToken) => {
+  return {
+    type: SEND_KYC,
+    payload: {
+      request: {
+        url: `/api/user/checkkyc?token=${jwtToken}`,
+        method: 'GET',
+        headers: {
+          Authorization: LocalStorage.getItem('token')
+        }
+      }
+    }
+  }
 }
 
 export const authpls = () => {

@@ -41,26 +41,7 @@
       To create a production bundle, use `npm run build`.
     -->
     <script>
-      // window.onload = function() {
-      //   var civicSip = new civic.sip({ appId: 'oq8wrG4sy' })
-      //   var button = document.querySelector('#signupButton')
-
-      //   button.addEventListener('click', function() {
-      //     civicSip.signup({
-      //       style: 'popup',
-      //       scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
-      //     })
-      //   })
-
-      //   civicSip.on('auth-code-received', function (event) {
-          // encoded JWT Token is sent to the server
-          // var jwtToken = event.response
-          // console.log(jwtToken)
-
-          // Your function to pass JWT token to your server
-          // sendAuthCode(jwtToken);
-      //   })
-      // }
+      window.civic = civic
     </script>
   </body>
 </html>

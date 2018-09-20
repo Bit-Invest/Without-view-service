@@ -16,6 +16,7 @@ import { LocalStorage } from '@common/Utils';
 import { getProducts } from '@store/modules/marketplace';
 import { objectLangs, lng } from '../../../lngs/index'
 import Tour from 'reactour';
+import { sendKYC } from '@store/modules/user';
 
 const tourConfig = [
   {
@@ -83,10 +84,39 @@ class ProfilePageContainer extends React.Component {
     this.props.push('/registration/sign-in');
   }
 
-  onLoadPersonalInfo() {
-    this.setState({isLoaded: true}, () => {
-      this.openTour()
-    });
+  onLoadPersonalInfo(res) {
+    this.setState({ isLoaded: true });
+    this.openTour()
+  }
+
+  signupClick = () => {
+    const civicSip = new window.civic.sip({ appId: 'uoljp-vyU' })
+  
+    civicSip.signup({
+      style: 'popup',
+      scopeRequest: civicSip.ScopeRequests.PROOF_OF_IDENTITY
+    })
+
+    civicSip.on('auth-code-received', (event) => {
+      const jwtToken = event.response
+
+      this.setState({ isLoaded: false });
+      
+      this.props.sendKYC(jwtToken)
+        .then(res => {
+          if (res.payload.status === 200) {
+            this.props.getPersonalInfo()
+              .then(() => {
+                this.setState({ isLoaded: true });
+              })
+          } else {
+            console.log('res error', res)
+          }
+        })
+        .catch(err => {
+          console.log('error', err)
+        })
+    })
   }
 
   onClickAddProduct() {
@@ -100,7 +130,7 @@ class ProfilePageContainer extends React.Component {
   openTour = () => {
     setTimeout(() => {
       this.setState({ isTourOpen: true })
-    }, 300)
+    }, 500)
   }
 
   render() {
@@ -123,6 +153,7 @@ class ProfilePageContainer extends React.Component {
           isShowedPopUpNewProduct={this.state.isShowedPopUpNewProduct}
           onClickAddProduct={onClickAddProduct.bind(this)}
           user={this.props.user}
+          signupClick={this.signupClick}
           push={this.props.push}
           userLogOut={this.props.userLogOut}
           products={this.props.user.myProducts}
@@ -151,7 +182,8 @@ const mapDispatchToProps = dispatch =>
     userLogOut,
     getProducts,
     getMyProducts,
-    getMyInvestors
+    getMyInvestors,
+    sendKYC
   }, dispatch);
 
 const connectedContainer =

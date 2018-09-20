@@ -18,9 +18,23 @@
     letter-spacing: 0.8px;
     text-align: left;
     color: #ffffff;
+    margin-bottom: 20px;
   }
 
   &__rating {
     margin-top: 12px;
+  }
+
+  &__approved {
+    font-size: 14px;
+    position: absolute;
+  }
+
+  &__approved-active {
+    color: green;
+  }
+
+  &__approved-error {
+    color: #c10000;
   }
 }

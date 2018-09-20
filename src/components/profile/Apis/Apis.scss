@@ -1,20 +1,5 @@
 @import "../../common/Utils/Utils.scss";
 
-.civic-button-a {
-  margin: 0;
-  padding: 0 15px;
-  border-radius: 20px;
-  border: 1px solid #888e9c;
-  color: #888e9c;
-  font-size: 12px;
-  cursor: pointer;
-  outline: none;
-}
-
-.civic-button-a:hover {
-  background-color: #fff;
-}
-
 .apis {
   &__head {
     display: flex;

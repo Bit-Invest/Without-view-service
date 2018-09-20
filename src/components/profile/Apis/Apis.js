@@ -24,9 +24,6 @@ export const Apis = (props) => {
         <div className={`${ROOT_CLASS}__title`}>
           { objectLangs[lng]['Apis#2'] }
         </div>
-        {/* <button id="signupButton" className="civic-button-a medium" type="button">
-          <span>Connect with Civic</span>
-        </button> */}
         <AddProduct />
       </div>
       <div className={`${ROOT_CLASS}__list`}>
