@@ -42,4 +42,16 @@
   font-size: 12px;
   cursor: pointer;
   outline: none;
+  display: flex;
+  align-items: center;
+}
+
+.civic-button-a:hover {
+  opacity: 0.8;
+}
+
+.svg-civic-icon {
+  height: 26px;
+  width: 26px;
+  margin-right: 8px;
 }
