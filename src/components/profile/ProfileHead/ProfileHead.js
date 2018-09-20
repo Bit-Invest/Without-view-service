@@ -12,11 +12,15 @@ export const ProfileHead = props => {
           name={props.personalInfo.name}
           surname={props.personalInfo.surname}
           role={props.personalInfo.role ? props.personalInfo.role : ''}
+          isIdentityVerification={props.personalInfo.isIdentityVerification}
         />
         <div className={`${ROOT_CLASS}__log-out`} onClick={props.logOut}>
           <LogOut push={props.push} logOut={props.logOut} />
         </div>
       </div>
+      <button id="signupButton" onClick={props.signupClick} className="civic-button-a medium" type="button">
+        <span>Approved with Civic</span>
+      </button>
     </div>
   );
 };

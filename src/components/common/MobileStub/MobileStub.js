@@ -15,6 +15,7 @@ import linkedin_icon from '../../../assets/images/socials/linkedin_icon.png'
 import github_icon from '../../../assets/images/socials/github_icon.png'
 import weibo_icon from '../../../assets/images/socials/weibo_icon.png'
 import Slider from 'react-slick'
+import { clickid } from '../../../lngs/index'
 
 import { objectLangs, lng } from '../../../lngs/index'
 
@@ -103,7 +104,7 @@ class MobileStub extends Component {
                         { this.renderStub() }
                     </Slider>
                 </div>
-                <a href="https://my.cindx.io/" target="_blank" className={`${ROOT_NAME}__block-button`}>
+                <a href={`https://my.cindx.io/registration${ clickid ? '?clickid=' + clickid : ''}`} target="_blank" className={`${ROOT_NAME}__block-button`}>
                     <div>{ objectLangs[lng]['MobileStub#3'] }</div>
                 </a>
                 <div className={`${ROOT_NAME}__block-social`}>

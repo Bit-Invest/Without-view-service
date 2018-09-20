@@ -34,6 +34,12 @@ for(let i in splitSearch){
 	linkSearch[key_val_split[0]] = key_val_split[1];
 }
 
+if (linkSearch['clickid']) {
+	window.localStorage.setItem('clickid', linkSearch['clickid']);
+}
+
+export const clickid = linkSearch['clickid']
+
 if (linkSearch['loc']) {
 	window.localStorage.setItem('loc', linkSearch['loc']);
 }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { MenuItem } from '@common/MenuItem';
+import { clickid } from '../../../lngs/index'
 
 const ROOT_CLASS = 'menu';
 
@@ -25,7 +26,7 @@ export const Menu = (props) => {
     <div className={buildRootClass()}>
       <div className={`${ROOT_CLASS}__items`}>
         <div><div className={`${ROOT_CLASS}__logo`} onClick={()=>{
-          window.location = "https://cindx.io/";
+          window.location = `https://cindx.io/${ clickid ? '?clickid=' + clickid : ''}`;
         }}></div></div>
           {items.map((item, index) => renderItem(props, item, index))}
       </div>

@@ -62,6 +62,7 @@ export const ProfilePage = props => {
           personalInfo={props.user.personalInfo ? props.user.personalInfo : {}}
           push={props.push}
           logOut={props.userLogOut}
+          signupClick={props.signupClick}
         />
         <div className={`${ROOT_CLASS}__chart-wrap`}>
           {renderChart()}

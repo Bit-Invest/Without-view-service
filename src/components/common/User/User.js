@@ -19,6 +19,12 @@ export const User = (props) => {
       <div className={`${ROOT_CLASS}__info`}>
         <div className={`${ROOT_CLASS}__name-wrap`}>
           {props.name} {props.surname}
+          { !props.theme ? 
+            <div className={`${ROOT_CLASS}__approved ${!props.isIdentityVerification ? `${ROOT_CLASS}__approved-error` : `${ROOT_CLASS}__approved-active` }`}>
+              { !props.isIdentityVerification ? '(not approved profile)' : '(approved profile)' }
+            </div> : 
+            null
+          }
         </div>
         <div className={`${ROOT_CLASS}__rating`}>
           <Rating

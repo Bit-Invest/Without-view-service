@@ -14,5 +14,6 @@ export {
   unsubscribeTrader,
   balance,
   getMyProducts,
-  getMyInvestors
+  getMyInvestors,
+  sendKYC
 } from './user';
