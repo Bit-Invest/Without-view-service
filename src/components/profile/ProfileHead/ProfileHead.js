@@ -15,7 +15,7 @@ export const ProfileHead = props => {
           isIdentityVerification={props.personalInfo.isIdentityVerification}
           signupClick={props.signupClick}
         />
-        <div className={`${ROOT_CLASS}__log-out`} onClick={props.logOut}>
+        <div className={`${ROOT_CLASS}__log-out ${props.personalInfo.isIdentityVerification ? `${ROOT_CLASS}__log-out-approved` : ''}`} onClick={props.logOut}>
           <LogOut push={props.push} logOut={props.logOut} />
         </div>
       </div>

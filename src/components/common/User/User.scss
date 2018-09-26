@@ -24,6 +24,17 @@
     margin-top: 8px;
   }
 
+  &__approved-span-button {
+    display: flex;
+    align-items: center;
+  }
+
+  &__approved-span-button span {
+    font-size: 16px;
+    color: #ffffff;
+    margin-right: 20px;
+  }
+
   &__rating {
     margin-top: 12px;
   }
@@ -31,9 +42,9 @@
 
 .civic-button-a {
   margin: 0;
-  padding: 8px 70px;
-  border-radius: 20px;
-  background: linear-gradient(90deg, #3AB14B, #439CDE);
+  padding: 12px 12px 10px 47px;
+  border-radius: 30px;
+  background: #3ab03e;
   color: #fff;
   border: 0;
   font-size: 14px;
@@ -44,22 +55,8 @@
   position: relative;
 }
 
-.civic-button-approved {
-  margin: 0;
-  padding: 8px 70px;
-  border-radius: 20px;
-  background: linear-gradient(90deg, #3AB14B, #439CDE);
-  color: #fff;
-  border: 0;
-  font-size: 14px;
-  outline: none;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
 .civic-button-a:hover {
-  background: linear-gradient(90deg, #439CDE, #3AB14B);
+  background: #008c04;
 }
 
 .svg-civic-icon {

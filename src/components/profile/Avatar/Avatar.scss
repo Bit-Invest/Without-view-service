@@ -31,11 +31,13 @@
   }
 
   &__check {
-    width: 11px;
-    height: 8px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-image: url(../assets/images/small-approve.svg);
+    position: relative;
+    top: -2px;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
   }
 }
 

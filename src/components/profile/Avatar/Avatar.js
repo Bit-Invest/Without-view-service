@@ -14,14 +14,17 @@ export const Avatar = (props) => {
         className={`${ROOT_CLASS}__picture`}
         alt="avatar"
       />
-      <div
-        className={
-          `${ROOT_CLASS}__approve ${!props.isApprove ?
-            ROOT_CLASS + '__approve_hidden': ''}`
-        }
-      >
-        <div className={`${ROOT_CLASS}__check`}/>
-      </div>
+      { !props.theme ?
+        <div
+          className={
+            `${ROOT_CLASS}__approve ${!props.isIdentityVerification ?
+              ROOT_CLASS + '__approve_hidden': ''}`
+          }
+        >
+          <div className={`${ROOT_CLASS}__check`}/>
+        </div> :
+        null
+      }
     </div>
   );
 }
