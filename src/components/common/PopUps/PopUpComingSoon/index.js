@@ -1,1 +1,0 @@
-export { PopUpComingSoon } from './PopUpComingSoon';

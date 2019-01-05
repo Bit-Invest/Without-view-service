@@ -1,1 +1,0 @@
-export { ProfileProduct } from './ProfileProduct';
