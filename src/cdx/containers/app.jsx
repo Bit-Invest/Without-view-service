@@ -10,6 +10,7 @@ import {
 
 const CDX = () => (
   <div className="app">
+    <Route path="/" component={MarketplaceContainer} />
     <Route path="/im" component={ProfileContainer} />
     <Route path="/auth" component={AuthContainer} />
     <Route path="/myproduct/:productId?" component={MyProductContainer} />

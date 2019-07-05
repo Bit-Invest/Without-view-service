@@ -54,21 +54,18 @@ const actions = commonUtils.addPropery([
 		type: 'FORCE_NOSET',
 		propertyFn: 'authLogout',
 		keyState: 'loginRes',
-		value: {},
-		data: {
-			api: 'baseCindx',
-			url: '/auth/login',
-			method: 'POST',
-			body: {},
-			processingResFn: (cbParams, res) => {
-				commonUtils.removeAuthTokens();
-
-				return res;
-			},
-		},
 		tags: {
 			manuallyUsed: true,
 			startRequired: false,
+		},
+		preFnData: (data, tsAction) => {
+			commonUtils.removeAuthTokens();
+
+			return ({
+				...data,
+				type: 'FORCE_SET',
+				value: commonUtils.getAuthTokens(),
+			});
 		},
 	},
 	{

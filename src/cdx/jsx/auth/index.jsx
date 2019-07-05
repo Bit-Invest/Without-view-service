@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 import SignInForm from './forms/sign_in';
 import SignUpForm from './forms/sign_up';
@@ -8,9 +8,8 @@ import './style.scss';
 import './forms/style.scss';
 
 export default class AuthPage extends React.Component {
-  render() {
+  render() { 
     if (this.props.reduxState.loginRes.accessToken) {
-      console.log('yes', this.props.reduxState.loginRes.accessToken);
       this.props.history.push('/im');
     }
 
