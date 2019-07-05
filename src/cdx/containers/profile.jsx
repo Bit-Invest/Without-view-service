@@ -21,7 +21,7 @@ class ProfileContainer extends ParentWrapperPages {
       <Provider value={{
         actions: this.actions,
       }}>
-        <ProfileComponent reduxState={this.props.reduxState} />
+        <ProfileComponent {...this.props} />
       </Provider>
     );
   }

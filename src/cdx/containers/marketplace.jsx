@@ -24,7 +24,7 @@ class MarketplaceContainer extends ParentWrapperPages {
       <Provider value={{
         actions: this.actions,
       }}>
-        <MarketplaceComponent reduxState={this.props.reduxState} />
+        <MarketplaceComponent {...this.props} />
       </Provider>
     );
   }

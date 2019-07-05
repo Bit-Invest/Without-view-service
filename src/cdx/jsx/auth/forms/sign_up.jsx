@@ -46,18 +46,34 @@ export default class SignUpForm extends React.Component {
     });
   }
 
-  render() {
-    const { reduxState: { regRes } } = this.props;
-    const errorMessage = regRes === configs.common.TYPES_RESULT['ERROR'] ? (
+  renderMessage = ({actions}) => {
+    const { reduxState: { authRegistration_res } } = this.props;
+    const errorMessage = authRegistration_res === configs.common.TYPES_RESULT['ERROR'] ? (
       `Error. Fill in all the fields correctly.`
+    ) : authRegistration_res === configs.common.TYPES_RESULT['LOADING'] ? (
+      `Loading ...`
     ) : null;
 
+    if (authRegistration_res === 'OK') {
+      actions.clearAnyProperty({
+        keyState: 'authRegistration_res',
+        value: -1,
+      });
+      this.props.history.push('/auth/sign-in');
+    }
+
+    return(
+      <div className="error-block">{this.state.error || errorMessage}</div>
+    );
+  }
+
+  render() {
     return(
       <Consumer>
         {({ actions }) => (
           <div className="signUpForm">
             <div className="title">Sign Up</div>
-            <div className="error-block">{this.state.error || errorMessage}</div>
+            {this.renderMessage({actions})}
             <div className="input-wrap">
               <input 
                 placeholder="Name" 

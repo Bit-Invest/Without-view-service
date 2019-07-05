@@ -15,9 +15,11 @@ class AuthContainer extends ParentWrapperPages {
   }
 
   render() {
+    console.log('#AuthContainer', this.props.reduxState);
+    
     return(
       <Provider value={{actions: this.actions}}>
-        <AuthComponent reduxState={this.props.reduxState} {...this.props} />
+        <AuthComponent {...this.props} />
       </Provider>
     );
   }

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import mixins from '@cdx/mixins/';
 import configs from '@cdx/configs/';
 
-
 import ICON_PROFILE from '@assets/icons/Profile_icon.svg';
 import ICON_MARKETPLACE from '@assets/icons/Billing_icon.svg';
 import ICOM_HEADER_MENU from '@assets/icons/headerMenu.png';
@@ -11,6 +10,17 @@ import ICOM_HEADER_MENU from '@assets/icons/headerMenu.png';
 import './style.scss';
 
 export default class Header extends React.Component {
+  logout = async () => {
+    const {
+      actions: {
+        authLogout,
+      },
+    } = this.props;
+
+    await authLogout();
+    this.props.history.push('/auth/sign-in');
+  }
+
   renderUserInfo = () => {
     const { userInfo } = this.props.reduxState;
     const userInfoNoLoaded = mixins.common.dataNoLoaded([userInfo]);
@@ -31,7 +41,10 @@ export default class Header extends React.Component {
           <div className="textUser nth1">{`${userInfo.firstName} ${userInfo.lastName}`}</div>
           <div className="textUser nth2">{userInfo.email}</div>
         </div>
-        <div className="imgUser">{`${userInfo.firstName[0]}${userInfo.lastName[0]}`}</div>
+        <div className="imgUser">
+          <span>{`${userInfo.firstName[0]}${userInfo.lastName[0]}`}</span>
+          <span className="clickLogout" onClick={this.logout}></span>
+        </div>
       </div>
     );
 

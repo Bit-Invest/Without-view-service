@@ -34,9 +34,9 @@ export default class ParentWrapperPages extends React.Component {
     if (!tokens.accessToken || !tokens.refreshToken)
       this.props.history.push('/auth/sign-in');
 
-    setTimeout(() => {
-      this.actions['refreshTokens'](tokens);
-      this.actionsBuild();
+    setTimeout(async () => {
+      await this.actions['refreshTokens'](tokens);
+      await this.actionsBuild();
     }, timeDeathTokens);
   }
 

@@ -53,13 +53,13 @@ export default class SignInForm extends React.Component {
             <div className="input-wrap">
               <input 
                 placeholder="Email" 
-                // value={this.state.email}
+                value={this.state.email}
                 onChange={this.changeValueInputs.bind(this, 'email')}
               />
               <input 
                 type="password" 
                 placeholder="Password" 
-                // value={this.state.password}
+                value={this.state.password}
                 onChange={this.changeValueInputs.bind(this, 'password')}
               />
             </div>

@@ -20,11 +20,11 @@ export default class Page extends React.Component {
   }
 
   render() {
-    const { atopClass, children, settings, reduxState } = this.props;
+    const { atopClass, children, settings, reduxState, actions } = this.props;
 
     return(
       <div className={`${atopClass} internalPage`}>
-        {settings.header && <Header {...({reduxState})} />}
+        {settings.header && <Header {...this.props} {...({actions})} />}
         <div className="container">
           <div className="contentChildren">
             {children}

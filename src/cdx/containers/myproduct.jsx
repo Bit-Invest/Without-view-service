@@ -26,7 +26,7 @@ class MyProductContainer extends ParentWrapperPages {
         actions: this.actions,
       }}>
         <MyProductComponent 
-          reduxState={this.props.reduxState}
+          {...this.props}
           paramsProduct={{
             productId,
           }} 

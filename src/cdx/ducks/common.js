@@ -51,9 +51,30 @@ const actions = commonUtils.addPropery([
 		}),
 	},
 	{
+		type: 'FORCE_NOSET',
+		propertyFn: 'authLogout',
+		keyState: 'loginRes',
+		value: {},
+		data: {
+			api: 'baseCindx',
+			url: '/auth/login',
+			method: 'POST',
+			body: {},
+			processingResFn: (cbParams, res) => {
+				commonUtils.removeAuthTokens();
+
+				return res;
+			},
+		},
+		tags: {
+			manuallyUsed: true,
+			startRequired: false,
+		},
+	},
+	{
 		type: 'REQUEST',
 		propertyFn: 'authRegistration',
-		keyState: 'regRes',
+		keyState: 'authRegistration_res',
 		data: {
 			api: 'baseCindx',
 			url: '/auth/signup',
@@ -80,6 +101,22 @@ const actions = commonUtils.addPropery([
 					lastName: data.lastName,
 					roleId: 0,
 				},
+			},
+		}),
+	},
+	{
+		type: 'FORCE_SET',
+		propertyFn: 'clearAnyProperty',
+		keyState: 'authRegistration_res',
+		tags: {
+			manuallyUsed: true,
+			startRequired: false,
+		},
+		preFnData: (data, tsAction) => ({
+			data: {
+				...tsAction.data,
+				keyState: tsAction.keyState,
+				value: tsAction.value,
 			},
 		}),
 	},
@@ -151,6 +188,12 @@ const actions = commonUtils.addPropery([
 		}),
 	},
 ], 'parentTag', generalKeyState);
+
+const actionsForTied = actions.reduce((pr, curAction) => 
+	Object.assign({}, pr, {
+		[curAction.propertyFn]: curAction,
+	})
+, {});
 
 const reducer = (state = commonConfig.initialState, action, parentTag) => {
 	const commonProcessed = commonUtils.reducer(state, action, generalKeyState)

@@ -16,6 +16,11 @@ export const saveAuthTokens = (data) => {
   localStorage.setItem('refreshToken', data.refreshToken);
 };
 
+export const removeAuthTokens = (data) => {
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('refreshToken');
+};
+
 export const getAuthTokens = (data) => ({
 	accessToken: localStorage.getItem('accessToken'),
   refreshToken: localStorage.getItem('refreshToken'),
@@ -104,6 +109,7 @@ export default ({
 	notPassed,
 	addPropery,
 	saveAuthTokens,
+  removeAuthTokens,
 	getAuthTokens,
 	reducer,
 	submitActions,

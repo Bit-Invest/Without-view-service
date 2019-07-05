@@ -51,7 +51,7 @@ export default class ProfileComponent extends React.Component {
     return(
       <Consumer>
         {({ actions }) => (
-          <InternalPage {...({reduxState})} atopClass="profile">
+          <InternalPage {...this.props} {...({actions})} atopClass="profile">
             <BlackoutBlock atopClass="dashboard">
               <SmallDashboard {...({reduxState})} />
             </BlackoutBlock>

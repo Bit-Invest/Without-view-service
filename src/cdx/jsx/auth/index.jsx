@@ -10,6 +10,7 @@ import './forms/style.scss';
 export default class AuthPage extends React.Component {
   render() {
     if (this.props.reduxState.loginRes.accessToken) {
+      console.log('yes', this.props.reduxState.loginRes.accessToken);
       this.props.history.push('/im');
     }
 
