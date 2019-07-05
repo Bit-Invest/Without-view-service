@@ -1,0 +1,71 @@
+@import "~@cdx/mixins/styles/auth.scss";
+
+.registration-page {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+
+  .form-column {
+    padding: 50px 0 33px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 33%;
+    overflow-y: auto;
+    background-image: linear-gradient(to top, #3a2f64, #4a3c6b 48%, #755c7a);
+    min-width: 300px;
+  }
+
+  .form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .picture-column {
+    width: 67%;
+    height: 100vh;
+    background-image: url(~@assets/images/registration.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .disclaimer {
+    align-self: flex-end;
+    @include font(Geometria-Light);
+    font-size: 14px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #888e9c;
+  }
+
+  .disclaimer span {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .logo {
+    width: 117px;
+    height: 40px;
+    background-image: url(~@assets/images/Logo_White_with_title.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px) {
+    .form-column {
+      width: 100%;
+    }
+
+    .picture-column {
+      display: none;
+    }
+  }
+}

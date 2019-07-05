@@ -1,0 +1,44 @@
+.listBlock {
+	display: flex;
+	flex: auto 0;
+	flex-direction: column;
+
+	& .head {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		& .title {
+			display: flex;
+			flex-direction: row;
+
+			& .reload {
+				width: 20px;
+				height: 20px;
+				margin-left: 10px;
+				cursor: pointer;
+				background-size: cover;
+				background-image: url(http://chittagongit.com/download/277388);
+			}
+		}
+
+		& .addButton {
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+
+	& .list {
+		margin: 20px 0;
+	}
+
+	&.markets {
+
+		.list {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+	}
+}

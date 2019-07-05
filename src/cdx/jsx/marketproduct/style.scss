@@ -1,0 +1,13 @@
+.marketProduct {
+	display: flex;
+	justify-content: center;
+  width: 100%;
+  flex: 1;
+
+	> .content {
+		display: flex;
+		flex-direction: column;
+		margin: 20px 0;
+		flex: 1;
+	}
+}

@@ -1,0 +1,78 @@
+.smallDashboard {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	
+	.contentBox {
+		display: flex;
+		flex-direction: column;
+
+		& .desc {
+			display: flex;
+			flex-direction: column;
+			margin-top: 20px;
+			max-width: 300px;
+			justify-content: center;
+			align-items: center;
+
+			& .emoji {
+				width: 200px;
+				height: 200px;
+				background-size: cover;
+			
+				&.welcome {
+					background-image: url(https://www.iconinteractive.com/wp-content/uploads/2015/12/Exp_Icon.gif);
+				}
+
+				&.twoStep {
+					background-position: 0 -33px;
+    			height: 136px;
+					background-image: url(http://finelinesmarketing.com/wp-content/uploads/2018/04/animation_2.gif);
+				}
+			}
+
+			& .text {
+				margin-top: 20px;
+				text-align: center;
+				font-size: 20px;
+			}
+		}
+	}
+
+	.dashboard {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+
+		.accounts {
+			.item {
+				margin: 10px 0;
+
+				> .curSmallTitle {
+					font-size: 14px;
+					margin: 10px 0;
+				}
+			}
+		}
+
+		.incomeParent {
+			margin: 10px 0;
+		}
+
+		> .curTitle {
+			font-size: 18px;
+			margin: 5px 0;
+		}
+
+		> .curSmallTitle {
+			font-size: 15px;
+			margin: 10px 0;
+		}
+	}
+}
+
+
+
+
+
+

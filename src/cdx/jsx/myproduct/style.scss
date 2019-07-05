@@ -1,0 +1,91 @@
+@mixin width-auto {
+  @media screen and (max-width: 1000px) {
+    max-height: none;
+    overflow: auto;
+    flex: 1;
+  	
+    &:after {
+    	display: none;
+    }
+  }
+}
+
+.internalPage.myproduct {
+	.blackoutBlock {
+		&.requisitions {
+			display: flex;
+			flex: 0.5;
+			min-width: 500px;
+			flex-direction: column;
+			@include width-auto;
+
+			.typeList {
+				margin: 0 0 20px 0;
+
+				> .curTitle {
+					border-bottom: 1px solid #f2f2f2;
+					padding: 0 0 10px 0;
+				}
+
+				.content {
+					margin: 15px 0 0 0;
+
+					.requisitionComponent {
+						display: flex;
+						flex-direction: column;
+						margin: 10px 0;
+						background: rgba(0,0,0,.2);
+						padding: 20px;
+
+						&.rejected {
+							background-color: #ff444463;
+						}
+
+						> .btn {
+							display: flex;
+							padding: 10px 0;
+							min-width: 200px;
+							justify-content: center;
+							align-self: flex-start;
+							margin: 5px 0;
+							border-radius: 4px;
+							cursor: pointer;
+
+							&.approve {
+								background: green;
+							}
+
+							&.reject {
+								background: red;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.myproductinfo {
+			display: flex;
+			flex: 0.5;
+			overflow: auto;
+			@include width-auto;
+
+			.followForm {
+				width: 100%;
+				max-width: 100%;
+			}
+
+			.fullProduct {
+				width: 100%;
+				margin: 0;
+				max-width: 100%;
+				align-self: flex-start;
+			}
+		}
+
+		@media screen and (max-width: 1000px) {
+			min-width: 100%;
+		}
+	}
+}
+

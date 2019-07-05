@@ -1,0 +1,47 @@
+@mixin width-auto {
+  @media screen and (max-width: 1250px) {
+    max-height: none;
+    overflow: auto;
+    flex: 1;
+  	
+    &:after {
+    	display: none;
+    }
+  }
+}
+
+
+.internalPage.profile {
+	.blackoutBlock {
+		&.keys {
+			flex: 0.3;
+			display: flex;
+			min-width: 350px;
+			overflow: auto;
+			max-height: 100%;
+			@include width-auto;
+		}
+
+		&.products {
+			flex: 0.3;
+			display: flex;
+			min-width: 400px;
+			overflow: auto;
+			max-height: 100%;
+			@include width-auto;
+		}
+
+		&.dashboard {
+			flex: 0.4;
+			display: flex;
+			min-width: 500px;
+			overflow: auto;
+			max-height: 100%;
+			@include width-auto;
+
+			@media screen and (max-width: 1250px) {
+				min-width: 100%;
+			}
+		}
+	}
+}

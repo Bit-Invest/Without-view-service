@@ -1,0 +1,67 @@
+.logTrades {
+	display: flex;
+	flex-direction: column;
+
+	.item {
+		margin: 5px 0;
+		position: relative;
+
+		.clickShowFollowingTrades {
+			width: 20px;
+			position: absolute;
+			right: 0;
+			cursor: pointer;
+			margin-top: -5px;
+
+			&.open {
+				border: 10px solid transparent;
+	    	border-top: 10px solid #996CED;
+			}
+
+			&.close {
+				border: 10px solid transparent;
+	    	border-bottom: 10px solid #996CED;
+			}
+		}
+
+		.followersTrades {
+			background: rgba(0,0,0,.3);
+			margin: 0 0 0 20px;
+			padding: 5px;
+		}
+
+		.trade {
+			display: flex;
+			flex-wrap: wrap;
+			background-image: linear-gradient(270deg, #3a2f64, #4a3c6b 47%, #755c7a);
+			border-radius: 4px;
+			padding: 5px;
+
+			&.followerTrade {
+				margin: 5px 0;
+			}
+
+			&.leaderTrade {
+
+			}
+
+			div {
+				background: white;
+				color: black;
+				padding: 2px;
+				margin: 2px;
+				border-radius: 4px;
+			}
+		}
+	}
+
+	.moreTrades {
+		display: flex;
+		align-self: flex-start;
+		background: rgba(0,0,0,.2);
+		padding: 5px 20px;
+		border-radius: 100px;
+		margin: 10px 0;
+		cursor: pointer;
+	}
+}

@@ -1,0 +1,233 @@
+.smallProduct {
+	display: flex;
+  margin: 10px;
+  background-image: linear-gradient(180deg, #231a37, #464d63), linear-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.17));
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.23137254901960785);
+  width: 350px;
+  border-radius: 4px;
+  flex-direction: column;
+  position: relative;
+
+  @media screen and (max-width: 400px) {
+    width: 90%;
+  }
+
+  .mainBlock {
+    padding: 30px;
+
+    > .curHead {
+      display: flex;
+      color: white;
+      font-size: 14px;
+
+      .avatar {
+
+        .initials {
+          display: flex;
+          width: 45px;
+          height: 45px;
+          border-radius: 100px;
+          justify-content: center;
+          align-items: center;
+          background-image: linear-gradient(230deg, #F75DAC 47%, #996CED);
+        }
+      }
+
+      .rightInfo {
+        display: flex;
+        flex: 1;
+
+        > .curWrap {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          margin-left: 10px;
+
+          .nameTrader {
+          }
+
+          .rating {
+            display: flex;
+            align-items: center;
+
+            > .curTitle {
+
+            }
+
+            .score {
+              width: 100px;
+              height: 15px;
+              border-radius: 4px;
+              background: rgba(0,0,0,.3);
+              overflow: hidden;
+              position: relative;
+              margin-left: 10px;
+
+              .filled {
+                position: absolute;
+                height: 100%;
+                left: 0;
+                top: 0;
+
+                &.positive {
+                  background: #7bdc7b;
+                }
+
+                &.sadness {
+                  background: red;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .historyInfo {
+      display: flex;
+      color: white;
+      font-size: 14px;
+      margin-top: 20px;
+      flex-direction: column;
+
+      .infoExchange {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        color: #93abbd;
+
+        .exchangeName {
+          text-transform: uppercase;
+        }
+
+        .baseAsset {
+          text-transform: uppercase;
+        }
+      }
+
+      .historyBlock {
+        margin-top: 20px;
+        border: 1px solid rgba(148, 148, 148, 0.3215686274509804);
+      }
+    }
+
+    .infoContent {
+      font-size: 14px;
+      margin-top: 20px;
+      opacity: .8;
+
+      .item {
+        margin: 3px 0;
+      }
+    }
+
+    .moreClick {
+      margin-top: 20px;
+      font-size: 14px;
+      background: rgba(0,0,0,.1);
+      color: white;
+      padding: 5px 25px;
+      display: inline-flex;
+      border-radius: 100px;
+      box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+      opacity: .8;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .settings {
+    display: none;
+
+    .iconHover {
+      width: 20px; 
+      height: 15px;
+      background-image: url('~@assets/icons/arrowDown.png');
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin: -7px -10px;
+    }
+
+    .iconHover:hover + .menu {
+      display: flex;
+    }
+
+    .menu {
+      display: none;
+      width: 200px;
+      background: white;
+      position: absolute;
+      flex-direction: column;
+      border-radius: 10px;
+      z-index: 2;
+      left: 50%;
+      margin: 0 -100px;
+      top: 100%;
+
+      &:hover {
+        display: flex;
+      }
+
+      .item {
+        text-align: center;
+        padding: 10px 0;
+        color: #343C73;
+        opacity: 0.7;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .settings {
+      display: flex;
+    }
+  }
+}
+
+.smallProductEdit, .smallProductAdd {
+  .mainBlock {
+    display: flex;
+    flex-direction: column;
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        margin: 2px 0;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+
+    .onTopSigns {
+      display: flex;
+
+      .item {
+        cursor: pointer;
+        padding: 5px 30px;
+        background-color: rgba(0,0,0,.3);
+        border-radius: 5px;
+        margin: 5px;
+      }
+    }
+  }
+}
+
+

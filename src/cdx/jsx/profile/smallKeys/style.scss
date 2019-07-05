@@ -1,0 +1,171 @@
+.smallKeys {
+	display: flex;
+	border-radius: 20px;
+  background-image: linear-gradient(180deg, #343C73 60%, #262C58);	
+  margin: 10px 0;
+  position: relative;
+
+  .mainBlock {
+  	display: flex;
+  	flex: 1;
+
+  	.blockItem {
+  		display: flex;
+  		height: 70px;
+  		justify-content: center;
+  		align-items: center;
+  		flex-direction: column;
+  		font-size: 14px;
+
+  		&.stock {
+  			flex: 0.2;
+  			background-color: rgba(0,0,0,0.1);
+        border-radius: 20px 0 0 20px;
+
+  			.iconLogo {
+  				height: 25px;
+  			}
+  		}
+
+  		&.infoData {
+  			flex: 0.4;
+  			align-items: self-start;
+  			padding-left: 7%;
+
+  			.name {
+
+  			}
+
+  			.status {
+  				margin-top: 5px;
+  				font-size: 11px;
+  				color: white;
+			    padding: 2px 6px;
+			    border-radius: 4px;
+
+          &.VALID {
+            background-color: #45bd45;
+          }
+          &.ERROR {
+            background-color: #da7a7a;
+          }
+          &.WAITING {
+            background-color: #8888ea;
+          }
+  			}
+  		}
+
+  		&.history {
+  			flex: 0.4;
+  			align-items: flex-end;
+  			padding-right: 7%;
+
+  			.balance {
+
+  			}
+
+  			.profit {
+  				margin-top: 5px;
+  				font-size: 11px;
+          color: #da7a7a;
+
+          &.positiveProfit {
+            color: #45bd45;
+          }
+  			}
+  		}
+  	}
+  }
+
+  .settings {
+    display: none;
+
+    .iconHover {
+      width: 20px; 
+      height: 15px;
+      background-image: url('~@assets/icons/arrowDown.png');
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin: -7px -10px;
+    }
+
+    .iconHover:hover + .menu {
+      display: flex;
+    }
+
+    .menu {
+      display: none;
+      width: 200px;
+      background: white;
+      position: absolute;
+      flex-direction: column;
+      border-radius: 10px;
+      z-index: 2;
+      left: 50%;
+      margin: 0 -100px;
+      top: 100%;
+
+      &:hover {
+        display: flex;
+      }
+
+      .item {
+        text-align: center;
+        padding: 10px 0;
+        color: #343C73;
+        opacity: 0.7;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .settings {
+      display: flex;
+    }
+  }
+}
+
+.smallKeysAdd, .smallKeysEdit {
+  .mainBlock {
+    display: flex;
+    flex-direction: column;
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        margin: 2px 0;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+
+    .onTopSigns {
+      display: flex;
+
+      .item {
+        cursor: pointer;
+        padding: 5px 30px;
+        background-color: rgba(0,0,0,.3);
+        border-radius: 5px;
+        margin: 5px;
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,101 @@
+.investorComponent {
+	background-image: linear-gradient(180deg, #343C73 60%, #262C58);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+
+	.option {
+		display: flex;
+		background-color: white;
+		padding: 5px 10px;
+		align-self: flex-start;
+		border-radius: 4px;
+		margin: 5px 0;
+		cursor: pointer;
+
+		.property {
+			color: #a79d9d;
+			margin-right: 5px;
+		}
+
+		.value {
+			color: black;
+		}
+	}
+
+	.actions {
+		display: flex;
+		flex-direction: column;
+
+		div {
+			display: flex;
+			align-self: flex-start;
+			padding: 5px 10px;
+			border-radius: 4px;
+			cursor: pointer;
+			margin: 3px 0;
+			background-color: rgba(0,0,0,.5);
+		}
+	}
+
+	.balancesMyProductFollowing {
+		display: flex;
+		flex-direction: column;
+		background-color: white;
+		color: black;
+		padding: 10px;
+
+		.list {
+			display: flex;
+			flex-direction: column;
+			margin: 5px 0;
+
+			> .curItem {
+				display: flex;
+				flex-direction: column;
+				margin: 5px 0;
+
+				> .curTitle {
+
+				}
+
+				> .curContent {
+					display: flex;
+					flex-direction: column;
+
+					> .curTitle {
+
+					}
+
+					> .curList {
+						display: flex;
+						flex-direction: row;
+						background-color: rgba(0,0,0,.2);
+						padding: 5px;
+						flex-wrap: wrap;
+
+						> .curItem {
+							display: flex;
+							flex-direction: row;
+							margin-right: 5px;
+							padding: 5px;
+							background-color: rgba(0,0,0,.3);
+							margin: 3px;
+							border-radius: 4px;
+
+							.coin {
+
+							}
+
+							.value {
+								margin-left: 5px;
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

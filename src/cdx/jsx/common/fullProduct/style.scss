@@ -1,0 +1,185 @@
+.fullProduct {
+  display: flex;
+  overflow: hidden;
+  margin: 10px;
+  background-image: linear-gradient(180deg, #231a37, #464d63), linear-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.17));
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.23137254901960785);
+  max-width: 700px;
+  width: 90%;
+  border-radius: 4px;
+  flex-direction: column;
+  align-self: center;
+
+  .mainBlock {
+    padding: 30px;
+
+    > .curHead {
+      display: flex;
+      color: white;
+      font-size: 15px;
+
+      .avatar {
+
+        .initials {
+          display: flex;
+          width: 45px;
+          height: 45px;
+          border-radius: 100px;
+          justify-content: center;
+          align-items: center;
+          background-image: linear-gradient(230deg, #F75DAC 47%, #996CED);
+        }
+      }
+
+      .rightInfo {
+        display: flex;
+        flex: 1;
+
+        > .curWrap {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          margin-left: 10px;
+
+          .nameTrader {
+          }
+
+          .rating {
+            display: flex;
+            align-items: center;
+
+            > .curTitle {
+
+            }
+
+            .score {
+              width: 100px;
+              height: 15px;
+              border-radius: 4px;
+              background: rgba(0,0,0,.3);
+              overflow: hidden;
+              position: relative;
+              margin-left: 10px;
+
+              .filled {
+                position: absolute;
+                height: 100%;
+                left: 0;
+                top: 0;
+
+                &.positive {
+                  background: #7bdc7b;
+                }
+
+                &.sadness {
+                  background: red;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .historyInfo {
+      display: flex;
+      color: white;
+      font-size: 15px;
+      margin-top: 20px;
+      flex-direction: column;
+
+      .infoExchange {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        color: #93abbd;
+
+        .exchangeName {
+          text-transform: uppercase;
+        }
+
+        .baseAsset {
+          text-transform: uppercase;
+        }
+      }
+
+      .historyBlock {
+        margin-top: 20px;
+        border: 1px solid rgba(148, 148, 148, 0.3215686274509804);
+      }
+
+      .infoContent {
+        font-size: 15px;
+        margin-top: 20px;
+
+        .item {
+          margin: 5px 0;
+
+          .property {
+
+          }
+
+          .value {
+            color: #93abbd;
+            margin-top: 2px;
+          }
+        }
+      }
+
+      .ratingInfo {
+        display: flex;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        .ratingValuesChart {
+          width: 300px;
+          height: 300px;
+          pointer-events: none;
+        }
+
+        .ratingValuesText {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .item {
+            display: flex;
+            margin: 2px 0;
+
+            .property {
+
+            }
+
+            .value {
+              color: #93abbd;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .moreClick {
+      margin-top: 20px;
+      font-size: 15px;
+      background: rgba(0,0,0,.1);
+      color: white;
+      padding: 5px 25px;
+      display: inline-flex;
+      border-radius: 100px;
+      box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+      opacity: .8;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+
+
+
