@@ -261,7 +261,6 @@ const actions = utils.common.addPropery([
 		prestateValue: 'disable',
 		data: {
 			api: 'baseCindx',
-			url: '/user/following/orders',
 			method: 'GET',
 			body: [],
 			processingResFn: (cbParams, res, tsAction, data, status) => {
@@ -284,7 +283,7 @@ const actions = utils.common.addPropery([
 		preFnData: (data, tsAction) => ({
 			data: {
 				...tsAction.data,
-				url:  `/user/following/orders?followingId=${data.followingId}`,
+				url:  `/user/following/orders?followingId=${data.followingId}&ordersAmount=${500}`,
 				followingId: data.followingId,
 			},
 		}),
