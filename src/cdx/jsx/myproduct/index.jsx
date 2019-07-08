@@ -211,7 +211,7 @@ export default class MyProductComponent extends React.Component {
     return(
       <Consumer>
         {({ actions }) => (
-          <InternalPage {...({reduxState})} atopClass="myproduct">
+          <InternalPage {...this.props} {...({actions})} atopClass="myproduct">
             <BlackoutBlock atopClass="requisitions">
               <div className="typeList">
                 <div className="curTitle">Following trades:</div>

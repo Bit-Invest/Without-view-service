@@ -33,7 +33,7 @@ export default class MarketProductComponent extends React.Component {
     return(
       <Consumer>
         {({ actions }) => (
-          <InternalPage {...({reduxState})}>
+          <InternalPage {...this.props} {...({actions})}>
             {this.renderFullProduct({
               actions,
             })}

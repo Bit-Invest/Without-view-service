@@ -24,7 +24,7 @@ export default class MarketplaceComponent extends React.Component {
     return(
       <Consumer>
         {({ actions }) => (
-          <InternalPage {...({reduxState})}>
+          <InternalPage {...this.props} {...({actions})}>
             {
               <ListBlock 
                 atopClass="markets"
