@@ -18,8 +18,7 @@ export default class Header extends React.Component {
     } = this.props;
 
     await authLogout();
-    window.location.reload()
-    // this.props.history.push('/auth/sign-in');
+    this.props.history.push('/auth/sign-in');
   }
 
   renderUserInfo = () => {

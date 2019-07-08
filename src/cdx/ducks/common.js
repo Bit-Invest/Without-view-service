@@ -118,14 +118,17 @@ const actions = commonUtils.addPropery([
 		}),
 	},
 	{
-		type: 'FORCE_SET',
+		type: 'FORCE_NOSET',
 		propertyFn: 'setTokensForRedux',
 		keyState: 'loginRes',
-		value: commonUtils.getAuthTokens(),
 		tags: {
 			manuallyUsed: false,
 			startRequired: true,
 		},
+		preFnData: (data) => ({
+			...data,
+			value: commonUtils.getAuthTokens(),
+		}),
 	},
 	{
 		type: 'REQUEST',

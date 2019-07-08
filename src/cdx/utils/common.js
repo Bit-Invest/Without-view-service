@@ -105,6 +105,8 @@ export const getPercentFromValueRating = (value = 1) =>
 export const getRatingValueShow = (value) =>
   (value * configs.common.settings.ragingScale).toFixed(2);
 
+export const defaultProcessingResFn = res => res;
+
 export default ({
 	notPassed,
 	addPropery,
@@ -119,4 +121,5 @@ export default ({
   getInitials,
   getPercentFromValueRating,
   getRatingValueShow,
+  defaultProcessingResFn,
 });

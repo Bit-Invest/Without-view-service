@@ -63,7 +63,7 @@ const setResponsed = async (dispatch, action, response, status, getState) => {
 	await dispatch({
 		...action,
 		type: 'FORCE_SET',
-		value: action.data.processingResFn({}, response.data, action, {
+		value: ((action.data || {}).processingResFn || utils.common.defaultProcessingResFn)({}, response.data, action, {
 			store: getState(),
 		}),
 		keyState: action.keyState,
@@ -74,8 +74,7 @@ const setResponsed = async (dispatch, action, response, status, getState) => {
 			store: getState(),
 		});
 
-	return action.data
-		.processingResFn({}, response.data, action, {
+	return ((action.data || {}).processingResFn || utils.common.defaultProcessingResFn)({}, response.data, action, {
 			store: getState(),
 		});
 };
