@@ -125,8 +125,8 @@ const actions = commonUtils.addPropery([
 			manuallyUsed: false,
 			startRequired: true,
 		},
-		preFnData: (data) => ({
-			...data,
+		preFnData: (data, tsAction) => ({
+			...tsAction,
 			value: commonUtils.getAuthTokens(),
 		}),
 	},

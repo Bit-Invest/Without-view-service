@@ -76,8 +76,19 @@ export const submitActions = (dispatch, actions, tied, store) => {
         return await dispatch(tsAction);
       }
 
-    if (curAction.tags.startRequired)
-      return dispatch(curAction);
+    if (curAction.tags.startRequired) {
+      let tsAction = curAction;
+      if (curAction.preFnData)
+        tsAction = {
+          ...tsAction,
+          ...tsAction.preFnData(null, tsAction),
+        };
+
+      if (tsAction.disable)
+          return false;
+
+      return dispatch(tsAction);
+    }
   });
 
   return usedActions;

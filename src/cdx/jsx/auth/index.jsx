@@ -9,9 +9,11 @@ import './forms/style.scss';
 
 export default class AuthPage extends React.Component {
   render() { 
-    if (this.props.reduxState.loginRes.accessToken) {
-      this.props.history.push('/im');
-    }
+    const { reduxState } = this.props;
+    const { loginRes } = reduxState || {};
+    const { accessToken } = loginRes || {};
+
+    if (accessToken) this.props.history.push('/im');
 
     return(
       <div className="registration-page">
