@@ -62,7 +62,7 @@ export const submitActions = (dispatch, actions, tied, store) => {
     }
 
     if (curAction.tags.manuallyUsed)
-      usedActions[curAction.propertyFn] = (data) => {
+      usedActions[curAction.propertyFn] = async (data) => {
         let tsAction = curAction;
         if (curAction.preFnData)
           tsAction = {
@@ -73,7 +73,7 @@ export const submitActions = (dispatch, actions, tied, store) => {
         if (tsAction.disable)
           return false;
 
-        dispatch(tsAction);
+        return await dispatch(tsAction);
       }
 
     if (curAction.tags.startRequired)

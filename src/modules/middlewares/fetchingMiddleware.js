@@ -7,7 +7,7 @@ const sendRequest = (dispatch, action, getState) => {
 	const path = `${host}${action.data.url}`;
 	const tokens = utils.common.getAuthTokens();
 
-	axios({
+	return axios({
 		headers: {
 			'Content-Type': 'application/json',
     	'Access-Control-Allow-Origin': '*',
@@ -19,14 +19,13 @@ const sendRequest = (dispatch, action, getState) => {
 		url: path,
 	})
 		.then(function (response) {
-			console.log({response});
 			if (response.data.error) 
 				return setResponsed(dispatch, action, response.data.error, 'error', getState);
 
-			setResponsed(dispatch, action, response.data, 'success', getState);
+			return setResponsed(dispatch, action, response.data, 'success', getState);
 	  })
 	  .catch(function (error) {
-	  	setResponsed(dispatch, action, error, 'error', getState);
+	  	return setResponsed(dispatch, action, error, 'error', getState);
 	  });
 }
 
@@ -58,7 +57,7 @@ const setResponsed = async (dispatch, action, response, status, getState) => {
 			});
 		}
 
-		return true;
+		return action.data.errorStatusValue || configs.common.TYPES_RESULT.ERROR;
 	}
 
 	await dispatch({
@@ -74,16 +73,21 @@ const setResponsed = async (dispatch, action, response, status, getState) => {
 		utils.common.submitActions(dispatch, action.tags.tiedActions(), true, {
 			store: getState(),
 		});
+
+	return action.data
+		.processingResFn({}, response.data, action, {
+			store: getState(),
+		});
 };
 
-export default  ({ dispatch, getState }) => next => action => {
+export default  ({ dispatch, getState }) => next => action => {	
   if (typeof action === 'object' && action.type === 'REQUEST') {
   	setPrestate(dispatch, action);
-  	sendRequest(dispatch, action, getState);
+  	return sendRequest(dispatch, action, getState);
   }
 
   if (typeof action === 'object' && action.type === 'FORCE_NOSET') {
-  	setResponsed(dispatch, action, {data: action.value}, 'noset', getState);
+  	return setResponsed(dispatch, action, {data: action.value}, 'noset', getState);
   }
 
   return next(action);
