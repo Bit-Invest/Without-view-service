@@ -229,8 +229,8 @@ const actions = utils.common.addPropery([
 			url: '/user/following/balance',
 			method: 'GET',
 			body: [],
-			processingResFn: (cbParams, res, tsAction, data, status) => {
-				const tsBalancesFollowings = data.store.profile.balancesFollowings;
+			processingResFn: (cbParams, res, tsAction, store, status) => {
+				const tsBalancesFollowings = store.myproduct.balancesFollowings;
 				const nowArr = typeof tsBalancesFollowings === 'object' && tsBalancesFollowings;
 
 				return [
@@ -263,8 +263,8 @@ const actions = utils.common.addPropery([
 			api: 'baseCindx',
 			method: 'GET',
 			body: [],
-			processingResFn: (cbParams, res, tsAction, data, status) => {
-				const tsOrdersFollowings = data.store.profile.ordersFollowings;
+			processingResFn: (cbParams, res, tsAction, store, status) => {
+				const tsOrdersFollowings = store.myproduct.ordersFollowings;
 				const nowArr = typeof tsOrdersFollowings === 'object' && tsOrdersFollowings;
 
 				return [

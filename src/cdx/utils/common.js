@@ -52,7 +52,7 @@ export const submitActions = (dispatch, actions, tied, store) => {
       if (curAction.preFnData)
         tsAction = {
           ...tsAction,
-          ...tsAction.preFnData(store, tsAction),
+          ...tsAction.preFnData({}, tsAction, store),
         };
 
       if (tsAction.disable)
@@ -67,7 +67,7 @@ export const submitActions = (dispatch, actions, tied, store) => {
         if (curAction.preFnData)
           tsAction = {
             ...tsAction,
-            ...tsAction.preFnData(data, tsAction),
+            ...tsAction.preFnData(data, tsAction, store),
           };
 
         if (tsAction.disable)
@@ -81,7 +81,7 @@ export const submitActions = (dispatch, actions, tied, store) => {
       if (curAction.preFnData)
         tsAction = {
           ...tsAction,
-          ...tsAction.preFnData(null, tsAction),
+          ...tsAction.preFnData({}, tsAction, store),
         };
 
       if (tsAction.disable)

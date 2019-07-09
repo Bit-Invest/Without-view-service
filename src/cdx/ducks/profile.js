@@ -68,8 +68,8 @@ const actions = utils.common.addPropery([
 			url: '',
 			method: 'GET',
 			body: [],
-			processingResFn: (cbParams, res, tsAction, data, status) => {
-				const tsIncomeKeys = data.store.profile.incomeKeys;
+			processingResFn: (cbParams, res, tsAction, store, status) => {
+				const tsIncomeKeys = store.profile.incomeKeys;
 				const nowArr = typeof tsIncomeKeys === 'object' && tsIncomeKeys;
 
 				return [
@@ -87,8 +87,8 @@ const actions = utils.common.addPropery([
 			startRequired: false,
 			// errorNoCauseForTied: false,
 		},
-		preFnData: (data, tsAction) => {
-			const { profile } = data.store;
+		preFnData: (data, tsAction, store) => {
+			const { profile } = store;
 			const { incomeKeys, keys, dashboard } = profile;
 			
 			const { nextKeyId, isLast, } = utils.profile.getNextKeyIdForGetIncomes(keys, incomeKeys, dashboard.baseAsset);
@@ -137,8 +137,8 @@ const actions = utils.common.addPropery([
 			api: 'baseCindx',
 			url: '',
 			method: 'GET',
-			processingResFn: (cbParams, res, tsAction, data, status) => {
-				const tsBalancesKeys = data.store.profile.balancesKeys;
+			processingResFn: (cbParams, res, tsAction, store, status) => {
+				const tsBalancesKeys = store.profile.balancesKeys;
 				const nowArr = typeof tsBalancesKeys === 'object' && tsBalancesKeys;
 
 				return [
@@ -155,8 +155,8 @@ const actions = utils.common.addPropery([
 			startRequired: false,
 			// errorNoCauseForTied: false,
 		},
-		preFnData: (data, tsAction) => {
-			const { profile } = data.store;
+		preFnData: (data, tsAction, store) => {
+			const { profile } = store;
 			const { balancesKeys, keys, dashboard } = profile;
 			
 			const { nextKeyId, isLast, } = utils.profile.getNextKeyIdForGetBalances(keys, balancesKeys);

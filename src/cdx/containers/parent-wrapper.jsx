@@ -1,7 +1,6 @@
 import React from 'react';
 import ducks from '@cdx/ducks/';
 import utils from '@cdx/utils/';
-import configs from '@cdx/configs/';
 
 export default class ParentWrapperPages extends React.Component {
   constructor({
@@ -17,7 +16,7 @@ export default class ParentWrapperPages extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentWillMount() {    
     this.actionsBuild();
 
     if (utils.common.isPagePrivate(this.args.namePage)) 
@@ -56,6 +55,6 @@ export default class ParentWrapperPages extends React.Component {
   }
 
   requiredLoadPageBinding = (actions) => {
-    this.actions = utils.common.submitActions(this.props.dispatch, actions);
+    this.actions = utils.common.submitActions(this.props.dispatch, actions, false, this.props.state);
   }
 };

@@ -52,9 +52,7 @@ const setResponsed = async (dispatch, action, response, status, getState) => {
 		}
 
 		if (action.tags.errorNoCauseForTied && action.tags.tiedActions) {
-			utils.common.submitActions(dispatch, action.tags.tiedActions(), true, {
-				store: getState(),
-			});
+			utils.common.submitActions(dispatch, action.tags.tiedActions(), true, getState());
 		}
 
 		return action.data.errorStatusValue || configs.common.TYPES_RESULT.ERROR;
@@ -63,20 +61,24 @@ const setResponsed = async (dispatch, action, response, status, getState) => {
 	await dispatch({
 		...action,
 		type: 'FORCE_SET',
-		value: ((action.data || {}).processingResFn || utils.common.defaultProcessingResFn)({}, response.data, action, {
-			store: getState(),
-		}),
+		value: ((action.data || {}).processingResFn || utils.common.defaultProcessingResFn)(
+			{}, 
+			response.data, 
+			action, 
+			getState()
+		),
 		keyState: action.keyState,
 	});
 
 	if (action.tags.tiedActions)
-		utils.common.submitActions(dispatch, action.tags.tiedActions(), true, {
-			store: getState(),
-		});
+		utils.common.submitActions(dispatch, action.tags.tiedActions(), true, getState());
 
-	return ((action.data || {}).processingResFn || utils.common.defaultProcessingResFn)({}, response.data, action, {
-			store: getState(),
-		});
+	return ((action.data || {}).processingResFn || utils.common.defaultProcessingResFn)(
+		{}, 
+		response.data, 
+		action, 
+		getState()
+	);
 };
 
 export default  ({ dispatch, getState }) => next => action => {	
