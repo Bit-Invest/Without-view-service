@@ -67,9 +67,19 @@ export default class MyProductComponent extends React.Component {
       const nameFollower = followerKeyId && (followings.find(curFollowing => 
         curFollowing.follower === followerKeyId) || {nameFollower: 'error name'}).nameFollower;
 
-      res.allLeaderOrders.push(...(mergedPropsOrders(leaderOrders, [
-        ['name', nameLeader],
-      ])));
+      leaderOrders.forEach(curLeaderOrder => {
+        const excess = res.allLeaderOrders.find(curAllLeaderOrders => curAllLeaderOrders.orderId === curLeaderOrder.orderId);
+
+        if (!excess) {
+          res.allLeaderOrders.push(...(mergedPropsOrders([curLeaderOrder], [
+            ['name', nameLeader],
+          ])));
+        }
+      });
+
+      // res.allLeaderOrders.push(...(mergedPropsOrders(leaderOrders, [
+      //   ['name', nameLeader],
+      // ])));
 
       res.allFollowersOrders.push(...(mergedPropsOrders(followerOrders, [
         ['name', nameFollower],

@@ -19,7 +19,7 @@ class ActiveInvestor extends React.Component {
     const tsFollowingBalances = (tsBalances || [])
       .find(curBalances => curBalances.followingId === _id);
 
-    if (!Object.keys(tsFollowingBalances).length) return(
+    if (!tsFollowingBalances || !Object.keys(tsFollowingBalances).length) return(
       <div>
         <div onClick={reload}>Reload</div>
         <div>Error, trim balances.</div>

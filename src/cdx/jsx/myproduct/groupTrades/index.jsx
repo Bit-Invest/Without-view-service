@@ -52,6 +52,10 @@ export default class GroupTrades extends React.Component {
       </div>
     );
 
+    console.log({
+      arrAllOrders,
+    });
+
     const jsxListOrders = [];
 
     arrAllOrders.allLeaderOrders

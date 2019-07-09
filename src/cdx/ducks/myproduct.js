@@ -224,22 +224,32 @@ const actions = utils.common.addPropery([
 		type: 'REQUEST',
 		propertyFn: 'getBalanceByFollowing',
 		keyState: 'balancesFollowings',
+		prestateValue: 'disable',
 		data: {
 			api: 'baseCindx',
 			url: '/user/following/balance',
 			method: 'GET',
 			body: [],
 			processingResFn: (cbParams, res, tsAction, store, status) => {
+				const { followingId } = tsAction.data;
 				const tsBalancesFollowings = store.myproduct.balancesFollowings;
-				const nowArr = typeof tsBalancesFollowings === 'object' && tsBalancesFollowings;
+				let resArr = typeof tsBalancesFollowings === 'object' && tsBalancesFollowings;
+				const tsBalancesIndex = resArr && resArr.findIndex(curBalanaces =>
+					followingId === curBalanaces.followingId
+				);
+				const tsDataSet = {
+					followingId,
+					...res,
+				};
 
-				return [
-					...(nowArr || []),
-					{
-						followingId: tsAction.data.followingId,
-						...res,
-					},
-				];
+				if (resArr) {
+					if (tsBalancesIndex !== -1) resArr[tsBalancesIndex] = tsDataSet;
+					else resArr.push(tsDataSet);
+				} else {
+					resArr = [tsDataSet];
+				}
+
+				return resArr;
 			},
 		},
 		tags: {
@@ -264,16 +274,25 @@ const actions = utils.common.addPropery([
 			method: 'GET',
 			body: [],
 			processingResFn: (cbParams, res, tsAction, store, status) => {
+				const { followingId } = tsAction.data;
 				const tsOrdersFollowings = store.myproduct.ordersFollowings;
-				const nowArr = typeof tsOrdersFollowings === 'object' && tsOrdersFollowings;
+				let resArr = typeof tsOrdersFollowings === 'object' && tsOrdersFollowings;
+				const tsOrdersIndex = resArr && resArr.findIndex(curBalanaces =>
+					followingId === curBalanaces.followingId
+				);
+				const tsDataSet = {
+					followingId,
+					...res,
+				};
 
-				return [
-					...(nowArr || []),
-					{
-						...res,
-						followingId: tsAction.data.followingId,
-					},
-				];
+				if (resArr) {
+					if (tsOrdersIndex !== -1) resArr[tsOrdersIndex] = tsDataSet;
+					else resArr.push(tsDataSet);
+				} else {
+					resArr = [tsDataSet];
+				}
+
+				return resArr;
 			},
 		},
 		tags: {
