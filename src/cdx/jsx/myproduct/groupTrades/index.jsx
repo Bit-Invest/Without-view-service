@@ -1,4 +1,6 @@
 import React from 'react';
+import mixins from '@cdx/mixins/';
+import utils from '@cdx/utils/';
 
 import DrowDown from '@cdx/jsx/common/drowdown/';
 
@@ -11,10 +13,149 @@ export default class GroupTrades extends React.Component {
     this.state = {
       quantityLeaderOrdersShow: 2,
     };
+    this.timers = [];
   }
 
-  renderTrades = () => {
-    const { arrAllOrders } = this.props;
+  componentWillMount() {
+    const { 
+      reduxState: {
+        myFollowers,
+      }, 
+      paramsProduct,
+      actions, 
+    } = this.props;
+
+    const { approvedFollowings }  = utils.myproduct
+      .getRequisitionsProduct({
+        productId: paramsProduct.productId,
+        myFollowers,
+      });
+
+    approvedFollowings.forEach(curInvestor => {
+      actions.getOrdersByFollowing({
+        followingId: curInvestor._id,
+      })
+
+      this.timers.push(
+        setInterval(() =>
+          actions.getOrdersByFollowing({
+            followingId: curInvestor._id,
+          })
+        , 5000)
+      );
+    });
+  }
+
+  componentWillUnmount() {
+    this.timers.forEach(curTimer =>
+      clearInterval(curTimer)
+    );
+
+    this.timers = [];
+  }
+
+  renderGroupOrdersList = () => {
+    const { 
+      reduxState: {
+        ordersFollowings,
+        myFollowers,
+        keys,
+      }, 
+      paramsProduct, 
+    } = this.props;
+
+    const noLoadedFollowers = mixins.common.dataNoLoaded([keys, myFollowers, ordersFollowings]);
+
+    if (noLoadedFollowers[1]) return noLoadedFollowers[1];
+
+    const { approvedFollowings }  = utils.myproduct
+      .getRequisitionsProduct({
+        productId: paramsProduct.productId,
+        myFollowers,
+      });
+
+    const followings = utils.myproduct
+      .getFollowingsNamedMyKeys(keys, approvedFollowings);
+
+    const mergedPropsOrders = (orders, props) => 
+      orders.map(curOrder => ({
+        ...curOrder,
+        ...(props.reduce((res, curProp) => {
+          res[curProp[0]] = curProp[1];
+
+          return res;
+        }, {}))
+      }));
+
+    const tsOrdersFollowings = ordersFollowings.filter(curOrdersFollowings => 
+      !!followings.find(curFollowing => 
+        curOrdersFollowings.followingId === curFollowing._id
+      ) 
+    );
+
+    const arrAllOrders = tsOrdersFollowings.reduce((res, curFollowing, index, arr) => {
+      const leaderOrders = curFollowing.leaderOrders;
+      const followerOrders = curFollowing.followerOrders;
+      const followingLogs = curFollowing.followingLogs;
+
+      const leaderKeyId = leaderOrders.length && leaderOrders[0].keyId;
+      const nameLeader = leaderKeyId && (keys.find(curKeys => curKeys.keyId === leaderKeyId) || {name: 'error name'}).name;
+
+      const followerKeyId = followerOrders.length && followerOrders[0].keyId;
+      const nameFollower = followerKeyId && (followings.find(curFollowing => 
+        curFollowing.follower === followerKeyId) || {nameFollower: 'error name'}).nameFollower;
+
+      leaderOrders.forEach(curLeaderOrder => {
+        const excess = res.allLeaderOrders.find(curAllLeaderOrders => curAllLeaderOrders.orderId === curLeaderOrder.orderId);
+
+        if (!excess) {
+          res.allLeaderOrders.push(...(mergedPropsOrders([curLeaderOrder], [
+            ['name', nameLeader],
+          ])));
+        }
+      });
+
+      res.allFollowersOrders.push(...(mergedPropsOrders(followerOrders, [
+        ['name', nameFollower],
+      ])));
+
+      res.allFollowingsLog.push(...followingLogs);
+
+      return res;
+    }, {
+      allLeaderOrders: [],
+      allFollowersOrders: [],
+      allFollowingsLog: [],
+    });
+
+    const sortFromCreatedAt = (order1, order2) => (
+      new Date(order2.createdAt).getTime() - new Date(order1.createdAt).getTime()
+    );
+
+    arrAllOrders.allLeaderOrders.sort(sortFromCreatedAt);
+    arrAllOrders.allFollowersOrders.sort(sortFromCreatedAt);
+
+    if (!arrAllOrders.allLeaderOrders.length) 
+      return(
+        <div className="logTrades">
+          While empty.
+        </div>
+      );
+
+    return this.renderTrades({
+      arrAllOrders,
+    }); 
+
+    // <GroupTrades 
+      // arrAllOrders={arrAllOrders}
+      // tsOrdersFollowings={tsOrdersFollowings}
+      // methods={{
+        // getOrdersByFollowing: actions.getOrdersByFollowing,
+      // }}
+    // />
+  }
+
+  renderTrades = ({arrAllOrders}) => {
     const { quantityLeaderOrdersShow } = this.state;
 
     const renderTradeLeader = (trade, atopClass) => (
@@ -51,11 +192,7 @@ export default class GroupTrades extends React.Component {
         />
       </div>
     );
-
-    console.log({
-      arrAllOrders,
-    });
-
+    
     const jsxListOrders = [];
 
     arrAllOrders.allLeaderOrders
@@ -107,7 +244,7 @@ export default class GroupTrades extends React.Component {
   render() {
     return(
       <div className="logTrades">
-        {this.renderTrades()}
+        {this.renderGroupOrdersList()}
         <div className="moreTrades" onClick={this.showMoreTrade}>Show more trades</div>
       </div>
     ); 

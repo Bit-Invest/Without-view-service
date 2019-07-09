@@ -16,103 +16,6 @@ import './style.scss';
 const Consumer = Contexts.MyProductContext.Consumer;
 
 export default class MyProductComponent extends React.Component {
-  renderGroupOrdersList = ({actions}) => {
-    const { 
-      reduxState: {
-        ordersFollowings,
-        myFollowers,
-        keys,
-      }, 
-      paramsProduct, 
-    } = this.props;
-
-    const noLoadedFollowers = mixins.common.dataNoLoaded([keys, myFollowers, ordersFollowings]);
-
-    if (noLoadedFollowers[1]) return noLoadedFollowers[1];
-
-    const { approvedFollowings }  = utils.myproduct
-      .getRequisitionsProduct({
-        productId: paramsProduct.productId,
-        myFollowers,
-      });
-
-    const followings = utils.myproduct
-      .getFollowingsNamedMyKeys(keys, approvedFollowings);
-
-    const mergedPropsOrders = (orders, props) => 
-      orders.map(curOrder => ({
-        ...curOrder,
-        ...(props.reduce((res, curProp) => {
-          res[curProp[0]] = curProp[1];
-
-          return res;
-        }, {}))
-      }));
-
-    const tsOrdersFollowings = ordersFollowings.filter(curOrdersFollowings => 
-      !!followings.find(curFollowing => 
-        curOrdersFollowings.followingId === curFollowing._id
-      ) 
-    );
-
-    const arrAllOrders = tsOrdersFollowings.reduce((res, curFollowing, index, arr) => {
-      const leaderOrders = curFollowing.leaderOrders;
-      const followerOrders = curFollowing.followerOrders;
-      const followingLogs = curFollowing.followingLogs;
-
-      const leaderKeyId = leaderOrders.length && leaderOrders[0].keyId;
-      const nameLeader = leaderKeyId && (keys.find(curKeys => curKeys.keyId === leaderKeyId) || {name: 'error name'}).name;
-
-      const followerKeyId = followerOrders.length && followerOrders[0].keyId;
-      const nameFollower = followerKeyId && (followings.find(curFollowing => 
-        curFollowing.follower === followerKeyId) || {nameFollower: 'error name'}).nameFollower;
-
-      leaderOrders.forEach(curLeaderOrder => {
-        const excess = res.allLeaderOrders.find(curAllLeaderOrders => curAllLeaderOrders.orderId === curLeaderOrder.orderId);
-
-        if (!excess) {
-          res.allLeaderOrders.push(...(mergedPropsOrders([curLeaderOrder], [
-            ['name', nameLeader],
-          ])));
-        }
-      });
-
-      // res.allLeaderOrders.push(...(mergedPropsOrders(leaderOrders, [
-      //   ['name', nameLeader],
-      // ])));
-
-      res.allFollowersOrders.push(...(mergedPropsOrders(followerOrders, [
-        ['name', nameFollower],
-      ])));
-
-      res.allFollowingsLog.push(...followingLogs);
-
-      return res;
-    }, {
-      allLeaderOrders: [],
-      allFollowersOrders: [],
-      allFollowingsLog: [],
-    });
-
-    const sortFromCreatedAt = (order1, order2) => (
-      new Date(order2.createdAt).getTime() - new Date(order1.createdAt).getTime()
-    );
-
-    arrAllOrders.allLeaderOrders.sort(sortFromCreatedAt);
-    arrAllOrders.allFollowersOrders.sort(sortFromCreatedAt);
-
-    if (!arrAllOrders.allLeaderOrders.length) 
-      return(
-        <div className="logTrades">
-          While empty.
-        </div>
-      );
-
-    return <GroupTrades 
-      arrAllOrders={arrAllOrders}
-    />
-  }
-
   renderListRequisitions = ({actions}) => {
     const { reduxState: {
       myFollowers,
@@ -214,6 +117,25 @@ export default class MyProductComponent extends React.Component {
     return <FullProduct reduxState={reduxState} />;
   }
 
+  startRenderGroupTrades = (props, actions) => {
+    const {
+      myFollowers,
+      keys,
+      infoMarketProduct,
+    } = this.props.reduxState;
+
+    const noLoadedBlocksForTrades = mixins.common.dataNoLoaded([keys, myFollowers, infoMarketProduct]);
+
+    if (noLoadedBlocksForTrades[1]) return noLoadedBlocksForTrades[1];
+
+    return(
+      <GroupTrades 
+        {...props} 
+        actions={actions} 
+      />
+    );
+  }
+
   render() {
     const { reduxState } = this.props;
     console.log('#MyProductComponent reduxState', this.props.reduxState);
@@ -226,7 +148,7 @@ export default class MyProductComponent extends React.Component {
               <div className="typeList">
                 <div className="curTitle">Following trades:</div>
                 <div className="content">
-                  {this.renderGroupOrdersList({actions})}
+                  {this.startRenderGroupTrades(this.props, actions)}
                 </div>
               </div>
               <div className="typeList">
