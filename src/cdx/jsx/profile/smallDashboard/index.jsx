@@ -36,7 +36,7 @@ const renderHelloBlock = (skillData, skillUser) => (
       <div className='text'>Error</div>
     </div>
   )
-)
+);
 
 class RenderDashboard extends React.Component {
   constructor() {
@@ -44,7 +44,8 @@ class RenderDashboard extends React.Component {
 
     this.state = {
       selectedAccount: 'ALL',
-      selectedCourDay: 3,
+      selectedCourDay: 100000,
+      selectedType: 'PERCENT',
     };
   }
 
@@ -72,6 +73,13 @@ class RenderDashboard extends React.Component {
             </select>
           </div>
           <div className="item">
+            <div className="curTitle">Select type:</div>
+            <select onChange={(event)=>this.setState({selectedType:event.target.value})}>
+              <option value="PERCENT" selected={this.state.selectedType === "PERCENT"}>PERCENT INCOME</option>
+              <option value="ABSOLUTE" selected={this.state.selectedType === "ABSOLUTE"}>ABSOLUTE INCOME</option>
+            </select>
+          </div>
+          <div className="item">
             <div className="curTitle">Select time showing:</div>
             <select onChange={(event)=>this.setState({selectedCourDay:event.target.value})}>
               {[{
@@ -86,6 +94,9 @@ class RenderDashboard extends React.Component {
               },{
                 cour: 365,
                 name: 'Year'
+              },{
+                cour: 100000,
+                name: 'ALL'
               }].map((curTime, index) => 
                 <option 
                   key={index} 
@@ -121,8 +132,16 @@ class RenderDashboard extends React.Component {
         },
       },
     } = this.props;
+    const methodFromType = { 'PERCENT': 'baseIncome', 'ABSOLUTE': 'baseBalance' };
     const { selectedAccount, selectedCourDay } = this.state;
-    const { incomes: incomesArr } = utils.profile.getSelectedIncomes(keys, incomeKeys, selectedAccount, selectedCourDay, baseAsset);
+    const { incomes: incomesArr } = utils.profile.getSelectedIncomes(
+      keys, 
+      incomeKeys,
+      selectedAccount,
+      selectedCourDay,
+      baseAsset,
+      methodFromType[this.state.selectedType]
+    );
 
     return(
       <div className="incomeParent">
@@ -153,7 +172,7 @@ class RenderDashboard extends React.Component {
       </div>
     );
   }
-}
+};
 
 
 const ContentBoxRender = (props) => {
@@ -168,7 +187,7 @@ const ContentBoxRender = (props) => {
   if (skillUser > 1) return <RenderDashboard {...props} />;
   
   return renderHelloBlock(skillData, skillUser);
-}
+};
 
 const SmallDashboard = (props) => (
   <Consumer>
@@ -180,6 +199,6 @@ const SmallDashboard = (props) => (
       </div>
     )}
   </Consumer>
-)
+);
 
-export default SmallDashboard
+export default SmallDashboard;

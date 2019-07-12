@@ -161,12 +161,18 @@ export const getIncomeForSmallProduct = (incomeArr) => {
   return resIncome;
 };
 
-export const getIncomeForKeys = (incomeArr, courDaySliced) => {
-  const curIncome = ((typeof incomeArr === 'object' && incomeArr.baseIncome) || [])
-    .filter(curIncome => curIncome.value !== 1)
+export const getIncomeForKeys = (incomeArr, courDaySliced, typePoint = 'baseIncome') => {
+  const curIncome = ((typeof incomeArr === 'object' && incomeArr[typePoint]) || [])
+    .filter(curIncome => ({
+      'baseIncome': curIncome.value !== 1,
+      'baseBalance': curIncome.value !== 0,
+    })[typePoint])
     .map(curIncome => ({
       ...curIncome, 
-      value: (curIncome.value * 100) - 100,
+      value: ({
+        'baseIncome': (curIncome.value * 100) - 100,
+        'baseBalance': curIncome.value,
+      })[typePoint],
     }));
   const lengthCurIncome = curIncome && curIncome.length;
 
@@ -183,7 +189,7 @@ export const getNameKeys = (keys, keyId) => (
  (keys.find(curKeys => curKeys.keyId === keyId) || {name: undefined}).name
 );
 
-export const getSelectedIncomes = (keys, incomeArr, selectedAccount, selectedCourDaySliced, baseAsset) => {
+export const getSelectedIncomes = (keys, incomeArr, selectedAccount, selectedCourDaySliced, baseAsset, typePoint) => {
   const selectedKeys = selectedAccount === 'ALL' ? keys : [keys.find(curKeys =>
     curKeys.keyId === selectedAccount
   )];
@@ -193,7 +199,7 @@ export const getSelectedIncomes = (keys, incomeArr, selectedAccount, selectedCou
       curIncome.keyId === curSelectedKey.keyId &&
       curIncome.baseAsset === baseAsset
     );
-    const processedIncome = tsIncome && getIncomeForKeys(tsIncome.income, selectedCourDaySliced);
+    const processedIncome = tsIncome && getIncomeForKeys(tsIncome.income, selectedCourDaySliced, typePoint);
 
     return {
       ...curSelectedKey,

@@ -11,7 +11,7 @@ const initialState = {
 
 export const settingsShow = {
 	courDayIntervalProfit: 7, //smallKeys
-  courDayIntervalSmallProduct: 30, //smallProduct
+  courDayIntervalSmallProduct: 3000, //smallProduct
 };
 
 export default ({
