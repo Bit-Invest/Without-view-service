@@ -1,18 +1,12 @@
 import React from 'react';
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
+import ReactHighstock from 'react-highcharts/ReactHighstock.src';
 
 const options = {
   chart: {
     type: 'area',
-    backgroundColor: 'rgba(0,0,0,0)',
   },
   title: {
     text: '',
-  },
-  xAxis: {
-    type: 'datetime',
-    allowDecimals: false,
   },
   yAxis: {
     title: {
@@ -55,12 +49,29 @@ export default (props) => {
   const renderedSeries = income.map(curIncome => ({
     name: curIncome.name,
     data: (curIncome.income || []).map(cur => [new Date(cur.timestamp).getTime(), parseFloat((cur.value).toFixed(2))]),
+    type: 'area',
+    gapSize: 5,
+    tooltip: {
+      valueDecimals: 2
+    },
+    fillColor: {
+      linearGradient: {
+        x1: 0,
+        y1: 0,
+        x2: 0,
+        y2: 1,
+      },
+      stops: [
+        [0, '#FF74F5'],
+        [1, '#A03AFF'],
+      ],
+    },
+    threshold: null,
   }));
 
   return(
-    <HighchartsReact
-      highcharts={Highcharts}
-      options={{
+    <ReactHighstock
+      config={{
         ...options,
         series: renderedSeries,
       }}

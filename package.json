@@ -57,6 +57,7 @@
     "react-app-polyfill": "^0.2.2",
     "react-dev-utils": "^8.0.0",
     "react-dom": "16.8.6",
+    "react-highcharts": "^16.0.2",
     "react-redux": "5.1.1",
     "react-router": "4.4.0-beta.8",
     "react-router-dom": "4.4.0-beta.8",
