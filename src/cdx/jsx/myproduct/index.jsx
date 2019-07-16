@@ -97,6 +97,7 @@ export default class MyProductComponent extends React.Component {
           getBalanceByFollowing: actions.getBalanceByFollowing,
           getOrdersByFollowing: actions.getOrdersByFollowing,
           setFollowingMode: actions.setFollowingMode,
+          getFollowings: actions.getFollowings,
         }}
       />
     );

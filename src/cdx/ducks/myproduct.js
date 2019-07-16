@@ -8,6 +8,8 @@ const actions = utils.common.addPropery([
 		type: 'REQUEST',
 		propertyFn: 'getFollowers',
 		keyState: 'myFollowers',
+		prestateValue: 'disable',
+		errorStatusValue: 'disable',
 		data: {
 			api: 'baseCindx',
 			url: '/user/followers',

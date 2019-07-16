@@ -13,18 +13,54 @@ class ActiveInvestor extends React.Component {
     this.state = {
       isShowBalances: false,
     };
+    this.timers = [];
   }
 
   componentWillMount() {
     const {
       reduxState: {
         _id,
+        frozen,
+        mode,
       },
     } = this.props;
 
     this.props.methods.getBalanceByFollowing({
       followingId: _id,
     });
+
+    this.timers.push(
+      setInterval(() => {
+        this.props.methods.getBalanceByFollowing({
+          followingId: _id,
+        })
+        this.props.methods.getFollowings({
+          followingId: _id,
+        })
+      }
+      , 5000)
+    );
+  }
+
+  componentWillUnmount() {
+    this.timers.forEach(curTimer =>
+      clearInterval(curTimer)
+    );
+
+    this.timers = [];
+  }
+
+  onChangeStatus = async (event) => {
+    const { _id, } = this.props.reduxState;  
+    const { setFreeze, setUnFreeze, setFollowingMode, } = this.props.methods;
+    const selectedValue = event.target.value;
+
+    if (selectedValue === 'frozen') {
+      return await setFreeze({ followingId: _id, });
+    }
+
+    await setUnFreeze({ followingId: _id, });
+    await setFollowingMode({ followingId: _id, mode: selectedValue, });
   }
 
   getTotalValue = (total) => (
@@ -125,11 +161,6 @@ class ActiveInvestor extends React.Component {
     );
   }
 
-  onChangeStatus = (event) => {
-    const selectedValue = event.target.value;
-    console.log({selectedValue});
-  }
-
   render() {
     const {
       reduxState: {
@@ -175,7 +206,8 @@ class ActiveInvestor extends React.Component {
           <div className="centerValue">
             <div className="item name">{nameFollower}</div>
             <div className="item status">
-              <select onChange={this.onChangeStatus}>
+              <select onChange={this.onChangeStatus} value={activeStatus}>
+                <option value="none" selected={activeStatus === 'none'}>...</option>
                 <option value="copy" selected={activeStatus === 'copy'}>SYNC</option>
                 <option value="rebalance" selected={activeStatus === 'rebalance'}>REBALANCE</option>
                 <option value="frozen" selected={activeStatus === 'frozen'}>FROZEN</option>

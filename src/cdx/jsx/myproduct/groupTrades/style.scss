@@ -47,7 +47,11 @@
 				}
 				&.time {width: 10%;}
 				&.emptySpace {width: 10%;}
-				&.relativitySuccess {width: 18%;}
+				&.relativitySuccess {
+					width: 18%;
+					&.success-true {color: #8dc63f;}
+					&.success-false {color: #f26d7d;}
+				}
 				&.clickMore {
 					width: 10%;
 					display: flex;
@@ -71,9 +75,6 @@
 
 				&.noHasLogTrades {
 					.clickMore > .curClick {
-						display: none;
-					}
-					.relativitySuccess > .curValue {
 						display: none;
 					}
 				}
