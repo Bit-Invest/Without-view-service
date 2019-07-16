@@ -17,7 +17,10 @@
 			flex: 0.5;
 			min-width: 500px;
 			flex-direction: column;
-			@include width-auto;
+
+			@media screen and (max-width: 1000px) {
+				padding: 0;
+			}
 
 			.typeList {
 				margin: 0 0 20px 0;
@@ -25,23 +28,57 @@
 				padding: 45px 25px;
 
 				&.followingTrades {
+					@media screen and (max-width: 1000px) {
+						padding: 45px 10px;
+					}
 
+					> .curHead {
+						border-bottom: 2px solid rgba(158, 108, 193, 0.5);
+						padding-bottom: 30px; 
+
+						> .curTitle {
+							font-size: 14px;
+						  font-weight: normal;
+						  font-style: normal;
+						  font-stretch: normal;
+						  line-height: normal;
+						  letter-spacing: 0.7px;
+						  text-align: left;
+						  color: #ffffff;
+						  text-transform: uppercase;
+						}
+					}
+
+					.content {
+						overflow: auto;
+
+						.logTrades {
+							min-width: 800px;
+
+							.moreTrades {
+								@media screen and (max-width: 1000px) {
+									align-self: flex-start;
+								}
+							}
+						}
+					}
 				}
 
-				> .curHead {
-					border-bottom: 2px solid rgba(158, 108, 193, 0.5);
-					padding-bottom: 30px; 
+				&.investorList {
+					> .curHead {
+						padding-bottom: 30px; 
 
-					> .curTitle {
-						font-size: 14px;
-					  font-weight: normal;
-					  font-style: normal;
-					  font-stretch: normal;
-					  line-height: normal;
-					  letter-spacing: 0.7px;
-					  text-align: left;
-					  color: #ffffff;
-					  text-transform: uppercase;
+						> .curTitle {
+							font-size: 14px;
+						  font-weight: normal;
+						  font-style: normal;
+						  font-stretch: normal;
+						  line-height: normal;
+						  letter-spacing: 0.7px;
+						  text-align: left;
+						  color: #ffffff;
+						  text-transform: uppercase;
+						}
 					}
 				}
 
@@ -86,7 +123,6 @@
 			display: flex;
 			flex: 0.5;
 			overflow: auto;
-			@include width-auto;
 
 			.followForm {
 				width: 100%;

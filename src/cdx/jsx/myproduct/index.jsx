@@ -147,15 +147,18 @@ export default class MyProductComponent extends React.Component {
             <BlackoutBlock atopClass="requisitions">
               <div className="typeList followingTrades">
                 <div className="curHead">
-                  <div className="curTitle">Following trades:</div>
+                  <div className="curTitle">Following trades</div>
                   <div className="rightPanel"></div>
                 </div>
                 <div className="content">
                   {this.startRenderGroupTrades(this.props, actions)}
                 </div>
               </div>
-              <div className="typeList">
-                <div className="curTitle">Your investors</div>
+              <div className="typeList investorList">
+                <div className="curHead">
+                  <div className="curTitle">Your investors</div>
+                  <div className="rightPanel"></div>
+                </div>
                 <div className="content">
                   {this.renderListInvestors({actions})}
                 </div>

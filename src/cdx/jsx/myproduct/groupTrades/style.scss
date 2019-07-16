@@ -15,10 +15,11 @@
 				text-align: center;
 				font-size: 13px;
 				color: white;
+				word-wrap: break-word;
 
-				&.name {flex:0.1;}
+				&.name {width: 18%;}
 				&.line {
-					flex:0.3;
+					width: 30%;
 					display: flex;
 					align-items: center;
 
@@ -29,17 +30,26 @@
 					}
 				}
 
-				&.pair {flex:0.1;}
-				&.type {flex:0.1;}
-				&.side {flex:0.1;}
-				&.price {flex:0.1;}
-				&.quantity {flex:0.1;}
-				&.status {flex:0.1;}
-				&.time {flex:0.1;}
-				&.emptySpace {flex:0.1;}
-				&.relativitySuccess {flex:0.1;}
+				&.pair {width: 10%;}
+				&.type {width: 10%;}
+				&.side {
+					width: 10%;
+					&.SELL {color: #f26d7d;}
+					&.BUY {color: #8dc63f;}
+				}
+				&.price {width: 10%;}
+				&.quantity {width: 10%;}
+				&.status {
+					width: 10%;
+					&.CANCELED {color: #f26d7d;}
+					&.TRADE {color: #8dc63f;}
+					&.NEW {color: #b0a5ff;}
+				}
+				&.time {width: 10%;}
+				&.emptySpace {width: 10%;}
+				&.relativitySuccess {width: 18%;}
 				&.clickMore {
-					flex:0.1;
+					width: 10%;
 					display: flex;
 					justify-content: center;
 					align-items: center;
@@ -47,7 +57,7 @@
 					> .curClick {
 						width: 18px;
 						height: 12px;
-						background-image: url(~@assets/images/tradeMore.png);
+						background-image: url(~@assets/images/tradeBackMore.png);
 						background-repeat: no-repeat;
 						background-size: cover;
 						background-position: center;
@@ -58,6 +68,15 @@
 
 			&.leaderTrade {
 				background-color: rgba(229, 236, 239, 0.05);
+
+				&.noHasLogTrades {
+					.clickMore > .curClick {
+						display: none;
+					}
+					.relativitySuccess > .curValue {
+						display: none;
+					}
+				}
 			}
 
 			&.followerTrade {
@@ -88,9 +107,25 @@
 				flex-direction: column;
 				margin-top: 10px;
 
+				.tsFollowersTrades {
+					height: 0;
+					overflow: hidden;
+				}
+
 				&.opened {
 					box-shadow: 0px 6px 49px 0 rgba(0, 0, 0, 0.64);
   				background-image: linear-gradient(to top, #5a3e81, #352659);	
+
+  				.tsFollowersTrades {
+  					height: auto;
+  					overflow: visible;
+  				}
+
+  				.leaderTrade {
+  					.clickMore > .curClick {
+							background-image: url(~@assets/images/tradeMore.png);
+						}
+  				}
 				}
 			}
 		}
@@ -98,11 +133,21 @@
 
 	.moreTrades {
 		display: flex;
-		align-self: flex-start;
+		align-self: center;
 		background: rgba(0,0,0,.2);
-		padding: 5px 20px;
+		padding: 8px 30px;
 		border-radius: 100px;
-		margin: 10px 0;
+		margin: 20px 0 0;
+		font-size: 12px;
 		cursor: pointer;
+		text-transform: uppercase;
+		background-image: linear-gradient(to top, #7b489e, #ff69b0);
+
+		&:hover {
+			opacity: .7;
+		}
 	}
 }
+
+
+
