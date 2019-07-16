@@ -145,8 +145,11 @@ export default class MyProductComponent extends React.Component {
         {({ actions }) => (
           <InternalPage {...this.props} {...({actions})} atopClass="myproduct">
             <BlackoutBlock atopClass="requisitions">
-              <div className="typeList">
-                <div className="curTitle">Following trades:</div>
+              <div className="typeList followingTrades">
+                <div className="curHead">
+                  <div className="curTitle">Following trades:</div>
+                  <div className="rightPanel"></div>
+                </div>
                 <div className="content">
                   {this.startRenderGroupTrades(this.props, actions)}
                 </div>

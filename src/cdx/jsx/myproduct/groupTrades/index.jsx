@@ -37,11 +37,11 @@ export default class GroupTrades extends React.Component {
       })
 
       this.timers.push(
-        setInterval(() =>
-          actions.getOrdersByFollowing({
-            followingId: curInvestor._id,
-          })
-        , 5000)
+        // setInterval(() =>
+        //   actions.getOrdersByFollowing({
+        //     followingId: curInvestor._id,
+        //   })
+        // , 5000)
       );
     });
   }
@@ -230,7 +230,82 @@ export default class GroupTrades extends React.Component {
         return index < quantityLeaderOrdersShow;
       });
 
-    return jsxListOrders;
+    console.log({
+      arrAllOrders,
+    });
+
+    return(
+      <div className="tradeItemsParent">
+        <div className="item headTable">
+          <div className="boxOfTrade emptySpace" style={{flex:0.3}}></div>
+          <div className="boxOfTrade pair">Pair</div>
+          <div className="boxOfTrade type">Type</div>
+          <div className="boxOfTrade side">Side</div>
+          <div className="boxOfTrade price">Price</div>
+          <div className="boxOfTrade quantity">Quantity</div>
+          <div className="boxOfTrade status">Status</div>
+          <div className="boxOfTrade time">Time</div>
+        </div>
+        <div className="boxOfDay">
+          <div className="titleDay">2019/07/08</div>
+          <div className="curTradeParent opened">
+            <div className="item leaderTrade">
+              <div className="boxOfTrade clickMore">
+                <div className="curClick"></div>
+              </div>
+              <div className="boxOfTrade emptySpace" style={{flex:.1}}></div>
+              <div className="boxOfTrade relativitySuccess">2/2</div>
+              <div className="boxOfTrade pair">BNBBTC</div>
+              <div className="boxOfTrade type">LIMIT</div>
+              <div className="boxOfTrade side">SELL</div>
+              <div className="boxOfTrade price">0.028</div>
+              <div className="boxOfTrade quantity">5342.1223452345</div>
+              <div className="boxOfTrade status">OPEN</div>
+              <div className="boxOfTrade time">13:30:32</div>
+            </div>
+            <div className="item followerTrade">
+              <div className="boxOfTrade emptySpace" style={{flex:.2}}></div>
+              <div className="boxOfTrade name">EXAMPLE</div>
+              <div className="boxOfTrade line">
+                <div className="tsLine"></div>
+              </div>
+              <div className="boxOfTrade price">0.028</div>
+              <div className="boxOfTrade quantity">5342.1223452345</div>
+              <div className="boxOfTrade status">OPEN</div>
+              <div className="boxOfTrade time">13:30:32</div>
+            </div>
+            <div className="item followerTrade">
+              <div className="boxOfTrade emptySpace" style={{flex:.2}}></div>
+              <div className="boxOfTrade name">EXAMPLE</div>
+              <div className="boxOfTrade line">
+                <div className="tsLine"></div>
+              </div>
+              <div className="boxOfTrade price">0.028</div>
+              <div className="boxOfTrade quantity">5342.1223452345</div>
+              <div className="boxOfTrade status">OPEN</div>
+              <div className="boxOfTrade time">13:30:32</div>
+            </div>
+          </div>
+          <div className="curTradeParent">
+            <div className="item leaderTrade">
+              <div className="boxOfTrade clickMore">
+                <div className="curClick"></div>
+              </div>
+              <div className="boxOfTrade emptySpace" style={{flex:.1}}></div>
+              <div className="boxOfTrade relativitySuccess">2/2</div>
+              <div className="boxOfTrade pair">BNBBTC</div>
+              <div className="boxOfTrade type">LIMIT</div>
+              <div className="boxOfTrade side">SELL</div>
+              <div className="boxOfTrade price">0.028</div>
+              <div className="boxOfTrade quantity">5342.1223452345</div>
+              <div className="boxOfTrade status">OPEN</div>
+              <div className="boxOfTrade time">13:30:32</div>
+            </div>
+          </div>
+        </div>
+        {/*jsxListOrders*/}
+      </div>
+    );
   }
 
   showMoreTrade = () => {

@@ -6,6 +6,7 @@ import configs from '@cdx/configs/';
 import ICON_PROFILE from '@assets/icons/Profile_icon.svg';
 import ICON_MARKETPLACE from '@assets/icons/Billing_icon.svg';
 import ICOM_HEADER_MENU from '@assets/icons/headerMenu.png';
+import ICON_HEADER_LOGO from '@assets/images/headerLogoCindx.png';
 
 import './style.scss';
 
@@ -28,8 +29,8 @@ export default class Header extends React.Component {
     if (userInfoNoLoaded[0] === configs.common.TYPES_RESULT['ERROR']) 
       return (
         <div className="headerSign">
-          <Link className="item" to={`/auth/sign-in`}>Log in</Link>
-          <Link className="item" to={`/auth/sign-up`}>Sign up</Link>
+          <Link className="item signIn" to={`/auth/sign-in`}>Log in</Link>
+          <Link className="item signUp" to={`/auth/sign-up`}>Sign up</Link>
         </div>
       );
 
@@ -52,21 +53,28 @@ export default class Header extends React.Component {
   }
 
   render() {    
+    console.log('hedaer jsx props', this.props);
+
     return(
       <div className="header">
         <div className="container">
-          <div className="mobileMenuIcon">
-            <img className="icon" src={ICOM_HEADER_MENU} alt="menu" />
-          </div>
-          <div className="menu">
-            <Link className="item" to={`/im`}>
-              <img src={ICON_PROFILE} alt="Here profile icon" />
-              <div className="text">Profile</div>
-            </Link>
-            <Link className="item" to={`/marketplace`}>
-              <img src={ICON_MARKETPLACE} alt="Here marketplace icon" />
-              <div className="text">Marketplace</div>
-            </Link>
+          <div className="leftFix">
+            <div className="mobileMenuIcon">
+              <img className="icon" src={ICOM_HEADER_MENU} alt="menu" />
+            </div>
+            <div className="headerLogoIcon">
+              <img className="icon" src={ICON_HEADER_LOGO} alt="menu" />
+            </div>
+            <div className="menu">
+              <Link className="item active" to={`/im`}>
+                <img src={ICON_PROFILE} alt="Here profile icon" />
+                <div className="text">Profile</div>
+              </Link>
+              <Link className="item" to={`/marketplace`}>
+                <img src={ICON_MARKETPLACE} alt="Here marketplace icon" />
+                <div className="text">Marketplace</div>
+              </Link>
+            </div>
           </div>
           {this.renderUserInfo()}
         </div>
