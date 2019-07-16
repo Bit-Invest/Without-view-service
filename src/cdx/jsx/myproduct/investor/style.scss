@@ -1,101 +1,139 @@
 .investorComponent {
-	background-image: linear-gradient(180deg, #343C73 60%, #262C58);
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
+	background-image: linear-gradient(to top, #5a3e81, #352659);
+	font-size: 13px;
 
-	.option {
-		display: flex;
-		background-color: white;
-		padding: 5px 10px;
-		align-self: flex-start;
-		border-radius: 4px;
-		margin: 5px 0;
-		cursor: pointer;
-
-		.property {
-			color: #a79d9d;
-			margin-right: 5px;
-		}
-
-		.value {
-			color: black;
-		}
-	}
-
-	.actions {
+	.mainBlock {
 		display: flex;
 		flex-direction: column;
-
-		div {
-			display: flex;
-			align-self: flex-start;
-			padding: 5px 10px;
-			border-radius: 4px;
-			cursor: pointer;
-			margin: 3px 0;
-			background-color: rgba(0,0,0,.5);
-		}
-	}
-
-	.balancesMyProductFollowing {
-		display: flex;
-		flex-direction: column;
-		background-color: white;
-		color: black;
 		padding: 10px;
 
-		.list {
+		.headProperty {
 			display: flex;
-			flex-direction: column;
-			margin: 5px 0;
+			margin: 15px 0;
 
-			> .curItem {
+			.item {
+				flex: .25;
+				text-align: center;
+			}
+		}
+
+		.centerValue {
+			display: flex;
+			margin: 15px 0;
+
+			.item {
 				display: flex;
-				flex-direction: column;
-				margin: 5px 0;
+				flex: .25;
+				justify-content: center;
+				align-items: center;
 
-				> .curTitle {
-
-				}
-
-				> .curContent {
+				&.synchronization {
 					display: flex;
-					flex-direction: column;
 
-					> .curTitle {
-
-					}
-
-					> .curList {
+					.justValue {margin-right: 5px;}
+					.ranger {
 						display: flex;
-						flex-direction: row;
-						background-color: rgba(0,0,0,.2);
-						padding: 5px;
-						flex-wrap: wrap;
+						height: 10px;
+						flex: 0.6;
+						background-color: white;
+						border-radius: 4px;
+						overflow: hidden;
 
-						> .curItem {
-							display: flex;
-							flex-direction: row;
-							margin-right: 5px;
-							padding: 5px;
-							background-color: rgba(0,0,0,.3);
-							margin: 3px;
-							border-radius: 4px;
+						.filled {
+							height: 100%;
 
-							.coin {
-
-							}
-
-							.value {
-								margin-left: 5px;
-								text-decoration: underline;
-							}
+							&.badly {background-color: #e45257;}
+							&.good {background-color: #8dc63f;}
 						}
 					}
 				}
 			}
 		}
+
+		.clickButtons {
+			display: flex;
+			justify-content: space-between;
+			cursor: pointer;
+			margin: 15px 0;
+
+			.item {
+				display: flex;
+				border-radius: 100px;
+				padding: 10px 20px;
+
+				&.compare {
+					align-self: center;
+					text-transform: uppercase;
+					font-weight: 500;
+					background-image: linear-gradient(to top, #7b489e, #ff69b0);
+				}
+
+				&.unsubscribe {
+					align-self: flex-end;
+					background-color: #b0a5ff;
+					text-decoration: underline;
+					opacity: .3;
+
+					&.none {opacity: 0; pointer-events: none;}
+				}
+			}
+		}
+	}
+
+	.balancesBlock {
+		display: flex;
+		justify-content: space-between;
+
+		.betweenItem {
+			flex: .5;
+			display: flex;
+			flex-direction: column;
+			border-top: 1px solid #e47faf;
+
+			&.leaderMainBlock {
+				border-right: 1px solid #e47faf;
+			}
+
+			.balancesList {
+				display: flex;
+				flex-direction: column;
+				max-height: 300px;
+				overflow: auto;
+
+				.item {
+					display: flex;
+					justify-content: space-between;
+					padding: 15px 15px;
+
+					&.headItem {
+						color: #888e9c;
+					}
+
+					.curItemCoin {
+						flex: .25;
+						text-align: center;
+					}
+				}
+			}
+			.totalBalances {
+				display: flex;
+				justify-content: space-between;
+				border-top: 1px solid #e47faf;
+				padding: 15px;
+
+				> .curPropery {
+					text-transform: uppercase;
+				}
+				> .curValue {
+
+				}
+			}
+		}
 	}
 }
+
+
+
+
+
 

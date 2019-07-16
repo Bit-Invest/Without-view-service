@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import mixins from '@cdx/mixins/';
 import DrowDown from '@cdx/jsx/common/drowdown/';
@@ -6,12 +7,35 @@ import DrowDown from '@cdx/jsx/common/drowdown/';
 import './style.scss';
 
 class ActiveInvestor extends React.Component {
-  renderBalances = ({reload}) => {
+  constructor() {
+    super();
+
+    this.state = {
+      isShowBalances: false,
+    };
+  }
+
+  componentWillMount() {
+    const {
+      reduxState: {
+        _id,
+      },
+    } = this.props;
+
+    this.props.methods.getBalanceByFollowing({
+      followingId: _id,
+    });
+  }
+
+  getTotalValue = (total) => (
+    `${(total.BTC.available + total.BTC.hold).toFixed(5)} BTC | ${(total.USD.available + total.USD.hold).toFixed(2)} USD`
+  )
+
+  renderBalances = () => {
     const { balances, reduxState: { _id } } = this.props;
     const noLoadedBalances = mixins.common.dataNoLoaded([balances]);
 
     if (noLoadedBalances[1]) return [
-      <div onClick={reload}>Reload</div>,
       noLoadedBalances[1],
     ];
 
@@ -21,7 +45,6 @@ class ActiveInvestor extends React.Component {
 
     if (!tsFollowingBalances || !Object.keys(tsFollowingBalances).length) return(
       <div>
-        <div onClick={reload}>Reload</div>
         <div>Error, trim balances.</div>
       </div>
     );
@@ -33,190 +56,149 @@ class ActiveInvestor extends React.Component {
       leaderTotal,
     } = tsFollowingBalances;
 
-    const renderTotalBalances = (dataObj) => {
-      const keysData = (Object.keys(dataObj || {}) || [])
-        .filter(curObjBalance => dataObj[curObjBalance].available > 0 || dataObj[curObjBalance].hold > 0);
+    const jsxListCoins = {
+      leader: [],
+      follower: [],
+    };
 
-      console.log({keysData});
+    ([
+      ...Object.entries(leaderBalance),
+      ...Object.entries(followerBalance),
+    ])
+      .filter(([coin, [available, hold]]) => available > 0 || hold > 0)
+      .forEach(([coin]) => {
+        const [leaderAvailable, leaderHold] = leaderBalance[coin] || [0, 0];
+        const [followerAvailable, followerHold] = followerBalance[coin] || [0, 0];
 
-      const resList = keysData.map((curProperyCoin, index) => {
-        const tsDataBalance = dataObj[curProperyCoin];
+        jsxListCoins.leader.push(
+          <div className="item">
+            <div className="curItemCoin">{coin}</div>
+            <div className="curItemCoin">{leaderAvailable}</div>
+            <div className="curItemCoin">{leaderHold}</div>
+            <div className="curItemCoin">{leaderAvailable + leaderHold}</div>
+          </div>
+        );
 
-        return(
-          <div className="curItem" key={index}>
-            <div className="coin">{curProperyCoin}:</div>
-            <div className="value">
-              {tsDataBalance.available}, {tsDataBalance.hold}
-            </div>
+        jsxListCoins.follower.push(
+          <div className="item">
+            <div className="curItemCoin">{coin}</div>
+            <div className="curItemCoin">{followerAvailable}</div>
+            <div className="curItemCoin">{followerHold}</div>
+            <div className="curItemCoin">{followerAvailable + followerHold}</div>
           </div>
         );
       });
-
-      return resList;
-    }; 
-
-    const renderCoinBalances = (dataObj) => {
-      const keysData = (Object.keys(dataObj || {}) || [])
-        .filter(curObjBalance => dataObj[curObjBalance][0] > 0 || dataObj[curObjBalance][1] > 0);
-
-      const resList = keysData.map((curProperyCoin, index) => {
-        const tsDataBalance = dataObj[curProperyCoin];
-
-        return(
-          <div className="curItem" key={index}>
-            <div className="coin">{curProperyCoin}:</div>
-            <div className="value">
-              {tsDataBalance[0]}, {tsDataBalance[1]}
-            </div>
-          </div>
-        );
-      });
-
-      return resList;
-    }; 
 
     return(
-      <div className="balancesMyProductFollowing">
-        <div onClick={reload}>Reload</div>
-        <div className="list">
-          <div className="curItem">
-            <div className="curTitle">Leader</div>
-            <div className="curContent">
-              <div className="curTitle">Total</div>
-              <div className="curList">
-                {renderTotalBalances(leaderTotal)}
-              </div>
+      <div className="balancesBlock">
+        <div className="betweenItem leaderMainBlock">
+          <div className="balancesList">
+            <div className="item headItem">
+              <div className="curItemCoin">Symbol</div>
+              <div className="curItemCoin">Available</div>
+              <div className="curItemCoin">In Order</div>
+              <div className="curItemCoin">Total</div>
             </div>
-            <div className="curContent">
-              <div className="curTitle">Coins</div>
-              <div className="curList">
-                {renderCoinBalances(leaderBalance)}
-              </div>
-            </div>
+            {jsxListCoins.leader}
           </div>
-          <div className="curItem">
-            <div className="curTitle">Follower</div>
-            <div className="curContent">
-              <div className="curTitle">Total</div>
-              <div className="curList">
-                {renderTotalBalances(followerTotal)}
-              </div>
+          <div className="totalBalances">
+            <div className="curPropery">Leader</div>
+            <div className="curValue">{this.getTotalValue(leaderTotal)}</div>
+          </div>
+        </div>
+        <div className="betweenItem followerMainBlock">
+          <div className="balancesList">
+            <div className="item headItem">
+              <div className="curItemCoin">Symbol</div>
+              <div className="curItemCoin">Available</div>
+              <div className="curItemCoin">In Order</div>
+              <div className="curItemCoin">Total</div>
             </div>
-            <div className="curContent">
-              <div className="curTitle">Coins</div>
-              <div className="curList">
-                {renderCoinBalances(followerBalance)}
-              </div>
-            </div>
+            {jsxListCoins.follower}
+          </div>
+          <div className="totalBalances">
+            <div className="curPropery">Follower</div>
+            <div className="curValue">{this.getTotalValue(followerTotal)}</div>
           </div>
         </div>
       </div>
     );
   }
 
+  onChangeStatus = (event) => {
+    const selectedValue = event.target.value;
+    console.log({selectedValue});
+  }
+
   render() {
     const {
       reduxState: {
-        followerDetails: { firstName, lastName },
         nameFollower,
         moderation,
         createdAt,
         follower,
         frozen,
         _id,
-        qualityUpdatedAt,
         quality,
-        followerValidity,
         mode,
       },
       balances,
     } = this.props;
+
+    const tsBalances = typeof balances === 'object' && balances;
+    const tsFollowingBalances = (tsBalances || [])
+      .find(curBalances => curBalances.followingId === _id);
+
+    const {
+      followerTotal,
+    } = tsFollowingBalances || {
+      followerTotal: {
+        BTC: { available: 0, hold: 0, },
+        USD: { available: 0, hold: 0, },
+      },
+    };
+
+    const activeStatus = frozen ? 'frozen' : mode;
+    const createdDate = moment.utc(createdAt).toISOString().slice(0, 10);
+    const synchronizationQuality = (quality > 0 ? quality : 0).toFixed(2);
     
     return(
       <div className="investorComponent">
-        <div className="option">
-          <div className="property">Investor:</div> 
-          <div className="value">{nameFollower}</div>
+        <div className="mainBlock">
+          <div className="headProperty">
+            <div className="item name">Name</div>
+            <div className="item status">Status</div>
+            <div className="item totalBalance">Total Ballance</div>
+            <div className="item synchronization">Synchronization quality</div>
+            <div className="item date">Date of accseccion</div>
+          </div>
+          <div className="centerValue">
+            <div className="item name">{nameFollower}</div>
+            <div className="item status">
+              <select onChange={this.onChangeStatus}>
+                <option value="copy" selected={activeStatus === 'copy'}>SYNC</option>
+                <option value="rebalance" selected={activeStatus === 'rebalance'}>REBALANCE</option>
+                <option value="frozen" selected={activeStatus === 'frozen'}>FROZEN</option>
+              </select>
+            </div>
+            <div className="item totalBalance">{this.getTotalValue(followerTotal)}</div>
+            <div className="item synchronization">
+              <div className="justValue">{synchronizationQuality}%</div>
+              <div className="ranger">
+                <div className={`filled ${synchronizationQuality<70?'badly':'good'}`} style={{flex: (synchronizationQuality/100)}}></div>
+              </div>
+            </div>
+            <div className="item date">{createdDate}</div>
+          </div>
+          <div className="clickButtons">
+            <div className="item unsubscribe none">Unsubscribe</div>
+            <div className="item compare" onClick={()=>this.setState({
+              isShowBalances: !this.state.isShowBalances,
+            })}>Compare balance</div>
+            <div className="item unsubscribe">Unsubscribe</div>
+          </div>
         </div>
-        <div className="option">
-          <div className="property">Balance synchronization quality:</div> 
-          <div className="value">{(quality || 0).toFixed(2)}%</div>
-        </div>
-        <DrowDown 
-          Head={(props) => (
-            <div className="option">
-              <div className="property" onClick={() => {
-                if (!props.isShow) {
-                  this.props.methods.getBalanceByFollowing({
-                    followingId: this.props.reduxState._id,
-                  });
-                }
-
-                props.drowdownContent();
-              }}>Balances:</div> 
-            </div>
-          )}
-          Content={(props) => {
-            return this.renderBalances({
-              reload: this.props.methods.getBalanceByFollowing.bind(this, {
-                followingId: this.props.reduxState._id,
-              }),
-            });
-          }}
-        />
-        <DrowDown 
-          Head={(props) => (
-            <div className="option">
-              <div className="property" onClick={props.drowdownContent}>More info:</div> 
-            </div>
-          )}
-          Content={() => (
-            <div>
-              <div>Moderation: {moderation}</div>
-              <div>CreatedAt: {createdAt}</div>
-              <div>Frozen: {frozen.toString()}</div>
-              <div>mode: {mode}</div>
-            </div>
-          )}
-        />
-        <DrowDown 
-          Head={(props) => (
-            <div className="option">
-              <div className="property" onClick={props.drowdownContent}>Actions this following:</div> 
-            </div>
-          )}
-          Content={() => (
-            <div className="actions">
-              <div className="btn" onClick={this.props.methods.setUnFreeze.bind(this, {
-                followingId: this.props.reduxState._id,
-              })}>SET UNFREEZE</div>
-              <div className="btn" onClick={this.props.methods.setFreeze.bind(this, {
-                followingId: this.props.reduxState._id,
-              })}>SET FREEZE</div>
-              <div className="btn" onClick={this.props.methods.getBalanceByFollowing.bind(this, {
-                followingId: this.props.reduxState._id,
-              })}>GET BALANCES</div>
-              <div className="btn" onClick={() => {
-                this.props.methods.getOrdersByFollowing({
-                  followingId: this.props.reduxState._id,
-                })
-                setInterval(() => {
-                  this.props.methods.getOrdersByFollowing({
-                    followingId: this.props.reduxState._id,
-                  })
-                }, 3000);
-              }}>START UPDATING ORDERS</div>
-              <div className="btn" onClick={this.props.methods.setFollowingMode.bind(this, {
-                followingId: this.props.reduxState._id,
-                mode: 'copy',
-              })}>SET MODE COPY</div>
-              <div className="btn" onClick={this.props.methods.setFollowingMode.bind(this, {
-                followingId: this.props.reduxState._id,
-                mode: 'rebalance',
-              })}>SET MODE REBALANCER</div>
-            </div>
-          )}
-        />
+        {this.state.isShowBalances && this.renderBalances()}
       </div>
     );
   }
