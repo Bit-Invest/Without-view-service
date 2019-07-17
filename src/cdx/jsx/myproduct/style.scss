@@ -14,8 +14,6 @@
 	.blackoutBlock {
 		&.requisitions {
 			display: flex;
-			flex: 0.5;
-			min-width: 500px;
 			flex-direction: column;
 
 			@media screen and (max-width: 1000px) {
@@ -80,49 +78,27 @@
 						  text-transform: uppercase;
 						}
 					}
+
+					.content {
+						overflow: auto;
+					}
+				}
+
+				&.requisitionsList {
+
+					.content {
+						overflow: auto;
+					}
 				}
 
 				.content {
 					margin: 15px 0 0 0;
-
-					.requisitionComponent {
-						display: flex;
-						flex-direction: column;
-						margin: 10px 0;
-						background: rgba(0,0,0,.2);
-						padding: 20px;
-
-						&.rejected {
-							background-color: #ff444463;
-						}
-
-						> .btn {
-							display: flex;
-							padding: 10px 0;
-							min-width: 200px;
-							justify-content: center;
-							align-self: flex-start;
-							margin: 5px 0;
-							border-radius: 4px;
-							cursor: pointer;
-
-							&.approve {
-								background: green;
-							}
-
-							&.reject {
-								background: red;
-							}
-						}
-					}
 				}
 			}
 		}
 
 		&.myproductinfo {
 			display: flex;
-			flex: 0.5;
-			overflow: auto;
 
 			.followForm {
 				width: 100%;

@@ -112,6 +112,9 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: false,
+			tiedActions: () => [
+				actionsForTied.getFollowers,
+			],
 		},
 		preFnData: (data, tsAction) => ({
 			data: {
@@ -136,6 +139,9 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: false,
+			tiedActions: () => [
+				actionsForTied.getFollowers,
+			],
 		},
 		preFnData: (data, tsAction) => ({
 			data: {

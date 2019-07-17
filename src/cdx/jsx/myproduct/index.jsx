@@ -20,6 +20,7 @@ export default class MyProductComponent extends React.Component {
     const { reduxState: {
       myFollowers,
       keys,
+      balancesFollowings,
     }, paramsProduct } = this.props;
     const noLoadedFollowers = mixins.common.dataNoLoaded([keys, myFollowers]);
 
@@ -36,16 +37,18 @@ export default class MyProductComponent extends React.Component {
       .getFollowingsNamedMyKeys(keys, waitFollowings);
 
     const filteredRejectIfIsI = utils.myproduct
-      .getFollowingsNamedMyKeys(keys, waitFollowings);
+      .getFollowingsNamedMyKeys(keys, rejectFollowings);
 
     resList[0] = filteredWaitIfIsI.map((curRequisition, index) => 
       <RequisitionComponent 
         status="wait"
-        key={index}
+        key={curRequisition._id}
         reduxState={curRequisition}
+        balances={balancesFollowings}
         methods={{
           sendApproveFollowing: actions.sendApproveFollowing,
           sendRejectFollowing: actions.sendRejectFollowing,
+          getBalanceByFollowing: actions.getBalanceByFollowing,
         }}
       />
     );
@@ -53,7 +56,7 @@ export default class MyProductComponent extends React.Component {
     resList[1] = filteredRejectIfIsI.map((curRequisition, index) => 
       <RequisitionComponent 
         status="reject"
-        key={index}
+        key={curRequisition._id}
         reduxState={curRequisition}
       />
     );
@@ -88,7 +91,7 @@ export default class MyProductComponent extends React.Component {
 
     resList[0] = filteredInvestorsIfIsI.map((curInvestor, index) => 
       <InvestorComponent 
-        key={index}
+        key={curInvestor._id}
         reduxState={curInvestor}
         balances={balancesFollowings}
         methods={{
@@ -98,6 +101,7 @@ export default class MyProductComponent extends React.Component {
           getOrdersByFollowing: actions.getOrdersByFollowing,
           setFollowingMode: actions.setFollowingMode,
           getFollowings: actions.getFollowings,
+          sendRejectFollowing: actions.sendRejectFollowing,
         }}
       />
     );
@@ -164,7 +168,7 @@ export default class MyProductComponent extends React.Component {
                   {this.renderListInvestors({actions})}
                 </div>
               </div>
-              <div className="typeList">
+              <div className="typeList requisitionsList">
                 <div className="curTitle">Your Requisitions</div>
                 <div className="content">
                   {this.renderListRequisitions({actions})}

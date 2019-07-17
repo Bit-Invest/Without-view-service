@@ -1,8 +1,13 @@
-.investorComponent {
+.requisitionComponent {
 	background-image: linear-gradient(to top, #5a3e81, #352659);
 	font-size: 13px;
 	min-width: 700px;
 	margin: 15px 0;
+
+	&.rejected {
+		padding: 15px;
+		background-image: linear-gradient(to top, #cc6b6b, #352659);
+	}
 
 	.mainBlock {
 		display: flex;
@@ -14,7 +19,7 @@
 			margin: 15px 0;
 
 			.item {
-				flex: .2;
+				flex: .25;
 				text-align: center;
 			}
 		}
@@ -22,10 +27,12 @@
 		.centerValue {
 			display: flex;
 			margin: 15px 0;
+			border-bottom: 1px solid #b0a5ff;
+			padding-bottom: 20px;
 
 			.item {
 				display: flex;
-				flex: .2;
+				flex: .25;
 				justify-content: center;
 				align-items: center;
 
@@ -61,6 +68,14 @@
 			justify-content: space-between;
 			margin: 15px 0;
 
+			.rigthBtns {
+				display: flex;
+
+				.item {
+					margin-left: 10px;
+				}
+			}
+
 			.item {
 				display: flex;
 				border-radius: 100px;
@@ -77,6 +92,14 @@
 					background-color: #b0a5ff;
 					text-decoration: underline;
 					opacity: .3;
+				}
+
+				&.approve {
+					background-color: #645A6F;
+				}
+
+				&.remove {
+					background-color: #90376F;
 				}
 			}
 		}

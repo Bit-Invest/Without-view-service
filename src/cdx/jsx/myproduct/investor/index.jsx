@@ -97,10 +97,10 @@ class ActiveInvestor extends React.Component {
       follower: [],
     };
 
-    ([
-      ...Object.entries(leaderBalance),
-      ...Object.entries(followerBalance),
-    ])
+    Object.entries({
+      ...leaderBalance,
+      ...followerBalance,
+    })
       .filter(([coin, [available, hold]]) => available > 0 || hold > 0)
       .forEach(([coin]) => {
         const [leaderAvailable, leaderHold] = leaderBalance[coin] || [0, 0];
@@ -223,11 +223,12 @@ class ActiveInvestor extends React.Component {
             <div className="item date">{createdDate}</div>
           </div>
           <div className="clickButtons">
-            <div className="item unsubscribe none">Unsubscribe</div>
             <div className="item compare" onClick={()=>this.setState({
               isShowBalances: !this.state.isShowBalances,
             })}>Compare balance</div>
-            <div className="item unsubscribe">Unsubscribe</div>
+            <div className="item unsubscribe" onClick={this.props.methods.sendRejectFollowing.bind(this, {
+              followingId: _id,
+            })}>Unsubscribe</div>
           </div>
         </div>
         {this.state.isShowBalances && this.renderBalances()}
