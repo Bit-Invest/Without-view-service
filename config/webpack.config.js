@@ -98,9 +98,7 @@ module.exports = function(webpackEnv) {
               },
               stage: 3,
             }),
-            autoprefixer({
-              browsers:['ie >= 8', 'last 4 version']
-            }),
+            autoprefixer(),
           ],
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
