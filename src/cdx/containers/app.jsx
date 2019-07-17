@@ -13,7 +13,7 @@ const CDX = () => (
   <div className="app">
     <Route path="/" exact component={() => <Redirect to="/im" />} />
     <Route path="/im" exact component={ProfileContainer} />
-    <Route path="/auth" exact component={AuthContainer} />
+    <Route path="/auth" component={AuthContainer} />
     <Route path="/myproduct/:productId?" exact component={MyProductContainer} />
     <Route path="/marketplace" exact component={MarketplaceContainer} />
     <Route path="/marketproduct/:productId?" exact component={MarketProductContainer} />
