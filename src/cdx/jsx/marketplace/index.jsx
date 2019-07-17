@@ -24,7 +24,7 @@ export default class MarketplaceComponent extends React.Component {
     return(
       <Consumer>
         {({ actions }) => (
-          <InternalPage {...this.props} {...({actions})}>
+          <InternalPage {...this.props} {...({actions})} atopClass="marketplace">
             {
               <ListBlock 
                 atopClass="markets"

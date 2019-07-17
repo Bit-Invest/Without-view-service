@@ -3,3 +3,4 @@ export { default as AuthContainer } from './auth';
 export { default as MyProductContainer } from './myproduct';
 export { default as MarketplaceContainer } from './marketplace';
 export { default as MarketProductContainer } from './marketproduct';
+export { default as Redirect } from './redirect';

@@ -59,10 +59,10 @@
 					  text-transform: uppercase;
 					}
 
-					&:hover, &.active {
+					// &:hover, &.active {
 						opacity: 1;
 						background-image: linear-gradient(to top, #7b489e, #ff69b0);
-					}
+					// }
 				}
 
 				@media screen and (max-width: 500px) {
