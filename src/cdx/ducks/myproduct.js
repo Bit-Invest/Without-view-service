@@ -114,6 +114,7 @@ const actions = utils.common.addPropery([
 			startRequired: false,
 			tiedActions: () => [
 				actionsForTied.getFollowers,
+				actionsForTied.getFollowings,
 			],
 		},
 		preFnData: (data, tsAction) => ({
@@ -141,6 +142,7 @@ const actions = utils.common.addPropery([
 			startRequired: false,
 			tiedActions: () => [
 				actionsForTied.getFollowers,
+				actionsForTied.getFollowings,
 			],
 		},
 		preFnData: (data, tsAction) => ({

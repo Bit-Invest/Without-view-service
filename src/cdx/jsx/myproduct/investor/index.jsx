@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 
 import mixins from '@cdx/mixins/';
-import DrowDown from '@cdx/jsx/common/drowdown/';
 
 import './style.scss';
 
@@ -20,8 +19,6 @@ class ActiveInvestor extends React.Component {
     const {
       reduxState: {
         _id,
-        frozen,
-        mode,
       },
     } = this.props;
 
@@ -34,11 +31,10 @@ class ActiveInvestor extends React.Component {
         this.props.methods.getBalanceByFollowing({
           followingId: _id,
         })
-        this.props.methods.getFollowings({
+        this.props.methods.getFollowers({
           followingId: _id,
         })
-      }
-      , 5000)
+      }, 5000)
     );
   }
 
@@ -59,8 +55,8 @@ class ActiveInvestor extends React.Component {
       return await setFreeze({ followingId: _id, });
     }
 
-    await setUnFreeze({ followingId: _id, });
     await setFollowingMode({ followingId: _id, mode: selectedValue, });
+    await setUnFreeze({ followingId: _id, });
   }
 
   getTotalValue = (total) => (

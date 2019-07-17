@@ -85,6 +85,21 @@
 				}
 
 				&.requisitionsList {
+					> .curHead {
+						padding-bottom: 30px; 
+
+						> .curTitle {
+							font-size: 16px;
+						  font-weight: normal;
+						  font-style: normal;
+						  font-stretch: normal;
+						  line-height: normal;
+						  letter-spacing: 0.7px;
+						  text-align: left;
+						  color: #ffffff;
+						  text-transform: uppercase;
+						}
+					}
 
 					.content {
 						overflow: auto;

@@ -101,6 +101,7 @@ export default class MyProductComponent extends React.Component {
           getOrdersByFollowing: actions.getOrdersByFollowing,
           setFollowingMode: actions.setFollowingMode,
           getFollowings: actions.getFollowings,
+          getFollowers: actions.getFollowers,
           sendRejectFollowing: actions.sendRejectFollowing,
         }}
       />
@@ -169,7 +170,10 @@ export default class MyProductComponent extends React.Component {
                 </div>
               </div>
               <div className="typeList requisitionsList">
-                <div className="curTitle">Your Requisitions</div>
+                <div className="curHead">
+                  <div className="curTitle">Your Requisitions</div>
+                  <div className="rightPanel"></div>
+                </div>
                 <div className="content">
                   {this.renderListRequisitions({actions})}
                 </div>
