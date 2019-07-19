@@ -104,7 +104,7 @@ const ActiveForm = (props) => {
           <div className="item" onClick={props.data.methods.setIndexEditing}>Change options</div>
           <div className="item" onClick={async () => {
             await props.data.methods.remove({
-              keyId: props.data.keyId,
+              productId,
             });
 
             await props.data.methods.reload();

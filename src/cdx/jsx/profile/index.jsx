@@ -110,7 +110,7 @@ export default class ProfileComponent extends React.Component {
                 methods={{
                   reload: actions.getProducts,
                   add: actions.addProduct,
-                  remove: actions.removeKeys,
+                  remove: actions.removeProduct,
                   edit: actions.editProduct,
                 }}
                 texts={{

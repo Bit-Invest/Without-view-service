@@ -380,6 +380,30 @@ const actions = utils.common.addPropery([
 	},
 	{
 		type: 'REQUEST',
+		propertyFn: 'removeProduct',
+		keyState: 'removeProductRes',
+		data: {
+			api: 'baseCindx',
+			url: '/user/products',
+			method: 'DELETE',
+			body: [],
+			processingResFn: (cbParams, res) => res,
+		},
+		tags: {
+			manuallyUsed: true,
+			startRequired: false,
+		},
+		preFnData: (data, tsAction) => ({
+			data: {
+				...tsAction.data,
+				body: {
+					productId: data.productId,
+				},
+			},
+		}),
+	},
+	{
+		type: 'REQUEST',
 		propertyFn: 'editProduct',
 		keyState: 'editKeysRes',
 		data: {
