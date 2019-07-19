@@ -162,17 +162,22 @@ class EditingForm extends React.Component {
 
   render() {
     return [
-      <ActiveForm {...this.props} />,
-      <div className='smallProductEdit'>
-        <div className='mainBlock'>
-          <div className='items inputs'>
-            <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder='description' />
-            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder='name' />
-            <input onChange={this.setValueInputs.bind(this, 'baseAsset')} value={this.state.baseAsset} name='baseAsset' placeholder='baseAsset' />
-          </div>
-          <div className='onTopSigns'>
-            <div className='item save' onClick={this.sendRequest}>Save</div>
-            <div className="item" onClick={this.props.data.methods.clearIndexEditing}>Cancel</div>
+      <div className="parentEditingSmallProduct">
+        <ActiveForm {...this.props} />
+        <div className='smallProductEdit'>
+          <div className='mainBlock'>
+            <div className='items inputs'>
+              <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder='description' />
+              <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder='name' />
+              <select onChange={(event)=>this.setState({baseAsset:event.target.value})}>
+                <option value={'BTC'} selected={this.state.baseAsset==='BTC'}>BTC</option> 
+                <option value={'USD'} selected={this.state.baseAsset==='USD'}>USD</option>      
+              </select>
+            </div>
+            <div className='onTopSigns'>
+              <div className='item save' onClick={this.sendRequest}>Save</div>
+              <div className="item" onClick={this.props.data.methods.clearIndexEditing}>Cancel</div>
+            </div>
           </div>
         </div>
       </div>
@@ -187,8 +192,8 @@ class AddingForm extends React.Component {
     this.state = {
       description: '',
       name: '',
-      baseAsset: '',
-      typeId: '',
+      baseAsset: 'BTC',
+      typeId: 0,
       keyId: '',
     };
   }
@@ -210,7 +215,7 @@ class AddingForm extends React.Component {
 
   renderSelectKeys = () =>
     <select onChange={(event)=>this.setState({keyId:event.target.value})}>
-      <option value={''} >No select</option>
+      <option value={''} >Select exchange account</option>
       {
         this.props.data.keys.map((curKeys, index) => 
           <option key={index} value={curKeys.keyId} onChange={(e)=>console.log(e)}>{curKeys.name}</option>      
@@ -236,11 +241,17 @@ class AddingForm extends React.Component {
             {this.renderSelectKeys()}
             <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder='description' />
             <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder='name' />
-            <input onChange={this.setValueInputs.bind(this, 'baseAsset')} value={this.state.baseAsset} name='baseAsset' placeholder='baseAsset' />
-            <input onChange={this.setValueInputs.bind(this, 'typeId')} value={this.state.typeId} name='typeId' placeholder='typeId' />
+            <select onChange={(event)=>this.setState({baseAsset:event.target.value})}>
+              <option value={'BTC'}>BTC</option> 
+              <option value={'USD'}>USD</option>      
+            </select>
+            <select onChange={(event)=>this.setState({typeId:event.target.value})}>
+              <option value={0}>Public</option> 
+              <option value={1}>Private</option>      
+            </select>
           </div>
           <div className='onTopSigns'>
-            <div className='item save' onClick={this.sendRequest}>Save</div>
+            <div className='item save' onClick={this.sendRequest}>Add</div>
             <div className="item" onClick={this.props.data.methods.toggleAdding}>Cancel</div>
           </div>
         </div>

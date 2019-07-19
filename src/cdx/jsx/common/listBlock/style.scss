@@ -45,6 +45,13 @@
 
 	& .list {
 		margin: 20px 0;
+
+		.addingParent {
+			width: 100%;
+			padding: 0 0 15px 0;
+			border-bottom: 2px solid rgba(158, 108, 193, 0.5);
+			margin-bottom: 15px;
+		}
 	}
 
 	&.markets {
@@ -57,3 +64,6 @@
 		}
 	}
 }
+
+
+

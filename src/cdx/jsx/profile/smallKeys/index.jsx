@@ -99,17 +99,19 @@ class EditingForm extends React.Component {
 
   render() {
     return [
-      <ActiveForm {...this.props} />,
-      <div className='smallKeysEdit'>
-        <div className='mainBlock'>
-          <div className='items inputs'>
-            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='Name' placeholder='Name' />
-            <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.apiKey} name='Api key' placeholder='Api key' />
-            <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder='Secret key' />
-          </div>
-          <div className='onTopSigns'>
-            <div className='item save' onClick={this.sendRequest}>Save</div>
-            <div className="item" onClick={this.props.data.methods.clearIndexEditing}>Cancel</div>
+      <div className="parentEditingSmallKeys">
+        <ActiveForm {...this.props} />
+        <div className='smallKeysEdit'>
+          <div className='mainBlock'>
+            <div className='items inputs'>
+              <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='Name' placeholder='Name' />
+              <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.apiKey} name='Api key' placeholder='Api key' />
+              <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder='Secret key' />
+            </div>
+            <div className='onTopSigns'>
+              <div className='item save' onClick={this.sendRequest}>Save</div>
+              <div className="item" onClick={this.props.data.methods.clearIndexEditing}>Cancel</div>
+            </div>
           </div>
         </div>
       </div>
@@ -154,8 +156,8 @@ class AddingForm extends React.Component {
             <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder='Secret key' />
           </div>
           <div className='onTopSigns'>
-            <div className='item save' onClick={this.sendRequest}>Save</div>
-            <div className="item" onClick={this.props.data.methods.toggleAdding}>Cancel</div>
+            <div className='item save' onClick={this.sendRequest}>Add</div>
+            <div className="item cancel" onClick={this.props.data.methods.toggleAdding}>Cancel</div>
           </div>
         </div>
       </div>

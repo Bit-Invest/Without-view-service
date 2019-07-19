@@ -31,7 +31,11 @@ export default class ListBlock extends React.Component {
         },
       });
 
-    return addKeysForm;
+    return(
+      <div class="addingParent">
+        {addKeysForm}
+      </div>
+    );
   }
 
   renderAddingProduct() {
@@ -50,7 +54,11 @@ export default class ListBlock extends React.Component {
         },
       });
 
-    return addProductForm;
+    return(
+      <div class="addingParent">
+        {addProductForm}
+      </div>
+    );
   }
 
   renderListKeys = () => {

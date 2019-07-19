@@ -44,7 +44,7 @@ class RenderDashboard extends React.Component {
 
     this.state = {
       selectedAccount: 'ALL',
-      selectedCourDay: 100000,
+      selectedCourDay: 7,
       selectedType: 'INCOME',
       selectedMode: 'PERCENT',
     };

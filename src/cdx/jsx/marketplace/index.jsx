@@ -6,6 +6,8 @@ import InternalPage from '@cdx/jsx/common/internalPage/';
 import ListBlock from '@cdx/jsx/common/listBlock/';
 import SmallProduct from '@cdx/jsx/common/smallProduct/';
 
+import './style.scss';
+
 const Consumer = Contexts.MarketplaceContext.Consumer;
 
 export default class MarketplaceComponent extends React.Component {

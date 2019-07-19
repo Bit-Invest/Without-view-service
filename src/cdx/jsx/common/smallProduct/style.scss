@@ -164,22 +164,28 @@
   }
 
   .settings {
-    display: none;
-
     .iconHover {
-      width: 20px; 
-      height: 15px;
-      background-image: url('~@assets/icons/arrowDown.png');
-      background-size: 50%;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: white;
-      border-radius: 10px;
+      width: 30px; 
+      height: 30px;
+      background-color: rgb(90,62,129);
+      background-image: linear-gradient( 90deg, rgb(90,62,129) 0%, rgb(53,38,89) 100%);
+      border-radius: 100px;
       cursor: pointer;
       position: absolute;
-      top: 100%;
-      left: 50%;
-      margin: -7px -10px;
+      top: -5px;
+      right: -5px;
+      z-index: 2;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%; height: 100%;
+        top: 0; left: 0;
+        background-image: url('~@assets/images/settingsIcon.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 55%;
+      }
     }
 
     .iconHover:hover + .menu {
@@ -189,14 +195,12 @@
     .menu {
       display: none;
       width: 200px;
-      background: white;
+      background-image: linear-gradient( 90deg, rgb(53,38,89) 0%, rgb(90,62,129) 100%);
       position: absolute;
       flex-direction: column;
-      border-radius: 10px;
       z-index: 2;
-      left: 50%;
-      margin: 0 -100px;
-      top: 100%;
+      right: 0;
+      top: 0;
 
       &:hover {
         display: flex;
@@ -205,7 +209,7 @@
       .item {
         text-align: center;
         padding: 10px 0;
-        color: #343C73;
+        color: white;
         opacity: 0.7;
         cursor: pointer;
 
@@ -223,7 +227,10 @@
   }
 }
 
-.smallProductEdit, .smallProductAdd {
+.smallProductAdd {
+  max-width: 400px;
+  font-size: 13px;
+
   .mainBlock {
     display: flex;
     flex-direction: column;
@@ -232,26 +239,161 @@
       display: flex;
       flex-direction: column;
 
-      input {
+      input, select {
+        color: white;
         margin: 2px 0;
         padding: 5px 10px;
         border: none;
-        border-radius: 5px;
+        border-radius: 100px;
+        background-color: rgba(0.27, 0.13, 0.39, .3);
+      }
+
+      select {
+        height: 30px;
+        border-radius: 100px;
       }
     }
 
     .onTopSigns {
       display: flex;
+      margin-top: 5px;
 
       .item {
         cursor: pointer;
         padding: 5px 30px;
         background-color: rgba(0,0,0,.3);
-        border-radius: 5px;
+        border-radius: 100px;
         margin: 5px;
+        text-transform: uppercase;
+        font-weight: 500;
+
+        &:hover {
+          opacity: .5;
+        }
+
+        &.save {
+          background-image: linear-gradient(to top, #7b489e, #ff69b0);
+        }
+
+        &.cancel {
+          background-color: #f2f2f2;
+          color: rgba(0,0,0,.3);
+        }
       }
     }
   }
 }
+
+.parentEditingSmallProduct {
+  position: relative;
+  margin: 10px;
+  z-index: 2;
+  font-size: 13px;
+  min-width: 400px;
+  width: 400px;
+
+  .settings {
+    display: none;
+  }
+
+  .smallProduct {
+    margin: 0;
+  }
+
+  .smallProductEdit {
+    position: absolute;
+    background-image: linear-gradient(90deg, #5a3e81 0%, #352659 100%);
+    padding: 10px 20px;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .mainBlock {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .inputs {
+        display: flex;
+        flex-direction: column;
+
+        input, select {
+          color: white;
+          margin: 2px 0;
+          padding: 5px 10px;
+          border: none;
+          border-radius: 100px;
+          background-color: rgba(0.27, 0.13, 0.39, .3);
+        }
+
+        select {
+          height: 30px;
+          border-radius: 100px;
+        }
+      }
+
+      .onTopSigns {
+        display: flex;
+        margin-top: 5px;
+
+        .item {
+          cursor: pointer;
+          padding: 5px 30px;
+          background-color: rgba(0,0,0,.3);
+          border-radius: 100px;
+          margin: 5px;
+          text-transform: uppercase;
+          font-weight: 500;
+
+          &:hover {
+            opacity: .5;
+          }
+
+          &.save {
+            background-image: linear-gradient(to top, #7b489e, #ff69b0);
+          }
+
+          &.cancel {
+            background-color: #f2f2f2;
+            color: rgba(0,0,0,.3);
+          }
+        }
+      }
+    }
+  }
+}
+
+// .smallProductEdit, .smallProductAdd {
+//   .mainBlock {
+//     display: flex;
+//     flex-direction: column;
+
+//     .inputs {
+//       display: flex;
+//       flex-direction: column;
+
+//       input {
+//         margin: 2px 0;
+//         padding: 5px 10px;
+//         border: none;
+//         border-radius: 5px;
+//       }
+//     }
+
+//     .onTopSigns {
+//       display: flex;
+
+//       .item {
+//         cursor: pointer;
+//         padding: 5px 30px;
+//         background-color: rgba(0,0,0,.3);
+//         border-radius: 5px;
+//         margin: 5px;
+//       }
+//     }
+//   }
+// }
 
 
