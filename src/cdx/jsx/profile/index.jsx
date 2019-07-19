@@ -38,6 +38,10 @@ export default class ProfileComponent extends React.Component {
       (curKeys) => curKeys.groupName === 'my' || !curKeys.groupName
     );
 
+    console.log('#1', {
+      stateKeys,
+    });
+
     return {
       stateKeys,
       reduxState,
@@ -74,6 +78,8 @@ export default class ProfileComponent extends React.Component {
                   addButtonText: 'Add account exchange',
                 }}
               />
+            </BlackoutBlock>
+            <BlackoutBlock atopClass="keys">
               <ListBlock 
                 uniqProperty="keyId"
                 reduxState={stateKeys}

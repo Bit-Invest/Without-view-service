@@ -62,22 +62,24 @@ const ActiveForm = (props) => {
           </div>
           <div className="rightInfo">
             <div className="curWrap">
-              <div className="nameTrader">{`${firstName} ${lastName}`}</div>
-              <div className="rating">
-                <div className="rating">
-                  {
-                    !productProccesing ? [
-                      <div className="curTitle">Rating {ratingValueShow}: </div>,
-                      <div className="score">
-                        <div className={`filled ${styleRating}`} style={{width: `${percentRating}%`}}></div>
-                      </div>
-                    ] : (
-                      <div>Rating processing..</div>
-                    )
-                  }
-                </div>
-              </div>
+              <div className="item nameTrader">{`${firstName} ${lastName}`}</div>
+              <div className="item nameProduct">{`${name}`}</div>
             </div>
+          </div>
+          <div className="righRatingBlock">
+            {
+              !productProccesing ? [
+                <div className="curTitle">
+                  <div>Rating</div>
+                  <div className="curValue">{ratingValueShow}</div>
+                </div>,
+                <div className="score">
+                  <div className={`filled ${styleRating}`} style={{width: `${percentRating}%`}}></div>
+                </div>
+              ] : (
+                <div>Rating processing..</div>
+              )
+            }
           </div>
         </div>
         <div className="historyInfo">
@@ -91,11 +93,10 @@ const ActiveForm = (props) => {
             />
           </div>
           <div className="infoContent">
-            <div className="item">Name product: {name}</div>
-            <div className="item">Investors: {followers}</div>
+            <div className="item">Followers: {followers}</div>
+            <Link className="moreClick" to={moreUrl[typelist](productId)}>more</Link>
           </div>
         </div>
-        <Link className="moreClick" to={moreUrl[typelist](productId)}>more</Link>
       </div>
       <div className="settings">
         <div className="iconHover"></div>

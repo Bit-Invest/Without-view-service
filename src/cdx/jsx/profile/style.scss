@@ -13,12 +13,30 @@
 
 .internalPage.profile {
 	.blackoutBlock {
+		@media screen and (max-width: 1000px) {
+			padding: 0;
+
+			.listBlock  .list {
+				overflow: auto;
+			}
+		}
+
 		&.keys {
 			display: flex;
+
+			.listBlock  .list {
+				display: flex;
+				flex-wrap: wrap;
+			}
 		}
 
 		&.products {
 			display: flex;
+
+			.listBlock  .list {
+				display: flex;
+				flex-wrap: wrap;
+			}
 		}
 
 		&.dashboard {

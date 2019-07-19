@@ -1,9 +1,9 @@
 .smallProduct {
 	display: flex;
   margin: 10px;
-  background-image: linear-gradient(180deg, #231a37, #464d63), linear-gradient(rgba(0, 0, 0, 0.17), rgba(0, 0, 0, 0.17));
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.23137254901960785);
-  width: 350px;
+  background-image: linear-gradient(90deg, #5a3e81 0%, #352659 100%);  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.23137254901960785);
+  min-width: 400px;
+  width: 400px;
   border-radius: 4px;
   flex-direction: column;
   position: relative;
@@ -36,6 +36,8 @@
       .rightInfo {
         display: flex;
         flex: 1;
+        max-width: 300px;
+        overflow: hidden;
 
         > .curWrap {
           display: flex;
@@ -43,40 +45,53 @@
           justify-content: space-around;
           margin-left: 10px;
 
-          .nameTrader {
+          .item {
+            font-weight: 500;
+
+            &.nameProduct {
+              color: rgb(176, 165, 255);
+            }
           }
+        }
+      }
 
-          .rating {
-            display: flex;
-            align-items: center;
+      .righRatingBlock {
+        display: flex;
+        align-items: space-between;
+        flex-direction: column;
+        justify-content: space-around;
 
-            > .curTitle {
+        > .curTitle {
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
+          color: rgba(255, 255, 255, 0.302);
 
+          > .curValue {
+            color: white;
+          }
+        }
+
+        .score {
+          width: 130px;
+          height: 15px;
+          border-radius: 2px;
+          background: rgba(0,0,0,.3);
+          overflow: hidden;
+          position: relative;
+
+          .filled {
+            position: absolute;
+            height: 100%;
+            left: 0;
+            top: 0;
+
+            &.positive {
+              background: #7bdc7b;
             }
 
-            .score {
-              width: 100px;
-              height: 15px;
-              border-radius: 4px;
-              background: rgba(0,0,0,.3);
-              overflow: hidden;
-              position: relative;
-              margin-left: 10px;
-
-              .filled {
-                position: absolute;
-                height: 100%;
-                left: 0;
-                top: 0;
-
-                &.positive {
-                  background: #7bdc7b;
-                }
-
-                &.sadness {
-                  background: red;
-                }
-              }
+            &.sadness {
+              background: red;
             }
           }
         }
@@ -108,30 +123,39 @@
       .historyBlock {
         margin-top: 20px;
         border: 1px solid rgba(148, 148, 148, 0.3215686274509804);
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
 
     .infoContent {
-      font-size: 14px;
+      font-size: 13px;
       margin-top: 20px;
-      opacity: .8;
+      display: flex;
+      justify-content: space-between;
 
       .item {
-        margin: 3px 0;
+        color: rgba(255, 255, 255, 0.402);
+        align-items: center;
+        display: flex;
       }
     }
 
     .moreClick {
-      margin-top: 20px;
-      font-size: 14px;
-      background: rgba(0,0,0,.1);
+      font-size: 13px;
+      background-image: linear-gradient(to top, #7b489e, #ff69b0);
       color: white;
-      padding: 5px 25px;
+      padding: 5px 35px;
       display: inline-flex;
       border-radius: 100px;
       box-shadow: 1px 1px 2px rgba(0,0,0,.4);
       opacity: .8;
       cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 500;
 
       &:hover {
         opacity: 1;

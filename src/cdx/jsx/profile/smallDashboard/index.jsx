@@ -45,7 +45,8 @@ class RenderDashboard extends React.Component {
     this.state = {
       selectedAccount: 'ALL',
       selectedCourDay: 100000,
-      selectedType: 'PERCENT',
+      selectedType: 'INCOME',
+      selectedMode: 'PERCENT',
     };
   }
 
@@ -64,7 +65,7 @@ class RenderDashboard extends React.Component {
       <div className="head">
         <div className="accounts">
           <div className="item">
-            <div className="curTitle">Select account:</div>
+            <div className="curSmallTitle">Select account:</div>
             <select onChange={(event)=>this.setState({selectedAccount:event.target.value})}>
               <option value="ALL">All accounts</option>
               {keys.map((curKeys, index) => 
@@ -73,14 +74,21 @@ class RenderDashboard extends React.Component {
             </select>
           </div>
           <div className="item">
-            <div className="curTitle">Select type:</div>
-            <select onChange={(event)=>this.setState({selectedType:event.target.value})}>
-              <option value="PERCENT" selected={this.state.selectedType === "PERCENT"}>PERCENT INCOME</option>
-              <option value="ABSOLUTE" selected={this.state.selectedType === "ABSOLUTE"}>ABSOLUTE INCOME</option>
+            <div className="curSmallTitle">Mode:</div>
+            <select onChange={(event)=>this.setState({selectedMode:event.target.value})}>
+              <option value="PERCENT" selected={this.state.selectedMode === "PERCENT"}>%</option>
+              <option value="ABSOLUTE" selected={this.state.selectedMode === "ABSOLUTE"}>ABSOLUTE</option>
             </select>
           </div>
           <div className="item">
-            <div className="curTitle">Select time showing:</div>
+            <div className="curSmallTitle">Type:</div>
+            <select onChange={(event)=>this.setState({selectedType:event.target.value})}>
+              <option value="INCOME" selected={this.state.selectedType === "INCOME"}>INCOME</option>
+              <option value="BALANCE" selected={this.state.selectedType === "BALANCE"}>BALANCE</option>
+            </select>
+          </div>
+          <div className="item">
+            <div className="curSmallTitle">Select time showing:</div>
             <select onChange={(event)=>this.setState({selectedCourDay:event.target.value})}>
               {[{
                 cour: 3,
@@ -107,7 +115,7 @@ class RenderDashboard extends React.Component {
             </select>
           </div>
           <div className="item">
-            <div className="curTitle">Select base asset:</div>
+            <div className="curSmallTitle">Select base asset:</div>
             <select onChange={(event)=> actions.setBaseAsset(event.target.value)}>
               {['BTC', 'USD'].map(curBaseAsset =>
                 <option 
@@ -132,21 +140,22 @@ class RenderDashboard extends React.Component {
         },
       },
     } = this.props;
-    const methodFromType = { 'PERCENT': 'baseIncome', 'ABSOLUTE': 'baseBalance' };
-    const { selectedAccount, selectedCourDay } = this.state;
+    const { selectedAccount, selectedCourDay, selectedMode, selectedType } = this.state;
     const { incomes: incomesArr } = utils.profile.getSelectedIncomes(
       keys, 
       incomeKeys,
       selectedAccount,
       selectedCourDay,
       baseAsset,
-      methodFromType[this.state.selectedType]
+      selectedMode,
+      selectedType,
     );
 
     return(
       <div className="incomeParent">
         <IncomeKeys 
           income={incomesArr}
+          valueSuffix={`${({PERCENT:`% in ${baseAsset}`,ABSOLUTE:baseAsset})[selectedMode]}`}
         />
       </div>
     );
@@ -157,17 +166,32 @@ class RenderDashboard extends React.Component {
       reduxState: {
         incomeKeys,
         keys,
+        dashboard: {
+          baseAsset,
+        },
       },
     } = this.props;
     const skillDataNoLoaded = mixins.common.dataNoLoaded([incomeKeys, keys]);
 
     if (skillDataNoLoaded[1]) return skillDataNoLoaded[1];
 
+    const { selectedMode, selectedType } = this.state;
+    const titleChart = ({
+      INCOME: {
+        PERCENT: `Your income in ${baseAsset}, %:`,
+        ABSOLUTE: `Your income in ${baseAsset}:`,
+      },
+      BALANCE: {
+        PERCENT: `Your history balances in ${baseAsset}, %:`,
+        ABSOLUTE: `Your history balances in ${baseAsset}:`,
+      },
+    })[selectedType][selectedMode];
+
     return(
       <div className="dashboard">
         <div className="curTitle">Basic information about your accounts</div>
         {this.renderHead()}
-        <div className="curSmallTitle">Your profite:</div>
+        <div className="curSmallTitle">{titleChart}</div>
         {this.renderChartIncome()}
       </div>
     );

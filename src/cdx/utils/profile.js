@@ -68,6 +68,8 @@ export const getDataForSmallKeys = (state) => {
   const keys = typeof state.keys === 'object' && state.keys;
   const incomeKeys = typeof state.incomeKeys === 'object' && state.incomeKeys;
   const balancesKeys = typeof state.balancesKeys === 'object' && state.balancesKeys;
+  const myFollowings = typeof state.myFollowings === 'object' && state.myFollowings;
+  const myProducts = typeof state.myProducts === 'object' && state.myProducts;
 
   const stateKeys = (keys || []).map(curKey => {
     const curIncome = (incomeKeys || [])
@@ -99,12 +101,32 @@ export const getDataForSmallKeys = (state) => {
       value: curTotalBalance,
     };
 
+    const myFollowingsSorted = (myFollowings || [])
+    .sort((curFollowing1, curFollowing2) => curFollowing2.createdAt - curFollowing1.createdAt)
+    .reduce((res, curObj, arr) => {
+      if (res.find(curObj2 => 
+        (curObj2.follower.keyId || 0) === curObj.follower.keyId
+      )) return res;
+      
+      res.push(curObj);
+
+      return res;
+    }, []);
+
+    const usedFollowing = myFollowingsSorted
+      .find(curMyFollowings => curMyFollowings.follower.keyId === curKey.keyId);
+
+    const usedProduct = (myProducts || [])
+      .find(curMyProduct => curMyProduct.keyId === curKey.keyId);
+
     return {
       ...curKey,
       history: {
         balance,
         income,
         baseAsset,
+        usedFollowing,
+        usedProduct,
       },
     };
   });
@@ -131,17 +153,6 @@ export const getDataForSmallProduct = (state) => {
   return resMyProducts;
 };
 
-const getSlicedIncome = (income, courDay) => {
-  const firstPoint = income.length - courDay;
-  const incomeFirstPoint = income[firstPoint];
-  const slicedIncome = income.slice(firstPoint, income.length);
-
-  return slicedIncome.map(curIncome => ({
-    ...curIncome,
-    value: curIncome.value - incomeFirstPoint.value,
-  }));
-};
-
 export const getIncomeForSmallProduct = (incomeArr) => {
   const { courDayIntervalSmallProduct } = configs.profile.settingsShow;
   const curIncome = ((typeof incomeArr === 'object' && incomeArr.baseIncomeHistory) || [])
@@ -156,40 +167,79 @@ export const getIncomeForSmallProduct = (incomeArr) => {
     lengthCurIncome > courDayIntervalSmallProduct ? (
       getSlicedIncome(curIncome, courDayIntervalSmallProduct)
     ) : curIncome
-  );  
+  );
   
   return resIncome;
 };
 
-export const getIncomeForKeys = (incomeArr, courDaySliced, typePoint = 'baseIncome') => {
-  const curIncome = ((typeof incomeArr === 'object' && incomeArr[typePoint]) || [])
-    .filter(curIncome => ({
-      'baseIncome': curIncome.value !== 1,
-      'baseBalance': curIncome.value !== 0,
-    })[typePoint])
+const getSlicedIncome = (income, courDay) => {
+  const firstPoint = income.length > courDay ? income.length - courDay : 0;
+  const incomeFirstPoint = income[firstPoint];
+  const slicedIncome = income.slice(firstPoint, income.length);
+
+  return slicedIncome.map(curIncome => ({
+    ...curIncome,
+    value: curIncome.value - incomeFirstPoint.value,
+  }));
+};
+
+export const getIncomeForKeys = (incomeArr, courDaySliced, mode = 'PERCENT', type = 'INCOME') => {
+  let {
+    baseBalance,
+    baseIncome, 
+  } = ((typeof incomeArr === 'object' && incomeArr) || {
+    baseBalance: [],
+    baseIncome: [],
+  });
+
+  if (typeof baseBalance !== 'object' || !baseBalance.length) 
+    return [];
+
+  const slicedBalances_firstPoint = baseBalance.length > courDaySliced ? baseBalance.length - courDaySliced : 0;
+  const slicedBalances = baseBalance
+    .slice(slicedBalances_firstPoint, baseBalance.length)
+    .filter(curBalance => curBalance.value > 0);
+  const percentBalances = slicedBalances.map(curBalance => ({
+    ...curBalance,
+    value: curBalance.value / slicedBalances[0].value,
+  }));
+
+  const slicedIncomes_firstPoint = baseIncome.length > courDaySliced ? baseIncome.length - courDaySliced : 0;
+  const slicedIncomes = baseIncome
+    .slice(slicedIncomes_firstPoint, baseIncome.length)
+    .filter((curIncome, index, arr) => ((arr[index + 1] || {value: 0}).value !== 1) || (curIncome.value !== 1));
+  const absoluteIncome = slicedIncomes
     .map(curIncome => ({
-      ...curIncome, 
-      value: ({
-        'baseIncome': (curIncome.value * 100) - 100,
-        'baseBalance': curIncome.value,
-      })[typePoint],
+      ...curIncome,
+      value: curIncome.value - slicedIncomes[0].value,
+    }))
+    .map((curIncome, index) => ({
+      ...curIncome,
+      value: curIncome.value * (slicedBalances[index - 1] || {value: 0}).value,
     }));
-  const lengthCurIncome = curIncome && curIncome.length;
+  const showingUserIncome = slicedIncomes
+    .map(curIncome => ({
+      ...curIncome,
+      value: (curIncome.value * 100) - 100
+    }));
 
-  const resIncome = curIncome && (
-    lengthCurIncome > courDaySliced ? (
-      getSlicedIncome(curIncome, courDaySliced)
-    ) : curIncome
-  );  
-
-  return resIncome;
+  return ({
+    INCOME: {
+      PERCENT: showingUserIncome,
+      ABSOLUTE: absoluteIncome,
+    },
+    BALANCE: {
+      PERCENT: percentBalances,
+      ABSOLUTE: slicedBalances,
+    },
+  })[type][mode];
 };
 
 export const getNameKeys = (keys, keyId) => (
  (keys.find(curKeys => curKeys.keyId === keyId) || {name: undefined}).name
 );
 
-export const getSelectedIncomes = (keys, incomeArr, selectedAccount, selectedCourDaySliced, baseAsset, typePoint) => {
+export const getSelectedIncomes = (keys, incomeArr, selectedAccount, selectedCourDaySliced, baseAsset, mode, type) => {
   const selectedKeys = selectedAccount === 'ALL' ? keys : [keys.find(curKeys =>
     curKeys.keyId === selectedAccount
   )];
@@ -199,7 +249,12 @@ export const getSelectedIncomes = (keys, incomeArr, selectedAccount, selectedCou
       curIncome.keyId === curSelectedKey.keyId &&
       curIncome.baseAsset === baseAsset
     );
-    const processedIncome = tsIncome && getIncomeForKeys(tsIncome.income, selectedCourDaySliced, typePoint);
+    const processedIncome = tsIncome && getIncomeForKeys(
+      tsIncome.income, 
+      selectedCourDaySliced, 
+      mode, 
+      type,
+    );
 
     return {
       ...curSelectedKey,

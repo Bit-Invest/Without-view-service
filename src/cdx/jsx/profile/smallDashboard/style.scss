@@ -2,6 +2,9 @@
 	display: flex;
 	flex: 1;
 	flex-direction: column;
+	margin: 0 0 20px 0;
+	background-image: linear-gradient(to bottom, rgba(2, 2, 36, 0.81), rgba(2, 2, 36, 0.81)), linear-gradient(to bottom, #7b489e, #ff69dd);
+	padding: 45px 25px;
 	
 	.contentBox {
 		display: flex;
@@ -45,12 +48,26 @@
 		flex-direction: column;
 
 		.accounts {
+			display: flex;
+			flex-wrap: wrap;
+
 			.item {
-				margin: 10px 0;
+				margin: 10px 10px 10px 0;
 
 				> .curSmallTitle {
-					font-size: 14px;
-					margin: 10px 0;
+					font-size: 12px;
+					color: rgba(255, 255, 255, 0.302);
+					margin-bottom: 5px;
+				}
+
+				> select {
+					width: 150px;
+			    background-color: rgba(80, 41, 114, 0.41);
+			    border: none;
+			    height: 30px;
+			    text-transform: uppercase;
+			    color: white;
+			    font-weight: 400;
 				}
 			}
 		}
@@ -59,9 +76,24 @@
 			margin: 10px 0;
 		}
 
+		> .head {
+			margin-top: 20px;
+		}
+
 		> .curTitle {
-			font-size: 18px;
-			margin: 5px 0;
+			display: flex;
+			flex-direction: row;
+			font-size: 16px;
+		  font-weight: normal;
+		  font-style: normal;
+		  font-stretch: normal;
+		  line-height: normal;
+		  letter-spacing: 0.7px;
+		  text-align: left;
+		  color: #ffffff;
+		  text-transform: uppercase;
+		  border-bottom: 2px solid rgba(158, 108, 193, 0.5);
+			padding-bottom: 30px; 
 		}
 
 		> .curSmallTitle {

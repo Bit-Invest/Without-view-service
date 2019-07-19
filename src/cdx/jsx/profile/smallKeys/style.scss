@@ -1,9 +1,11 @@
 .smallKeys {
 	display: flex;
-	border-radius: 20px;
-  background-image: linear-gradient(180deg, #343C73 60%, #262C58);	
-  margin: 10px 0;
+  background-image: linear-gradient(to bottom, rgba(69, 69, 130, 0.81), rgba(89, 89, 152, 0.81)), linear-gradient(to bottom, #7b489e, #ff69dd);ckground-image: linear-gradient(to bottom, rgba(2, 2, 36, 0.81), rgba(2, 2, 36, 0.81)), linear-gradient(to bottom, #7b489e, #ff69dd);
+  margin: 10px 10px 10px 0;
   position: relative;
+  min-width: 450px;
+  background-image: linear-gradient( 90deg, rgb(90,62,129) 0%, rgb(53,38,89) 100%);
+  box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.22);
 
   .mainBlock {
   	display: flex;
@@ -18,9 +20,7 @@
   		font-size: 14px;
 
   		&.stock {
-  			flex: 0.2;
-  			background-color: rgba(0,0,0,0.1);
-        border-radius: 20px 0 0 20px;
+  			flex: 0.15;
 
   			.iconLogo {
   				height: 25px;
@@ -30,21 +30,15 @@
   		&.infoData {
   			flex: 0.4;
   			align-items: self-start;
-  			padding-left: 7%;
-
-  			.name {
-
-  			}
 
   			.status {
   				margin-top: 5px;
   				font-size: 11px;
   				color: white;
 			    padding: 2px 6px;
-			    border-radius: 4px;
 
           &.VALID {
-            background-color: #45bd45;
+            background-color: rgb(141, 198, 63);
           }
           &.ERROR {
             background-color: #da7a7a;
@@ -53,23 +47,42 @@
             background-color: #8888ea;
           }
   			}
+
+        .name {
+          max-width: 140px;
+          overflow: hidden;
+        }
   		}
 
   		&.history {
   			flex: 0.4;
   			align-items: flex-end;
-  			padding-right: 7%;
 
   			.balance {
 
   			}
 
-  			.profit {
+  			.usedFollowing {
   				margin-top: 5px;
-  				font-size: 11px;
+  				font-size: 12px;
           color: #da7a7a;
+          display: flex;
+          justify-content: space-between;
 
-          &.positiveProfit {
+          .spanItem {
+            color: rgba(255, 255, 255, 0.302);
+            display: flex;
+            align-items: center;
+
+            &.usedProductName {
+              color: white;
+              padding: 2px 6px;
+              background-color: rgba(176, 165, 255, 0.4);
+              margin-left: 5px;
+            }
+          }
+
+          &.positiveFollowing {
             color: #45bd45;
           }
   			}

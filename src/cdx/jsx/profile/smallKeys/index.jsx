@@ -15,9 +15,10 @@ const statusStringKeys = {
 const ActiveForm = (props) => {
   const baseAsset = props.data.history.baseAsset;
   const balance = utils.profile.getBalanceHistory(props.data.history.balance, baseAsset, 'balance');
-  const income = utils.profile.getValueHistory(props.data.history.income, baseAsset, 'income');
-
-  const positiveProfit = income > 0;
+  const { productName: followProductName } = props.data.history.usedFollowing || {productName: false};
+  const { name: usedProductName } = props.data.history.usedProduct || {name: false};
+  const positiveFollowing = true; //test
+  // const income = utils.profile.getValueHistory(props.data.history.income, baseAsset, 'income');
 
   return(
     <div className='smallKeys'>
@@ -35,9 +36,15 @@ const ActiveForm = (props) => {
         </div>
         <div className="blockItem history">
           <div className="item balance">{`${balance.available} (${balance.hold}) ${baseAsset}`}</div>
-          <div className={`item profit ${positiveProfit && 'positiveProfit'}`}>{
-            `Week: ${positiveProfit ? '+' : '-'} ${Math.abs(income)} %`
-          }</div>
+          <div className={`item usedFollowing ${positiveFollowing && 'positiveFollowing'}`}>
+            {followProductName ? ([
+              <div className="spanItem">Follow</div>,
+              <div className="spanItem usedProductName">{followProductName}</div>
+            ]) : usedProductName ? ([
+              <div className="spanItem">Create</div>,
+              <div className="spanItem usedProductName">{usedProductName}</div>
+            ]) : null}
+          </div>
         </div>
       </div>
       <div className="settings">

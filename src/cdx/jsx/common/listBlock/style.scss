@@ -2,15 +2,29 @@
 	display: flex;
 	flex: auto 0;
 	flex-direction: column;
+	margin: 0 0 20px 0;
+	background-image: linear-gradient(to bottom, rgba(2, 2, 36, 0.81), rgba(2, 2, 36, 0.81)), linear-gradient(to bottom, #7b489e, #ff69dd);
+	padding: 45px 25px;
 
 	& .head {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		border-bottom: 2px solid rgba(158, 108, 193, 0.5);
+		padding-bottom: 30px; 
 
 		& .title {
 			display: flex;
 			flex-direction: row;
+			font-size: 16px;
+		  font-weight: normal;
+		  font-style: normal;
+		  font-stretch: normal;
+		  line-height: normal;
+		  letter-spacing: 0.7px;
+		  text-align: left;
+		  color: #ffffff;
+		  text-transform: uppercase;
 
 			& .reload {
 				width: 20px;
@@ -25,6 +39,7 @@
 		& .addButton {
 			text-decoration: underline;
 			cursor: pointer;
+			text-align: right;
 		}
 	}
 

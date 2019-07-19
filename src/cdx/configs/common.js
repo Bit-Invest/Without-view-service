@@ -19,7 +19,7 @@ const initialState = {
 const privatePages = ['profile'];
 
 const settings = {
-	ratingMax: 2,
+	ratingMax: 10,
 	ragingScale: 100,
 };
 
