@@ -52,6 +52,9 @@ const ActiveForm = (props) => {
         <div className="menu">
           <div className="item" onClick={props.data.methods.setIndexEditing}>Change keys or name</div>
           <div className="item" onClick={async () => {
+            let isRemoved = prompt('Enter account name if you are really going to delete it.', '');
+            if (isRemoved !== props.data.name) return false;
+
             await props.data.methods.remove({
               keyId: props.data.keyId,
             });

@@ -131,11 +131,11 @@ export default class GroupTrades extends React.Component {
     });
 
     const sortFromCreatedAt = (order1, order2) => (
-      new Date(order2.createdAt).getTime() - new Date(order1.createdAt).getTime()
+      new Date(order2.updatedAt).getTime() - new Date(order1.updatedAt).getTime()
     );
 
     arrAllOrders.allOrders = arrAllOrders.allOrders
-      .filter((corOrder) => !!new Date(corOrder.createdAt).getTime())
+      .filter((corOrder) => !!new Date(corOrder.updatedAt).getTime())
       .sort(sortFromCreatedAt);
 
     if (!arrAllOrders.allOrders.length) 
@@ -178,7 +178,7 @@ export default class GroupTrades extends React.Component {
         <div className="boxOfTrade price">{trade.price}</div>
         <div className="boxOfTrade quantity">{trade.quantity}</div>
         <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
-        <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
+        <div className="boxOfTrade time">{moment.utc(trade.updatedAt).toISOString().slice(11, 19)}</div>
       </div>
     );
 
@@ -193,7 +193,7 @@ export default class GroupTrades extends React.Component {
         <div className="boxOfTrade price">{trade.price}</div>
         <div className="boxOfTrade quantity">{trade.quantity}</div>
         <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
-        <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
+        <div className="boxOfTrade time">{moment.utc(trade.updatedAt).toISOString().slice(11, 19)}</div>
       </div>
     );
 
@@ -212,7 +212,7 @@ export default class GroupTrades extends React.Component {
         <div className="boxOfTrade price">{trade.price}</div>
         <div className="boxOfTrade quantity">{trade.quantity}</div>
         <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
-        <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
+        <div className="boxOfTrade time">{moment.utc(trade.updatedAt).toISOString().slice(11, 19)}</div>
       </div>
     );
     
@@ -226,7 +226,7 @@ export default class GroupTrades extends React.Component {
       const tsFollowersTrades = arrAllOrders.allOrders.filter(curFollowerOrder =>
         !!tsLogTrades.find(curLogOrder => curLogOrder.followerOrderId === curFollowerOrder.orderId)
       );
-      const curISODate = moment.utc(curLeaderOrder.createdAt).toISOString().slice(0, 10);
+      const curISODate = moment.utc(curLeaderOrder.updatedAt).toISOString().slice(0, 10);
       const hasLogTrades = tsFollowersTrades.length > 0;
       const relativitySuccess = hasLogTrades && 
         tsFollowersTrades.reduce((res, curTsFollowersTrades, index) => {
@@ -275,7 +275,7 @@ export default class GroupTrades extends React.Component {
 
       if (isSynchronized) return false;
 
-      const curISODate = moment.utc(curFollowerOrder.createdAt).toISOString().slice(0, 10);
+      const curISODate = moment.utc(curFollowerOrder.updatedAt).toISOString().slice(0, 10);
 
       Object.assign(listDays, {
         [curISODate]: listDays[curISODate] || [],
