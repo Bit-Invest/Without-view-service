@@ -61,11 +61,11 @@ class FullProduct extends React.Component {
 
     const income = baseIncomeHistory && baseIncomeHistory.length && baseIncomeHistory[baseIncomeHistory.length-1].value / baseIncomeHistory[0].value - 1;
     const ratingValues = baseIncomeHistory && baseIncomeHistory.length && {
-      "Volatility": volatilitySqr() * 10,
-      "IncomeAverage": (incomeAverage < 0 ? 0 : incomeAverage),
-      "MaxDrawdown": maxDrawdown,
-      "DmaxDD": maxRecoveryTimeShare,
-      "Income": (income < 0 ? 0 : income),
+      "Volatility": (volatilitySqr() * 10).toFixed(2),
+      "IncomeAverage": (incomeAverage < 0 ? 0 : incomeAverage).toFixed(2),
+      "MaxDrawdown": (maxDrawdown * 100).toFixed(2),
+      "DmaxDD": (maxRecoveryTimeShare * 100).toFixed(2),
+      "Income": (income < 0 ? 0 : income).toFixed(2),
     };
 
     return(
@@ -99,41 +99,10 @@ class FullProduct extends React.Component {
               <div className="baseAsset">{baseAsset}</div>
             </div>
             <div className="historyBlock">
-                <IncomeBlock 
-                  income={utils.profile.getIncomeForSmallProduct(rating)}
-                />
+              <IncomeBlock 
+                income={utils.profile.getIncomeForSmallProduct(rating)}
+              />
             </div>
-            {
-              !productProccesing && (
-                <div className="ratingInfo">
-                  <div className="ratingValuesChart">
-                    <RatingChart ratingValues={ratingValues} />
-                  </div>
-                  <div className="ratingValuesText">
-                    <div className="item">
-                      <div className="property">Volatility: </div>
-                      <div className="value">{ratingValues['Volatility']}</div>
-                    </div>
-                    <div className="item">
-                      <div className="property">IncomeAverage: </div>
-                      <div className="value">{ratingValues['IncomeAverage']}</div>
-                    </div>
-                    <div className="item">
-                      <div className="property">MaxDrawdown: </div>
-                      <div className="value">{ratingValues['MaxDrawdown']}</div>
-                    </div>
-                    <div className="item">
-                      <div className="property">DmaxDD: </div>
-                      <div className="value">{ratingValues['DmaxDD']}</div>
-                    </div>
-                    <div className="item">
-                      <div className="property">Income: </div>
-                      <div className="value">{ratingValues['Income']}</div>
-                    </div>
-                  </div>
-                </div>
-              )
-            }
             <div className="infoContent">
               <div className="item">
                 <div className="property">Name product: </div>
@@ -152,6 +121,37 @@ class FullProduct extends React.Component {
                 <div className="value">{description}</div>
               </div>
             </div>
+            {
+              !productProccesing && (
+                <div className="ratingInfo">
+                  <div className="ratingValuesChart">
+                    <RatingChart ratingValues={ratingValues} />
+                  </div>
+                  <div className="ratingValuesText">
+                    <div className="item">
+                      <div className="property">Volatility: </div>
+                      <div className="value">{ratingValues['Volatility']}</div>
+                    </div>
+                    <div className="item">
+                      <div className="property">IncomeAverage: </div>
+                      <div className="value">{ratingValues['IncomeAverage']}</div>
+                    </div>
+                    <div className="item">
+                      <div className="property">MaxDrawdown: </div>
+                      <div className="value">{ratingValues['MaxDrawdown']}%</div>
+                    </div>
+                    <div className="item">
+                      <div className="property">DmaxDD: </div>
+                      <div className="value">{ratingValues['DmaxDD']}%</div>
+                    </div>
+                    <div className="item">
+                      <div className="property">Income: </div>
+                      <div className="value">{ratingValues['Income']}%</div>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>

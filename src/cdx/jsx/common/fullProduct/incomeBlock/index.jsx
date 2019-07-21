@@ -78,8 +78,8 @@ export default (props) => {
           color: {
             linearGradient: [0, 200],
             stops: [
-              [0, 'rgba(234, 34, 196, .2)'],
-              [1, 'rgb(128, 127, 206)'],
+              [0, 'rgb(126,63,255)'],
+              [1, 'rgb(255,117,244)'],
             ],
           },
         }],

@@ -15,6 +15,106 @@ import './style.scss';
 
 const Consumer = Contexts.MyProductContext.Consumer;
 
+class GroupTradesParent extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      date: 'new',
+      follower: 'all',
+      nosync: true,
+    };
+  }
+
+  startRenderGroupTrades = (props, actions, filter) => {
+    const {
+      myFollowers,
+      keys,
+      infoMarketProduct,
+    } = this.props.reduxState;
+
+    const noLoadedBlocksForTrades = mixins.common.dataNoLoaded([keys, myFollowers, infoMarketProduct]);
+
+    if (noLoadedBlocksForTrades[1]) return noLoadedBlocksForTrades[1];
+
+    return(
+      <GroupTrades 
+        {...props} 
+        actions={actions} 
+        filter={filter}
+      />
+    );
+  }
+
+  getFollowers = () => {
+    const { 
+      reduxState: {
+        ordersFollowings,
+        myFollowers,
+        keys,
+      }, 
+      paramsProduct, 
+    } = this.props;
+
+    const noLoadedFollowers = mixins.common.dataNoLoaded([keys, myFollowers, ordersFollowings]);
+
+    if (noLoadedFollowers[1]) return [];
+
+    const { approvedFollowings }  = utils.myproduct
+      .getRequisitionsProduct({
+        productId: paramsProduct.productId,
+        myFollowers,
+      });
+
+    const followings = utils.myproduct
+      .getFollowingsNamedMyKeys(keys, approvedFollowings);
+
+    return followings;
+  }
+
+  render() {
+    const {
+      date,
+      follower,
+      nosync,
+    } = this.state;
+
+    return(
+      <div className="typeList followingTrades">
+        <div className="curHead">
+          <div className="curTitle">Following trades</div>
+          <div className="rightPanel">
+            <div className="curTitle">Filter by</div>
+            <div className="filterMenu">
+              <select onChange={(event)=>this.setState({date:event.target.value})}>
+                <option value="new" selected={date === "new"}>First new deal</option>
+                <option value="old" selected={date === "old"}>First old deal</option>
+              </select>
+              <select onChange={(event)=>this.setState({follower:event.target.value})}>
+                <option value="all" selected={follower === "all"}>Show all followers</option>
+                {this.getFollowers().map((curFollower, index) =>
+                  <option value={curFollower.follower} key={index}>{curFollower.nameFollower}</option>
+                )}
+              </select>
+              <select onChange={(event)=>this.setState({nosync:event.target.value})}>
+                <option value={true} selected={nosync === true}>Show unsynchronized transactions</option>
+                <option value={false} selected={nosync === false}>Hide unsynchronized transactions</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="content">
+          {this.startRenderGroupTrades(this.props, this.props.actions, {
+            date,
+            follower,
+            nosync,
+          })}
+        </div>
+      </div>
+    );
+  }
+}
+
 export default class MyProductComponent extends React.Component {
   renderListRequisitions = ({actions}) => {
     const { reduxState: {
@@ -123,25 +223,6 @@ export default class MyProductComponent extends React.Component {
     return <FullProduct reduxState={reduxState} />;
   }
 
-  startRenderGroupTrades = (props, actions) => {
-    const {
-      myFollowers,
-      keys,
-      infoMarketProduct,
-    } = this.props.reduxState;
-
-    const noLoadedBlocksForTrades = mixins.common.dataNoLoaded([keys, myFollowers, infoMarketProduct]);
-
-    if (noLoadedBlocksForTrades[1]) return noLoadedBlocksForTrades[1];
-
-    return(
-      <GroupTrades 
-        {...props} 
-        actions={actions} 
-      />
-    );
-  }
-
   render() {
     const { reduxState } = this.props;
     console.log('#MyProductComponent reduxState', this.props.reduxState);
@@ -151,15 +232,10 @@ export default class MyProductComponent extends React.Component {
         {({ actions }) => (
           <InternalPage {...this.props} {...({actions})} atopClass="myproduct">
             <BlackoutBlock atopClass="requisitions">
-              <div className="typeList followingTrades">
-                <div className="curHead">
-                  <div className="curTitle">Following trades</div>
-                  <div className="rightPanel"></div>
-                </div>
-                <div className="content">
-                  {this.startRenderGroupTrades(this.props, actions)}
-                </div>
-              </div>
+              <GroupTradesParent 
+                {...this.props}
+                actions={actions}
+              />
               <div className="typeList investorList">
                 <div className="curHead">
                   <div className="curTitle">Your investors</div>

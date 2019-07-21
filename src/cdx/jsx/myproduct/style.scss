@@ -33,6 +33,9 @@
 					> .curHead {
 						border-bottom: 2px solid rgba(158, 108, 193, 0.5);
 						padding-bottom: 30px; 
+						display: flex;
+						justify-content: space-between;
+						flex-wrap: wrap;
 
 						> .curTitle {
 							font-size: 16px;
@@ -44,6 +47,36 @@
 						  text-align: left;
 						  color: #ffffff;
 						  text-transform: uppercase;
+						}
+
+						.rightPanel {
+							display: flex;
+							align-items: center;
+							flex-wrap: wrap;
+
+							> .curTitle {
+								font-size: 12px;
+								margin-right: 10px;
+								text-transform: uppercase;
+								color: rgb(176, 165, 255);
+							}
+
+							.filterMenu {
+								display: flex;
+								flex-wrap: wrap;
+
+								select {
+									align-items: center;
+									font-size: 12px;
+									margin-right: 10px;
+									color: rgba(255, 255, 255, 0.302);
+									background-color: transparent;
+									border: none;
+									text-transform: uppercase;
+									max-width: 200px;
+									overflow: hidden;
+								}
+							}
 						}
 					}
 

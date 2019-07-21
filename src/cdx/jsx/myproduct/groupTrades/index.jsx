@@ -63,6 +63,10 @@ export default class GroupTrades extends React.Component {
         keys,
       }, 
       paramsProduct, 
+      filter: {
+        date: filterShowDate,
+        follower: filterShowFollower,
+      },
     } = this.props;
 
     const noLoadedFollowers = mixins.common.dataNoLoaded([keys, myFollowers, ordersFollowings]);
@@ -76,7 +80,8 @@ export default class GroupTrades extends React.Component {
       });
 
     const followings = utils.myproduct
-      .getFollowingsNamedMyKeys(keys, approvedFollowings);
+      .getFollowingsNamedMyKeys(keys, approvedFollowings)
+      .filter(curFollowing => filterShowFollower === 'all' || filterShowFollower === curFollowing.follower);
 
     const mergedPropsOrders = (orders, props) => 
       orders.map(curOrder => ({
@@ -131,7 +136,10 @@ export default class GroupTrades extends React.Component {
     });
 
     const sortFromCreatedAt = (order1, order2) => (
-      new Date(order2.updatedAt).getTime() - new Date(order1.updatedAt).getTime()
+      filterShowDate === 'new' ?
+        new Date(order2.updatedAt).getTime() - new Date(order1.updatedAt).getTime()
+      : 
+        new Date(order1.updatedAt).getTime() - new Date(order2.updatedAt).getTime()
     );
 
     arrAllOrders.allOrders = arrAllOrders.allOrders
@@ -159,10 +167,18 @@ export default class GroupTrades extends React.Component {
   }
 
   renderTrades = ({arrAllOrders}) => {
+    const { 
+      filter: {
+        nosync: filterShowNoSync,
+      },
+    } = this.props;
     const { quantityLeaderOrdersShow } = this.state;
 
     const renderTradeLeader = (trade, hasLogTrades, drowdownContent, relativitySuccess) => (
-      <div className={`item leaderTrade ${hasLogTrades?'hasLogTrades':'noHasLogTrades'}`}>
+      <div 
+        className={`item leaderTrade ${hasLogTrades?'hasLogTrades':'noHasLogTrades'}`}
+        key={`${trade.orderId}-${trade.symbol}`}
+      >
         <div className="boxOfTrade clickMore">
           <div className="curClick" onClick={drowdownContent}></div>
         </div>
@@ -178,12 +194,12 @@ export default class GroupTrades extends React.Component {
         <div className="boxOfTrade price">{trade.price}</div>
         <div className="boxOfTrade quantity">{trade.quantity}</div>
         <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
-        <div className="boxOfTrade time">{moment.utc(trade.updatedAt).toISOString().slice(11, 19)}</div>
+        <div className="boxOfTrade time">{moment.utc(trade.createdAt?trade.createdAt:trade.updatedAt).toISOString().slice(11, 19)}</div>
       </div>
     );
 
     const renderTradeFollower = (trade) => (
-      <div className="item followerTrade">
+      <div className="item followerTrade" key={`${trade.orderId}-${trade.symbol}`}>
         <div className="boxOfTrade emptySpace" style={{width: '10%'}}></div>
         <div className="boxOfTrade name">{trade.name}</div>
         <div className="boxOfTrade emptySpace" style={{width: '2%'}}></div>
@@ -193,12 +209,12 @@ export default class GroupTrades extends React.Component {
         <div className="boxOfTrade price">{trade.price}</div>
         <div className="boxOfTrade quantity">{trade.quantity}</div>
         <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
-        <div className="boxOfTrade time">{moment.utc(trade.updatedAt).toISOString().slice(11, 19)}</div>
+        <div className="boxOfTrade time">{moment.utc(trade.createdAt?trade.createdAt:trade.updatedAt).toISOString().slice(11, 19)}</div>
       </div>
     );
 
     const renderNoFollowTrade = (trade) => (
-      <div className={`item noFollowTrade`}>
+      <div className={`item noFollowTrade show-${filterShowNoSync}`} key={`${trade.orderId}-${trade.symbol}`}>
         <div className="boxOfTrade clickMore">
           <div className="curClick"></div>
         </div>
@@ -212,7 +228,7 @@ export default class GroupTrades extends React.Component {
         <div className="boxOfTrade price">{trade.price}</div>
         <div className="boxOfTrade quantity">{trade.quantity}</div>
         <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
-        <div className="boxOfTrade time">{moment.utc(trade.updatedAt).toISOString().slice(11, 19)}</div>
+        <div className="boxOfTrade time">{moment.utc(trade.createdAt?trade.createdAt:trade.updatedAt).toISOString().slice(11, 19)}</div>
       </div>
     );
     
