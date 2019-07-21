@@ -143,17 +143,6 @@ class FollowForm extends React.Component {
             productId={productId}
           />
         </div>
-
-        {
-          // <div className="selectDiv selectKeyid">
-          //   <div className="localTitle">Select Account from exchange accounts!</div>
-          //   <select onChange={(event)=>this.setState({selectedFollowKeyId:event.target.value})} value={this.state.selectedFollowKeyId}>
-          //     <option value={false}>No selected</option>
-          //     {resList}
-          //   </select>
-          // </div>
-          // <div className="btnSend" onClick={this.sendFollowing}>Start following</div>
-        }
       </div>
     );
   }

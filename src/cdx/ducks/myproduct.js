@@ -345,6 +345,68 @@ const actions = utils.common.addPropery([
 			},
 		}),
 	},
+	{
+		type: 'REQUEST',
+		propertyFn: 'sendFollow',
+		keyState: 'sendFollowRes',
+		data: {
+			api: 'baseCindx',
+			url: '/user/follow',
+			method: 'POST',
+			body: [],
+			processingResFn: (cbParams, res) => {
+				return res;
+			},
+		},
+		tags: {
+			manuallyUsed: true,
+			startRequired: false,
+			tiedActions: () => [
+				actionsForTied.getFollowers,
+				actionsForTied.getFollowings,
+			],
+		},
+		preFnData: (data, tsAction) => ({
+			data: {
+				...tsAction.data,
+				body: {
+					selfKeyId: data.selfKeyId, 
+					productId: data.productId,
+				},
+			},
+		}),
+	},
+	{
+		type: 'REQUEST',
+		propertyFn: 'sendUnFollow',
+		keyState: 'sendUnFollowRes',
+		data: {
+			api: 'baseCindx',
+			url: '/user/unfollow',
+			method: 'POST',
+			body: [],
+			processingResFn: (cbParams, res) => {
+				return res;
+			},
+		},
+		tags: {
+			manuallyUsed: true,
+			startRequired: false,
+			tiedActions: () => [
+				actionsForTied.getFollowers,
+				actionsForTied.getFollowings,
+			],
+		},
+		preFnData: (data, tsAction) => ({
+			data: {
+				...tsAction.data,
+				body: {
+					selfKeyId: data.selfKeyId, 
+					productId: data.productId,
+				},
+			},
+		}),
+	},
 ], 'parentTag', generalKeyState);
 
 const actionsForTied = actions.reduce((pr, curAction) => 
