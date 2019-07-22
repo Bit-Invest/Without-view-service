@@ -114,7 +114,10 @@ export const getDataForSmallKeys = (state) => {
     }, []);
 
     const usedFollowing = myFollowingsSorted
-      .find(curMyFollowings => curMyFollowings.follower.keyId === curKey.keyId);
+      .find(curMyFollowings => 
+        curMyFollowings.follower.keyId === curKey.keyId && 
+          curMyFollowings.moderation === 'approved'
+      );
 
     const usedProduct = (myProducts || [])
       .find(curMyProduct => curMyProduct.keyId === curKey.keyId);
@@ -273,11 +276,25 @@ export const getFreeKeys = (state, atopFilter) => {
   const myProducts = typeof state.myProducts === 'object' && state.myProducts;
   const myFollowings = typeof state.myFollowings === 'object' && state.myFollowings;
 
+  const myFollowingsSorted = (myFollowings || [])
+    .sort((curFollowing1, curFollowing2) => curFollowing2.createdAt - curFollowing1.createdAt)
+    .reduce((res, curObj, arr) => {
+      if (res.find(curObj2 => 
+        (curObj2.follower.keyId || 0) === curObj.follower.keyId
+      )) return res;
+      
+      res.push(curObj);
+
+      return res;
+    }, []);
+
   const keysFiltered = (keys || [])
     .filter(curKeys =>
       curKeys.valid && 
         !(myProducts || []).find(curProduct => curProduct.keyId === curKeys.keyId) && 
-          !(myFollowings || []).find(curFollowing => curFollowing.follower === curKeys.keyId) 
+          !(myFollowingsSorted || []).find(curFollowing => 
+            curFollowing.follower.keyId === curKeys.keyId && curFollowing
+          ) 
     )
     .filter(atopFilter || (() => true));
 

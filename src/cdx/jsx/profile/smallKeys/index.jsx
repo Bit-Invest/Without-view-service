@@ -130,6 +130,7 @@ class AddingForm extends React.Component {
       name: '',
       apiKey: '',
       secretKey: '',
+      stock: 'Binance',
     };
   }
 
@@ -154,6 +155,7 @@ class AddingForm extends React.Component {
       <div className='smallKeysAdd'>
         <div className='mainBlock'>
           <div className='items inputs'>
+            <input value={`Exchange: ${this.state.stock}`} name='stock' placeholder='Stock' />
             <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='Name' placeholder='Name' />
             <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.apiKey} name='Api key' placeholder='Api key' />
             <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder='Secret key' />
