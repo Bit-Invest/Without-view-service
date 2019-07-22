@@ -293,7 +293,8 @@ export const getFreeKeys = (state, atopFilter) => {
       curKeys.valid && 
         !(myProducts || []).find(curProduct => curProduct.keyId === curKeys.keyId) && 
           !(myFollowingsSorted || []).find(curFollowing => 
-            curFollowing.follower.keyId === curKeys.keyId && curFollowing
+            curFollowing.follower.keyId === curKeys.keyId && curFollowing && 
+              ['approved', 'wait'].includes(curFollowing.moderation)
           ) 
     )
     .filter(atopFilter || (() => true));
