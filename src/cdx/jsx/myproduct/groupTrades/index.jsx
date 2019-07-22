@@ -236,11 +236,13 @@ export default class GroupTrades extends React.Component {
     const synchronizedFollowerTrades = {};
 
     const treatmentLeaderFollowing = (curLeaderOrder) => {
-      const tsLogTrades = arrAllOrders.allFollowingsLog.filter(curLogOrder =>
-        curLogOrder.leaderOrderId === curLeaderOrder.orderId
+      const tsLogTradesCopied = arrAllOrders.allFollowingsLog.filter(curLogOrder =>
+        curLogOrder.status === 'copied' && curLogOrder.leaderOrderId === curLeaderOrder.orderId
       );
       const tsFollowersTrades = arrAllOrders.allOrders.filter(curFollowerOrder =>
-        !!tsLogTrades.find(curLogOrder => curLogOrder.followerOrderId === curFollowerOrder.orderId)
+        !!tsLogTradesCopied.find(curLogOrder => 
+          curLogOrder.followerOrderId === curFollowerOrder.orderId
+        )
       );
       const curISODate = moment.utc(curLeaderOrder.updatedAt).toISOString().slice(0, 10);
       const hasLogTrades = tsFollowersTrades.length > 0;
@@ -259,7 +261,7 @@ export default class GroupTrades extends React.Component {
       tsFollowersTrades.forEach(curFollowerTrade => {
         synchronizedFollowerTrades[curFollowerTrade.orderId] = true;
       });
-
+      
       listDays[curISODate].push(
         <DrowDown 
           Head={(props) => {
