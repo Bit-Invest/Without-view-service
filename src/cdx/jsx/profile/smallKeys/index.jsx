@@ -38,7 +38,7 @@ const ActiveForm = (props) => {
           <div className="item balance">{`${balance.available} (${balance.hold}) ${baseAsset}`}</div>
           <div className={`item usedFollowing ${positiveFollowing && 'positiveFollowing'}`}>
             {followProductName ? ([
-              <div className="spanItem">Follow</div>,
+              <div className="spanItem">Following</div>,
               <div className="spanItem usedProductName">{followProductName}</div>
             ]) : usedProductName ? ([
               <div className="spanItem">Create</div>,
@@ -50,7 +50,7 @@ const ActiveForm = (props) => {
       <div className="settings">
         <div className="iconHover"></div>
         <div className="menu">
-          <div className="item" onClick={props.data.methods.setIndexEditing}>Change keys or name</div>
+          <div className="item" onClick={props.data.methods.setIndexEditing}>Edit</div>
           <div className="item" onClick={async () => {
             let isRemoved = prompt('Enter account name if you are really going to delete it.', '');
             if (isRemoved !== props.data.name) return false;

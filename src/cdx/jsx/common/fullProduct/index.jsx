@@ -105,19 +105,19 @@ class FullProduct extends React.Component {
             </div>
             <div className="infoContent">
               <div className="item">
-                <div className="property">Name product: </div>
+                <div className="property">Product name: </div>
                 <div className="value">{name}</div>
               </div>
               <div className="item">
-                <div className="property">Amount investors: </div>
+                <div className="property">Number of investors: </div>
                 <div className="value">{followers}</div>
               </div>
               <div className="item">
-                <div className="property">Since: </div>
+                <div className="property">Created on: </div>
                 <div className="value">{since}</div>
               </div>
               <div className="item">
-                <div className="property">Description product: </div>
+                <div className="property">Product description: </div>
                 <div className="value">{description}</div>
               </div>
             </div>

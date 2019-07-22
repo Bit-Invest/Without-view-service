@@ -131,19 +131,15 @@ export default class ListBlock extends React.Component {
     return(
       <div className={`listBlock ${atopClass?atopClass:''}`}>
         <div className="head">
-          {
-            this.props.texts.title && (
-              <div className="title">
-                <div>{this.props.texts.title}</div>
-                <div className="reload" onClick={this.props.methods.reload}></div>
-              </div>
-            )
-          }
-          {
-            this.props.texts.addButtonText && (
-              <div className="addButton" onClick={this.toggleAdding}>{this.props.texts.addButtonText}</div>
-            )
-          }
+          {this.props.texts.title && (
+            <div className="title">
+              <div>{this.props.texts.title}</div>
+              <div className="reload" onClick={this.props.methods.reload}></div>
+            </div>
+          )}
+          {this.props.texts.addButtonText && (
+            <div className="addButton" onClick={this.toggleAdding}>{this.props.texts.addButtonText}</div>
+          )}
         </div>
         <div className="list">
           {({

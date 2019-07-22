@@ -113,11 +113,11 @@ class FollowForm extends React.Component {
           />
           <ListFollowKeysComponent 
             keys={keysRejectedFollowThisProduct}
-            title="This manager has canceled your application, you can re-send the application."
+            title="This manager has canceled your application, you can resend the application."
             atopClass="rejectedFollowThisProduct"
             methodFollow={methods.reapplyFollowing}
             productId={productId}
-            buttonText="Re-send following"
+            buttonText="Resend following"
           />
           <ListFollowKeysComponent 
             keys={keysForUnfollowThisProduct}

@@ -231,7 +231,7 @@ class AddingForm extends React.Component {
       return(
         <div className='smallProductAdd'>
           <div className='mainBlock'>
-            You have no free exchange accounts!( 
+            You have no spare exchange accounts, please create a new account to create a product, and generate an API key for it.
           </div>
         </div>
       );

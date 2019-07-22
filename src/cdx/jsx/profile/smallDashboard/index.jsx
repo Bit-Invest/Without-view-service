@@ -74,21 +74,21 @@ class RenderDashboard extends React.Component {
             </select>
           </div>
           <div className="item">
-            <div className="curSmallTitle">Mode:</div>
+            <div className="curSmallTitle">Display Mode:</div>
             <select onChange={(event)=>this.setState({selectedMode:event.target.value})}>
               <option value="PERCENT" selected={this.state.selectedMode === "PERCENT"}>%</option>
-              <option value="ABSOLUTE" selected={this.state.selectedMode === "ABSOLUTE"}>ABSOLUTE</option>
+              <option value="ABSOLUTE" selected={this.state.selectedMode === "ABSOLUTE"}>Absolute Values</option>
             </select>
           </div>
           <div className="item">
             <div className="curSmallTitle">Type:</div>
             <select onChange={(event)=>this.setState({selectedType:event.target.value})}>
-              <option value="INCOME" selected={this.state.selectedType === "INCOME"}>INCOME</option>
+              <option value="INCOME" selected={this.state.selectedType === "INCOME"}>PROFIT</option>
               <option value="BALANCE" selected={this.state.selectedType === "BALANCE"}>BALANCE</option>
             </select>
           </div>
           <div className="item">
-            <div className="curSmallTitle">Select time showing:</div>
+            <div className="curSmallTitle">Displayed period:</div>
             <select onChange={(event)=>this.setState({selectedCourDay:event.target.value})}>
               {[{
                 cour: 3,
@@ -178,18 +178,18 @@ class RenderDashboard extends React.Component {
     const { selectedMode, selectedType } = this.state;
     const titleChart = ({
       INCOME: {
-        PERCENT: `Your income in ${baseAsset}, %:`,
-        ABSOLUTE: `Your income in ${baseAsset}:`,
+        PERCENT: `Account profit in ${baseAsset}, %:`,
+        ABSOLUTE: `Account profit in ${baseAsset}:`,
       },
       BALANCE: {
-        PERCENT: `Your history balances in ${baseAsset}, %:`,
-        ABSOLUTE: `Your history balances in ${baseAsset}:`,
+        PERCENT: `Account history balances in ${baseAsset}, %:`,
+        ABSOLUTE: `Account history balances in ${baseAsset}:`,
       },
     })[selectedType][selectedMode];
 
     return(
       <div className="dashboard">
-        <div className="curTitle">Basic information about your accounts</div>
+        <div className="curTitle">Accounts Overview</div>
         {this.renderHead()}
         <div className="curSmallTitle">{titleChart}</div>
         {this.renderChartIncome()}

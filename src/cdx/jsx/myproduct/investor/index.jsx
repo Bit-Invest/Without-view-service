@@ -195,7 +195,7 @@ class ActiveInvestor extends React.Component {
           <div className="headProperty">
             <div className="item name">Name</div>
             <div className="item status">Status</div>
-            <div className="item totalBalance">Total Ballance</div>
+            <div className="item totalBalance">Total Balance</div>
             <div className="item synchronization">Synchronization quality</div>
             <div className="item date">Date of accseccion</div>
           </div>

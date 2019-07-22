@@ -71,7 +71,7 @@ export default class ProfileComponent extends React.Component {
                 }}
                 texts={{
                   title: 'My keys',
-                  addButtonText: 'Add account exchange',
+                  addButtonText: 'Add exchange account',
                 }}
               />
             </BlackoutBlock>
@@ -91,12 +91,12 @@ export default class ProfileComponent extends React.Component {
                 }}
                 texts={{
                   title: 'My investors',
-                  addButtonText: 'Add account exchange',
+                  addButtonText: 'Add exchange account',
                 }}
               />
             </BlackoutBlock>
             <BlackoutBlock atopClass="products">
-              <ListBlock 
+              <ListBlock
                 uniqProperty="productId"
                 reduxState={reduxState.myProducts}
                 keys={keysForAddingProduct}
