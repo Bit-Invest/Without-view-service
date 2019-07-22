@@ -65,8 +65,6 @@ export default class ListBlock extends React.Component {
     const keys = this.props.reduxState;
     const keysNoLoaded = mixins.common.dataNoLoaded([keys]);
 
-    console.log({keysNoLoaded,keys});
-
     if (keysNoLoaded[1]) return keysNoLoaded[1];
 
     const resList = keys

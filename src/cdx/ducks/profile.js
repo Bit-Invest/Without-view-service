@@ -161,12 +161,6 @@ const actions = utils.common.addPropery([
 			
 			const { nextKeyId, isLast, } = utils.profile.getNextKeyIdForGetBalances(keys, balancesKeys);
 
-			console.log({
-				nextKeyId,
-				keys,
-				balancesKeys,
-			});
-
 			if (!nextKeyId) return {
 				disable: true,
 			};

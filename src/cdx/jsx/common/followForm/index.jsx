@@ -91,14 +91,6 @@ class FollowForm extends React.Component {
       reduxState,
       productId,
     });
-
-    console.log({
-      keysFreeForFollow,
-      keysRejectedFollowThisProduct,
-      keysRejectedFollow,
-      keysForUnfollowThisProduct,
-      keysWaitFromThisProduct,
-    });
     
     return(
       <div className="followForm">

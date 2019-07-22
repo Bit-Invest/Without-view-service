@@ -14,7 +14,7 @@ import utils from '@cdx/utils/';
 
 import './style.scss';
 
-const Consumer = Contexts.ProfileContext.Consumer
+const Consumer = Contexts.ProfileContext.Consumer;
 
 export default class ProfileComponent extends React.Component {
   listBlocksForm = {
@@ -37,10 +37,6 @@ export default class ProfileComponent extends React.Component {
       reduxState, 
       (curKeys) => curKeys.groupName === 'my' || !curKeys.groupName
     );
-
-    console.log('#1', {
-      stateKeys,
-    });
 
     return {
       stateKeys,

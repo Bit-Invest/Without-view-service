@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Contexts from '@modules/contexts';
+import utils from '@cdx/utils/';
 
 import ParentWrapperPages from './parent-wrapper';
 import ProfileComponent from '@cdx/jsx/profile/';
 
 const Provider = Contexts.ProfileContext.Provider;
+const Logger = utils.common.logger('profile');
 
 class ProfileContainer extends ParentWrapperPages {
   constructor() {
@@ -15,7 +17,11 @@ class ProfileContainer extends ParentWrapperPages {
   }
 
   render() {
-    console.log('#ProfileContainer', this.props.reduxState);
+    Logger({
+      body: {
+        reduxState: this.props.reduxState,
+      },
+    });
 
     return(
       <Provider value={{

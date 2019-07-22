@@ -14,6 +14,7 @@ import GroupTrades from '@cdx/jsx/myproduct/groupTrades/';
 import './style.scss';
 
 const Consumer = Contexts.MyProductContext.Consumer;
+const Logger = utils.common.logger('myproduct');
 
 class GroupTradesParent extends React.Component {
   constructor() {
@@ -225,7 +226,11 @@ export default class MyProductComponent extends React.Component {
 
   render() {
     const { reduxState } = this.props;
-    console.log('#MyProductComponent reduxState', this.props.reduxState);
+    Logger({
+      body: {
+        reduxState: this.props.reduxState,
+      },
+    });
 
     return(
       <Consumer>

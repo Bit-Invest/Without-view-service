@@ -5,7 +5,7 @@ import Contexts from '@modules/contexts';
 import ParentWrapperPages from './parent-wrapper';
 import MyProductComponent from '@cdx/jsx/myproduct/';
 
-const Provider = Contexts.MyProductContext.Provider
+const Provider = Contexts.MyProductContext.Provider;
 
 class MyProductContainer extends ParentWrapperPages {
   constructor() {

@@ -83,14 +83,8 @@ export default (props) => {
     ));
 
     return res;
-  }, [])
-
-  console.log({
-    allIncomesValues,
-    min: Math.min(...(allIncomesValues || [])),
-    max: Math.max(...(allIncomesValues || [])),
-  });
-
+  }, []);
+  
   return(
     <ReactHighstock
       config={{

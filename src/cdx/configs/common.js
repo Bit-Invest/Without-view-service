@@ -23,10 +23,16 @@ const settings = {
 	ragingScale: 100,
 };
 
+const loggerSettings = {
+	groupNames: ['profile', 'myproduct', 'marketproduct', 'marketplace'],
+	active: false,
+};
+
 export default ({
 	urlsApi,
 	initialState,
 	TYPES_RESULT,
 	privatePages,
  	settings,
+ 	loggerSettings,
 });

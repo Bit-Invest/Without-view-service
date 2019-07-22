@@ -118,7 +118,16 @@ export const getRatingValueShow = (value) =>
 
 export const defaultProcessingResFn = (cb, res) => res;
 
+export const logger = (groupName) => (arrLog) => {
+  const { loggerSettings: { groupNames, active } } = configs.common;
+
+  if (active && groupNames.includes(groupName)) {
+    console.log(`| ${groupName}:`, arrLog);
+  }
+};
+
 export default ({
+  logger,
 	notPassed,
 	addPropery,
 	saveAuthTokens,

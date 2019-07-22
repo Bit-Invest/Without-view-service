@@ -53,8 +53,6 @@ export default class Header extends React.Component {
   }
 
   render() {    
-    console.log('hedaer jsx props', this.props);
-
     return(
       <div className="header">
         <div className="container">

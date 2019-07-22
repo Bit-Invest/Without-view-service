@@ -58,11 +58,7 @@ export default (props) => {
   if (!props.ratingValues) {
     return <div>processing...</div>;
   }
-
-  console.log({
-    p: props.ratingValues,
-  });
-
+  
   let stepes = {
     "MaxDrawdown": [
       0,

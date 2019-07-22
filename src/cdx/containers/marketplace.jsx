@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Contexts from '@modules/contexts';
+import utils from '@cdx/utils/';
 
 import ParentWrapperPages from './parent-wrapper';
 import MarketplaceComponent from '@cdx/jsx/marketplace/';
 
-const Provider = Contexts.MarketplaceContext.Provider
+const Provider = Contexts.MarketplaceContext.Provider;
+const Logger = utils.common.logger('marketproduct');
 
 class MarketplaceContainer extends ParentWrapperPages {
   constructor() {
@@ -18,7 +20,11 @@ class MarketplaceContainer extends ParentWrapperPages {
   }
 
   render() {
-    console.log('#MarketplaceContainer props', this.props);
+    Logger({
+      body: {
+        props: this.props,
+      }
+    });
 
     return(
       <Provider value={{
