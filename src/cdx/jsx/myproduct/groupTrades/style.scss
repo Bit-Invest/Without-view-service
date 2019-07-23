@@ -126,6 +126,10 @@
 				flex-direction: column;
 				margin-top: 10px;
 
+				.item {
+					animation: pulseOpacity 2s ease-in-out;
+				}
+
 				.tsFollowersTrades {
 					height: 0;
 					overflow: hidden;
@@ -168,5 +172,8 @@
 	}
 }
 
-
+@keyframes pulseOpacity {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
 
