@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "ce1fa48a10e3253d5c41a2ad1cc41948",
-    "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
+    "revision": "5c1d517bcf9e622ba0749a5abfd8c8c1",
+    "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
   },
   {
-    "revision": "4dbaee032fad8e1d1b02",
-    "url": "/static/css/main.d47a2fa5.chunk.css"
+    "revision": "294172e2d77875dcf36c",
+    "url": "/static/css/main.cb7be48a.chunk.css"
   },
   {
     "revision": "fdfcfda2d9b1bf31db52",
     "url": "/static/js/runtime~main.c5541365.js"
   },
   {
-    "revision": "2f4b612ce178e57738b8",
-    "url": "/static/js/2.7ea24502.chunk.js"
+    "revision": "cec774d5bf25e6539fd6",
+    "url": "/static/js/2.1fca24f6.chunk.js"
   },
   {
     "revision": "39a2af266cb6e3c87524741a2d67e4fd",
@@ -26,6 +26,10 @@ self.__precacheManifest = [
   {
     "revision": "0397b8fd1fdd1fa82ab413bd372ddbb1",
     "url": "/static/media/Billing_icon.0397b8fd.svg"
+  },
+  {
+    "revision": "9946b0871b1246165a132f001248be62",
+    "url": "/static/media/headerLogoCindx.9946b087.png"
   },
   {
     "revision": "44e820fc80d3977f02f5276a50485085",
@@ -44,12 +48,12 @@ self.__precacheManifest = [
     "url": "/static/media/registration.77627f20.jpeg"
   },
   {
-    "revision": "5c1d517bcf9e622ba0749a5abfd8c8c1",
-    "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
+    "revision": "294172e2d77875dcf36c",
+    "url": "/static/js/main.96b13fe9.chunk.js"
   },
   {
-    "revision": "4dbaee032fad8e1d1b02",
-    "url": "/static/js/main.90f29266.chunk.js"
+    "revision": "ce1fa48a10e3253d5c41a2ad1cc41948",
+    "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
   },
   {
     "revision": "e0f9d6492c7a3c6dc987a849fcb9cb10",
@@ -72,16 +76,16 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-Heavy.86c78b24.woff"
   },
   {
-    "revision": "21ffa8553f379519ac5d80c38e039714",
-    "url": "/static/media/Geometria-Medium.21ffa855.woff"
-  },
-  {
     "revision": "2718c69a1474b2e2b04afb39c8e62e3f",
     "url": "/static/media/Geometria-Bold.2718c69a.woff"
   },
   {
     "revision": "1707b84cc13511b162afccae1da3c002",
     "url": "/static/media/Geometria-Light.1707b84c.woff"
+  },
+  {
+    "revision": "21ffa8553f379519ac5d80c38e039714",
+    "url": "/static/media/Geometria-Medium.21ffa855.woff"
   },
   {
     "revision": "413f36b0dc9a4e6ef7cc07b5e4014a66",
@@ -92,7 +96,7 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-ExtraLightItalic.f1d8fcc9.woff"
   },
   {
-    "revision": "2a39013bac124fc509d04371d588bb79",
+    "revision": "cf6185c53308bc19ed5fc17f84fc4df0",
     "url": "/index.html"
   }
 ];
