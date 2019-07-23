@@ -7,6 +7,16 @@
   box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.22);
   padding: 10px 0;
 
+  &.ERROR {
+    .blockItem.history {
+      display: none;
+    }
+
+    .settings .menu .edit {
+      display: none;
+    }
+  }
+
   .mainBlock {
   	display: flex;
   	flex: 1;
@@ -115,7 +125,8 @@
       }
     }
 
-    .iconHover:hover + .menu {
+    .iconHover:hover + .menu,
+    .iconHover:active + .menu {
       display: flex;
     }
 
@@ -129,7 +140,8 @@
       right: 0;
       top: 0;
 
-      &:hover {
+      &:hover,
+      &:active {
         display: flex;
       }
 
@@ -144,12 +156,6 @@
           opacity: 1;
         }
       }
-    }
-  }
-
-  &:hover {
-    .settings {
-      display: flex;
     }
   }
 }

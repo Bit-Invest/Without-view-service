@@ -21,7 +21,7 @@ const ActiveForm = (props) => {
   // const income = utils.profile.getValueHistory(props.data.history.income, baseAsset, 'income');
 
   return(
-    <div className='smallKeys'>
+    <div className={`smallKeys ${props.tsStatusKeys}`}>
       <div className='mainBlock'>
         <div className="blockItem stock">
           {
@@ -35,7 +35,9 @@ const ActiveForm = (props) => {
           <div className={`item status ${props.tsStatusKeys}`}>{props.tsStatusKeys}</div>
         </div>
         <div className="blockItem history">
-          <div className="item balance">{`${balance.available} (${balance.hold}) ${baseAsset}`}</div>
+          <div className="item balance">{
+            !balance ? 'Balances processing..' : `${balance.available} (${balance.hold}) ${baseAsset}`
+          }</div>
           <div className={`item usedFollowing ${positiveFollowing && 'positiveFollowing'}`}>
             {followProductName ? ([
               <div className="spanItem">Following</div>,
@@ -50,8 +52,8 @@ const ActiveForm = (props) => {
       <div className="settings">
         <div className="iconHover"></div>
         <div className="menu">
-          <div className="item" onClick={props.data.methods.setIndexEditing}>Edit</div>
-          <div className="item" onClick={async () => {
+          <div className="item edit" onClick={props.data.methods.setIndexEditing}>Edit</div>
+          <div className="item remove" onClick={async () => {
             let isRemoved = prompt('Enter account name if you are really going to delete it.', '');
             if (isRemoved !== props.data.name) return false;
 

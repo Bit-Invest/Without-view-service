@@ -39,11 +39,10 @@ export const getNextKeyIdForGetBalances = (keys, balances) => {
 };
 
 export const getBalanceHistory = (arr, baseAsset, type) => {
-  const balance = ((arr && arr.value) || {
-    available: 0,
-    hold: 0,
-  });
-
+  if (!(arr && arr.value)) return false;
+  
+  const balance = arr.value;
+  
   const toFix = str => 
     parseFloat(str).toFixed(({'USD':2,'BTC':5})[baseAsset]);
 
@@ -81,13 +80,10 @@ export const getDataForSmallKeys = (state) => {
     const curBalanceKeys = (balancesKeys || [])
       .find(curIncome => curKey.keyId === curIncome.keyId);
     const curTotalBalances = curBalanceKeys && curBalanceKeys.total[baseAsset];
-    const curTotalBalance = curTotalBalances && ({
+    const curTotalBalance = (curTotalBalances && curTotalBalances.available && ({
       available: curTotalBalances.available || 0,
       hold: curTotalBalances.hold || 0,
-    } || {
-      available: 0,
-      hold: 0,
-    });
+    })) || false;
 
     const income = curBaseIncome && (
       curBaseIncome.length > courDayIntervalProfit ? ({
