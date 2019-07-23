@@ -3,7 +3,7 @@ import mixins from '@cdx/mixins/';
 import utils from '@cdx/utils/';
 import moment from 'moment';
 
-import DrowDown from '@cdx/jsx/common/drowdown/';
+import CurTradeParent from './curTradeParent';
 
 import './style.scss';
 
@@ -12,7 +12,7 @@ export default class GroupTrades extends React.Component {
     super();
 
     this.state = {
-      quantityLeaderOrdersShow: 2,
+      quantityLeaderOrdersShow: 10,
     };
     this.timers = [];
   }
@@ -174,45 +174,6 @@ export default class GroupTrades extends React.Component {
     } = this.props;
     const { quantityLeaderOrdersShow } = this.state;
 
-    const renderTradeLeader = (trade, hasLogTrades, drowdownContent, relativitySuccess) => (
-      <div 
-        className={`item leaderTrade ${hasLogTrades?'hasLogTrades':'noHasLogTrades'}`}
-        key={`${trade.orderId}-${trade.symbol}`}
-      >
-        <div className="boxOfTrade clickMore">
-          <div className="curClick" onClick={drowdownContent}></div>
-        </div>
-        <div className={`boxOfTrade relativitySuccess success-${relativitySuccess&&relativitySuccess[0]===relativitySuccess[1]}`}>
-          <span className="curValue">
-            {!relativitySuccess ? '1/1' : `${relativitySuccess[0]}/${relativitySuccess[1]}`}
-          </span>
-        </div>
-        <div className="boxOfTrade emptySpace" style={{width: '2%'}}></div>
-        <div className="boxOfTrade pair">{trade.symbol}</div>
-        <div className="boxOfTrade type">{trade.type}</div>
-        <div className={`boxOfTrade side ${trade.side}`}>{trade.side}</div>
-        <div className="boxOfTrade price">{trade.price}</div>
-        <div className="boxOfTrade quantity">{trade.quantity}</div>
-        <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
-        <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
-      </div>
-    );
-
-    const renderTradeFollower = (trade) => (
-      <div className="item followerTrade" key={`${trade.orderId}-${trade.symbol}`}>
-        <div className="boxOfTrade emptySpace" style={{width: '10%'}}></div>
-        <div className="boxOfTrade name">{trade.name}</div>
-        <div className="boxOfTrade emptySpace" style={{width: '2%'}}></div>
-        <div className="boxOfTrade line">
-          <div className="tsLine"></div>
-        </div>
-        <div className="boxOfTrade price">{trade.price}</div>
-        <div className="boxOfTrade quantity">{trade.quantity}</div>
-        <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
-        <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
-      </div>
-    );
-
     const renderNoFollowTrade = (trade) => (
       <div className={`item noFollowTrade show-${filterShowNoSync}`} key={`${trade.orderId}-${trade.symbol}`}>
         <div className="boxOfTrade clickMore">
@@ -263,24 +224,13 @@ export default class GroupTrades extends React.Component {
       });
       
       listDays[curISODate].push(
-        <DrowDown 
-          Head={(props) => {
-            return !props.isShow ? (
-              <div className="curTradeParent">
-                {renderTradeLeader(curLeaderOrder, hasLogTrades, props.drowdownContent, relativitySuccess)}
-              </div>
-            ) : null
-          }}
-          Content={(props) => (
-            <div className="curTradeParent opened">
-              {renderTradeLeader(curLeaderOrder, hasLogTrades, props.drowdownContent, relativitySuccess)}
-              {hasLogTrades && (
-                <div className="tsFollowersTrades">
-                  {tsFollowersTrades.map(curFollowerTrade => renderTradeFollower(curFollowerTrade))}
-                </div>
-              )}
-            </div>
-          )}
+        <CurTradeParent 
+          {...({
+            curLeaderOrder,
+            hasLogTrades,
+            relativitySuccess,
+            tsFollowersTrades,
+          })}
         />
       );
     };
