@@ -42,7 +42,7 @@ export default class SignUpForm extends React.Component {
       email: this.state.email,
       password: this.state.password,
       firstName: this.state.firstName,
-      lastName: this.state.firstName,
+      lastName: this.state.lastName,
     });
   }
 
