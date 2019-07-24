@@ -167,10 +167,6 @@ export default class GroupTrades extends React.Component {
     } = this.props;
     const { quantityLeaderOrdersShow } = this.state;
 
-    console.log({
-      filterShowNoSync,
-    });
-
     const renderNoFollowTrade = (trade) => (
       <div className={`item noFollowTrade`} key={`${trade.orderId}-${trade.symbol}`}>
         <div className="boxOfTrade clickMore">

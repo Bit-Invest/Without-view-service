@@ -1,5 +1,6 @@
 import configs from '@cdx/configs/';
 import mixins from '@cdx/mixins/';
+import moment from 'moment';
 
 export const getNextKeyIdForGetIncomes = (keys, incomes, baseAsset) => {
 	const tsKeys = typeof keys === 'object' && keys;
@@ -167,8 +168,20 @@ export const getIncomeForSmallProduct = (incomeArr) => {
       getSlicedIncome(curIncome, courDayIntervalSmallProduct)
     ) : curIncome
   );
+
+  const simulationFirstPoint = (arr) => {
+    if (!arr[0]) return arr;
+    
+    const firstPointTime = arr[0].timestamp;
+    const simulationFirstTime = moment(firstPointTime).add(-1, 'days');
+    
+    return [
+      {value: 0, timestamp: simulationFirstTime},
+      ...arr,
+    ];
+  };
   
-  return resIncome;
+  return resIncome && simulationFirstPoint(resIncome);
 };
 
 const getSlicedIncome = (income, courDay) => {
