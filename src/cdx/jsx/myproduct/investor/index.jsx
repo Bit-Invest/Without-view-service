@@ -97,7 +97,15 @@ class ActiveInvestor extends React.Component {
       ...leaderBalance,
       ...followerBalance,
     })
-      .filter(([coin, [available, hold]]) => available > 0 || hold > 0)
+      .filter(([coin, [available, hold]]) => {
+        const [leaderAvailable, leaderHold] = leaderBalance[coin] || [0, 0];
+        const [followerAvailable, followerHold] = followerBalance[coin] || [0, 0];
+
+        const isZero = ([leaderAvailable, leaderHold, followerAvailable, followerHold])
+          .some(curValue => curValue > 0);
+
+        return isZero;
+      })
       .forEach(([coin]) => {
         const [leaderAvailable, leaderHold] = leaderBalance[coin] || [0, 0];
         const [followerAvailable, followerHold] = followerBalance[coin] || [0, 0];
