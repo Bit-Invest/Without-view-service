@@ -54,11 +54,9 @@ class ListFollowKeysComponent extends React.Component {
       <div className={`listItem ${atopClass}`}>
         <div className="curTitle">{title}</div>
         {this.renderListKeys(keys)}
-        {
-          buttonText && (
-            <div className="btnSend" onClick={this.sendFollowing.bind(this)}>{buttonText}</div>
-          )
-        }
+        {buttonText && (
+          <div className="btnSend" onClick={this.sendFollowing.bind(this)}>{buttonText}</div>
+        )}
       </div>
     );
   }

@@ -15,7 +15,10 @@ export const getInfoKeysFollow = ({ reduxState: state, productId, atopFilter }) 
       return res;
     }, []);
 
-  const keysFreeFromProduct = (keys || [])
+  const freeKeys = (keys || [])
+    .filter(curKeys => curKeys.valid);
+
+  const keysFreeFromProduct = (freeKeys || [])
     .filter(curKeys => 
       !(myProducts || []).some(curProduct => curProduct.keyId === curKeys.keyId)
     );
