@@ -72,4 +72,4 @@ export default class CurTradeParent extends React.Component {
       </div>
     );
   }
-}
+};

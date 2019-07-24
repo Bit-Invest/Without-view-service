@@ -23,7 +23,7 @@ class GroupTradesParent extends React.Component {
     this.state = {
       date: 'new',
       follower: 'all',
-      nosync: true,
+      nosync: 'show-all',
     };
   }
 
@@ -98,8 +98,9 @@ class GroupTradesParent extends React.Component {
                 )}
               </select>
               <select onChange={(event)=>this.setState({nosync:event.target.value})}>
-                <option value={true} selected={nosync === true}>Show unsynchronized transactions</option>
-                <option value={false} selected={nosync === false}>Hide unsynchronized transactions</option>
+                <option value={'show-all'} selected={nosync === 'show-all'}>Show unsynchronized transactions</option>
+                <option value={'hide-all'} selected={nosync === 'hide-all'}>Hide unsynchronized transactions</option>
+                <option value={'show-only'} selected={nosync === 'show-only'}>Show only unsynchronized transactions</option>
               </select>
             </div>
           </div>

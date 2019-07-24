@@ -12,7 +12,8 @@ export default class GroupTrades extends React.Component {
     super();
 
     this.state = {
-      quantityLeaderOrdersShow: 10,
+      quantityLeaderOrdersShow: 5,
+      allShowingTrades: 0,
     };
     this.timers = [];
   }
@@ -155,15 +156,7 @@ export default class GroupTrades extends React.Component {
 
     return this.renderTrades({
       arrAllOrders,
-    }); 
-
-    // <GroupTrades 
-      // arrAllOrders={arrAllOrders}
-      // tsOrdersFollowings={tsOrdersFollowings}
-      // methods={{
-        // getOrdersByFollowing: actions.getOrdersByFollowing,
-      // }}
-    // />
+    });
   }
 
   renderTrades = ({arrAllOrders}) => {
@@ -174,8 +167,12 @@ export default class GroupTrades extends React.Component {
     } = this.props;
     const { quantityLeaderOrdersShow } = this.state;
 
+    console.log({
+      filterShowNoSync,
+    });
+
     const renderNoFollowTrade = (trade) => (
-      <div className={`item noFollowTrade show-${filterShowNoSync}`} key={`${trade.orderId}-${trade.symbol}`}>
+      <div className={`item noFollowTrade`} key={`${trade.orderId}-${trade.symbol}`}>
         <div className="boxOfTrade clickMore">
           <div className="curClick"></div>
         </div>
@@ -196,7 +193,10 @@ export default class GroupTrades extends React.Component {
     const listDays = {};
     const synchronizedFollowerTrades = {};
 
-    const treatmentLeaderFollowing = (curLeaderOrder) => {
+    const treatmentLeaderFollowing = (curLeaderOrder, isShow) => {
+      if (filterShowNoSync === 'show-only') return false;
+      if (!isShow) return 'not-shown';
+
       const tsLogTradesCopied = arrAllOrders.allFollowingsLog.filter(curLogOrder =>
         curLogOrder.status === 'copied' && curLogOrder.leaderOrderId === curLeaderOrder.orderId
       );
@@ -235,13 +235,14 @@ export default class GroupTrades extends React.Component {
       );
     };
 
-    const treatmentFollowerFollowing = (curFollowerOrder) => {
+    const treatmentFollowerFollowing = (curFollowerOrder, isShow) => {
       const isSynchronized = arrAllOrders.allFollowingsLog
         .find(curFollowingLogOrder => 
           curFollowingLogOrder.followerOrderId === curFollowerOrder.orderId
         );
 
-      if (isSynchronized) return false;
+      if (isSynchronized || filterShowNoSync === 'hide-all') return false;
+      if (!isShow) return 'not-shown';
 
       const curISODate = moment.utc(curFollowerOrder.createdAt).toISOString().slice(0, 10);
 
@@ -252,18 +253,34 @@ export default class GroupTrades extends React.Component {
       listDays[curISODate].push(renderNoFollowTrade(curFollowerOrder));
     };
 
+    let missedTradeCour = 0;
+    let allShowingTrades = 0;
+
     arrAllOrders.allOrders
-      .every((curOrder, index) => {   
+      .forEach((curOrder, index) => {
+        const isShow = index < quantityLeaderOrdersShow + missedTradeCour;
+
         if (curOrder.position === 'leader') {
-          treatmentLeaderFollowing(curOrder);
+          const isMissed = treatmentLeaderFollowing(curOrder, isShow); 
+
+          if (isMissed === false) missedTradeCour++;
+          else allShowingTrades++;
         }
         
         if (curOrder.position === 'follower') {
-          treatmentFollowerFollowing(curOrder);
-        }
+          const isMissed = treatmentFollowerFollowing(curOrder, isShow);
 
-        return index < quantityLeaderOrdersShow;
+          if (isMissed === false) missedTradeCour++;
+          else allShowingTrades++;
+        }
       });
+
+    if (!allShowingTrades) 
+      return(
+        <div className="logTrades">
+          While empty.
+        </div>
+      );
 
     const jsxListOrders = Object.entries(listDays)
       .map(([day, listJsx]) => (
@@ -273,7 +290,13 @@ export default class GroupTrades extends React.Component {
         </div>
       ));
 
-    return(
+    const ButtonMore = () => (
+      allShowingTrades > this.state.quantityLeaderOrdersShow && (
+        <div className="moreTrades" onClick={this.showMoreTrade}>More trades</div>
+      )
+    );
+
+    return [
       <div className="tradeItemsParent">
         <div className="item headTable">
           <div className="boxOfTrade emptySpace" style={{width: '30%'}}></div>
@@ -286,8 +309,9 @@ export default class GroupTrades extends React.Component {
           <div className="boxOfTrade time">Time</div>
         </div>
         {jsxListOrders}
-      </div>
-    );
+      </div>,
+      <ButtonMore />,
+    ];
   }
 
   showMoreTrade = () => {
@@ -302,7 +326,6 @@ export default class GroupTrades extends React.Component {
     return(
       <div className="logTrades">
         {this.renderGroupOrdersList()}
-        <div className="moreTrades" onClick={this.showMoreTrade}>More trades</div>
       </div>
     ); 
   }
