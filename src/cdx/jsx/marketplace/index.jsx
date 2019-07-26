@@ -16,6 +16,7 @@ export default class MarketplaceComponent extends React.Component {
       <SmallProduct 
         key={index}
         data={curData}
+        place="marketplace"
       />
   }
 

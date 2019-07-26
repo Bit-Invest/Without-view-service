@@ -1,12 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import utils from '@cdx/utils/';
-import configs from '@cdx/configs/';
 
 import HeadProfitHistory from './headHistory/';
-
-//images
-import BinanceLogo from '@assets/images/iconBinance.png';
 
 //styles
 import './style.scss';
@@ -98,22 +94,24 @@ const ActiveForm = (props) => {
           </div>
         </div>
       </div>
-      <div className="settings">
-        <div className="iconHover"></div>
-        <div className="menu">
-          <div className="item" onClick={props.data.methods.setIndexEditing}>Change options</div>
-          <div className="item" onClick={async () => {
-            let isRemoved = prompt('Enter product name if you are really going to delete it.', '');
-            if (isRemoved !== name) return false;
+      {props.place === 'profile' && (
+        <div className="settings">
+          <div className="iconHover"></div>
+          <div className="menu">
+            <div className="item" onClick={props.data.methods.setIndexEditing}>Change options</div>
+            <div className="item" onClick={async () => {
+              let isRemoved = prompt('Enter product name if you are really going to delete it.', '');
+              if (isRemoved !== name) return false;
 
-            await props.data.methods.remove({
-              productId,
-            });
+              await props.data.methods.remove({
+                productId,
+              });
 
-            await props.data.methods.reload();
-          }}>Remove</div>
+              await props.data.methods.reload();
+            }}>Remove</div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
@@ -271,7 +269,7 @@ const SmallProduct = (props) => {
   })[props.data.status];
 
   return <TsForm 
-    data={props.data}
+    {...props}
     tsStatusKeys={typeof props.data.valid !== 'undefined' ? statusStringKeys[props.data.valid.toString()] : ''}
   />
 };

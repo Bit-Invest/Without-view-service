@@ -9,7 +9,6 @@ import SmallProduct from '@cdx/jsx/common/smallProduct/';
 import SmallDashboard from '@cdx/jsx/profile/smallDashboard/';
 import ListBlock from '@cdx/jsx/common/listBlock/';
 
-import mixins from '@cdx/mixins/';
 import utils from '@cdx/utils/';
 
 import './style.scss';
@@ -27,6 +26,7 @@ export default class ProfileComponent extends React.Component {
       <SmallProduct 
         key={index}
         data={curData}
+        place="profile"
       />
   }
 
