@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
   },
   {
-    "revision": "4330eecb605c50fe6df0",
+    "revision": "f8b53249cc589a9b6903",
     "url": "/static/css/main.cb7be48a.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.c5541365.js"
   },
   {
-    "revision": "4728055fa554ab22fe6a",
-    "url": "/static/js/2.3fb003ad.chunk.js"
+    "revision": "d480e382e87ef85a9da1",
+    "url": "/static/js/2.9027b69a.chunk.js"
   },
   {
     "revision": "39a2af266cb6e3c87524741a2d67e4fd",
@@ -48,8 +48,8 @@ self.__precacheManifest = [
     "url": "/static/media/registration.77627f20.jpeg"
   },
   {
-    "revision": "4330eecb605c50fe6df0",
-    "url": "/static/js/main.64d3dcef.chunk.js"
+    "revision": "f8b53249cc589a9b6903",
+    "url": "/static/js/main.99d20d1f.chunk.js"
   },
   {
     "revision": "ce1fa48a10e3253d5c41a2ad1cc41948",
@@ -60,12 +60,12 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-Light.e0f9d649.woff2"
   },
   {
-    "revision": "2fe5f7508322d964c030e10156e43a14",
-    "url": "/static/media/Geometria.2fe5f750.woff2"
-  },
-  {
     "revision": "e370e8e3219741663b5a172a00cdb2d2",
     "url": "/static/media/Geometria-Medium.e370e8e3.woff2"
+  },
+  {
+    "revision": "2fe5f7508322d964c030e10156e43a14",
+    "url": "/static/media/Geometria.2fe5f750.woff2"
   },
   {
     "revision": "9e4b52e7e1260af0506f9d915b4e6ffe",
@@ -74,6 +74,10 @@ self.__precacheManifest = [
   {
     "revision": "86c78b24aa03145dff4576def89fafab",
     "url": "/static/media/Geometria-Heavy.86c78b24.woff"
+  },
+  {
+    "revision": "21ffa8553f379519ac5d80c38e039714",
+    "url": "/static/media/Geometria-Medium.21ffa855.woff"
   },
   {
     "revision": "2718c69a1474b2e2b04afb39c8e62e3f",
@@ -88,15 +92,11 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria.413f36b0.woff"
   },
   {
-    "revision": "21ffa8553f379519ac5d80c38e039714",
-    "url": "/static/media/Geometria-Medium.21ffa855.woff"
-  },
-  {
     "revision": "f1d8fcc96293c7610aef044bd6a85556",
     "url": "/static/media/Geometria-ExtraLightItalic.f1d8fcc9.woff"
   },
   {
-    "revision": "ba0cbb6a221e06e074a3916e51864e68",
+    "revision": "71d0f8149402bda672bc84bf36b1c192",
     "url": "/index.html"
   }
 ];
