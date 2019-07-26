@@ -2,6 +2,7 @@ import React from 'react';
 import mixins from '@cdx/mixins/';
 import utils from '@cdx/utils/';
 import moment from 'moment';
+import configs from '@cdx/configs/';
 
 import CurTradeParent from './curTradeParent';
 
@@ -15,10 +16,18 @@ export default class GroupTrades extends React.Component {
       quantityLeaderOrdersShow: 5,
       allShowingTrades: 0,
     };
-    this.timers = [];
+    this.timers = {};
   }
 
   componentWillMount() {
+    this.startRequests();
+  }
+
+  componentWillUnmount() {
+    this.stopRequests(); 
+  }
+
+  startRequests = () => {
     const { 
       reduxState: {
         myFollowers,
@@ -33,27 +42,38 @@ export default class GroupTrades extends React.Component {
         myFollowers,
       });
 
-    approvedFollowings.forEach(curInvestor => {
-      actions.getOrdersByFollowing({
-        followingId: curInvestor._id,
-      })
+    this.timers['getFollowingsOrders'] = async () => {
+      const approvedFollowingsUsed = {};
+      const asyncGetOrders = async () => {
+        const nextFollowing = approvedFollowings.find(curApprovedFollowings => 
+          !approvedFollowingsUsed[curApprovedFollowings._id]
+        );
 
-      this.timers.push(
-        setInterval(() =>
-          actions.getOrdersByFollowing({
-            followingId: curInvestor._id,
-          })
-        , 5000)
-      );
-    });
+        if (!nextFollowing) {
+          return setTimeout(this.timers['getFollowingsOrders'], (
+            configs.myproduct.settings.intervalUpdateFollowersSec || 15000
+          ));
+        }
+
+        await actions.getOrdersByFollowing({
+          followingId: nextFollowing._id,
+        });
+
+        approvedFollowingsUsed[nextFollowing._id] = 'used';
+        asyncGetOrders();
+      };
+
+      if (approvedFollowings.length)
+        asyncGetOrders();
+    };
+
+    this.timers['getFollowingsOrders']();
   }
 
-  componentWillUnmount() {
-    this.timers.forEach(curTimer =>
-      clearInterval(curTimer)
+  stopRequests = () => {
+    Object.keys(this.timers).forEach((curKeyTimer) =>
+      this.timers[curKeyTimer] = () => {}
     );
-
-    this.timers = [];
   }
 
   renderGroupOrdersList = () => {
@@ -194,11 +214,15 @@ export default class GroupTrades extends React.Component {
       if (!isShow) return 'not-shown';
 
       const tsLogTradesCopied = arrAllOrders.allFollowingsLog.filter(curLogOrder =>
-        curLogOrder.status === 'copied' && curLogOrder.leaderOrderId === curLeaderOrder.orderId
+        curLogOrder.status === 'copied' && (
+          curLogOrder.leaderOrderId === curLeaderOrder.orderId &&
+            curLogOrder.symbol === curLeaderOrder.symbol
+        )
       );
       const tsFollowersTrades = arrAllOrders.allOrders.filter(curFollowerOrder =>
         !!tsLogTradesCopied.find(curLogOrder => 
-          curLogOrder.followerOrderId === curFollowerOrder.orderId
+          curLogOrder.followerOrderId === curFollowerOrder.orderId &&
+            curLogOrder.symbol === curFollowerOrder.symbol
         )
       );
       const curISODate = moment.utc(curLeaderOrder.createdAt).toISOString().slice(0, 10);

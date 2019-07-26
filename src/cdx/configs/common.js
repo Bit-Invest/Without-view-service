@@ -25,7 +25,7 @@ const settings = {
 
 const loggerSettings = {
 	groupNames: ['profile', 'myproduct', 'marketproduct', 'marketplace'],
-	active: true,
+	active: false,
 };
 
 export default ({

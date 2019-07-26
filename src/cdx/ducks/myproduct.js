@@ -88,6 +88,10 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: false,
+			tiedActions: () => [
+				actionsForTied.getFollowers,
+				actionsForTied.getFollowings,
+			],
 		},
 		preFnData: (data, tsAction) => ({
 			data: {
@@ -309,13 +313,15 @@ const actions = utils.common.addPropery([
 			manuallyUsed: true,
 			startRequired: false,
 		},
-		preFnData: (data, tsAction) => ({
-			data: {
-				...tsAction.data,
-				url:  `/user/following/orders?followingId=${data.followingId}&ordersAmount=${500}`,
-				followingId: data.followingId,
-			},
-		}),
+		preFnData: (data, tsAction) => {
+			return ({
+				data: {
+					...tsAction.data,
+					url:  `/user/following/orders?followingId=${data.followingId}&ordersAmount=${500}`,
+					followingId: data.followingId,
+				},
+			})
+		}
 	},
 	{
 		type: 'REQUEST',

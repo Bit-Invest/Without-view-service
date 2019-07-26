@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import configs from '@cdx/configs/';
 
 import mixins from '@cdx/mixins/';
 
@@ -22,28 +23,27 @@ class ActiveInvestor extends React.Component {
       },
     } = this.props;
 
-    this.props.methods.getBalanceByFollowing({
-      followingId: _id,
-    });
+    this.timers['getFollowersWithBalances'] = async () => {
+      await this.props.methods.getBalanceByFollowing({
+        followingId: _id,
+      })
 
-    this.timers.push(
-      setInterval(() => {
-        this.props.methods.getBalanceByFollowing({
-          followingId: _id,
-        })
-        this.props.methods.getFollowers({
-          followingId: _id,
-        })
-      }, 5000)
-    );
+      await this.props.methods.getFollowers({
+        followingId: _id,
+      })
+
+      setTimeout(this.timers['getFollowersWithBalances'], (
+        configs.myproduct.settings.intervalUpdateFollowersSec || 5000
+      ));
+    };
+
+    this.timers['getFollowersWithBalances']();
   }
 
   componentWillUnmount() {
-    this.timers.forEach(curTimer =>
-      clearInterval(curTimer)
+    Object.keys(this.timers).forEach((curKeyTimer) =>
+      this.timers[curKeyTimer] = () => {}
     );
-
-    this.timers = [];
   }
 
   onChangeStatus = async (event) => {

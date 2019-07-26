@@ -5,6 +5,11 @@ const initialState = {
 	ordersFollowings: -1,
 };
 
+const settings = {
+	intervalUpdateFollowersSec: 10 * 1000, 
+};
+
 export default ({
 	initialState,
+	settings,
 });
