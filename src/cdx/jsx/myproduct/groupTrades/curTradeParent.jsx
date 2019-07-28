@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import configs from '@cdx/configs/';
 
 export default class CurTradeParent extends React.Component {
   constructor() {
@@ -29,7 +30,9 @@ export default class CurTradeParent extends React.Component {
       <div className={`boxOfTrade side ${trade.side}`}>{trade.side}</div>
       <div className="boxOfTrade price">{trade.price}</div>
       <div className="boxOfTrade quantity">{trade.quantity}</div>
-      <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
+      <div className={`boxOfTrade status ${trade.status}`}>
+        {(configs.myproduct.statusesShowing[trade.status] || trade.status)}
+      </div>
       <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
     </div>
   );
@@ -44,7 +47,7 @@ export default class CurTradeParent extends React.Component {
       </div>
       <div className="boxOfTrade price">{trade.price}</div>
       <div className="boxOfTrade quantity">{trade.quantity}</div>
-      <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
+      <div className={`boxOfTrade status ${trade.status}`}>{(configs.myproduct.statusesShowing[trade.status] || trade.status)}</div>
       <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
     </div>
   );

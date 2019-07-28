@@ -9,7 +9,14 @@ const settings = {
 	intervalUpdateFollowersSec: 10 * 1000, 
 };
 
+const statusesShowing = {
+	'TRADE': 'FILLED',
+	'CANCELED': 'CANCELED',
+	'NEW': 'OPEN',
+};
+
 export default ({
 	initialState,
 	settings,
+	statusesShowing,
 });

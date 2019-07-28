@@ -201,13 +201,21 @@ export default class GroupTrades extends React.Component {
         <div className={`boxOfTrade side ${trade.side}`}>{trade.side}</div>
         <div className="boxOfTrade price">{trade.price}</div>
         <div className="boxOfTrade quantity">{trade.quantity}</div>
-        <div className={`boxOfTrade status ${trade.status}`}>{trade.status}</div>
+        <div className={`boxOfTrade status ${trade.status}`}>
+          {(configs.myproduct.statusesShowing[trade.status] || trade.status)}
+        </div>
         <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
       </div>
     );
     
     const listDays = {};
     const synchronizedFollowerTrades = {};
+
+    const getRelativitySuccess = (statusA, statusB) => {
+      const evoitTable = {'TRADE':'FILLED'};
+
+      return (evoitTable[statusA] || statusA) === (evoitTable[statusB] || statusB);
+    };
 
     const treatmentLeaderFollowing = (curLeaderOrder, isShow) => {
       if (filterShowNoSync === 'show-only') return false;
@@ -229,7 +237,7 @@ export default class GroupTrades extends React.Component {
       const hasLogTrades = tsFollowersTrades.length > 0;
       const relativitySuccess = hasLogTrades && 
         tsFollowersTrades.reduce((res, curTsFollowersTrades, index) => {
-          res[0] += curTsFollowersTrades.status === curLeaderOrder.status ? 1 : 0;
+          res[0] += getRelativitySuccess(curTsFollowersTrades.status, curLeaderOrder.status) ? 1 : 0;
           res[1] += 1;
 
           return res;
