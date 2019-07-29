@@ -13,14 +13,22 @@ class ListFollowKeysComponent extends React.Component {
     };
   }
 
-  renderListKeys = (keys) => (
-    <select onChange={(event)=>this.setState({selectedFollowKeyId:event.target.value})} value={this.state.selectedFollowKeyId}>
-      <option value={false}>No selected</option>
-      {keys.map((curKeys, index) => 
-        <option value={curKeys.keyId} key={index}>{curKeys.name}</option>
-      )}
-    </select>
-  );
+  renderListKeys = (keys) => { 
+    return !this.props.noselect ? (
+      <select onChange={(event)=>this.setState({selectedFollowKeyId:event.target.value})} value={this.state.selectedFollowKeyId}>
+        <option value={false}>No selected</option>
+        {keys.map((curKeys, index) => 
+          <option value={curKeys.keyId} key={index}>{curKeys.name}</option>
+        )}
+      </select>
+    ) : (
+      <ul className="listCanceled">
+        {keys.map((curKeys, index) => 
+          <li value={curKeys.keyId} key={index}>{curKeys.name}</li>
+        )}
+      </ul>
+    )
+  }
 
   sendFollowing = async () => {
     const { selectedFollowKeyId } = this.state;
@@ -131,6 +139,7 @@ class FollowForm extends React.Component {
             atopClass="waitThisProduct"
             methodFollow={methods.sendFollow}
             productId={productId}
+            noselect={true}
           />
         </div>
       </div>
