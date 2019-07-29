@@ -5,7 +5,7 @@ const TYPES_RESULT = {
 };
 
 const urlsApi = {
-	baseCindx: 'https://api-live.cindx.io',
+	baseCindx: localStorage.getItem('baseCindxUrl') || 'https://api-live.cindx.io',
 };
 
 const initialState = {
