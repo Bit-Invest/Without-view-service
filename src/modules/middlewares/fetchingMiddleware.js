@@ -43,10 +43,18 @@ const setPrestate = (dispatch, action) => {
 const setResponsed = async (dispatch, action, response, status, getState) => {
 	if (status === 'error') {
 		if (action.errorStatusValue !== 'disable') {
+			let errorValue = configs.common.TYPES_RESULT.ERROR;
+
+			if (typeof action.data.errorStatusValue === 'function') {
+				errorValue = action.data.errorStatusValue(response);
+			} else if (action.data.errorStatusValue) {
+				errorValue = action.data.errorStatusValue;
+			}
+
 			await dispatch({
 				...action,
 				type: 'FORCE_SET',
-				value: action.data.errorStatusValue || configs.common.TYPES_RESULT.ERROR,
+				value: errorValue,
 				keyState: action.keyState,
 			});
 		}

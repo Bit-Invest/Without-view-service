@@ -38,6 +38,8 @@ export default class SignUpForm extends React.Component {
     if (!this.state.password)
       return this.setState({error: 'Fill in password'});
 
+    this.setState({error: null});
+
     requestAction({
       email: this.state.email,
       password: this.state.password,
@@ -47,23 +49,34 @@ export default class SignUpForm extends React.Component {
   }
 
   renderMessage = ({actions}) => {
+    const { error } = this.state;
     const { reduxState: { authRegistration_res } } = this.props;
     const errorMessage = authRegistration_res === configs.common.TYPES_RESULT['ERROR'] ? (
-      `Error. Fill in all the fields correctly.`
+      ['ERROR', 'Request failed, try again.']
     ) : authRegistration_res === configs.common.TYPES_RESULT['LOADING'] ? (
-      `Loading ...`
-    ) : null;
+      ['LOADING', 'Loading...']
+    ) : authRegistration_res === 'OK' ? (
+      ['SUCCESS', 'You are registered, you can log in.']
+    ) : (
+      ['ERROR', authRegistration_res]
+    );
 
     if (authRegistration_res === 'OK') {
-      actions.clearAnyProperty({
-        keyState: 'authRegistration_res',
-        value: -1,
-      });
-      this.props.history.push('/auth/sign-in');
+      setTimeout(() => {
+        actions.clearAnyProperty({
+          keyState: 'authRegistration_res',
+          value: -1,
+        });
+        this.props.history.push('/auth/sign-in');
+      }, 3000);
     }
 
+    if (error || !errorMessage) return (
+      <div className={`error-block ERROR`}>{error}</div>
+    );
+
     return(
-      <div className="error-block">{this.state.error || errorMessage}</div>
+      <div className={`error-block ${errorMessage[0]}`}>{this.state.error || errorMessage[1]}</div>
     );
   }
 

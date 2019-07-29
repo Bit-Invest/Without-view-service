@@ -77,6 +77,7 @@ const actions = commonUtils.addPropery([
 			url: '/auth/signup',
 			method: 'POST',
 			body: {},
+			errorStatusValue: (data) => data,
 			processingResFn: (cbParams, res) => {
 				if (res.accessToken && res.refreshToken)
 					commonUtils.saveAuthTokens(res);

@@ -7,7 +7,7 @@ import ParentWrapperPages from './parent-wrapper';
 import AuthComponent from '@cdx/jsx/auth/';
 
 const Provider = Contexts.AuthContext.Provider;
-const Logger = utils.common.logger('marketproduct');
+const Logger = utils.common.logger('auth');
 
 class AuthContainer extends ParentWrapperPages {
   constructor() {

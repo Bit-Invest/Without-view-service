@@ -74,7 +74,10 @@
 
   > .error-block {
     margin: 10px 0 0 0;
-    color: #e67979;
+
+    &.ERROR {color: #e67979;}
+    &.LOADING {color: #b0a5ff;}
+    &.SUCCESS {color: #8dc63f;}
   }
 
   > .input-wrap {
