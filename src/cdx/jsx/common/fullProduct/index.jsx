@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import utils from '@cdx/utils/';
 import mixins from '@cdx/mixins/';
 
@@ -68,6 +69,8 @@ class FullProduct extends React.Component {
       "Income": (income < 0 ? 0 : income).toFixed(2),
     };
 
+    const sinceProduct = moment.utc(since).toISOString().slice(0, 10);
+
     return(
       <div className="fullProduct">
         <div className="mainBlock">
@@ -114,7 +117,7 @@ class FullProduct extends React.Component {
               </div>
               <div className="item">
                 <div className="property">Created on: </div>
-                <div className="value">{since}</div>
+                <div className="value">{sinceProduct}</div>
               </div>
               <div className="item">
                 <div className="property">Product description: </div>
