@@ -74,6 +74,11 @@ class ActiveForm extends React.Component {
     const monthLastProfit = (monthIncome[monthIncome.length - 1] || {value:0}).value.toFixed(2);
     const allLastProfit = (historyIncome[historyIncome.length - 1] || {value:0}).value.toFixed(2);
 
+    const textLinkButton = ({
+      'marketproduct': 'more',
+      'myproduct': 'manage',
+    })[typelist];
+
     return(
       <div className="smallProduct" key={this.props.index}>
         <div className="mainBlock">
@@ -131,7 +136,7 @@ class ActiveForm extends React.Component {
             ) : null}
             <div className="infoContent">
               <div className="item">Followers: {followers}</div>
-              <Link className="moreClick" to={moreUrl[typelist](productId)}>more</Link>
+              <Link className="moreClick" to={moreUrl[typelist](productId)}>{textLinkButton}</Link>
             </div>
           </div>
         </div>
