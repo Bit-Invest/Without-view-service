@@ -8,9 +8,9 @@
   padding: 10px 0;
 
   &.ERROR {
-    .blockItem.history {
-      display: none;
-    }
+    // .blockItem.history {
+    //   display: none;
+    // }
 
     .settings .menu .edit {
       display: none;
@@ -55,6 +55,9 @@
           }
           &.WAITING {
             background-color: #8888ea;
+          }
+          &.VALID_NO_DEPO {
+            background-color: #babd2b;
           }
   			}
 

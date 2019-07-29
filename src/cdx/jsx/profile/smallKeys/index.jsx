@@ -7,9 +7,10 @@ import BinanceLogo from '@assets/images/iconBinance.png';
 import './style.scss'
 
 const statusStringKeys = {
-  'VALID-KEY': 'VALID',
-  'INVALID-KEY': 'ERROR',
-  'KEY-IS-NOT-PROCESSED-YET': 'WAITING',
+  'VALID-KEY': ['VALID', 'VALID'],
+  'INVALID-KEY': ['ERROR', 'ERROR'],
+  'KEY-IS-NOT-PROCESSED-YET': ['WAITING', 'WAITING'],
+  'INVALID-KEY-(NO-DEPOSITS)': ['VALID (NO DATA)', 'VALID_NO_DEPO'],
 };
 
 const ActiveForm = (props) => {
@@ -21,7 +22,7 @@ const ActiveForm = (props) => {
   // const income = utils.profile.getValueHistory(props.data.history.income, baseAsset, 'income');
 
   return(
-    <div className={`smallKeys ${props.tsStatusKeys}`}>
+    <div className={`smallKeys ${props.tsStatusKeys[1]}`}>
       <div className='mainBlock'>
         <div className="blockItem stock">
           {
@@ -32,11 +33,17 @@ const ActiveForm = (props) => {
         </div>
         <div className="blockItem infoData">
           <div className="item name">{props.data.name}</div>
-          <div className={`item status ${props.tsStatusKeys}`}>{props.tsStatusKeys}</div>
+          <div className={`item status ${props.tsStatusKeys[1]}`}>{props.tsStatusKeys[0]}</div>
         </div>
         <div className="blockItem history">
           <div className="item balance">{
-            !balance ? 'Balances processing..' : `${balance.available} (${balance.hold}) ${baseAsset}`
+            props.tsStatusKeys[1] === 'VALID_NO_DEPO' ? (
+              'NO TRADE HISTORY'
+            ) : props.tsStatusKeys[1] === 'ERROR' ? (
+              'INVALID KEY'
+            ) : (
+              !balance ? 'Balances processing..' : `${balance.available} (${balance.hold}) ${baseAsset}`
+            )
           }</div>
           <div className={`item usedFollowing ${positiveFollowing && 'positiveFollowing'}`}>
             {followProductName ? ([
@@ -186,6 +193,11 @@ const SmallKeys = (props) => {
     commentStr = commentStr.split(' ');
     commentStr = commentStr.join('-');
     tsStatusKeys = statusStringKeys[commentStr] || null;
+
+    console.log({
+      tsStatusKeys,
+      commentStr,
+    });
   }
 
   return <TsForm 
