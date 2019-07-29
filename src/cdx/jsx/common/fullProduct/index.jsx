@@ -71,6 +71,8 @@ class FullProduct extends React.Component {
 
     const sinceProduct = moment.utc(since).toISOString().slice(0, 10);
 
+    const { historyIncome } = utils.profile.getIncomeForSmallProduct(rating);
+
     return(
       <div className="fullProduct">
         <div className="mainBlock">
@@ -103,7 +105,7 @@ class FullProduct extends React.Component {
             </div>
             <div className="historyBlock">
               <IncomeBlock 
-                income={utils.profile.getIncomeForSmallProduct(rating)}
+                income={historyIncome}
               />
             </div>
             <div className="infoContent">

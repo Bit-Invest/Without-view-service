@@ -169,6 +169,18 @@ export const getIncomeForSmallProduct = (incomeArr) => {
     ) : curIncome
   );
 
+  const weekIncome = curIncome && (
+    lengthCurIncome > 7 ? (
+      getSlicedIncome(curIncome, 7)
+    ) : curIncome
+  );
+
+  const monthIncome = curIncome && (
+    lengthCurIncome > 30 ? (
+      getSlicedIncome(curIncome, 30)
+    ) : curIncome
+  );
+
   const simulationFirstPoint = (arr) => {
     if (!arr[0]) return arr;
     
@@ -181,7 +193,11 @@ export const getIncomeForSmallProduct = (incomeArr) => {
     ];
   };
   
-  return resIncome && simulationFirstPoint(resIncome);
+  return resIncome && {
+    historyIncome: simulationFirstPoint(resIncome),
+    weekIncome,
+    monthIncome,
+  };
 };
 
 const getSlicedIncome = (income, courDay) => {

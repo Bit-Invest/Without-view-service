@@ -18,102 +18,135 @@ const moreUrl = {
   'myproduct': (productId) => `/myproduct/${productId}`,
 };
 
-const ActiveForm = (props) => {
-  const {
-    trader: {
-      firstName,
-      lastName,
-    },
-    rating,
-    rating: {
-      value: ratingValue,
-      baseIncomeHistory,
-    },
-    name,
-    baseAsset,
-    followers,
-    stock,
-    typelist,
-    productId,
-  } = props.data;
+class ActiveForm extends React.Component {
+  constructor() {
+    super();
 
-  const percentRating = utils.common.getPercentFromValueRating(Math.abs(ratingValue));
-  const ratingValueShow = utils.common.getRatingValueShow(ratingValue);
-  const styleRating = ratingValue && (
-    ratingValue > 0 ? 'positive' : 'sadness'
-  );
-
-  let productProccesing = false;
-
-  if (typeof baseIncomeHistory !== 'object' || baseIncomeHistory.length === 0) {
-    productProccesing = true;
+    this.state = {
+      showingProfitInterval: 'all',
+    };
   }
 
-  return(
-    <div className="smallProduct" key={props.index}>
-      <div className="mainBlock">
-        <div className="curHead">
-          <div className="avatar">
-            <div className="initials">{utils.common.getInitials(firstName, lastName)}</div>
-          </div>
-          <div className="rightInfo">
-            <div className="curWrap">
-              <div className="item nameTrader">{`${firstName} ${lastName}`}</div>
-              <div className="item nameProduct">{`${name}`}</div>
+  render() {
+    const {
+      trader: {
+        firstName,
+        lastName,
+      },
+      rating,
+      rating: {
+        value: ratingValue,
+        baseIncomeHistory,
+      },
+      name,
+      baseAsset,
+      followers,
+      stock,
+      typelist,
+      productId,
+    } = this.props.data;
+
+    const percentRating = utils.common.getPercentFromValueRating(Math.abs(ratingValue));
+    const ratingValueShow = utils.common.getRatingValueShow(ratingValue);
+    const styleRating = ratingValue && (
+      ratingValue > 0 ? 'positive' : 'sadness'
+    );
+
+    let productProccesing = false;
+
+    if (typeof baseIncomeHistory !== 'object' || baseIncomeHistory.length === 0) {
+      productProccesing = true;
+    }
+
+    const {
+      historyIncome,
+      weekIncome,
+      monthIncome
+    } = utils.profile.getIncomeForSmallProduct(rating);
+
+    const showingProfit = ({
+      'all': historyIncome,
+      'week': weekIncome,
+      'month': monthIncome,
+    })[this.state.showingProfitInterval];
+
+    const weekLastProfit = weekIncome[weekIncome.length - 1];
+    const monthLastProfit = monthIncome[monthIncome.length - 1];
+    const allLastProfit = historyIncome[historyIncome.length - 1];
+
+    return(
+      <div className="smallProduct" key={this.props.index}>
+        <div className="mainBlock">
+          <div className="curHead">
+            <div className="avatar">
+              <div className="initials">{utils.common.getInitials(firstName, lastName)}</div>
+            </div>
+            <div className="rightInfo">
+              <div className="curWrap">
+                <div className="item nameTrader">{`${firstName} ${lastName}`}</div>
+                <div className="item nameProduct">{`${name}`}</div>
+              </div>
+            </div>
+            <div className="righRatingBlock">
+              {
+                !productProccesing ? [
+                  <div className="curTitle">
+                    <div>Rating</div>
+                    <div className="curValue">{ratingValueShow}</div>
+                  </div>,
+                  <div className="score">
+                    <div className={`filled ${styleRating}`} style={{width: `${percentRating}%`}}></div>
+                  </div>
+                ] : (
+                  <div>Rating processing..</div>
+                )
+              }
             </div>
           </div>
-          <div className="righRatingBlock">
-            {
-              !productProccesing ? [
-                <div className="curTitle">
-                  <div>Rating</div>
-                  <div className="curValue">{ratingValueShow}</div>
-                </div>,
-                <div className="score">
-                  <div className={`filled ${styleRating}`} style={{width: `${percentRating}%`}}></div>
-                </div>
-              ] : (
-                <div>Rating processing..</div>
-              )
-            }
+          <div className="historyInfo">
+            <div className="infoExchange">
+              <div className="exchangeName">{stock}</div>
+              <div className="baseAsset">{baseAsset}</div>
+            </div>
+            <div className="historyBlock">
+              <HeadProfitHistory 
+                income={showingProfit}
+              />
+            </div>
+            {historyIncome.length ? (
+              <div className="selectShowingTime">
+                <div className={`item ${'week' === this.state.showingProfitInterval ? 'active' : ''}`} onClick={() => this.setState({showingProfitInterval: 'week'})}>Week: {weekLastProfit.value.toFixed(2)}%</div>
+                <div className={`item ${'month' === this.state.showingProfitInterval ? 'active' : ''}`} onClick={() => this.setState({showingProfitInterval: 'month'})}>Month: {monthLastProfit.value.toFixed(2)}%</div>
+                <div className={`item ${'all' === this.state.showingProfitInterval ? 'active' : ''}`} onClick={() => this.setState({showingProfitInterval: 'all'})}>All: {allLastProfit.value.toFixed(2)}%</div>
+              </div>
+            ) : null}
+            <div className="infoContent">
+              <div className="item">Followers: {followers}</div>
+              <Link className="moreClick" to={moreUrl[typelist](productId)}>more</Link>
+            </div>
           </div>
         </div>
-        <div className="historyInfo">
-          <div className="infoExchange">
-            <div className="exchangeName">{stock}</div>
-            <div className="baseAsset">{baseAsset}</div>
+        {this.props.place === 'profile' && (
+          <div className="settings">
+            <div className="iconHover"></div>
+            <div className="menu">
+              <div className="item" onClick={this.props.data.methods.setIndexEditing}>Change options</div>
+              <div className="item" onClick={async () => {
+                let isRemoved = prompt('Enter product name if you are really going to delete it.', '');
+                if (isRemoved !== name) return false;
+
+                await this.props.data.methods.remove({
+                  productId,
+                });
+
+                await this.props.data.methods.reload();
+              }}>Remove</div>
+            </div>
           </div>
-          <div className="historyBlock">
-            <HeadProfitHistory 
-              income={utils.profile.getIncomeForSmallProduct(rating)}
-            />
-          </div>
-          <div className="infoContent">
-            <div className="item">Followers: {followers}</div>
-            <Link className="moreClick" to={moreUrl[typelist](productId)}>more</Link>
-          </div>
-        </div>
+        )}
       </div>
-      {props.place === 'profile' && (
-        <div className="settings">
-          <div className="iconHover"></div>
-          <div className="menu">
-            <div className="item" onClick={props.data.methods.setIndexEditing}>Change options</div>
-            <div className="item" onClick={async () => {
-              let isRemoved = prompt('Enter product name if you are really going to delete it.', '');
-              if (isRemoved !== name) return false;
-
-              await props.data.methods.remove({
-                productId,
-              });
-
-              await props.data.methods.reload();
-            }}>Remove</div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+    );
+  }
 };
 
 class EditingForm extends React.Component {
