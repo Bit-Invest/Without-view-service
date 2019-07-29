@@ -7,9 +7,9 @@ import BinanceLogo from '@assets/images/iconBinance.png';
 import './style.scss'
 
 const statusStringKeys = {
-  'true': 'VALID',
-  'false': 'ERROR',
-  'wait': 'WAITING',
+  'VALID-KEY': 'VALID',
+  'INVALID-KEY': 'ERROR',
+  'KEY-IS-NOT-PROCESSED-YET': 'WAITING',
 };
 
 const ActiveForm = (props) => {
@@ -179,9 +179,18 @@ const SmallKeys = (props) => {
     'ADDING': AddingForm,
   })[props.data.status];
 
+  let tsStatusKeys = null;
+
+  if (props.data.status !== 'ADDING') {
+    let commentStr = props.data.comment.toString().toUpperCase();
+    commentStr = commentStr.split(' ');
+    commentStr = commentStr.join('-');
+    tsStatusKeys = statusStringKeys[commentStr] || null;
+  }
+
   return <TsForm 
     data={props.data}
-    tsStatusKeys={typeof props.data.valid !== 'undefined' ? statusStringKeys[props.data.valid.toString()] : ''}
+    tsStatusKeys={tsStatusKeys}
   />
 }
 
