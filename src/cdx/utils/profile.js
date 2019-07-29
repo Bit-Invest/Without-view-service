@@ -99,21 +99,20 @@ export const getDataForSmallKeys = (state) => {
     };
 
     const myFollowingsSorted = (myFollowings || [])
-    .sort((curFollowing1, curFollowing2) => curFollowing2.createdAt - curFollowing1.createdAt)
-    .reduce((res, curObj, arr) => {
-      if (res.find(curObj2 => 
-        (curObj2.follower.keyId || 0) === curObj.follower.keyId
-      )) return res;
-      
-      res.push(curObj);
+      .sort((curFollowing1, curFollowing2) => curFollowing2.createdAt - curFollowing1.createdAt)
+      .reduce((res, curObj, arr) => {
+        if (res.find(curObj2 => 
+          (curObj2.follower.keyId || 0) === curObj.follower.keyId
+        )) return res;
+        
+        res.push(curObj);
 
-      return res;
-    }, []);
+        return res;
+      }, []);
 
     const usedFollowing = myFollowingsSorted
       .find(curMyFollowings => 
-        curMyFollowings.follower.keyId === curKey.keyId && 
-          curMyFollowings.moderation === 'approved'
+        curMyFollowings.follower.keyId === curKey.keyId
       );
 
     const usedProduct = (myProducts || [])

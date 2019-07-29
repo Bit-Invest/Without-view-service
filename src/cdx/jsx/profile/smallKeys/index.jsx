@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import utils from '@cdx/utils/';
 
 //images
@@ -16,7 +17,7 @@ const statusStringKeys = {
 const ActiveForm = (props) => {
   const baseAsset = props.data.history.baseAsset;
   const balance = utils.profile.getBalanceHistory(props.data.history.balance, baseAsset, 'balance');
-  const { productName: followProductName } = props.data.history.usedFollowing || {productName: false};
+  const { productName: followProductName, productId: clickProductId, moderation: followModeration } = props.data.history.usedFollowing || {productName: false};
   const { name: usedProductName } = props.data.history.usedProduct || {name: false};
   const positiveFollowing = true; //test
   // const income = utils.profile.getValueHistory(props.data.history.income, baseAsset, 'income');
@@ -46,12 +47,18 @@ const ActiveForm = (props) => {
             )
           }</div>
           <div className={`item usedFollowing ${positiveFollowing && 'positiveFollowing'}`}>
-            {followProductName ? ([
-              <div className="spanItem">Following</div>,
-              <div className="spanItem usedProductName">{followProductName}</div>
+            {followProductName && followModeration === 'approved' ? ([
+              <div className="spanItem approved">Following</div>,
+              <Link to={`/marketproduct/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
             ]) : usedProductName ? ([
               <div className="spanItem">Create</div>,
               <div className="spanItem usedProductName">{usedProductName}</div>
+            ]) : followProductName && followModeration === 'rejected' ? ([
+              <div className="spanItem rejected">Rejected by</div>,
+              <Link to={`/marketproduct/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
+            ]) : followProductName && followModeration === 'wait' ? ([
+              <div className="spanItem wait">Waiting by</div>,
+              <Link to={`/marketproduct/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
             ]) : null}
           </div>
         </div>
@@ -193,11 +200,6 @@ const SmallKeys = (props) => {
     commentStr = commentStr.split(' ');
     commentStr = commentStr.join('-');
     tsStatusKeys = statusStringKeys[commentStr] || null;
-
-    console.log({
-      tsStatusKeys,
-      commentStr,
-    });
   }
 
   return <TsForm 
