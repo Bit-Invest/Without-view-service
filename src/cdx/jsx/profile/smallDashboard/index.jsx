@@ -98,7 +98,7 @@ class RenderDashboard extends React.Component {
                 name: 'Week'
               },{
                 cour: 30,
-                name: 'Mount'
+                name: 'Month'
               },{
                 cour: 365,
                 name: 'Year'
