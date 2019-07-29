@@ -199,9 +199,9 @@ const SmallKeys = (props) => {
     'ADDING': AddingForm,
   })[props.data.status];
 
-  let tsStatusKeys = null;
+  let tsStatusKeys = statusStringKeys[props.data.valid ? 'VALID-KEY' : 'INVALID-KEY'];
 
-  if (props.data.status !== 'ADDING') {
+  if (props.data.comment && props.data.status !== 'ADDING') {
     let commentStr = props.data.comment.toString().toUpperCase();
     commentStr = commentStr.split(' ');
     commentStr = commentStr.join('-');
