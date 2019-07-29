@@ -84,13 +84,9 @@ export default class ListBlock extends React.Component {
         }, index)
       );
 
-    if (!resList || !resList.length) {
-      return 'This list is still empty.';
-    }
-
     return [
       this.renderAddingKeys(),
-      resList,
+      (!resList || !resList.length) ? 'This list is still empty.' : resList,
     ];
   }
 
@@ -117,13 +113,9 @@ export default class ListBlock extends React.Component {
         }, index)
       );
 
-    if (!resList || !resList.length) {
-      return 'This list is still empty.';
-    }
-
     return [
       this.renderAddingProduct(),
-      resList,
+      (!resList || !resList.length) ? 'This list is still empty.' : resList,
     ];
   }
 
