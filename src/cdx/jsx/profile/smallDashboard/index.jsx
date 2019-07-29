@@ -54,12 +54,16 @@ class RenderDashboard extends React.Component {
     const {
       reduxState: {
         keys,
+        myFollowers,
         dashboard: {
           baseAsset,
         },
       },
       actions,
     } = this.props;
+
+    const marketKeys = utils.profile.getMarketplaceInvestors({keys,myFollowers});
+    const swapedKeys = [...keys, ...marketKeys];
 
     return(
       <div className="head">
@@ -68,8 +72,10 @@ class RenderDashboard extends React.Component {
             <div className="curSmallTitle">Select account:</div>
             <select onChange={(event)=>this.setState({selectedAccount:event.target.value})}>
               <option value="ALL">All accounts</option>
-              {keys.map((curKeys, index) => 
-                <option key={index} value={curKeys.keyId}>{curKeys.name}</option>      
+              {swapedKeys.map((curKeys, index) => 
+                <option key={index} value={curKeys.keyId}>
+                  {curKeys.name} {curKeys.marketplace ? '(marketplace)' : '(personally)'}
+                </option>      
               )}
             </select>
           </div>
@@ -134,6 +140,7 @@ class RenderDashboard extends React.Component {
     const {
       reduxState: {
         keys,
+        myFollowers,
         incomeKeys,
         dashboard: {
           baseAsset,
@@ -141,8 +148,10 @@ class RenderDashboard extends React.Component {
       },
     } = this.props;
     const { selectedAccount, selectedCourDay, selectedMode, selectedType } = this.state;
+    const marketKeys = utils.profile.getMarketplaceInvestors({keys,myFollowers});
+    const swapedKeys = [...keys, ...marketKeys];
     const { incomes: incomesArr } = utils.profile.getSelectedIncomes(
-      keys, 
+      swapedKeys, 
       incomeKeys,
       selectedAccount,
       selectedCourDay,

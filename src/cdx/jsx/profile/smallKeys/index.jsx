@@ -15,12 +15,15 @@ const statusStringKeys = {
 };
 
 const ActiveForm = (props) => {
+  const marketplace = props.data.marketplace;
   const baseAsset = props.data.history.baseAsset;
   const balance = utils.profile.getBalanceHistory(props.data.history.balance, baseAsset, 'balance');
   const { productName: followProductName, productId: clickProductId, moderation: followModeration } = props.data.history.usedFollowing || {productName: false};
   const { name: usedProductName } = props.data.history.usedProduct || {name: false};
   const positiveFollowing = true; //test
   // const income = utils.profile.getValueHistory(props.data.history.income, baseAsset, 'income');
+
+  const followProductPage = marketplace ? 'myproduct' : 'marketproduct';
 
   return(
     <div className={`smallKeys ${props.tsStatusKeys[1]}`}>
@@ -38,47 +41,50 @@ const ActiveForm = (props) => {
         </div>
         <div className="blockItem history">
           <div className="item balance">{
-            props.tsStatusKeys[1] === 'VALID_NO_DEPO' ? (
-              'NO TRADE HISTORY'
-            ) : props.tsStatusKeys[1] === 'ERROR' ? (
-              'INVALID KEY'
-            ) : (
-              !balance ? 'Balances processing..' : `${balance.available} (${balance.hold}) ${baseAsset}`
-            )
+            marketplace ? null :
+              props.tsStatusKeys[1] === 'VALID_NO_DEPO' ? (
+                'NO TRADE HISTORY'
+              ) : props.tsStatusKeys[1] === 'ERROR' ? (
+                'INVALID KEY'
+              ) : (
+                !balance ? 'Balances processing..' : `${balance.available} (${balance.hold}) ${baseAsset}`
+              )
           }</div>
           <div className={`item usedFollowing ${positiveFollowing && 'positiveFollowing'}`}>
             {followProductName && followModeration === 'approved' ? ([
               <div className="spanItem approved">Following</div>,
-              <Link to={`/marketproduct/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
+              <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
             ]) : usedProductName ? ([
               <div className="spanItem">Create</div>,
               <div className="spanItem usedProductName">{usedProductName}</div>
             ]) : followProductName && followModeration === 'rejected' ? ([
               <div className="spanItem rejected">Rejected by</div>,
-              <Link to={`/marketproduct/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
+              <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
             ]) : followProductName && followModeration === 'wait' ? ([
               <div className="spanItem wait">Waiting by</div>,
-              <Link to={`/marketproduct/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
+              <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
             ]) : null}
           </div>
         </div>
       </div>
-      <div className="settings">
-        <div className="iconHover"></div>
-        <div className="menu">
-          <div className="item edit" onClick={props.data.methods.setIndexEditing}>Edit</div>
-          <div className="item remove" onClick={async () => {
-            let isRemoved = prompt('Enter account name if you are really going to delete it.', '');
-            if (isRemoved !== props.data.name) return false;
+      {!marketplace && (
+        <div className="settings">
+          <div className="iconHover"></div>
+          <div className="menu">
+            <div className="item edit" onClick={props.data.methods.setIndexEditing}>Edit</div>
+            <div className="item remove" onClick={async () => {
+              let isRemoved = prompt('Enter account name if you are really going to delete it.', '');
+              if (isRemoved !== props.data.name) return false;
 
-            await props.data.methods.remove({
-              keyId: props.data.keyId,
-            });
+              await props.data.methods.remove({
+                keyId: props.data.keyId,
+              });
 
-            await props.data.methods.reload();
-          }}>Remove</div>
+              await props.data.methods.reload();
+            }}>Remove</div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

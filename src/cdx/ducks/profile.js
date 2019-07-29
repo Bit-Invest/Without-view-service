@@ -17,7 +17,6 @@ const actions = utils.common.addPropery([
 			startRequired: false,
 			tiedActions: () => [
 				actionsForTied.getIncomeKeys,
-				// actionsForTied.clearBalanceKeys,
 			],
 		},
 		preFnData: (coin, tsAction) => ({
@@ -90,8 +89,10 @@ const actions = utils.common.addPropery([
 		preFnData: (data, tsAction, store) => {
 			const { profile } = store;
 			const { incomeKeys, keys, dashboard } = profile;
-			
-			const { nextKeyId, isLast, } = utils.profile.getNextKeyIdForGetIncomes(keys, incomeKeys, dashboard.baseAsset);
+			const marketKeys = utils.profile.getMarketplaceInvestors(store.profile);
+			const swapedKeys = [...keys, ...marketKeys];
+
+			const { nextKeyId, isLast, } = utils.profile.getNextKeyIdForGetIncomes(swapedKeys, incomeKeys, dashboard.baseAsset);
 
 			if (!nextKeyId) return {
 				disable: true,
@@ -123,7 +124,7 @@ const actions = utils.common.addPropery([
 				};
 			}
 
-			if (newAction.data.courBAN > ((keys.length || 0) + 1)) return {};
+			if (newAction.data.courBAN > ((swapedKeys.length || 0) + 1)) return {};
 			return newAction;
 		},
 	},
@@ -158,9 +159,11 @@ const actions = utils.common.addPropery([
 		preFnData: (data, tsAction, store) => {
 			const { profile } = store;
 			const { balancesKeys, keys, dashboard } = profile;
-			
-			const { nextKeyId, isLast, } = utils.profile.getNextKeyIdForGetBalances(keys, balancesKeys);
+			const marketKeys = utils.profile.getMarketplaceInvestors(store.profile);
+			const swapedKeys = [...keys, ...marketKeys];
 
+			const { nextKeyId, isLast, } = utils.profile.getNextKeyIdForGetBalances(swapedKeys, balancesKeys);
+			
 			if (!nextKeyId) return {
 				disable: true,
 			};
@@ -191,7 +194,7 @@ const actions = utils.common.addPropery([
 				};
 			}
 
-			if (newAction.data.courBAN > ((keys.length || 0) + 1)) return {};
+			if (newAction.data.courBAN > ((swapedKeys.length || 0) + 1)) return {};
 			return newAction;
 		},
 	},
@@ -210,7 +213,7 @@ const actions = utils.common.addPropery([
 		},
 		tags: {
 			manuallyUsed: true,
-			startRequired: true,
+			startRequired: false,
 			tiedActions: () => [
 				actionsForTied.clearBalanceKeys,
 				actionsForTied.clearIncomeKeys,
@@ -342,6 +345,9 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: true,
+			tiedActions: () => [
+				actionsForTied.getKeys,
+			],
 		},
 	},
 	{

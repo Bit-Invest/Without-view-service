@@ -71,7 +71,10 @@ export const getDataForSmallKeys = (state) => {
   const myFollowings = typeof state.myFollowings === 'object' && state.myFollowings;
   const myProducts = typeof state.myProducts === 'object' && state.myProducts;
 
-  const stateKeys = (keys || []).map(curKey => {
+  const marketKeys = getMarketplaceInvestors(state);
+  const swappedKeys = [...(keys || []), ...(marketKeys || [])];
+
+  const stateKeys = (swappedKeys || []).map(curKey => {
     const curIncome = (incomeKeys || [])
       .find(curIncome => curKey.keyId === curIncome.keyId && curIncome.baseAsset === baseAsset);
     // const curBaseBalance = curIncome && curIncome.income.baseBalance;
@@ -328,7 +331,47 @@ export const getFreeKeys = (state, atopFilter) => {
   };
 };
 
+export const getMarketplaceInvestors = (state) => {
+  const keys = typeof state.keys === 'object' && state.keys;
+  const myFollowers = typeof state.myFollowers === 'object' && state.myFollowers;
+
+  const marketKeys = (myFollowers || [])
+    .reduce((resMarketKeys, curMyFollower) => {
+      const myFollowingsSorted = (curMyFollower.followings || [])
+        .sort((curFollowing1, curFollowing2) => curFollowing2.createdAt - curFollowing1.createdAt)
+        .reduce((res, curObj, arr) => {
+          if (res.find(curObj2 => 
+            (curObj2.follower.keyId || 0) === curObj.follower.keyId
+          )) return res;
+          
+          res.push(curObj);
+
+          return res;
+        }, []);
+
+      myFollowingsSorted.forEach(curMyFollowingsSorted => {
+        const isMyKeys = (keys || []).find(curMyKeys => curMyFollowingsSorted.follower === curMyKeys.keyId);
+
+        if (!isMyKeys) resMarketKeys.push({
+          ...curMyFollowingsSorted,
+          keyId: curMyFollowingsSorted.follower,
+          groupName: "investor",
+          comment: 'Valid key',
+          valid: true,
+          stock: 'binance',
+          name: `${curMyFollowingsSorted.followerDetails.firstName} ${curMyFollowingsSorted.followerDetails.lastName}`,
+          marketplace: true,
+        });
+      })
+
+      return resMarketKeys;
+    }, []);
+
+  return marketKeys;
+};
+
 export default ({
+  getMarketplaceInvestors,
   getIncomeForKeys,
   getSelectedIncomes,
 	getNextKeyIdForGetIncomes,
