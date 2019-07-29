@@ -70,9 +70,9 @@ class ActiveForm extends React.Component {
       'month': monthIncome,
     })[this.state.showingProfitInterval];
 
-    const weekLastProfit = weekIncome[weekIncome.length - 1];
-    const monthLastProfit = monthIncome[monthIncome.length - 1];
-    const allLastProfit = historyIncome[historyIncome.length - 1];
+    const weekLastProfit = (weekIncome[weekIncome.length - 1] || {value:0}).value.toFixed(2);
+    const monthLastProfit = (monthIncome[monthIncome.length - 1] || {value:0}).value.toFixed(2);
+    const allLastProfit = (historyIncome[historyIncome.length - 1] || {value:0}).value.toFixed(2);
 
     return(
       <div className="smallProduct" key={this.props.index}>
@@ -115,9 +115,18 @@ class ActiveForm extends React.Component {
             </div>
             {historyIncome.length ? (
               <div className="selectShowingTime">
-                <div className={`item ${'week' === this.state.showingProfitInterval ? 'active' : ''}`} onClick={() => this.setState({showingProfitInterval: 'week'})}>Week: {weekLastProfit.value.toFixed(2)}%</div>
-                <div className={`item ${'month' === this.state.showingProfitInterval ? 'active' : ''}`} onClick={() => this.setState({showingProfitInterval: 'month'})}>Month: {monthLastProfit.value.toFixed(2)}%</div>
-                <div className={`item ${'all' === this.state.showingProfitInterval ? 'active' : ''}`} onClick={() => this.setState({showingProfitInterval: 'all'})}>All: {allLastProfit.value.toFixed(2)}%</div>
+                {([
+                  {point:'week', value:weekLastProfit},
+                  {point:'month', value:monthLastProfit},
+                  {point:'all', value:allLastProfit},
+                ]).map(curTimeProfit => (
+                  <div 
+                    className={`item ${curTimeProfit.value > 0 ? 'positive' : 'badpositive'} ${curTimeProfit.point === this.state.showingProfitInterval ? 'active' : ''}`} 
+                    onClick={() => this.setState({showingProfitInterval: curTimeProfit.point})}
+                  > 
+                    {curTimeProfit.point.toUpperCase()}: {curTimeProfit.value}%
+                  </div>
+                ))}
               </div>
             ) : null}
             <div className="infoContent">

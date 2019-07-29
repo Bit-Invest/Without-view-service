@@ -19,7 +19,7 @@ const ActiveForm = (props) => {
   const baseAsset = props.data.history.baseAsset;
   const balance = utils.profile.getBalanceHistory(props.data.history.balance, baseAsset, 'balance');
   const { productName: followProductName, productId: clickProductId, moderation: followModeration } = props.data.history.usedFollowing || {productName: false};
-  const { name: usedProductName } = props.data.history.usedProduct || {name: false};
+  const { name: usedProductName, productId: clickUsedProductId } = props.data.history.usedProduct || {name: false};
   const positiveFollowing = true; //test
   // const income = utils.profile.getValueHistory(props.data.history.income, baseAsset, 'income');
 
@@ -56,7 +56,7 @@ const ActiveForm = (props) => {
               <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
             ]) : usedProductName ? ([
               <div className="spanItem">Create</div>,
-              <div className="spanItem usedProductName">{usedProductName}</div>
+              <Link to={`/myproduct/${clickUsedProductId}`} className="spanItem usedProductName">{usedProductName}</Link>
             ]) : followProductName && followModeration === 'rejected' ? ([
               <div className="spanItem rejected">Rejected by</div>,
               <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>

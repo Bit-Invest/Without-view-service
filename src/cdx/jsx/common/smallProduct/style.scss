@@ -140,11 +140,15 @@
           padding: 3px 5px;
           border-radius: 2px;
           cursor: pointer;
+          opacity: 0.3;
+          color: white;
 
           &.active {
-            background: white;
-            color: black;
+            opacity: 1;
           }
+
+          &.badpositive {background-color: #da7a7a;}
+          &.positive {background-color: rgb(141, 198, 63);}
         }
       }
     }
