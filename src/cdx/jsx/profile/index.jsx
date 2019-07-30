@@ -33,17 +33,11 @@ export default class ProfileComponent extends React.Component {
   getDataForLists = () => {
     const { reduxState } = this.props;
     const { stateKeys } = utils.profile.getDataForSmallKeys(reduxState);
-    const marketKeys = utils.profile.getMarketplaceInvestors(reduxState);
     const { keys: keysForAddingProduct } = utils.profile.getFreeKeys(
       reduxState, 
       (curKeys) => curKeys.groupName === 'my' || !curKeys.groupName
     );
-
-    // console.log({
-    //   marketKeys,
-    //   stateKeys,
-    // });
-
+    
     return {
       stateKeys,
       reduxState,

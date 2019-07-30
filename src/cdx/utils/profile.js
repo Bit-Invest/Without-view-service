@@ -370,7 +370,31 @@ export const getMarketplaceInvestors = (state) => {
   return marketKeys;
 };
 
+export const getConnectedProducts = (state) => {
+  const myFollowings = (typeof state.myFollowings === 'object' && state.myFollowings) || [];
+
+  if (!myFollowings.length) return state.myFollowings;
+
+  const myFollowingsSorted = (myFollowings || [])
+    .sort((curFollowing1, curFollowing2) => curFollowing2.createdAt - curFollowing1.createdAt)
+    .reduce((res, curObj, arr) => {
+      if (res.find(curObj2 => 
+        (curObj2.follower.keyId || 0) === curObj.follower.keyId
+      )) return res;
+      
+      res.push(curObj);
+
+      return res;
+    }, []);
+
+  const connectedProducts = myFollowingsSorted
+    .filter(curMyFollowingsSorted => curMyFollowingsSorted.moderation === 'approved');
+
+  return connectedProducts;
+};
+
 export default ({
+  getConnectedProducts,
   getMarketplaceInvestors,
   getIncomeForKeys,
   getSelectedIncomes,

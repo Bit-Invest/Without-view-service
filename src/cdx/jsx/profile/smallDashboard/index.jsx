@@ -207,10 +207,10 @@ class RenderDashboard extends React.Component {
   }
 };
 
-
 const ContentBoxRender = (props) => {
-  const { keys, myProducts } = props.reduxState;
-  const skillData = [keys, myProducts];
+  const { keys, myProducts, myFollowings } = props.reduxState;
+  const connectedProducts = utils.profile.getConnectedProducts({myFollowings});
+  const skillData = [keys, myProducts, connectedProducts];
   const skillDataNoLoaded = mixins.common.dataNoLoaded(skillData);
 
   if (skillDataNoLoaded[1]) return skillDataNoLoaded[1];
