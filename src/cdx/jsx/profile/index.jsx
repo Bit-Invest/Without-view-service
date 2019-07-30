@@ -63,6 +63,9 @@ export default class ProfileComponent extends React.Component {
                 filter={(curData) => !curData.groupName || curData.groupName === 'my'}
                 groupName="my"
                 renderFn="renderListKeys"
+                helpTexts={{
+                  title: 'This is the list of all your exchange accounts and API keys associated with them.'
+                }}
                 methods={{
                   reload: actions.getKeys,
                   add: actions.addKeys,

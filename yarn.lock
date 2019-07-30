@@ -7845,6 +7845,12 @@ react-router@4.4.0-beta.8, react-router@^4.4.0-beta.8:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
+react-tooltip-lite@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/react-tooltip-lite/-/react-tooltip-lite-1.10.0.tgz#03c367c590339848a083942c3b0bee2a98254819"
+  dependencies:
+    prop-types "^15.5.8"
+
 react@16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"

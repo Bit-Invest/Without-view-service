@@ -1,7 +1,9 @@
-import React from 'react'
-import mixins from '@cdx/mixins/'
+import React from 'react';
+import mixins from '@cdx/mixins/';
 
-import './style.scss'
+import Help from '@cdx/jsx/common/help/';
+
+import './style.scss';
 
 export default class ListBlock extends React.Component {
   state = {
@@ -126,7 +128,7 @@ export default class ListBlock extends React.Component {
     });
 
   render() {
-    const { atopClass } = this.props;
+    const { atopClass, helpTexts } = this.props;
 
     return(
       <div className={`listBlock ${atopClass?atopClass:''}`}>
@@ -134,6 +136,7 @@ export default class ListBlock extends React.Component {
           {this.props.texts.title && (
             <div className="title">
               <div>{this.props.texts.title}</div>
+              <div>{(helpTexts && helpTexts.title) ? <Help description={helpTexts.title} /> : ''}</div>
               <div className="reload" onClick={this.props.methods.reload}></div>
             </div>
           )}

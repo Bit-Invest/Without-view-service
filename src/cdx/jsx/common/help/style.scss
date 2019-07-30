@@ -1,0 +1,31 @@
+.helpPoint {
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	margin: 0 10px;
+	display: flex;
+	flex-direction: column;
+
+	&:hover {
+		.textDescription {
+			display: flex;
+		} 
+	}
+
+	.img {
+		width: 20px; height: 20px;
+		background-image: url('~@assets/icons/information.png');
+		background-size: cover;
+		border-radius: 100px;
+		cursor: pointer;
+	}
+}
+
+.react-tooltip-lite {
+  background: #333;
+  color: white;
+}
+
+.react-tooltip-lite-arrow {
+  border-color: #333;
+}
