@@ -46,31 +46,40 @@ const ActiveForm = (props) => {
           </Help>
         </div>
         <div className="blockItem history">
-          <div className="item balance">{
-            marketplace ? null :
+          {
+            !marketplace ? (
               props.tsStatusKeys[1] === 'VALID_NO_DEPO' ? (
-                'NO TRADE HISTORY'
+                <div className="item balance">NO TRADE HISTORY</div>
               ) : props.tsStatusKeys[1] === 'ERROR' ? (
-                'INVALID KEY'
+                <div className="item balance">INVALID KEY</div>
               ) : (
-                !balance ? 'Balances processing..' : `${balance.available} (${balance.hold}) ${baseAsset}`
+                !balance ? (
+                  <div className="item balance">Balances processing..</div> 
+                ) : (
+                  <Help description={'This is your account`s current balance displayed in the currently selected base asset.'}>
+                    <div className="item balance">{`${balance.available} (${balance.hold}) ${baseAsset}`}</div> 
+                  </Help>
+                )
               )
-          }</div>
-          <div className={`item usedFollowing ${positiveFollowing && 'positiveFollowing'}`}>
-            {followProductName && followModeration === 'approved' ? ([
-              <div className="spanItem approved">Following</div>,
-              <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
-            ]) : usedProductName ? ([
-              <div className="spanItem">Create</div>,
-              <Link to={`/myproduct/${clickUsedProductId}`} className="spanItem usedProductName">{usedProductName}</Link>
-            ]) : followProductName && followModeration === 'rejected' ? ([
-              <div className="spanItem rejected">Rejected by</div>,
-              <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
-            ]) : followProductName && followModeration === 'wait' ? ([
-              <div className="spanItem wait">Waiting by</div>,
-              <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
-            ]) : null}
-          </div>
+            ) : null
+          }
+          <Help description={'This status indicates how your keys are currently used (Unused, to create a product or to follow a product)'}>
+            <div className={`item usedFollowing ${positiveFollowing && 'positiveFollowing'}`}>
+              {followProductName && followModeration === 'approved' ? ([
+                <div className="spanItem approved">Following</div>,
+                <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
+              ]) : usedProductName ? ([
+                <div className="spanItem">Create</div>,
+                <Link to={`/myproduct/${clickUsedProductId}`} className="spanItem usedProductName">{usedProductName}</Link>
+              ]) : followProductName && followModeration === 'rejected' ? ([
+                <div className="spanItem rejected">Rejected by</div>,
+                <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
+              ]) : followProductName && followModeration === 'wait' ? ([
+                <div className="spanItem wait">Waiting by</div>,
+                <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
+              ]) : null}
+            </div>
+          </Help>
         </div>
       </div>
       {!marketplace && (

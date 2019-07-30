@@ -1,7 +1,9 @@
 import React from 'react';
 import Contexts from '@modules/contexts';
 import mixins from '@cdx/mixins/';
-import utils from '@cdx/utils/'
+import utils from '@cdx/utils/';
+
+import Help from '@cdx/jsx/common/help/';
 
 import {
   notPassed
@@ -69,7 +71,9 @@ class RenderDashboard extends React.Component {
       <div className="head">
         <div className="accounts">
           <div className="item">
-            <div className="curSmallTitle">Select account:</div>
+            <Help description={'Select all accounts if you wish to display the charts for all of them simultaneously or select an individual account to study separately.'}>
+              <div className="curSmallTitle">Select account:</div>
+            </Help>
             <select onChange={(event)=>this.setState({selectedAccount:event.target.value})}>
               <option value="ALL">All accounts</option>
               {swapedKeys.map((curKeys, index) => 
@@ -80,21 +84,27 @@ class RenderDashboard extends React.Component {
             </select>
           </div>
           <div className="item">
-            <div className="curSmallTitle">Display Mode:</div>
+            <Help description={'Choose whether you want to see the change over time in %, or the absolute value in base currency.'}>
+              <div className="curSmallTitle">Display Mode:</div>
+            </Help>
             <select onChange={(event)=>this.setState({selectedMode:event.target.value})}>
               <option value="PERCENT" selected={this.state.selectedMode === "PERCENT"}>%</option>
               <option value="ABSOLUTE" selected={this.state.selectedMode === "ABSOLUTE"}>Absolute Values</option>
             </select>
           </div>
           <div className="item">
-            <div className="curSmallTitle">Type:</div>
+            <Help description={'Choose to view only the profit/loss over the reporting periods or the account`s total balance in absolute values.'}>
+              <div className="curSmallTitle">Type:</div>
+            </Help>
             <select onChange={(event)=>this.setState({selectedType:event.target.value})}>
               <option value="INCOME" selected={this.state.selectedType === "INCOME"}>PROFIT</option>
               <option value="BALANCE" selected={this.state.selectedType === "BALANCE"}>BALANCE</option>
             </select>
           </div>
           <div className="item">
-            <div className="curSmallTitle">Displayed period:</div>
+            <Help description={'Choose the reporting period to display.'}>
+              <div className="curSmallTitle">Displayed period:</div>
+            </Help>
             <select onChange={(event)=>this.setState({selectedCourDay:event.target.value})}>
               {[{
                 cour: 3,
@@ -121,7 +131,9 @@ class RenderDashboard extends React.Component {
             </select>
           </div>
           <div className="item">
-            <div className="curSmallTitle">Select base asset:</div>
+            <Help description={'By selecting the base asset, you choose whether to display the balance and/or profits in the base crypto currency of the product or USD.'}>
+              <div className="curSmallTitle">Select base asset:</div>
+            </Help>
             <select onChange={(event)=> actions.setBaseAsset(event.target.value)}>
               {['BTC', 'USD'].map(curBaseAsset =>
                 <option 
