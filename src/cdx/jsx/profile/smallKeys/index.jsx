@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import utils from '@cdx/utils/';
 
+import Help from '@cdx/jsx/common/help/';
+
 //images
 import BinanceLogo from '@assets/images/iconBinance.png';
 
@@ -37,7 +39,11 @@ const ActiveForm = (props) => {
         </div>
         <div className="blockItem infoData">
           <div className="item name">{props.data.name}</div>
-          <div className={`item status ${props.tsStatusKeys[1]}`}>{props.tsStatusKeys[0]}</div>
+          <Help description={'This is the current status of your API keys. Valid - the key is ready for work. Error - the key is invalid, click here for troubleshooting guide.'}>
+            <div className={`item status ${props.tsStatusKeys[1]}`}>
+              {props.tsStatusKeys[0]}
+            </div>
+          </Help>
         </div>
         <div className="blockItem history">
           <div className="item balance">{

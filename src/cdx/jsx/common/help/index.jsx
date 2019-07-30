@@ -10,7 +10,8 @@ export default class HelpPoint extends React.Component {
 
     return(
       <div className="helpPoint">
-        <Tooltip content={description}>
+        {this.props.children}
+        <Tooltip content={description} className="helpPointChild">
           <div className="img"></div>
         </Tooltip>
       </div>

@@ -64,7 +64,8 @@ export default class ProfileComponent extends React.Component {
                 groupName="my"
                 renderFn="renderListKeys"
                 helpTexts={{
-                  title: 'This is the list of all your exchange accounts and API keys associated with them.'
+                  title: 'This is the list of all your exchange accounts and API keys associated with them.',
+                  addButton: 'Click here to connect an exchange account to your CINDX account.',
                 }}
                 methods={{
                   reload: actions.getKeys,
