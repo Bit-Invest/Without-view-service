@@ -1,4 +1,5 @@
 import configs from '@cdx/configs/';
+import lngs from '@cdx/lngs/';
 
 export const notPassed = (state) => 
 	((state !== configs.common.TYPES_RESULT['ERROR'] &&
@@ -126,7 +127,10 @@ export const logger = (groupName) => (arrLog) => {
   }
 };
 
+export const phrases = lngs['en'];
+
 export default ({
+  phrases,
   logger,
 	notPassed,
 	addPropery,

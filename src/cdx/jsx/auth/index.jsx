@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Link } from "react-router-dom";
+import { phrases } from '@cdx/utils/common';
 
 import SignInForm from './forms/sign_in';
 import SignUpForm from './forms/sign_up';
@@ -24,8 +25,7 @@ export default class AuthPage extends React.Component {
             <Route path="/auth/sign-up" render={() => <SignUpForm {...this.props} /> } />
           </div>
           <div className="disclaimer">
-            © 2019 Cindx | <span>Privacy Policy</span>
-            <span>Terms of Service</span>
+            {phrases['auth-common']['#1']}
           </div>
         </div>
         <div className="picture-column" />
