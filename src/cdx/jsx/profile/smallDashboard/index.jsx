@@ -2,6 +2,7 @@ import React from 'react';
 import Contexts from '@modules/contexts';
 import mixins from '@cdx/mixins/';
 import utils from '@cdx/utils/';
+import { phrases } from '@cdx/utils/common';
 
 import Help from '@cdx/jsx/common/help/';
 
@@ -20,22 +21,22 @@ const renderHelloBlock = (skillData, skillUser) => (
     <div className='desc'>
       <div className='emoji welcome'></div>
       <div className='text'>
-        <div>We welcome you.</div>
-        <div>Please add your account from the exchange.</div>
+        <div>{phrases['small-dashboard']['#1']}</div>
+        <div>{phrases['small-dashboard']['#2']}</div>
       </div>
     </div>
   ) : (!notPassed(skillData[1] && !notPassed(2))) ? (
     <div className='desc'>
       <div className='emoji twoStep'></div>
       <div className='text'>
-        <div>Thank you for adding your account.</div>
-        <div>Now you can create a product or connect to one of the managers.</div>
+        <div>{phrases['small-dashboard']['#3']}</div>
+        <div>{phrases['small-dashboard']['#4']}</div>
       </div>
     </div>
   ) : (
     <div className='desc'>
       <div className='emoji'></div>
-      <div className='text'>Error</div>
+      <div className='text'>{phrases['small-dashboard']['#5']}</div>
     </div>
   )
 );
@@ -71,56 +72,56 @@ class RenderDashboard extends React.Component {
       <div className="head">
         <div className="accounts">
           <div className="item">
-            <Help description={'Select all accounts if you wish to display the charts for all of them simultaneously or select an individual account to study separately.'}>
-              <div className="curSmallTitle">Select account:</div>
+            <Help description={phrases['small-dashboard']['#25']}>
+              <div className="curSmallTitle">{phrases['small-dashboard']['#9_1']}</div>
             </Help>
             <select onChange={(event)=>this.setState({selectedAccount:event.target.value})}>
-              <option value="ALL">All accounts</option>
+              <option value="ALL">{phrases['small-dashboard']['#6']}</option>
               {swapedKeys.map((curKeys, index) => 
                 <option key={index} value={curKeys.keyId}>
-                  {curKeys.name} {curKeys.marketplace ? '(marketplace)' : '(personally)'}
+                  {curKeys.name} {curKeys.marketplace ? phrases['small-dashboard']['#7'] : phrases['small-dashboard']['#8']}
                 </option>      
               )}
             </select>
           </div>
           <div className="item">
-            <Help description={'Choose whether you want to see the change over time in %, or the absolute value in base currency.'}>
-              <div className="curSmallTitle">Display Mode:</div>
+            <Help description={phrases['small-dashboard']['#26']}>
+              <div className="curSmallTitle">{phrases['small-dashboard']['#9']}</div>
             </Help>
             <select onChange={(event)=>this.setState({selectedMode:event.target.value})}>
               <option value="PERCENT" selected={this.state.selectedMode === "PERCENT"}>%</option>
-              <option value="ABSOLUTE" selected={this.state.selectedMode === "ABSOLUTE"}>Absolute Values</option>
+              <option value="ABSOLUTE" selected={this.state.selectedMode === "ABSOLUTE"}>{phrases['small-dashboard']['#10']}</option>
             </select>
           </div>
           <div className="item">
-            <Help description={'Choose to view only the profit/loss over the reporting periods or the account`s total balance in absolute values.'}>
+            <Help description={phrases['small-dashboard']['#27']}>
               <div className="curSmallTitle">Type:</div>
             </Help>
             <select onChange={(event)=>this.setState({selectedType:event.target.value})}>
-              <option value="INCOME" selected={this.state.selectedType === "INCOME"}>PROFIT</option>
-              <option value="BALANCE" selected={this.state.selectedType === "BALANCE"}>BALANCE</option>
+              <option value="INCOME" selected={this.state.selectedType === "INCOME"}>{phrases['small-dashboard']['#11']}</option>
+              <option value="BALANCE" selected={this.state.selectedType === "BALANCE"}>{phrases['small-dashboard']['#12']}</option>
             </select>
           </div>
           <div className="item">
-            <Help description={'Choose the reporting period to display.'}>
-              <div className="curSmallTitle">Displayed period:</div>
+            <Help description={phrases['small-dashboard']['#28']}>
+              <div className="curSmallTitle">{phrases['small-dashboard']['#13']}</div>
             </Help>
             <select onChange={(event)=>this.setState({selectedCourDay:event.target.value})}>
               {[{
                 cour: 3,
-                name: 'Three days'
+                name: phrases['small-dashboard']['#14']
               },{
                 cour: 7,
-                name: 'Week'
+                name: phrases['small-dashboard']['#15']
               },{
                 cour: 30,
-                name: 'Month'
+                name: phrases['small-dashboard']['#16']
               },{
                 cour: 365,
-                name: 'Year'
+                name: phrases['small-dashboard']['#17']
               },{
                 cour: 100000,
-                name: 'ALL'
+                name: phrases['small-dashboard']['#18']
               }].map((curTime, index) => 
                 <option 
                   key={index} 
@@ -131,8 +132,8 @@ class RenderDashboard extends React.Component {
             </select>
           </div>
           <div className="item">
-            <Help description={'By selecting the base asset, you choose whether to display the balance and/or profits in the base crypto currency of the product or USD.'}>
-              <div className="curSmallTitle">Select base asset:</div>
+            <Help description={phrases['small-dashboard']['#29']}>
+              <div className="curSmallTitle">{phrases['small-dashboard']['#19']}</div>
             </Help>
             <select onChange={(event)=> actions.setBaseAsset(event.target.value)}>
               {['BTC', 'USD'].map(curBaseAsset =>
@@ -199,18 +200,18 @@ class RenderDashboard extends React.Component {
     const { selectedMode, selectedType } = this.state;
     const titleChart = ({
       INCOME: {
-        PERCENT: `Account profit in ${baseAsset}, %:`,
-        ABSOLUTE: `Account profit in ${baseAsset}:`,
+        PERCENT: `${phrases['small-dashboard']['#20']} ${baseAsset}, %:`,
+        ABSOLUTE: `${phrases['small-dashboard']['#21']} ${baseAsset}:`,
       },
       BALANCE: {
-        PERCENT: `Account history balances in ${baseAsset}, %:`,
-        ABSOLUTE: `Account history balances in ${baseAsset}:`,
+        PERCENT: `${phrases['small-dashboard']['#22']} ${baseAsset}, %:`,
+        ABSOLUTE: `${phrases['small-dashboard']['#23']} ${baseAsset}:`,
       },
     })[selectedType][selectedMode];
 
     return(
       <div className="dashboard">
-        <div className="curTitle">Accounts Overview</div>
+        <div className="curTitle">{phrases['small-dashboard']['#24']}</div>
         {this.renderHead()}
         <div className="curSmallTitle">{titleChart}</div>
         {this.renderChartIncome()}
