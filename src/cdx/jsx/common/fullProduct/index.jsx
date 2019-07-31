@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import utils from '@cdx/utils/';
 import mixins from '@cdx/mixins/';
+import { phrases } from '@cdx/utils/common';
 
 //images
 import BinanceLogo from '@assets/images/iconBinance.png';
@@ -86,12 +87,12 @@ class FullProduct extends React.Component {
                 <div className="rating">
                   {
                     !productProccesing ? [
-                      <div className="curTitle">Rating {ratingValueShow}: </div>,
+                      <div className="curTitle">{phrases['full-product']['#1']}{ratingValueShow}: </div>,
                       <div className="score">
                         <div className={`filled ${styleRating}`} style={{width: `${percentRating}%`}}></div>
                       </div>
                     ] : (
-                      <div>Rating processing..</div>
+                      <div>{phrases['full-product']['#2']}</div>
                     )
                   }
                 </div>
@@ -110,19 +111,19 @@ class FullProduct extends React.Component {
             </div>
             <div className="infoContent">
               <div className="item">
-                <div className="property">Product name: </div>
+                <div className="property">{phrases['full-product']['#3']}</div>
                 <div className="value">{name}</div>
               </div>
               <div className="item">
-                <div className="property">Number of investors: </div>
+                <div className="property">{phrases['full-product']['#4']}</div>
                 <div className="value">{followers}</div>
               </div>
               <div className="item">
-                <div className="property">Created on: </div>
+                <div className="property">{phrases['full-product']['#5']}</div>
                 <div className="value">{sinceProduct}</div>
               </div>
               <div className="item">
-                <div className="property">Product description: </div>
+                <div className="property">{phrases['full-product']['#6']}</div>
                 <div className="value">{description}</div>
               </div>
             </div>
@@ -134,23 +135,23 @@ class FullProduct extends React.Component {
                   </div>
                   <div className="ratingValuesText">
                     <div className="item">
-                      <div className="property">Volatility: </div>
+                      <div className="property">{phrases['full-product']['#7']}</div>
                       <div className="value">{ratingValues['Volatility']}</div>
                     </div>
                     <div className="item">
-                      <div className="property">IncomeAverage: </div>
+                      <div className="property">{phrases['full-product']['#8']}</div>
                       <div className="value">{ratingValues['IncomeAverage']}</div>
                     </div>
                     <div className="item">
-                      <div className="property">MaxDrawdown: </div>
+                      <div className="property">{phrases['full-product']['#9']}</div>
                       <div className="value">{ratingValues['MaxDrawdown']}%</div>
                     </div>
                     <div className="item">
-                      <div className="property">DmaxDD: </div>
+                      <div className="property">{phrases['full-product']['#10']} </div>
                       <div className="value">{ratingValues['DmaxDD']}%</div>
                     </div>
                     <div className="item">
-                      <div className="property">Income: </div>
+                      <div className="property">{phrases['full-product']['#11']}</div>
                       <div className="value">{ratingValues['Income']}%</div>
                     </div>
                   </div>

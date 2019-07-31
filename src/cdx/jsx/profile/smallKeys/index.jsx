@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import utils from '@cdx/utils/';
+import { phrases } from '@cdx/utils/common';
 
 import Help from '@cdx/jsx/common/help/';
 
@@ -10,10 +11,10 @@ import BinanceLogo from '@assets/images/iconBinance.png';
 import './style.scss'
 
 const statusStringKeys = {
-  'VALID-KEY': ['VALID', 'VALID'],
-  'INVALID-KEY': ['ERROR', 'ERROR'],
-  'KEY-IS-NOT-PROCESSED-YET': ['WAITING', 'WAITING'],
-  'INVALID-KEY-(NO-DEPOSITS)': ['VALID (NO DATA)', 'VALID_NO_DEPO'],
+  'VALID-KEY': [phrases['small-keys']['#1'], 'VALID'],
+  'INVALID-KEY': [phrases['small-keys']['#2'], 'ERROR'],
+  'KEY-IS-NOT-PROCESSED-YET': [phrases['small-keys']['#3'], 'WAITING'],
+  'INVALID-KEY-(NO-DEPOSITS)': [phrases['small-keys']['#4'], 'VALID_NO_DEPO'],
 };
 
 const ActiveForm = (props) => {
@@ -39,7 +40,7 @@ const ActiveForm = (props) => {
         </div>
         <div className="blockItem infoData">
           <div className="item name">{props.data.name}</div>
-          <Help description={'This is the current status of your API keys. Valid - the key is ready for work. Error - the key is invalid, click here for troubleshooting guide.'}>
+          <Help description={phrases['small-keys']['#24']}>
             <div className={`item status ${props.tsStatusKeys[1]}`}>
               {props.tsStatusKeys[0]}
             </div>
@@ -49,33 +50,33 @@ const ActiveForm = (props) => {
           {
             !marketplace ? (
               props.tsStatusKeys[1] === 'VALID_NO_DEPO' ? (
-                <div className="item balance">NO TRADE HISTORY</div>
+                <div className="item balance">{phrases['small-keys']['#5']}</div>
               ) : props.tsStatusKeys[1] === 'ERROR' ? (
-                <div className="item balance">INVALID KEY</div>
+                <div className="item balance">{phrases['small-keys']['#6']}</div>
               ) : (
                 !balance ? (
-                  <div className="item balance">Balances processing..</div> 
+                  <div className="item balance">{phrases['small-keys']['#7']}</div> 
                 ) : (
-                  <Help description={'This is your account`s current balance displayed in the currently selected base asset.'}>
+                  <Help description={phrases['small-keys']['#25']}>
                     <div className="item balance">{`${balance.available} (${balance.hold}) ${baseAsset}`}</div> 
                   </Help>
                 )
               )
             ) : null
           }
-          <Help description={'This status indicates how your keys are currently used (Unused, to create a product or to follow a product)'}>
+          <Help description={phrases['small-keys']['#26']}>
             <div className={`item usedFollowing ${positiveFollowing && 'positiveFollowing'}`}>
               {followProductName && followModeration === 'approved' ? ([
-                <div className="spanItem approved">Following</div>,
+                <div className="spanItem approved">{phrases['small-keys']['#8']}</div>,
                 <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
               ]) : usedProductName ? ([
-                <div className="spanItem">Create</div>,
+                <div className="spanItem">{phrases['small-keys']['#9']}</div>,
                 <Link to={`/myproduct/${clickUsedProductId}`} className="spanItem usedProductName">{usedProductName}</Link>
               ]) : followProductName && followModeration === 'rejected' ? ([
-                <div className="spanItem rejected">Rejected by</div>,
+                <div className="spanItem rejected">{phrases['small-keys']['#10']}</div>,
                 <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
               ]) : followProductName && followModeration === 'wait' ? ([
-                <div className="spanItem wait">Waiting by</div>,
+                <div className="spanItem wait">{phrases['small-keys']['#11']}</div>,
                 <Link to={`/${followProductPage}/${clickProductId}`} className="spanItem usedProductName">{followProductName}</Link>
               ]) : null}
             </div>
@@ -86,9 +87,9 @@ const ActiveForm = (props) => {
         <div className="settings">
           <div className="iconHover"></div>
           <div className="menu">
-            <div className="item edit" onClick={props.data.methods.setIndexEditing}>Edit</div>
+            <div className="item edit" onClick={props.data.methods.setIndexEditing}>{phrases['small-keys']['#13_1']}</div>
             <div className="item remove" onClick={async () => {
-              let isRemoved = prompt('Enter account name if you are really going to delete it.', '');
+              let isRemoved = prompt(phrases['small-keys']['#12'], '');
               if (isRemoved !== props.data.name) return false;
 
               await props.data.methods.remove({
@@ -96,7 +97,7 @@ const ActiveForm = (props) => {
               });
 
               await props.data.methods.reload();
-            }}>Remove</div>
+            }}>{phrases['small-keys']['#13']}</div>
           </div>
         </div>
       )}
@@ -144,13 +145,13 @@ class EditingForm extends React.Component {
         <div className='smallKeysEdit'>
           <div className='mainBlock'>
             <div className='items inputs'>
-              <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='Name' placeholder='Name' />
-              <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.apiKey} name='Api key' placeholder='Api key' />
-              <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder='Secret key' />
+              <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='Name' placeholder={phrases['small-keys']['#14']} />
+              <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.apiKey} name='Api key' placeholder={phrases['small-keys']['#15']} />
+              <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder={phrases['small-keys']['#16']} />
             </div>
             <div className='onTopSigns'>
-              <div className='item save' onClick={this.sendRequest}>Save</div>
-              <div className="item" onClick={this.props.data.methods.clearIndexEditing}>Cancel</div>
+              <div className='item save' onClick={this.sendRequest}>{phrases['small-keys']['#17']}</div>
+              <div className="item" onClick={this.props.data.methods.clearIndexEditing}>{phrases['small-keys']['#18']}</div>
             </div>
           </div>
         </div>
@@ -193,13 +194,13 @@ class AddingForm extends React.Component {
         <div className='mainBlock'>
           <div className='items inputs'>
             <input value={`Exchange: ${this.state.stock}`} name='stock' placeholder='Stock' />
-            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='Name' placeholder='Name' />
-            <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.apiKey} name='Api key' placeholder='Api key' />
-            <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder='Secret key' />
+            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='Name' placeholder={phrases['small-keys']['#19']} />
+            <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.apiKey} name='Api key' placeholder={phrases['small-keys']['#20']} />
+            <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder={phrases['small-keys']['#21']} />
           </div>
           <div className='onTopSigns'>
-            <div className='item save' onClick={this.sendRequest}>Add</div>
-            <div className="item cancel" onClick={this.props.data.methods.toggleAdding}>Cancel</div>
+            <div className='item save' onClick={this.sendRequest}>{phrases['small-keys']['#22']}</div>
+            <div className="item cancel" onClick={this.props.data.methods.toggleAdding}>{phrases['small-keys']['#23']}</div>
           </div>
         </div>
       </div>
