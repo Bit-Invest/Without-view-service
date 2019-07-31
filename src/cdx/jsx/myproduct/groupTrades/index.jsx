@@ -3,6 +3,7 @@ import mixins from '@cdx/mixins/';
 import utils from '@cdx/utils/';
 import moment from 'moment';
 import configs from '@cdx/configs/';
+import { phrases } from '@cdx/utils/common';
 
 import CurTradeParent from './curTradeParent';
 
@@ -170,7 +171,7 @@ export default class GroupTrades extends React.Component {
     if (!arrAllOrders.allOrders.length) 
       return(
         <div className="logTrades">
-          While empty.
+          {phrases['myproduct']['#12']}
         </div>
       );
 
@@ -306,7 +307,7 @@ export default class GroupTrades extends React.Component {
     if (!allShowingTrades) 
       return(
         <div className="logTrades">
-          While empty.
+          {phrases['myproduct']['#13']}
         </div>
       );
 
@@ -320,7 +321,7 @@ export default class GroupTrades extends React.Component {
 
     const ButtonMore = () => (
       allShowingTrades > this.state.quantityLeaderOrdersShow && (
-        <div className="moreTrades" onClick={this.showMoreTrade}>More trades</div>
+        <div className="moreTrades" onClick={this.showMoreTrade}>{phrases['myproduct']['#14']}</div>
       )
     );
 
@@ -328,13 +329,13 @@ export default class GroupTrades extends React.Component {
       <div className="tradeItemsParent">
         <div className="item headTable">
           <div className="boxOfTrade emptySpace" style={{width: '30%'}}></div>
-          <div className="boxOfTrade pair">Pair</div>
-          <div className="boxOfTrade type">Type</div>
-          <div className="boxOfTrade side">Side</div>
-          <div className="boxOfTrade price">Price</div>
-          <div className="boxOfTrade quantity">Quantity</div>
-          <div className="boxOfTrade status">Status</div>
-          <div className="boxOfTrade time">Time</div>
+          <div className="boxOfTrade pair">{phrases['myproduct']['#15']}</div>
+          <div className="boxOfTrade type">{phrases['myproduct']['#16']}</div>
+          <div className="boxOfTrade side">{phrases['myproduct']['#17']}</div>
+          <div className="boxOfTrade price">{phrases['myproduct']['#18']}</div>
+          <div className="boxOfTrade quantity">{phrases['myproduct']['#19']}</div>
+          <div className="boxOfTrade status">{phrases['myproduct']['#20']}</div>
+          <div className="boxOfTrade time">{phrases['myproduct']['#21']}</div>
         </div>
         {jsxListOrders}
       </div>,

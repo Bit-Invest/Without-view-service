@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { phrases } from '@cdx/utils/common';
 
 import mixins from '@cdx/mixins/';
 
@@ -118,30 +119,30 @@ class WaitRequisition extends React.Component {
         <div className="betweenItem leaderMainBlock">
           <div className="balancesList">
             <div className="item headItem">
-              <div className="curItemCoin">Symbol</div>
-              <div className="curItemCoin">Available</div>
-              <div className="curItemCoin">In Order</div>
-              <div className="curItemCoin">Total</div>
+              <div className="curItemCoin">{phrases['myproduct']['#22']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#23']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#24']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#25']}</div>
             </div>
             {jsxListCoins.leader}
           </div>
           <div className="totalBalances">
-            <div className="curPropery">Leader</div>
+            <div className="curPropery">{phrases['myproduct']['#26']}</div>
             <div className="curValue">{getTotalValue(leaderTotal)}</div>
           </div>
         </div>
         <div className="betweenItem followerMainBlock">
           <div className="balancesList">
             <div className="item headItem">
-              <div className="curItemCoin">Symbol</div>
-              <div className="curItemCoin">Available</div>
-              <div className="curItemCoin">In Order</div>
-              <div className="curItemCoin">Total</div>
+              <div className="curItemCoin">{phrases['myproduct']['#22']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#23']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#24']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#25']}</div>
             </div>
             {jsxListCoins.follower}
           </div>
           <div className="totalBalances">
-            <div className="curPropery">Follower</div>
+            <div className="curPropery">{phrases['myproduct']['#27']}</div>
             <div className="curValue">{getTotalValue(followerTotal)}</div>
           </div>
         </div>
@@ -184,10 +185,10 @@ class WaitRequisition extends React.Component {
       <div className="requisitionComponent">
         <div className="mainBlock">
           <div className="headProperty">
-            <div className="item name">Name</div>
-            <div className="item totalBalance">Total Ballance</div>
-            <div className="item synchronization">Synchronization quality</div>
-            <div className="item date">Date of requisition</div>
+            <div className="item name">{phrases['myproduct']['#28']}</div>
+            <div className="item totalBalance">{phrases['myproduct']['#30']}</div>
+            <div className="item synchronization">{phrases['myproduct']['#31']}</div>
+            <div className="item date">{phrases['myproduct']['#32']}</div>
           </div>
           <div className="centerValue">
             <div className="item name">{nameFollower}</div>
@@ -203,14 +204,14 @@ class WaitRequisition extends React.Component {
           <div className="clickButtons">
             <div className="item compare" onClick={()=>this.setState({
               isShowBalances: !this.state.isShowBalances,
-            })}>Compare balance</div>
+            })}>{phrases['myproduct']['#37']}</div>
             <div className="rigthBtns">
               <div className="item approve" onClick={this.props.methods.sendApproveFollowing.bind(this, {
                 followingId: _id,
-              })}>Approve</div>
+              })}>{phrases['myproduct']['#38']}</div>
               <div className="item remove" onClick={this.props.methods.sendRejectFollowing.bind(this, {
                 followingId: _id,
-              })}>Remove</div>
+              })}>{phrases['myproduct']['#39']}</div>
             </div>
           </div>
         </div>

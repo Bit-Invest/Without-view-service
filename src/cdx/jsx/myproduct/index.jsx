@@ -2,6 +2,7 @@ import React from 'react';
 import mixins from '@cdx/mixins/';
 import utils from '@cdx/utils/';
 import Contexts from '@modules/contexts';
+import { phrases } from '@cdx/utils/common';
 
 import InternalPage from '@cdx/jsx/common/internalPage/';
 import BlackoutBlock from '@cdx/jsx/common/blackoutBlock/';
@@ -83,24 +84,24 @@ class GroupTradesParent extends React.Component {
     return(
       <div className="typeList followingTrades">
         <div className="curHead">
-          <div className="curTitle">Following trades</div>
+          <div className="curTitle">{phrases['myproduct']['#1']}</div>
           <div className="rightPanel">
-            <div className="curTitle">Filter by</div>
+            <div className="curTitle">{phrases['myproduct']['#2']}</div>
             <div className="filterMenu">
               <select onChange={(event)=>this.setState({date:event.target.value})}>
-                <option value="new" selected={date === "new"}>First new deal</option>
-                <option value="old" selected={date === "old"}>First old deal</option>
+                <option value="new" selected={date === "new"}>{phrases['myproduct']['#3']}</option>
+                <option value="old" selected={date === "old"}>{phrases['myproduct']['#4']}</option>
               </select>
               <select onChange={(event)=>this.setState({follower:event.target.value})}>
-                <option value="all" selected={follower === "all"}>Show all followers</option>
+                <option value="all" selected={follower === "all"}>{phrases['myproduct']['#5']}</option>
                 {this.getFollowers().map((curFollower, index) =>
                   <option value={curFollower.follower} key={index}>{curFollower.nameFollower}</option>
                 )}
               </select>
               <select onChange={(event)=>this.setState({nosync:event.target.value})}>
-                <option value={'show-all'} selected={nosync === 'show-all'}>Show unsynchronized transactions</option>
-                <option value={'hide-all'} selected={nosync === 'hide-all'}>Hide unsynchronized transactions</option>
-                <option value={'show-only'} selected={nosync === 'show-only'}>Show only unsynchronized transactions</option>
+                <option value={'show-all'} selected={nosync === 'show-all'}>{phrases['myproduct']['#6']}</option>
+                <option value={'hide-all'} selected={nosync === 'hide-all'}>{phrases['myproduct']['#7']}</option>
+                <option value={'show-only'} selected={nosync === 'show-only'}>{phrases['myproduct']['#8']}</option>
               </select>
             </div>
           </div>
@@ -164,7 +165,7 @@ export default class MyProductComponent extends React.Component {
     );
 
     if (!waitFollowings.length && !rejectFollowings.length) {
-      return <div>You have not yet sent any applications for managing funds.</div>;
+      return <div>{phrases['myproduct']['#9']}</div>;
     }
 
     return resList;
@@ -210,7 +211,7 @@ export default class MyProductComponent extends React.Component {
     );
 
     if (!approvedFollowings.length) {
-      return <div>You have no active investors on this product yet.</div>;
+      return <div>{phrases['myproduct']['#9']}</div>;
     }
 
     return resList;
@@ -244,7 +245,7 @@ export default class MyProductComponent extends React.Component {
               />
               <div className="typeList investorList">
                 <div className="curHead">
-                  <div className="curTitle">Your investors</div>
+                  <div className="curTitle">{phrases['myproduct']['#10']}</div>
                   <div className="rightPanel"></div>
                 </div>
                 <div className="content">
@@ -253,7 +254,7 @@ export default class MyProductComponent extends React.Component {
               </div>
               <div className="typeList requisitionsList">
                 <div className="curHead">
-                  <div className="curTitle">Your Requisitions</div>
+                  <div className="curTitle">{phrases['myproduct']['#11']}</div>
                   <div className="rightPanel"></div>
                 </div>
                 <div className="content">

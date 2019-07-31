@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import configs from '@cdx/configs/';
+import { phrases } from '@cdx/utils/common';
 
 import mixins from '@cdx/mixins/';
 
@@ -134,30 +135,30 @@ class ActiveInvestor extends React.Component {
         <div className="betweenItem leaderMainBlock">
           <div className="balancesList">
             <div className="item headItem">
-              <div className="curItemCoin">Symbol</div>
-              <div className="curItemCoin">Available</div>
-              <div className="curItemCoin">In Order</div>
-              <div className="curItemCoin">Total</div>
+              <div className="curItemCoin">{phrases['myproduct']['#22']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#23']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#24']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#25']}</div>
             </div>
             {jsxListCoins.leader}
           </div>
           <div className="totalBalances">
-            <div className="curPropery">Leader</div>
+            <div className="curPropery">{phrases['myproduct']['#26']}</div>
             <div className="curValue">{this.getTotalValue(leaderTotal)}</div>
           </div>
         </div>
         <div className="betweenItem followerMainBlock">
           <div className="balancesList">
             <div className="item headItem">
-              <div className="curItemCoin">Symbol</div>
-              <div className="curItemCoin">Available</div>
-              <div className="curItemCoin">In Order</div>
-              <div className="curItemCoin">Total</div>
+              <div className="curItemCoin">{phrases['myproduct']['#22']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#23']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#24']}</div>
+              <div className="curItemCoin">{phrases['myproduct']['#25']}</div>
             </div>
             {jsxListCoins.follower}
           </div>
           <div className="totalBalances">
-            <div className="curPropery">Follower</div>
+            <div className="curPropery">{phrases['myproduct']['#27']}</div>
             <div className="curValue">{this.getTotalValue(followerTotal)}</div>
           </div>
         </div>
@@ -201,20 +202,20 @@ class ActiveInvestor extends React.Component {
       <div className="investorComponent">
         <div className="mainBlock">
           <div className="headProperty">
-            <div className="item name">Name</div>
-            <div className="item status">Status</div>
-            <div className="item totalBalance">Total Balance</div>
-            <div className="item synchronization">Synchronization quality</div>
-            <div className="item date">Date of accseccion</div>
+            <div className="item name">{phrases['myproduct']['#28']}</div>
+            <div className="item status">{phrases['myproduct']['#29']}</div>
+            <div className="item totalBalance">{phrases['myproduct']['#30']}</div>
+            <div className="item synchronization">{phrases['myproduct']['#31']}</div>
+            <div className="item date">{phrases['myproduct']['#32']}</div>
           </div>
           <div className="centerValue">
             <div className="item name">{nameFollower}</div>
             <div className="item status">
               <select onChange={this.onChangeStatus} value={activeStatus}>
                 <option value="none" selected={activeStatus === 'none'}>...</option>
-                <option value="copy" selected={activeStatus === 'copy'}>SYNC</option>
-                <option value="rebalance" selected={activeStatus === 'rebalance'}>REBALANCE</option>
-                <option value="frozen" selected={activeStatus === 'frozen'}>FROZEN</option>
+                <option value="copy" selected={activeStatus === 'copy'}>{phrases['myproduct']['#33']}</option>
+                <option value="rebalance" selected={activeStatus === 'rebalance'}>{phrases['myproduct']['#34']}</option>
+                <option value="frozen" selected={activeStatus === 'frozen'}>{phrases['myproduct']['#35']}</option>
               </select>
             </div>
             <div className="item totalBalance">{this.getTotalValue(followerTotal)}</div>
@@ -229,10 +230,10 @@ class ActiveInvestor extends React.Component {
           <div className="clickButtons">
             <div className="item compare" onClick={()=>this.setState({
               isShowBalances: !this.state.isShowBalances,
-            })}>Compare balance</div>
+            })}>{phrases['myproduct']['#37']}</div>
             <div className="item unsubscribe" onClick={this.props.methods.sendRejectFollowing.bind(this, {
               followingId: _id,
-            })}>Unsubscribe</div>
+            })}>{phrases['myproduct']['#36']}</div>
           </div>
         </div>
         {this.state.isShowBalances && this.renderBalances()}
