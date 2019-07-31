@@ -93,13 +93,20 @@ export default class GroupTrades extends React.Component {
 
     const noLoadedFollowers = mixins.common.dataNoLoaded([keys, myFollowers, ordersFollowings]);
 
-    if (noLoadedFollowers[1]) return noLoadedFollowers[1];
-
     const { approvedFollowings }  = utils.myproduct
       .getRequisitionsProduct({
         productId: paramsProduct.productId,
         myFollowers,
       });
+
+    if (!approvedFollowings.length) 
+      return(
+        <div className="logTrades">
+          {phrases['myproduct']['#12_1']}
+        </div>
+      );
+
+    if (noLoadedFollowers[1]) return noLoadedFollowers[1];
 
     const followings = utils.myproduct
       .getFollowingsNamedMyKeys(keys, approvedFollowings)

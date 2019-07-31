@@ -148,8 +148,9 @@ let phrasesLng = {
 		'#9': 'You have not yet sent any applications for managing funds.',
 		'#10': 'Your investors',
 		'#11': 'Your Requisitions',
-		'#12': 'While empty.',
-		'#13': 'While empty.',
+		'#12_1': 'While empty followers.', //for empty followers
+		'#12': 'While empty.', //for empty trades
+		'#13': 'While empty.', //for empty trades with fiters
 		'#14': 'More trades',
 		'#15': 'Pair',
 		'#16': 'Type',
