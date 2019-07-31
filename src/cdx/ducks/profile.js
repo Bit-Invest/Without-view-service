@@ -262,6 +262,9 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: false,
+			tiedActions: () => [
+				actionsForTied.getProducts,
+			],
 		},
 		preFnData: (data, tsAction) => ({
 			data: {

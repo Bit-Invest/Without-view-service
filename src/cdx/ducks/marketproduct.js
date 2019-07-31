@@ -60,6 +60,9 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: false,
+			tiedActions: () => [
+				actionsForTied.getFollowings,
+			],
 		},
 		preFnData: (data, tsAction) => ({
 			data: {
@@ -87,6 +90,9 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: false,
+			tiedActions: () => [
+				actionsForTied.getFollowings,
+			],
 		},
 		preFnData: (data, tsAction) => ({
 			data: {
@@ -112,6 +118,9 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: true,
+			tiedActions: () => [
+				actionsForTied.getFollowings,
+			],
 		},
 	},
 	{
@@ -146,6 +155,9 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: false,
+			tiedActions: () => [
+				actionsForTied.getFollowings,
+			],
 		},
 		preFnData: (data, tsAction) => ({
 			data: {
@@ -157,6 +169,12 @@ const actions = utils.common.addPropery([
 		}),
 	},
 ], 'parentTag', generalKeyState);
+
+const actionsForTied = actions.reduce((pr, curAction) => 
+	Object.assign({}, pr, {
+		[curAction.propertyFn]: curAction,
+	})
+, {});
 
 const reducer = (state = configs.marketproduct.initialState, action) => {
 	const commonProcessed = utils.common.reducer(state, action, generalKeyState);
