@@ -201,18 +201,18 @@ let phrasesLng = {
 	},
 };
 
-const proxyToEmptyFn = {
-	get(target, prop) {
-		const ts = target[prop];
+// const proxyToEmptyFn = {
+// 	get(target, prop) {
+// 		const ts = target[prop];
 
-		if (typeof ts === 'object') {
-			return new Proxy(ts, proxyToEmptyFn);
-		}
+// 		if (typeof ts === 'object') {
+// 			return new Proxy(ts, proxyToEmptyFn);
+// 		}
 
-		return `${ts} +`;
-	}
-};
+// 		return `${ts} +`;
+// 	}
+// };
 
-let phrasesLngProxy = new Proxy(phrasesLng, proxyToEmptyFn);
+// let phrasesLngProxy = new Proxy(phrasesLng, proxyToEmptyFn);
 
-export default phrasesLngProxy;
+export default phrasesLng;
