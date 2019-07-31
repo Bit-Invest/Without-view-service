@@ -1,5 +1,6 @@
 import React from 'react';
 import Contexts from '@modules/contexts';
+import { phrases } from '@cdx/utils/common';
 
 import InternalPage from '@cdx/jsx/common/internalPage/';
 import BlackoutBlock from '@cdx/jsx/common/blackoutBlock/';
@@ -64,8 +65,8 @@ export default class ProfileComponent extends React.Component {
                 groupName="my"
                 renderFn="renderListKeys"
                 helpTexts={{
-                  title: 'This is the list of all your exchange accounts and API keys associated with them.',
-                  addButton: 'Click here to connect an exchange account to your CINDX account.',
+                  title: phrases['profile-common']['#1'],
+                  addButton: phrases['profile-common']['#2'],
                 }}
                 methods={{
                   reload: actions.getKeys,
@@ -74,8 +75,8 @@ export default class ProfileComponent extends React.Component {
                   edit: actions.editKeys,
                 }}
                 texts={{
-                  title: 'My keys',
-                  addButtonText: 'Add exchange account',
+                  title: phrases['profile-common']['#3'],
+                  addButtonText: phrases['profile-common']['#4'],
                 }}
               />
             </BlackoutBlock>
@@ -94,8 +95,8 @@ export default class ProfileComponent extends React.Component {
                   edit: actions.editKeys,
                 }}
                 texts={{
-                  title: 'My investors',
-                  addButtonText: 'Add exchange account',
+                  title: phrases['profile-common']['#5'],
+                  addButtonText: phrases['profile-common']['#6'],
                 }}
               />
             </BlackoutBlock>
@@ -114,8 +115,8 @@ export default class ProfileComponent extends React.Component {
                   edit: actions.editProduct,
                 }}
                 texts={{
-                  title: 'My products',
-                  addButtonText: 'Create product',
+                  title: phrases['profile-common']['#7'],
+                  addButtonText: phrases['profile-common']['#8'],
                 }}
               />
             </BlackoutBlock>

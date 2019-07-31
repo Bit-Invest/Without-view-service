@@ -1,6 +1,7 @@
 import React from 'react';
 import utils from '@cdx/utils/';
 import mixins from '@cdx/mixins/';
+import { phrases } from '@cdx/utils/common';
 
 import './style.scss';
 
@@ -16,7 +17,7 @@ class ListFollowKeysComponent extends React.Component {
   renderListKeys = (keys) => { 
     return !this.props.noselect ? (
       <select onChange={(event)=>this.setState({selectedFollowKeyId:event.target.value})} value={this.state.selectedFollowKeyId}>
-        <option value={false}>No selected</option>
+        <option value={false}>{phrases['follow-form']['#1']}</option>
         {keys.map((curKeys, index) => 
           <option value={curKeys.keyId} key={index}>{curKeys.name}</option>
         )}
@@ -103,39 +104,39 @@ class FollowForm extends React.Component {
         <div className="typesKeys">
           <ListFollowKeysComponent 
             keys={keysFreeForFollow}
-            title="Completely free accounts, you can connect!"
+            title={phrases['follow-form']['#2']}
             atopClass="freeFollow"
             methodFollow={methods.sendFollow}
             productId={productId}
-            buttonText="Start following"
+            buttonText={phrases['follow-form']['#3']}
           />
           <ListFollowKeysComponent 
             keys={keysRejectedFollow}
-            title="Your applications for these accounts have been canceled, so you can select this manager."
+            title={phrases['follow-form']['#4']}
             atopClass="rejectedFollow"
             methodFollow={methods.sendFollow}
             productId={productId}
-            buttonText="Start following"
+            buttonText={phrases['follow-form']['#5']}
           />
           <ListFollowKeysComponent 
             keys={keysRejectedFollowThisProduct}
-            title="The manager has rejected your application, you may resend it."
+            title={phrases['follow-form']['#6']}
             atopClass="rejectedFollowThisProduct"
             methodFollow={methods.reapplyFollowing}
             productId={productId}
-            buttonText="Resend following"
+            buttonText={phrases['follow-form']['#7']}
           />
           <ListFollowKeysComponent 
             keys={keysForUnfollowThisProduct}
-            title="Want to unsubscribe from this product?"
+            title={phrases['follow-form']['#8']}
             atopClass="unfollowThisProduct"
             methodFollow={methods.sendUnFollow}
             productId={productId}
-            buttonText="Stop following"
+            buttonText={phrases['follow-form']['#9']}
           />
           <ListFollowKeysComponent 
             keys={keysWaitFromThisProduct}
-            title="Your applications are processed for these accounts by this manager."
+            title={phrases['follow-form']['#10']}
             atopClass="waitThisProduct"
             methodFollow={methods.sendFollow}
             productId={productId}
