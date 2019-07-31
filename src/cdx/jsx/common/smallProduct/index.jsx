@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import utils from '@cdx/utils/';
+import { phrases } from '@cdx/utils/common';
 
 import HeadProfitHistory from './headHistory/';
 
@@ -121,15 +122,15 @@ class ActiveForm extends React.Component {
             {historyIncome.length ? (
               <div className="selectShowingTime">
                 {([
-                  {point:'week', value:weekLastProfit},
-                  {point:'month', value:monthLastProfit},
-                  {point:'all', value:allLastProfit},
+                  {point:'week', value:weekLastProfit, text: 'week'},
+                  {point:'month', value:monthLastProfit, text: 'month'},
+                  {point:'all', value:allLastProfit, text: 'all'},
                 ]).map(curTimeProfit => (
                   <div 
                     className={`item ${curTimeProfit.value > 0 ? 'positive' : 'badpositive'} ${curTimeProfit.point === this.state.showingProfitInterval ? 'active' : ''}`} 
                     onClick={() => this.setState({showingProfitInterval: curTimeProfit.point})}
                   > 
-                    {curTimeProfit.point.toUpperCase()}: {curTimeProfit.value}%
+                    {curTimeProfit.text.toUpperCase()}: {curTimeProfit.value}%
                   </div>
                 ))}
               </div>
