@@ -8,12 +8,6 @@ import HeadProfitHistory from './headHistory/';
 //styles
 import './style.scss';
 
-const statusStringKeys = {
-  'true': 'VALID',
-  'false': 'ERROR',
-  'wait': 'WAITING',
-};
-
 const moreUrl = {
   'marketproduct': (productId) => `/marketproduct/${productId}`,
   'myproduct': (productId) => `/myproduct/${productId}`,
@@ -76,8 +70,8 @@ class ActiveForm extends React.Component {
     const allLastProfit = (historyIncome[historyIncome.length - 1] || {value:0}).value.toFixed(2);
 
     const textLinkButton = ({
-      'marketproduct': 'more',
-      'myproduct': 'manage',
+      'marketproduct': phrases['small-product']['#8'],
+      'myproduct': phrases['small-product']['#9'],
     })[typelist];
 
     return(
@@ -97,14 +91,14 @@ class ActiveForm extends React.Component {
               {
                 !productProccesing ? [
                   <div className="curTitle">
-                    <div>Rating</div>
+                    <div>{phrases['small-product']['#1']}</div>
                     <div className="curValue">{ratingValueShow}</div>
                   </div>,
                   <div className="score">
                     <div className={`filled ${styleRating}`} style={{width: `${percentRating}%`}}></div>
                   </div>
                 ] : (
-                  <div>Rating processing..</div>
+                  <div>{phrases['small-product']['#2']}</div>
                 )
               }
             </div>
@@ -122,9 +116,9 @@ class ActiveForm extends React.Component {
             {historyIncome.length ? (
               <div className="selectShowingTime">
                 {([
-                  {point:'week', value:weekLastProfit, text: 'week'},
-                  {point:'month', value:monthLastProfit, text: 'month'},
-                  {point:'all', value:allLastProfit, text: 'all'},
+                  {point:'week', value:weekLastProfit, text: phrases['small-product']['#3']},
+                  {point:'month', value:monthLastProfit, text: phrases['small-product']['#4']},
+                  {point:'all', value:allLastProfit, text: phrases['small-product']['#5']},
                 ]).map(curTimeProfit => (
                   <div 
                     className={`item ${curTimeProfit.value > 0 ? 'positive' : 'badpositive'} ${curTimeProfit.point === this.state.showingProfitInterval ? 'active' : ''}`} 
@@ -136,7 +130,7 @@ class ActiveForm extends React.Component {
               </div>
             ) : null}
             <div className="infoContent">
-              <div className="item">Followers: {followers}</div>
+              <div className="item">{phrases['small-product']['#6']} {followers}</div>
               <Link className="moreClick" to={moreUrl[typelist](productId)}>{textLinkButton}</Link>
             </div>
           </div>
@@ -145,9 +139,9 @@ class ActiveForm extends React.Component {
           <div className="settings">
             <div className="iconHover"></div>
             <div className="menu">
-              <div className="item" onClick={this.props.data.methods.setIndexEditing}>Change options</div>
+              <div className="item" onClick={this.props.data.methods.setIndexEditing}>{phrases['small-product']['#10']}</div>
               <div className="item" onClick={async () => {
-                let isRemoved = prompt('Enter product name if you are really going to delete it.', '');
+                let isRemoved = prompt(phrases['small-product']['#7'], '');
                 if (isRemoved !== name) return false;
 
                 await this.props.data.methods.remove({
@@ -155,7 +149,7 @@ class ActiveForm extends React.Component {
                 });
 
                 await this.props.data.methods.reload();
-              }}>Remove</div>
+              }}>{phrases['small-product']['#10_1']}</div>
             </div>
           </div>
         )}
@@ -216,16 +210,16 @@ class EditingForm extends React.Component {
         <div className='smallProductEdit'>
           <div className='mainBlock'>
             <div className='items inputs'>
-              <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder='description' />
-              <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder='name' />
+              <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder={phrases['small-product']['#11']} />
+              <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder={phrases['small-product']['#12']} />
               <select onChange={(event)=>this.setState({baseAsset:event.target.value})}>
                 <option value={'BTC'} selected={this.state.baseAsset==='BTC'}>BTC</option> 
                 <option value={'USD'} selected={this.state.baseAsset==='USD'}>USD</option>      
               </select>
             </div>
             <div className='onTopSigns'>
-              <div className='item save' onClick={this.sendRequest}>Save</div>
-              <div className="item" onClick={this.props.data.methods.clearIndexEditing}>Cancel</div>
+              <div className='item save' onClick={this.sendRequest}>{phrases['small-product']['#13']}</div>
+              <div className="item" onClick={this.props.data.methods.clearIndexEditing}>{phrases['small-product']['#14']}</div>
             </div>
           </div>
         </div>
@@ -264,10 +258,10 @@ class AddingForm extends React.Component {
 
   renderSelectKeys = () =>
     <select onChange={(event)=>this.setState({keyId:event.target.value})}>
-      <option value={''} >Select exchange account</option>
+      <option value={''}>{phrases['small-product']['#15']}</option>
       {
         this.props.data.keys.map((curKeys, index) => 
-          <option key={index} value={curKeys.keyId} onChange={(e)=>console.log(e)}>{curKeys.name}</option>      
+          <option key={index} value={curKeys.keyId}>{curKeys.name}</option>      
         )
       }
     </select>
@@ -276,9 +270,7 @@ class AddingForm extends React.Component {
     if (!this.props.data.keys.length) {
       return(
         <div className='smallProductAdd'>
-          <div className='mainBlock'>
-            You have no spare exchange accounts, please create a new account to create a product, and generate an API key for it.
-          </div>
+          <div className='mainBlock'>{phrases['small-product']['#16']}</div>
         </div>
       );
     }
@@ -288,20 +280,20 @@ class AddingForm extends React.Component {
         <div className='mainBlock'>
           <div className='items inputs'>
             {this.renderSelectKeys()}
-            <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder='description' />
-            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder='name' />
+            <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder={phrases['small-product']['#17']} />
+            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder={phrases['small-product']['#18']} />
             <select onChange={(event)=>this.setState({baseAsset:event.target.value})}>
               <option value={'BTC'}>BTC</option> 
               <option value={'USD'}>USD</option>      
             </select>
             <select onChange={(event)=>this.setState({typeId:event.target.value})}>
-              <option value={0}>Public</option> 
-              <option value={1}>Private</option>      
+              <option value={0}>{phrases['small-product']['#21']}</option> 
+              <option value={1}>{phrases['small-product']['#22']}</option>      
             </select>
           </div>
           <div className='onTopSigns'>
-            <div className='item save' onClick={this.sendRequest}>Add</div>
-            <div className="item" onClick={this.props.data.methods.toggleAdding}>Cancel</div>
+            <div className='item save' onClick={this.sendRequest}>{phrases['small-product']['#19']}</div>
+            <div className="item" onClick={this.props.data.methods.toggleAdding}>{phrases['small-product']['#20']}</div>
           </div>
         </div>
       </div>
@@ -318,7 +310,6 @@ const SmallProduct = (props) => {
 
   return <TsForm 
     {...props}
-    tsStatusKeys={typeof props.data.valid !== 'undefined' ? statusStringKeys[props.data.valid.toString()] : ''}
   />
 };
 

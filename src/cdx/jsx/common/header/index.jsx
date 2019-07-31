@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import mixins from '@cdx/mixins/';
 import configs from '@cdx/configs/';
+import { phrases } from '@cdx/utils/common';
 
 import ICON_PROFILE from '@assets/icons/Profile_icon.svg';
 import ICON_MARKETPLACE from '@assets/icons/Billing_icon.svg';
@@ -29,8 +30,8 @@ export default class Header extends React.Component {
     if (userInfoNoLoaded[0] === configs.common.TYPES_RESULT['ERROR']) 
       return (
         <div className="headerSign">
-          <Link className="item signIn" to={`/auth/sign-in`}>Log in</Link>
-          <Link className="item signUp" to={`/auth/sign-up`}>Sign up</Link>
+          <Link className="item signIn" to={`/auth/sign-in`}>{phrases['header']['#3']}</Link>
+          <Link className="item signUp" to={`/auth/sign-up`}>{phrases['header']['#4']}</Link>
         </div>
       );
 
@@ -66,11 +67,11 @@ export default class Header extends React.Component {
             <div className="menu">
               <Link className="item active" to={`/im`}>
                 <img src={ICON_PROFILE} alt="Here profile icon" />
-                <div className="text">Profile</div>
+                <div className="text">{phrases['header']['#1']}</div>
               </Link>
               <Link className="item" to={`/marketplace`}>
                 <img src={ICON_MARKETPLACE} alt="Here marketplace icon" />
-                <div className="text">Marketplace</div>
+                <div className="text">{phrases['header']['#2']}</div>
               </Link>
             </div>
           </div>

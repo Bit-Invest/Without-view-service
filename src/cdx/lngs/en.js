@@ -13,9 +13,6 @@ let phrasesLng = {
 		'#8': 'Fill in password',
 		'#9': 'Incorrect login or password',
 		'#10': 'Loading..',
-		'#11': '',
-		'#12': '',
-		'#13': '',
 	},
 	'auth-sign-up': {
 		'#1': 'Sign Up', //title
@@ -33,11 +30,37 @@ let phrasesLng = {
 		'#13': 'Request failed, try again.',
 		'#14': 'Loading...',
 		'#15': 'You are registered, you can log in.',
-		'#16': '',
-		'#17': '',
-		'#18': '',
-		'#19': '',
-		'#20': '',
+	},
+	'header': {
+		'#1': 'Profile',
+		'#2': 'Marketplace',
+		'#3': 'Log in',
+		'#4': 'Sign up',
+	},
+	'small-product': {
+		'#1': 'Rating',
+		'#2': 'Rating processing..', //when processing rating
+		'#3': 'week',
+		'#4': 'month',
+		'#5': 'all',
+		'#6': 'Followers:',
+		'#7': 'Enter product name if you are really going to delete it.', //alert
+		'#8': 'more', //button
+		'#9': 'manage', //button
+		'#10': 'Change options',
+		'#10_1': 'Remove',
+		'#11': 'description', //input placeholder adit product
+		'#12': 'name', //input placeholder adit product
+		'#13': 'Save',
+		'#14': 'Cancel',
+		'#15': 'Select exchange account',
+		'#16': 'You have no spare exchange accounts, please create a new account to create a product, and generate an API key for it.',
+		'#17': 'description',
+		'#18': 'name',
+		'#19': 'Add',
+		'#20': 'Cancel',
+		'#21': 'Public',
+		'#22': 'Private',
 	},
 };
 
