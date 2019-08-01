@@ -118,9 +118,6 @@ const actions = utils.common.addPropery([
 		tags: {
 			manuallyUsed: true,
 			startRequired: true,
-			tiedActions: () => [
-				actionsForTied.getFollowings,
-			],
 		},
 	},
 	{
