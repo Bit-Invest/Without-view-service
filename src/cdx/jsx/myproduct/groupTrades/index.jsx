@@ -156,7 +156,10 @@ export default class GroupTrades extends React.Component {
         ['position', 'follower'],
       ])));
 
-      res.allFollowingsLog.push(...followingLogs);
+      res.allFollowingsLog.push(...(mergedPropsOrders(followingLogs, [
+        ['name', nameFollower],
+        ['position', 'follower'],
+      ])));
 
       return res;
     }, {
@@ -230,7 +233,13 @@ export default class GroupTrades extends React.Component {
       if (!isShow) return 'not-shown';
 
       const tsLogTradesCopied = arrAllOrders.allFollowingsLog.filter(curLogOrder =>
-        curLogOrder.status === 'copied' && (
+        (curLogOrder.status !== 'copied' || curLogOrder.status === 'copied') && (
+          curLogOrder.leaderOrderId === curLeaderOrder.orderId &&
+            curLogOrder.symbol === curLeaderOrder.symbol
+        )
+      );
+      const tsLogTradesNoCopied = arrAllOrders.allFollowingsLog.filter(curLogOrder =>
+        (curLogOrder.status !== 'copied' ) && (
           curLogOrder.leaderOrderId === curLeaderOrder.orderId &&
             curLogOrder.symbol === curLeaderOrder.symbol
         )
@@ -242,14 +251,14 @@ export default class GroupTrades extends React.Component {
         )
       );
       const curISODate = moment.utc(curLeaderOrder.createdAt).toISOString().slice(0, 10);
-      const hasLogTrades = tsFollowersTrades.length > 0;
+      const hasLogTrades = tsFollowersTrades.length > 0 || tsLogTradesNoCopied.length > 0;
       const relativitySuccess = hasLogTrades && 
         tsFollowersTrades.reduce((res, curTsFollowersTrades, index) => {
           res[0] += getRelativitySuccess(curTsFollowersTrades.status, curLeaderOrder.status) ? 1 : 0;
           res[1] += 1;
 
           return res;
-        }, [1, 1]);
+        }, [1, 1 + ((tsLogTradesNoCopied && tsLogTradesNoCopied.length) || 0)]);
 
       Object.assign(listDays, {
         [curISODate]: listDays[curISODate] || [],
@@ -266,6 +275,7 @@ export default class GroupTrades extends React.Component {
             hasLogTrades,
             relativitySuccess,
             tsFollowersTrades,
+            tsLogTradesNoCopied,
           })}
         />
       );

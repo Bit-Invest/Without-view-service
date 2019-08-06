@@ -52,6 +52,19 @@ export default class CurTradeParent extends React.Component {
     </div>
   );
 
+  renderTradeFollowerNoFollow = (trade) => (
+    <div className="item followerTrade" key={`${trade.orderId}-${trade.symbol}`}>
+      <div className="boxOfTrade emptySpace" style={{width: '10%'}}></div>
+      <div className="boxOfTrade name">{trade.name}</div>
+      <div className="boxOfTrade emptySpace" style={{width: '2%'}}></div>
+      <div className="boxOfTrade line" style={{width:'50%'}}>
+        <div className="tsLine"></div>
+      </div>
+      <div className={`boxOfTrade status ${trade.status}`}>{(configs.myproduct.statusesShowing[trade.status] || trade.status)}</div>
+      <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
+    </div>
+  );
+
   drowdownContent = () => {
     const { displayedFollowers } = this.state;
 
@@ -61,7 +74,7 @@ export default class CurTradeParent extends React.Component {
   }
 
   render() {
-    const { curLeaderOrder, hasLogTrades, relativitySuccess, tsFollowersTrades,} = this.props;
+    const { curLeaderOrder, hasLogTrades, relativitySuccess, tsFollowersTrades, tsLogTradesNoCopied } = this.props;
     const { displayedFollowers } = this.state;
 
     return(
@@ -70,6 +83,7 @@ export default class CurTradeParent extends React.Component {
         {hasLogTrades && (
           <div className="tsFollowersTrades">
             {tsFollowersTrades.map(curFollowerTrade => this.renderTradeFollower(curFollowerTrade))}
+            {tsLogTradesNoCopied.map(curFollowerTrade => this.renderTradeFollowerNoFollow(curFollowerTrade))}
           </div>
         )}
       </div>
