@@ -17,6 +17,24 @@
     }
   }
 
+  .mark {
+    position: absolute;
+    top: 0; left: 0;
+    font-size: 12px;
+
+    &.marketplace-true {
+      border: 10px solid transparent; 
+      border-left: 10px solid green; 
+      border-top: 10px solid green;
+    }
+      
+    &.marketplace-false {
+      border: 10px solid transparent; 
+      border-left: 10px solid red; 
+      border-top: 10px solid red;
+    }
+  }
+
   .mainBlock {
   	display: flex;
   	flex: 1;

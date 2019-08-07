@@ -27,9 +27,11 @@ const ActiveForm = (props) => {
   // const income = utils.profile.getValueHistory(props.data.history.income, baseAsset, 'income');
 
   const followProductPage = marketplace ? 'myproduct' : 'marketproduct';
+  const markText = marketplace ? 'E' : 'IN';
 
   return(
     <div className={`smallKeys ${props.tsStatusKeys[1]}`}>
+      <div className={`mark marketplace-${marketplace||false}`}>{markText}</div>
       <div className='mainBlock'>
         <div className="blockItem stock">
           {
