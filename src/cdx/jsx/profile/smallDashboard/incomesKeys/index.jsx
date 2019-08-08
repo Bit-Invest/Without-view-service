@@ -54,7 +54,7 @@ export default (props) => {
   const { income, valuePrefix, valueSuffix } = props;
   const renderedSeries = income.map((curIncome, index) => ({
     name: `${curIncome.name} ${curIncome.marketplace ? '(marketplace)' : '(personally)'} `,
-    data: (curIncome.income || []).map(cur => [new Date(cur.timestamp).getTime(), parseFloat((cur.value).toFixed(2))]),
+    data: (curIncome.income || []).map(cur => [new Date(cur.timestamp).getTime() + 1, parseFloat((cur.value).toFixed(2))]),
     type: 'area',
     gapSize: 5,
     tooltip: {
