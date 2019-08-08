@@ -15,6 +15,7 @@ const statusStringKeys = {
   'INVALID-KEY': [phrases['small-keys']['#2'], 'ERROR'],
   'KEY-IS-NOT-PROCESSED-YET': [phrases['small-keys']['#3'], 'WAITING'],
   'INVALID-KEY-(NO-DEPOSITS)': [phrases['small-keys']['#4'], 'VALID_NO_DEPO'],
+  'VALID-KEY-(NO-DEPOSITS)': [phrases['small-keys']['#4'], 'VALID_NO_DEPO'],
 };
 
 const ActiveForm = (props) => {
@@ -217,13 +218,14 @@ const SmallKeys = (props) => {
     'ADDING': AddingForm,
   })[props.data.status];
 
-  let tsStatusKeys = statusStringKeys[props.data.valid ? 'VALID-KEY' : 'INVALID-KEY'];
+  const defaultKey = 'INVALID-KEY';
+  let tsStatusKeys = statusStringKeys[props.data.valid ? 'VALID-KEY' : 'INVALID-KEY'] || statusStringKeys[defaultKey];
 
   if (props.data.comment && props.data.status !== 'ADDING') {
     let commentStr = props.data.comment.toString().toUpperCase();
     commentStr = commentStr.split(' ');
     commentStr = commentStr.join('-');
-    tsStatusKeys = statusStringKeys[commentStr] || null;
+    tsStatusKeys = statusStringKeys[commentStr] || statusStringKeys[defaultKey];
   }
 
   return <TsForm 
