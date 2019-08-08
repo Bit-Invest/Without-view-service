@@ -201,6 +201,19 @@ let phrasesLng = {
 		'#7': 'My products',
 		'#8': 'Create product',
 	},
+	'marketplace': {
+		'#1': 'Sort by',
+		'#2': 'First previously created',
+		'#3': 'First more followers',
+		'#4': 'First more rating score',
+		'#5': 'Filter by',
+		'#6': 'Base asset',
+		'#7': 'Exchange',
+		'#8': '',
+		'#9': '',
+		'#10': '',
+		'#11': '',
+	},
 };
 
 // const proxyToEmptyFn = {
