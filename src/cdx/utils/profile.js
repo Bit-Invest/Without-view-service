@@ -416,7 +416,17 @@ export const getConnectedProducts = (state) => {
   return connectedProducts;
 };
 
+export const getKeyFromMyProduct = ({productId, state}) => {
+  const myProducts = typeof state.myProducts === 'object' && state.myProducts;
+  const findProduct = (myProducts || []).find(curProduct => 
+    curProduct.productId === productId
+  );
+
+  return findProduct && findProduct.keyId;
+};
+
 export default ({
+  getKeyFromMyProduct,
   getConnectedProducts,
   getMarketplaceInvestors,
   getIncomeForKeys,

@@ -413,6 +413,49 @@ const actions = utils.common.addPropery([
 			},
 		}),
 	},
+	{
+		type: 'REQUEST',
+		propertyFn: 'getSeparately',
+		keyState: 'separatelyTrades',
+		data: {
+			api: 'baseCindx',
+			url: '/user/trades',
+			method: 'GET',
+			body: [],
+			processingResFn: (cbParams, res, tsAction, store, status) => {
+				const { separatelyTrades } = store.myproduct;
+				const tsSeparatelyTrades = ((typeof separatelyTrades === 'object' && separatelyTrades) || []);
+				const tsIndex = tsSeparatelyTrades.findIndex(curSeparate =>
+					curSeparate.keyId === tsAction.data.keyId
+				);
+
+				if (tsIndex !== -1) {
+					tsSeparatelyTrades[tsIndex].trades = res;
+					return tsSeparatelyTrades;
+				}
+
+				tsSeparatelyTrades.push({
+					productId: tsAction.data.productId,
+					keyId: tsAction.data.keyId,
+					trades: res,
+				});
+
+				return tsSeparatelyTrades;
+			},
+		},
+		tags: {
+			manuallyUsed: true,
+			startRequired: false,
+		},
+		preFnData: (data, tsAction) => ({
+			data: {
+				...tsAction.data,
+				url: `/user/trades?keyId=${data.keyId}&limit=500`,
+				keyId: data.keyId,
+				productId: data.productId,
+			},
+		}),
+	},
 ], 'parentTag', generalKeyState);
 
 const actionsForTied = actions.reduce((pr, curAction) => 

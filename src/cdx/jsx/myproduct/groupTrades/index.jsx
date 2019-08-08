@@ -16,6 +16,7 @@ export default class GroupTrades extends React.Component {
     this.state = {
       quantityLeaderOrdersShow: 5,
       allShowingTrades: 0,
+      separatelyDealsShow: false,
     };
     this.timers = {};
   }
@@ -64,8 +65,9 @@ export default class GroupTrades extends React.Component {
         asyncGetOrders();
       };
 
-      if (approvedFollowings.length)
-        asyncGetOrders();
+      if (approvedFollowings.length) {
+        return asyncGetOrders();
+      }
     };
 
     this.timers['getFollowingsOrders']();
@@ -77,12 +79,31 @@ export default class GroupTrades extends React.Component {
     );
   }
 
+  separatelyDealsShow = () => {
+    const { actions, paramsProduct, reduxState } = this.props;
+    const keyId = utils.profile.getKeyFromMyProduct({
+      productId: paramsProduct.productId,
+      state: reduxState,
+    });
+
+    actions.getSeparately({
+      keyId,
+      productId: paramsProduct.productId,
+    });
+
+    this.setState({
+      separatelyDealsShow: true,
+    });
+  }
+
   renderGroupOrdersList = () => {
     const { 
       reduxState: {
         ordersFollowings,
         myFollowers,
         keys,
+        myProducts,
+        separatelyTrades,
       }, 
       paramsProduct, 
       filter: {
@@ -91,7 +112,7 @@ export default class GroupTrades extends React.Component {
       },
     } = this.props;
 
-    const noLoadedFollowers = mixins.common.dataNoLoaded([keys, myFollowers, ordersFollowings]);
+    const noLoadedFollowers = mixins.common.dataNoLoaded([keys, myFollowers, ordersFollowings, myProducts]);
 
     const { approvedFollowings }  = utils.myproduct
       .getRequisitionsProduct({
@@ -99,14 +120,15 @@ export default class GroupTrades extends React.Component {
         myFollowers,
       });
 
-    if (!approvedFollowings.length) 
+    if (!approvedFollowings.length && !this.state.separatelyDealsShow) 
       return(
-        <div className="logTrades">
-          {phrases['myproduct']['#12_1']}
+        <div className="logTrades followersZero">
+          <div>{phrases['myproduct']['#12_1']}</div>
+          <button className="separatelyShowDeal" onClick={this.separatelyDealsShow}>Show separately my deals</button>
         </div>
       );
 
-    if (noLoadedFollowers[1]) return noLoadedFollowers[1];
+    if (noLoadedFollowers[1] && !this.state.separatelyDealsShow) return noLoadedFollowers[1];
 
     const followings = utils.myproduct
       .getFollowingsNamedMyKeys(keys, approvedFollowings)
@@ -122,11 +144,25 @@ export default class GroupTrades extends React.Component {
         }, {}))
       }));
 
-    const tsOrdersFollowings = ordersFollowings.filter(curOrdersFollowings => 
+    const tsOrdersFollowings = ((typeof ordersFollowings === 'object' && ordersFollowings) || []).filter(curOrdersFollowings => 
       !!followings.find(curFollowing => 
         curOrdersFollowings.followingId === curFollowing._id
       ) 
     );
+
+    if (this.state.separatelyDealsShow) {
+      const tsSeparatelyTrades = (typeof separatelyTrades === 'object' && separatelyTrades) || [];
+      const leaderSeparatelyOrders = tsSeparatelyTrades.find(curArrSeparately =>
+        curArrSeparately.productId === paramsProduct.productId
+      );
+
+      if (leaderSeparatelyOrders)
+        tsOrdersFollowings.push({
+          leaderOrders: leaderSeparatelyOrders.trades,
+          followerOrders: [],
+          followingLogs: [],
+        });
+    }
 
     const arrAllOrders = tsOrdersFollowings.reduce((res, curFollowing, index, arr) => {
       const leaderOrders = curFollowing.leaderOrders;
