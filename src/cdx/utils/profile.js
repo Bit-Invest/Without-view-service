@@ -241,7 +241,7 @@ export const getIncomeForKeys = (incomeArr, courDaySliced, mode = 'PERCENT', typ
 
   const percentBalances = slicedBalances.map((curBalance, index) => ({
     ...curBalance,
-    value: curBalance.value / (index === 0 ? Infinity : slicedBalances[0].value),
+    value: curBalance.value / (index === 0 ? curBalance.value : slicedBalances[0].value) * 100 - 100,
   }));
 
   const absoluteIncome = slicedIncomes

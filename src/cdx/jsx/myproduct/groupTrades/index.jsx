@@ -44,10 +44,12 @@ export default class GroupTrades extends React.Component {
         myFollowers,
       });
 
+    const showingFollowings = approvedFollowings;
+
     this.timers['getFollowingsOrders'] = async () => {
       const approvedFollowingsUsed = {};
       const asyncGetOrders = async () => {
-        const nextFollowing = approvedFollowings.find(curApprovedFollowings => 
+        const nextFollowing = showingFollowings.find(curApprovedFollowings => 
           !approvedFollowingsUsed[curApprovedFollowings._id]
         );
 
@@ -65,7 +67,7 @@ export default class GroupTrades extends React.Component {
         asyncGetOrders();
       };
 
-      if (approvedFollowings.length) {
+      if (showingFollowings.length) {
         return asyncGetOrders();
       }
     };
@@ -120,7 +122,9 @@ export default class GroupTrades extends React.Component {
         myFollowers,
       });
 
-    if (!approvedFollowings.length && !this.state.separatelyDealsShow) 
+    const showingFollowings = approvedFollowings;
+
+    if (!showingFollowings.length && !this.state.separatelyDealsShow) 
       return(
         <div className="logTrades followersZero">
           <div>{phrases['myproduct']['#12_1']}</div>
@@ -131,7 +135,7 @@ export default class GroupTrades extends React.Component {
     if (noLoadedFollowers[1] && !this.state.separatelyDealsShow) return noLoadedFollowers[1];
 
     const followings = utils.myproduct
-      .getFollowingsNamedMyKeys(keys, approvedFollowings)
+      .getFollowingsNamedMyKeys(keys, showingFollowings)
       .filter(curFollowing => filterShowFollower === 'all' || filterShowFollower === curFollowing.follower);
 
     const mergedPropsOrders = (orders, props) => 
