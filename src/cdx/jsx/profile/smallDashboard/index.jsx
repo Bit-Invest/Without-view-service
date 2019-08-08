@@ -49,7 +49,7 @@ class RenderDashboard extends React.Component {
       selectedAccount: 'ALL',
       selectedCourDay: 7,
       selectedType: 'INCOME',
-      selectedMode: 'PERCENT',
+      selectedMode: 'ABSOLUTE',
     };
   }
 

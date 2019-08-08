@@ -228,30 +228,53 @@ export const getIncomeForKeys = (incomeArr, courDaySliced, mode = 'PERCENT', typ
   const slicedBalances_firstPoint = baseBalance.length > courDaySliced ? baseBalance.length - courDaySliced : 0;
   const slicedBalances = baseBalance
     .slice(slicedBalances_firstPoint, baseBalance.length)
-    .filter(curBalance => curBalance.value > 0);
-  const percentBalances = slicedBalances.map(curBalance => ({
+    .filter((curBalance, index, arr) => 
+      (((arr[index + 0] || {value: 0}).value !== 0) || (curBalance.value !== 0)) && (
+        baseIncome.find(curIncome => curIncome.timestamp === curBalance.timestamp)
+      )
+    );
+
+  const slicedIncomes = baseIncome
+    .filter((curIncome, index, arr) => 
+      slicedBalances.find(curSlicedBalance => curSlicedBalance.timestamp === curIncome.timestamp)
+    );
+
+  const percentBalances = slicedBalances.map((curBalance, index) => ({
     ...curBalance,
-    value: curBalance.value / slicedBalances[0].value,
+    value: curBalance.value / (index === 0 ? Infinity : slicedBalances[0].value),
   }));
 
-  const slicedIncomes_firstPoint = baseIncome.length > courDaySliced ? baseIncome.length - courDaySliced : 0;
-  const slicedIncomes = baseIncome
-    .slice(slicedIncomes_firstPoint, baseIncome.length)
-    .filter((curIncome, index, arr) => ((arr[index + 1] || {value: 0}).value !== 1) || (curIncome.value !== 1));
   const absoluteIncome = slicedIncomes
-    .map(curIncome => ({
-      ...curIncome,
-      value: curIncome.value - slicedIncomes[0].value,
-    }))
     .map((curIncome, index) => ({
       ...curIncome,
-      value: curIncome.value * (slicedBalances[index - 1] || {value: 0}).value,
-    }));
+      value: (curIncome.value - (slicedIncomes[index - 1] || {value: curIncome.value}).value),
+    }))
+    .reduce((res, curIncome, index) => {
+      const value = res.mod + (curIncome.value * (slicedBalances[index - 1] || {value: 0}).value);
+
+      res.arr.push({
+        ...curIncome,
+        value,
+      });
+
+      res.mod = value;
+
+      return res;
+    }, {
+      arr: [],
+      mod: 0,
+    }).arr;
+
   const showingUserIncome = slicedIncomes
     .map(curIncome => ({
       ...curIncome,
-      value: (curIncome.value * 100) - 100
+      value: ((curIncome.value - slicedIncomes[0].value)) * 100,
     }));
+
+  console.log({
+    v1: [slicedIncomes.length, slicedBalances.length],
+    v2: [baseIncome.length, baseBalance.length],
+  });
 
   return ({
     INCOME: {
