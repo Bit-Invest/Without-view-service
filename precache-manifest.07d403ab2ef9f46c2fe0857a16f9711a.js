@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "ce1fa48a10e3253d5c41a2ad1cc41948",
-    "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
+    "revision": "5c1d517bcf9e622ba0749a5abfd8c8c1",
+    "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
   },
   {
-    "revision": "02e226419f476259dc4e",
-    "url": "/static/css/main.03848d73.chunk.css"
+    "revision": "b6158b75455bfba79ec9",
+    "url": "/static/css/main.a9357262.chunk.css"
   },
   {
     "revision": "fdfcfda2d9b1bf31db52",
     "url": "/static/js/runtime~main.c5541365.js"
   },
   {
-    "revision": "dbcff84f989315b9213d",
-    "url": "/static/js/2.4aa7c8cc.chunk.js"
+    "revision": "1df864a34d4463285c52",
+    "url": "/static/js/2.783b23a1.chunk.js"
   },
   {
     "revision": "39a2af266cb6e3c87524741a2d67e4fd",
@@ -48,8 +48,12 @@ self.__precacheManifest = [
     "url": "/static/media/registration.77627f20.jpeg"
   },
   {
-    "revision": "02e226419f476259dc4e",
-    "url": "/static/js/main.091200b9.chunk.js"
+    "revision": "b6158b75455bfba79ec9",
+    "url": "/static/js/main.a412f78f.chunk.js"
+  },
+  {
+    "revision": "ce1fa48a10e3253d5c41a2ad1cc41948",
+    "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
   },
   {
     "revision": "e370e8e3219741663b5a172a00cdb2d2",
@@ -60,10 +64,6 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-Light.e0f9d649.woff2"
   },
   {
-    "revision": "5c1d517bcf9e622ba0749a5abfd8c8c1",
-    "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
-  },
-  {
     "revision": "2fe5f7508322d964c030e10156e43a14",
     "url": "/static/media/Geometria.2fe5f750.woff2"
   },
@@ -72,20 +72,20 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-ExtraLightItalic.9e4b52e7.woff2"
   },
   {
-    "revision": "2718c69a1474b2e2b04afb39c8e62e3f",
-    "url": "/static/media/Geometria-Bold.2718c69a.woff"
+    "revision": "86c78b24aa03145dff4576def89fafab",
+    "url": "/static/media/Geometria-Heavy.86c78b24.woff"
   },
   {
-    "revision": "21ffa8553f379519ac5d80c38e039714",
-    "url": "/static/media/Geometria-Medium.21ffa855.woff"
+    "revision": "2718c69a1474b2e2b04afb39c8e62e3f",
+    "url": "/static/media/Geometria-Bold.2718c69a.woff"
   },
   {
     "revision": "1707b84cc13511b162afccae1da3c002",
     "url": "/static/media/Geometria-Light.1707b84c.woff"
   },
   {
-    "revision": "86c78b24aa03145dff4576def89fafab",
-    "url": "/static/media/Geometria-Heavy.86c78b24.woff"
+    "revision": "21ffa8553f379519ac5d80c38e039714",
+    "url": "/static/media/Geometria-Medium.21ffa855.woff"
   },
   {
     "revision": "413f36b0dc9a4e6ef7cc07b5e4014a66",
@@ -96,7 +96,7 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-ExtraLightItalic.f1d8fcc9.woff"
   },
   {
-    "revision": "c89469fbfa299c3977442090be1006c1",
+    "revision": "a4cd6cf33fced890e7191c50e09bd5cd",
     "url": "/index.html"
   }
 ];
