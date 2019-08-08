@@ -128,7 +128,7 @@ export default class GroupTrades extends React.Component {
       return(
         <div className="logTrades followersZero">
           <div>{phrases['myproduct']['#12_1']}</div>
-          <button className="separatelyShowDeal" onClick={this.separatelyDealsShow}>Show separately my deals</button>
+          <button className="separatelyShowDeal" onClick={this.separatelyDealsShow}>{phrases['myproduct']['#12_2']}</button>
         </div>
       );
 

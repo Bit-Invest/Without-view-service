@@ -1,6 +1,6 @@
 let phrasesLng = {
 	'auth-common': {
-		'#1': '© 2019 Cindx',
+		'#1': 'В© 2019 Cindx',
 	},
 	'auth-sign-in': {
 		'#1': 'Sign In', //title
@@ -137,7 +137,7 @@ let phrasesLng = {
 		'#29': 'By selecting the base asset, you choose whether to display the balance and/or profits in the base crypto currency of the product or USD.',
 	},
 	'myproduct': {
-		'#1': 'Following trades',
+		'#1': 'Trading History',
 		'#2': 'Filter by',
 		'#3': 'First new deal',
 		'#4': 'First old deal',
@@ -149,8 +149,9 @@ let phrasesLng = {
 		'#10': 'Your investors',
 		'#11': 'Your requests',
 		'#12_1': 'Trade history will be displayed after you have at least one investor.', //for empty followers
-		'#12': 'While empty.', //for empty trades
-		'#13': 'While empty.', //for empty trades with fiters
+		'#12_2': 'Show separately my deals',
+		'#12': 'No trades recorded yet.', //for empty trades
+		'#13': 'No trades recorded yet.', //for empty trades with fiters
 		'#14': 'More trades',
 		'#15': 'Pair',
 		'#16': 'Type',
@@ -169,7 +170,7 @@ let phrasesLng = {
 		'#29': 'Status',
 		'#30': 'Total Balance',
 		'#31': 'Synchronization quality',
-		'#32': 'Date of accseccion',
+		'#32': 'Date of acceptance',
 		'#33': 'SYNC',
 		'#34': 'REBALANCE',
 		'#35': 'FROZEN',
