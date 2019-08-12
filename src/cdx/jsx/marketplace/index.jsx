@@ -56,24 +56,20 @@ export default class MarketplaceComponent extends React.Component {
               <div className="item">
                 <div className="curTitle">{phrases['marketplace']['#6']}</div>
                 <div className="filterMenu">
-                  <label>
-                    <select onChange={(event)=>this.setState({filterBaseAsset:event.target.value})}>
-                      <option value="BTC" selected={filterBaseAsset === "BTC"}>BTC</option>
-                      <option value="USD" selected={filterBaseAsset === "USD"}>USD</option>
-                      <option value="ALL" selected={filterBaseAsset === "ALL"}>ALL</option>
-                    </select>
-                  </label>
+                  <select onChange={(event)=>this.setState({filterBaseAsset:event.target.value})}>
+                    <option value="BTC" selected={filterBaseAsset === "BTC"}>BTC</option>
+                    <option value="USD" selected={filterBaseAsset === "USD"}>USD</option>
+                    <option value="ALL" selected={filterBaseAsset === "ALL"}>ALL</option>
+                  </select>
                 </div>
               </div>
               <div className="item">
                 <div className="curTitle">{phrases['marketplace']['#7']}</div>
                 <div className="filterMenu">
-                  <label>
-                    <select onChange={(event)=>this.setState({filterStock:event.target.value})}>
-                      <option value="BINANCE" selected={filterStock === "BINANCE"}>BINANCE</option>
-                      <option value="ALL" selected={filterStock === "ALL"}>ALL</option>
-                    </select>
-                  </label>
+                  <select onChange={(event)=>this.setState({filterStock:event.target.value})}>
+                    <option value="BINANCE" selected={filterStock === "BINANCE"}>BINANCE</option>
+                    <option value="ALL" selected={filterStock === "ALL"}>ALL</option>
+                  </select>
                 </div>
               </div>
             </div>
