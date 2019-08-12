@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "5c1d517bcf9e622ba0749a5abfd8c8c1",
-    "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
+    "revision": "ce1fa48a10e3253d5c41a2ad1cc41948",
+    "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
   },
   {
-    "revision": "b6158b75455bfba79ec9",
-    "url": "/static/css/main.a9357262.chunk.css"
+    "revision": "651731f6a00a77cf6675",
+    "url": "/static/css/main.5180e2f2.chunk.css"
   },
   {
     "revision": "fdfcfda2d9b1bf31db52",
@@ -48,20 +48,20 @@ self.__precacheManifest = [
     "url": "/static/media/registration.77627f20.jpeg"
   },
   {
-    "revision": "b6158b75455bfba79ec9",
-    "url": "/static/js/main.a412f78f.chunk.js"
+    "revision": "651731f6a00a77cf6675",
+    "url": "/static/js/main.7e4e67c1.chunk.js"
   },
   {
-    "revision": "ce1fa48a10e3253d5c41a2ad1cc41948",
-    "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
-  },
-  {
-    "revision": "e370e8e3219741663b5a172a00cdb2d2",
-    "url": "/static/media/Geometria-Medium.e370e8e3.woff2"
+    "revision": "5c1d517bcf9e622ba0749a5abfd8c8c1",
+    "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
   },
   {
     "revision": "e0f9d6492c7a3c6dc987a849fcb9cb10",
     "url": "/static/media/Geometria-Light.e0f9d649.woff2"
+  },
+  {
+    "revision": "e370e8e3219741663b5a172a00cdb2d2",
+    "url": "/static/media/Geometria-Medium.e370e8e3.woff2"
   },
   {
     "revision": "2fe5f7508322d964c030e10156e43a14",
@@ -72,12 +72,12 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-ExtraLightItalic.9e4b52e7.woff2"
   },
   {
-    "revision": "86c78b24aa03145dff4576def89fafab",
-    "url": "/static/media/Geometria-Heavy.86c78b24.woff"
-  },
-  {
     "revision": "2718c69a1474b2e2b04afb39c8e62e3f",
     "url": "/static/media/Geometria-Bold.2718c69a.woff"
+  },
+  {
+    "revision": "86c78b24aa03145dff4576def89fafab",
+    "url": "/static/media/Geometria-Heavy.86c78b24.woff"
   },
   {
     "revision": "1707b84cc13511b162afccae1da3c002",
@@ -96,7 +96,7 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-ExtraLightItalic.f1d8fcc9.woff"
   },
   {
-    "revision": "a4cd6cf33fced890e7191c50e09bd5cd",
+    "revision": "772dcade4d0712eaede5406ef95842f5",
     "url": "/index.html"
   }
 ];
