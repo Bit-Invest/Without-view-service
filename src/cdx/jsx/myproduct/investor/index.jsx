@@ -22,9 +22,16 @@ class ActiveInvestor extends React.Component {
       reduxState: {
         _id,
       },
+      commonState,
     } = this.props;
 
-    this.timers['getFollowersWithBalances'] = async () => {
+    this.timers['getFollowersWithBalances'] = async (isFirst) => {
+      if (!commonState.cdxWindowActive && !isFirst) {
+        return setTimeout(this.timers['getFollowersWithBalances'], (
+          configs.myproduct.settings.intervalUpdateFollowersSec || 15000
+        ));
+      }
+
       await this.props.methods.getBalanceByFollowing({
         followingId: _id,
       })
@@ -34,11 +41,11 @@ class ActiveInvestor extends React.Component {
       })
 
       setTimeout(this.timers['getFollowersWithBalances'], (
-        configs.myproduct.settings.intervalUpdateFollowersSec || 5000
+        configs.myproduct.settings.intervalUpdateFollowersSec || 15000
       ));
     };
 
-    this.timers['getFollowersWithBalances']();
+    this.timers['getFollowersWithBalances'](1);
   }
 
   componentWillUnmount() {

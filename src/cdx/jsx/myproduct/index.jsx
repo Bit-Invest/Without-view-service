@@ -42,6 +42,7 @@ class GroupTradesParent extends React.Component {
     return(
       <GroupTrades 
         {...props} 
+        commonState={this.props.commonState}
         actions={actions} 
         filter={filter}
       />
@@ -171,7 +172,7 @@ export default class MyProductComponent extends React.Component {
     return resList;
   }
 
-  renderListInvestors = ({actions}) => {
+  renderListInvestors = ({actions, commonState}) => {
     const { reduxState: {
       myFollowers,
       keys,
@@ -197,6 +198,7 @@ export default class MyProductComponent extends React.Component {
         key={curInvestor._id}
         reduxState={curInvestor}
         balances={balancesFollowings}
+        commonState={commonState}
         methods={{
           setFreeze: actions.setFreezeFollowing,
           setUnFreeze: actions.setUnFreezeFollowing,
@@ -227,7 +229,7 @@ export default class MyProductComponent extends React.Component {
   }
 
   render() {
-    const { reduxState } = this.props;
+    const { reduxState, commonState } = this.props;
     Logger({
       body: {
         reduxState: this.props.reduxState,
@@ -242,6 +244,7 @@ export default class MyProductComponent extends React.Component {
               <GroupTradesParent 
                 {...this.props}
                 actions={actions}
+                commonState={commonState}
               />
               <div className="typeList investorList">
                 <div className="curHead">
@@ -249,7 +252,7 @@ export default class MyProductComponent extends React.Component {
                   <div className="rightPanel"></div>
                 </div>
                 <div className="content">
-                  {this.renderListInvestors({actions})}
+                  {this.renderListInvestors({actions,commonState})}
                 </div>
               </div>
               <div className="typeList requisitionsList">

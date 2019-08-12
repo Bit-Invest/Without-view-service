@@ -271,11 +271,6 @@ export const getIncomeForKeys = (incomeArr, courDaySliced, mode = 'PERCENT', typ
       value: ((curIncome.value - slicedIncomes[0].value)) * 100,
     }));
 
-  console.log({
-    v1: [slicedIncomes.length, slicedBalances.length],
-    v2: [baseIncome.length, baseBalance.length],
-  });
-
   return ({
     INCOME: {
       PERCENT: showingUserIncome,

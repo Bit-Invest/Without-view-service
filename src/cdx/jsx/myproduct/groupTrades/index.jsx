@@ -21,7 +21,7 @@ export default class GroupTrades extends React.Component {
     this.timers = {};
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.startRequests();
   }
 
@@ -46,9 +46,15 @@ export default class GroupTrades extends React.Component {
 
     const showingFollowings = approvedFollowings;
 
-    this.timers['getFollowingsOrders'] = async () => {
+    this.timers['getFollowingsOrders'] = async (isFirst) => {
       const approvedFollowingsUsed = {};
       const asyncGetOrders = async () => {
+        if (!this.props.commonState.cdxWindowActive && !isFirst) {
+          return setTimeout(asyncGetOrders, (
+            configs.myproduct.settings.intervalUpdateFollowersSec || 15000
+          ));
+        }
+
         const nextFollowing = showingFollowings.find(curApprovedFollowings => 
           !approvedFollowingsUsed[curApprovedFollowings._id]
         );
@@ -72,7 +78,7 @@ export default class GroupTrades extends React.Component {
       }
     };
 
-    this.timers['getFollowingsOrders']();
+    this.timers['getFollowingsOrders'](1);
   }
 
   stopRequests = () => {

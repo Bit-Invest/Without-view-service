@@ -16,7 +16,7 @@ export default class ParentWrapperPages extends React.Component {
     };
   }
 
-  componentWillMount() {    
+  componentWillMount() {   
     this.actionsBuild();
 
     if (utils.common.isPagePrivate(this.args.namePage)) 

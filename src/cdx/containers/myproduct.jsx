@@ -12,14 +12,31 @@ class MyProductContainer extends ParentWrapperPages {
     super({
       namePage: 'myproduct',
       componentWillMount_cb: () => {
+        this.listenerCommonEvents();
+
         const { productId } = this.props.match.params;
         this.actions.getThisProduct({productId});
       },
-    })
+    });
+
+    this.state = {
+      cdxWindowActive: false,
+    };
+  }
+
+  listenerCommonEvents = () => {
+    window.addEventListener('blur', () => {
+      this.setState({cdxWindowActive: false});
+    });
+
+    window.addEventListener('focus', () => {
+      this.setState({cdxWindowActive: true});
+    });
   }
 
   render() {
     const { productId } = this.props.match.params;
+    const { cdxWindowActive } = this.state;
 
     return(
       <Provider value={{
@@ -27,6 +44,7 @@ class MyProductContainer extends ParentWrapperPages {
       }}>
         <MyProductComponent 
           {...this.props}
+          commonState={{cdxWindowActive}}
           paramsProduct={{
             productId,
           }} 
