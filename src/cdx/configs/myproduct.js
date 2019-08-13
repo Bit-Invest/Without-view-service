@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const settings = {
-	intervalUpdateFollowersSec: 10 * 1000, 
+	intervalUpdateFollowersSec: 3 * 1000, 
 };
 
 const statusesShowing = {
