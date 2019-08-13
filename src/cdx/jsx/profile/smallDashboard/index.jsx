@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Contexts from '@modules/contexts';
 import mixins from '@cdx/mixins/';
 import utils from '@cdx/utils/';
@@ -14,15 +15,37 @@ import IncomeKeys from './incomesKeys/';
 
 import './style.scss'
 
-const Consumer = Contexts.ProfileContext.Consumer
+const Consumer = Contexts.ProfileContext.Consumer;
 
-const renderHelloBlock = (skillData, skillUser) => (  
+const localLinks = {
+  'apiImport': 'https://desk.zoho.eu/portal/cindx/kb/articles/adding-your-api-key-and-secret-key-to-the-cindx-platform',
+  'subscribeStraregy': 'https://desk.zoho.eu/portal/cindx/kb/articles/how-to-invest-in-a-trading-product-on-the-cindx-platform',
+  'createProduct': 'https://desk.zoho.eu/portal/cindx/kb/articles/trader-s-guide-how-to-create-and-monetize-an-investment-product-on-the-cindx-platform',
+  'knowledge': 'https://desk.zoho.eu/portal/cindx/kb/cindx',
+  'telegramChat': 'https://t.me/CINDXTest',
+};
+
+const localLinkJsx = (hrefTag, text) => {
+  const link = localLinks[hrefTag];
+
+  if (link) return <a href={link} target="__blank">{text}</a>;
+
+  return <Link to={`/${hrefTag}`}>{text}</Link>
+}
+
+const renderHelloBlock = (skillData, skillUser, userInfo) => (  
   !notPassed(skillData[0]) ? (
-    <div className='desc'>
-      <div className='emoji welcome'></div>
+    <div className='desc welcome'>
       <div className='text'>
-        <div>{phrases['small-dashboard']['#1']}</div>
-        <div>{phrases['small-dashboard']['#2']}</div>
+        <div>{phrases['small-dashboard']['#30']}{(userInfo || {firstName: 'none'}).firstName}.</div>
+        <div>{phrases['small-dashboard']['#31']}</div>
+        <ol>
+          <li>{phrases['small-dashboard']['#32']}{localLinkJsx('apiImport', phrases['small-dashboard']['#33'])}</li>
+          <li>{localLinkJsx('subscribeStraregy', phrases['small-dashboard']['#34'])}{phrases['small-dashboard']['#35']}{localLinkJsx('marketplace', phrases['small-dashboard']['#36'])}{phrases['small-dashboard']['#37']}{localLinkJsx('createProduct', phrases['small-dashboard']['#38'])}</li>
+          <li>{phrases['small-dashboard']['#39']}</li>
+        </ol>
+        <div className="colorGreen">{phrases['small-dashboard']['#40']}{localLinkJsx('knowledge', phrases['small-dashboard']['#41'])}{phrases['small-dashboard']['#42']}</div>
+        <div className="colorGreen">{phrases['small-dashboard']['#43']}{localLinkJsx('telegramChat', phrases['small-dashboard']['#44'])}</div>
       </div>
     </div>
   ) : (!notPassed(skillData[1] && !notPassed(2))) ? (
@@ -221,7 +244,7 @@ class RenderDashboard extends React.Component {
 };
 
 const ContentBoxRender = (props) => {
-  const { keys, myProducts, myFollowings } = props.reduxState;
+  const { userInfo, keys, myProducts, myFollowings } = props.reduxState;
   const connectedProducts = utils.profile.getConnectedProducts({myFollowings});
   const skillData = [keys, myProducts, connectedProducts];
   const skillDataNoLoaded = mixins.common.dataNoLoaded(skillData);
@@ -232,7 +255,7 @@ const ContentBoxRender = (props) => {
 
   if (skillUser > 1) return <RenderDashboard {...props} />;
   
-  return renderHelloBlock(skillData, skillUser);
+  return renderHelloBlock(skillData, skillUser, userInfo);
 };
 
 const SmallDashboard = (props) => (

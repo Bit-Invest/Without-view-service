@@ -14,9 +14,23 @@
 			display: flex;
 			flex-direction: column;
 			margin-top: 20px;
-			max-width: 300px;
 			justify-content: center;
 			align-items: center;
+
+			a {
+				color: white;
+			}
+
+			&.welcome {
+				align-items: flex-start;
+				padding-left: 10px;
+				margin:  0;
+
+				.colorGreen {
+					color: #54d054;
+					a { color: #54d054; }
+				}
+			}
 
 			& .emoji {
 				width: 200px;
@@ -35,9 +49,7 @@
 			}
 
 			& .text {
-				margin-top: 20px;
-				text-align: center;
-				font-size: 20px;
+				font-size: 15px;
 			}
 		}
 	}
