@@ -196,6 +196,12 @@
     display: flex;
     flex-direction: column;
 
+    .errorUseForm {
+      color: #e27777;
+      text-align: center;
+      margin: 5px 0;
+    }
+
     .inputs {
       display: flex;
       flex-direction: column;
@@ -268,6 +274,12 @@
     .mainBlock {
       display: flex;
       flex-direction: column;
+
+      .errorUseForm {
+        color: #e27777;
+        text-align: center;
+        margin: 5px 0;
+      }
 
       .inputs {
         display: flex;

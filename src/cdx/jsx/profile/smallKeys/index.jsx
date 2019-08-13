@@ -113,25 +113,47 @@ class EditingForm extends React.Component {
     super();
 
     this.state = {
-      name: '',
-      apiKey: '',
-      secretKey: '',
+      data: {
+        name: '',
+        apiKey: '',
+        secretKey: '',
+      },
+      errorUseForm: '',
     };
   }
 
   componentWillMount() {
     this.setState({
-      name: this.props.data.name,
+      data: {
+        name: this.props.data.name,
+        apiKey: '',
+        secretKey: '',
+      },
     })
   }
 
   setValueInputs(property, event) {
     this.setState({
-      [property]: event.target.value,
+      errorUseForm: '',
+      data: { 
+        ...this.state.data,
+        [property]: event.target.value,
+      },
     });
   }
 
   sendRequest = async () => {
+    const isError = Object.entries(this.state.data)
+      .some(([prop, curValue]) => !curValue);
+
+    console.log(Object.entries(this.state.data), isError);
+
+    if (isError) {
+      return this.setState({
+        errorUseForm: 'Fill in all the fields correctly',
+      });
+    }
+
     await this.props.data.methods.edit({
       ...this.state,
       keyId: this.props.data.keyId,
@@ -147,10 +169,11 @@ class EditingForm extends React.Component {
         <ActiveForm {...this.props} />
         <div className='smallKeysEdit'>
           <div className='mainBlock'>
+            <div className='errorUseForm'>{this.state.errorUseForm}</div>
             <div className='items inputs'>
-              <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='Name' placeholder={phrases['small-keys']['#14']} />
-              <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.apiKey} name='Api key' placeholder={phrases['small-keys']['#15']} />
-              <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder={phrases['small-keys']['#16']} />
+              <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.data.name} name='Name' placeholder={phrases['small-keys']['#14']} />
+              <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.data.apiKey} name='Api key' placeholder={phrases['small-keys']['#15']} />
+              <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.data.secretKey} name='Secret key' placeholder={phrases['small-keys']['#16']} />
             </div>
             <div className='onTopSigns'>
               <div className='item save' onClick={this.sendRequest}>{phrases['small-keys']['#17']}</div>
@@ -168,20 +191,36 @@ class AddingForm extends React.Component {
     super();
 
     this.state = {
-      name: '',
-      apiKey: '',
-      secretKey: '',
-      stock: 'Binance',
+      data: {
+        name: '',
+        apiKey: '',
+        secretKey: '',
+        stock: 'Binance',
+      },
+      errorUseForm: '',
     };
   }
 
   setValueInputs(property, event) {
     this.setState({
-      [property]: event.target.value,
+      errorUseForm: '',
+      data: {
+        ...this.state.data,
+        [property]: event.target.value,
+      }
     });
   }
 
   sendRequest = async () => {
+    const isError = Object.entries(this.state.data)
+      .some(([prop, curValue]) => !curValue);
+
+    if (isError) {
+      return this.setState({
+        errorUseForm: 'Fill in all the fields correctly',
+      });
+    }
+
     await this.props.data.methods.add({
       ...this.state,
       groupName: this.props.data.groupName,
@@ -195,11 +234,12 @@ class AddingForm extends React.Component {
     return(
       <div className='smallKeysAdd'>
         <div className='mainBlock'>
+          <div className='errorUseForm'>{this.state.errorUseForm}</div>
           <div className='items inputs'>
-            <input value={`Exchange: ${this.state.stock}`} name='stock' placeholder='Stock' />
-            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='Name' placeholder={phrases['small-keys']['#19']} />
-            <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.apiKey} name='Api key' placeholder={phrases['small-keys']['#20']} />
-            <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.secretKey} name='Secret key' placeholder={phrases['small-keys']['#21']} />
+            <input value={`Exchange: ${this.state.data.stock}`} name='stock' placeholder='Stock' />
+            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.data.name} name='Name' placeholder={phrases['small-keys']['#19']} />
+            <input onChange={this.setValueInputs.bind(this, 'apiKey')} value={this.state.data.apiKey} name='Api key' placeholder={phrases['small-keys']['#20']} />
+            <input onChange={this.setValueInputs.bind(this, 'secretKey')} value={this.state.data.secretKey} name='Secret key' placeholder={phrases['small-keys']['#21']} />
           </div>
           <div className='onTopSigns'>
             <div className='item save' onClick={this.sendRequest}>{phrases['small-keys']['#22']}</div>
