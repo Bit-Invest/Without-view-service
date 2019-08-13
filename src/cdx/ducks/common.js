@@ -161,33 +161,6 @@ const actions = commonUtils.addPropery([
 			},
 		}),
 	},
-	{
-		type: 'REQUEST',
-		propertyFn: 'sendFollow',
-		keyState: 'sendFollowRes',
-		data: {
-			api: 'baseCindx',
-			url: '/user/follow',
-			method: 'POST',
-			body: [],
-			processingResFn: (cbParams, res) => {
-				return res;
-			},
-		},
-		tags: {
-			manuallyUsed: true,
-			startRequired: false,
-		},
-		preFnData: (data, tsAction) => ({
-			data: {
-				...tsAction.data,
-				body: {
-					selfKeyId: data.selfKeyId, 
-					productId: data.productId,
-				},
-			},
-		}),
-	},
 ], 'parentTag', generalKeyState);
 
 const actionsForTied = actions.reduce((pr, curAction) => 

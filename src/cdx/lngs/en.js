@@ -190,6 +190,7 @@ let phrasesLng = {
 		'#8': 'Want to unsubscribe from this product?',
 		'#9': 'Stop following',
 		'#10': 'Your applications are processed for these accounts by this manager.',
+		'#11': 'Cancel the application',
 	},
 	'profile-common': {
 		'#1': 'This is the list of all your exchange accounts and API keys associated with them.',

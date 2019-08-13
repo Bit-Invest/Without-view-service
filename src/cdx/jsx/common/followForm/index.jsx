@@ -138,9 +138,9 @@ class FollowForm extends React.Component {
             keys={keysWaitFromThisProduct}
             title={phrases['follow-form']['#10']}
             atopClass="waitThisProduct"
-            methodFollow={methods.sendFollow}
+            methodFollow={methods.sendUnFollow}
             productId={productId}
-            noselect={true}
+            buttonText={phrases['follow-form']['#11']}
           />
         </div>
       </div>
