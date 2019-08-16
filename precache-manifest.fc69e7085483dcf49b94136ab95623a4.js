@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
   },
   {
-    "revision": "651731f6a00a77cf6675",
-    "url": "/static/css/main.5180e2f2.chunk.css"
+    "revision": "701597c533545ff83e4c",
+    "url": "/static/css/main.c84aff4a.chunk.css"
   },
   {
     "revision": "fdfcfda2d9b1bf31db52",
     "url": "/static/js/runtime~main.c5541365.js"
   },
   {
-    "revision": "1df864a34d4463285c52",
-    "url": "/static/js/2.783b23a1.chunk.js"
+    "revision": "2df5d73d8dd99d700369",
+    "url": "/static/js/2.465254b8.chunk.js"
   },
   {
     "revision": "39a2af266cb6e3c87524741a2d67e4fd",
@@ -48,8 +48,8 @@ self.__precacheManifest = [
     "url": "/static/media/registration.77627f20.jpeg"
   },
   {
-    "revision": "651731f6a00a77cf6675",
-    "url": "/static/js/main.7e4e67c1.chunk.js"
+    "revision": "701597c533545ff83e4c",
+    "url": "/static/js/main.60d78c40.chunk.js"
   },
   {
     "revision": "5c1d517bcf9e622ba0749a5abfd8c8c1",
@@ -80,12 +80,12 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-Heavy.86c78b24.woff"
   },
   {
-    "revision": "1707b84cc13511b162afccae1da3c002",
-    "url": "/static/media/Geometria-Light.1707b84c.woff"
-  },
-  {
     "revision": "21ffa8553f379519ac5d80c38e039714",
     "url": "/static/media/Geometria-Medium.21ffa855.woff"
+  },
+  {
+    "revision": "1707b84cc13511b162afccae1da3c002",
+    "url": "/static/media/Geometria-Light.1707b84c.woff"
   },
   {
     "revision": "413f36b0dc9a4e6ef7cc07b5e4014a66",
@@ -96,7 +96,7 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-ExtraLightItalic.f1d8fcc9.woff"
   },
   {
-    "revision": "772dcade4d0712eaede5406ef95842f5",
+    "revision": "fd678bdb8f13745ab53d28d77c8cb056",
     "url": "/index.html"
   }
 ];
