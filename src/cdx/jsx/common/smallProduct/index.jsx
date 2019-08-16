@@ -18,8 +18,14 @@ class ActiveForm extends React.Component {
     super();
 
     this.state = {
-      showingProfitInterval: 'all',
+      showingProfitInterval: 'week',
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({showingProfitInterval: 'all'});
+    }, 100);
   }
 
   render() {
@@ -109,7 +115,7 @@ class ActiveForm extends React.Component {
               <div className="baseAsset">{baseAsset}</div>
             </div>
             <div className="historyBlock">
-              <HeadProfitHistory 
+              <HeadProfitHistory
                 income={showingProfit}
               />
             </div>
@@ -120,10 +126,10 @@ class ActiveForm extends React.Component {
                   {point:'month', value:monthLastProfit, text: phrases['small-product']['#4']},
                   {point:'all', value:allLastProfit, text: phrases['small-product']['#5']},
                 ]).map(curTimeProfit => (
-                  <div 
-                    className={`item ${curTimeProfit.value > 0 ? 'positive' : 'badpositive'} ${curTimeProfit.point === this.state.showingProfitInterval ? 'active' : ''}`} 
+                  <div
+                    className={`item ${curTimeProfit.value > 0 ? 'positive' : 'badpositive'} ${curTimeProfit.point === this.state.showingProfitInterval ? 'active' : ''}`}
                     onClick={() => this.setState({showingProfitInterval: curTimeProfit.point})}
-                  > 
+                  >
                     {curTimeProfit.text.toUpperCase()}: {curTimeProfit.value}%
                   </div>
                 ))}
@@ -170,7 +176,7 @@ class EditingForm extends React.Component {
   }
 
   componentWillMount() {
-    const { 
+    const {
       data: {
         description,
         name,
@@ -213,8 +219,8 @@ class EditingForm extends React.Component {
               <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder={phrases['small-product']['#11']} />
               <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder={phrases['small-product']['#12']} />
               <select onChange={(event)=>this.setState({baseAsset:event.target.value})}>
-                <option value={'BTC'} selected={this.state.baseAsset==='BTC'}>BTC</option> 
-                <option value={'USD'} selected={this.state.baseAsset==='USD'}>USD</option>      
+                <option value={'BTC'} selected={this.state.baseAsset==='BTC'}>BTC</option>
+                <option value={'USD'} selected={this.state.baseAsset==='USD'}>USD</option>
               </select>
             </div>
             <div className='onTopSigns'>
@@ -260,8 +266,8 @@ class AddingForm extends React.Component {
     <select onChange={(event)=>this.setState({keyId:event.target.value})}>
       <option value={''}>{phrases['small-product']['#15']}</option>
       {
-        this.props.data.keys.map((curKeys, index) => 
-          <option key={index} value={curKeys.keyId}>{curKeys.name}</option>      
+        this.props.data.keys.map((curKeys, index) =>
+          <option key={index} value={curKeys.keyId}>{curKeys.name}</option>
         )
       }
     </select>
@@ -283,12 +289,12 @@ class AddingForm extends React.Component {
             <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder={phrases['small-product']['#17']} />
             <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder={phrases['small-product']['#18']} />
             <select onChange={(event)=>this.setState({baseAsset:event.target.value})}>
-              <option value={'BTC'}>BTC</option> 
-              <option value={'USD'}>USD</option>      
+              <option value={'BTC'}>BTC</option>
+              <option value={'USD'}>USD</option>
             </select>
             <select onChange={(event)=>this.setState({typeId:event.target.value})}>
-              <option value={0}>{phrases['small-product']['#21']}</option> 
-              <option value={1}>{phrases['small-product']['#22']}</option>      
+              <option value={0}>{phrases['small-product']['#21']}</option>
+              <option value={1}>{phrases['small-product']['#22']}</option>
             </select>
           </div>
           <div className='onTopSigns'>
@@ -308,7 +314,7 @@ const SmallProduct = (props) => {
     'ADDING': AddingForm,
   })[props.data.status];
 
-  return <TsForm 
+  return <TsForm
     {...props}
   />
 };
