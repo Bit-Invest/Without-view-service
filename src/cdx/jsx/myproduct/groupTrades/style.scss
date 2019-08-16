@@ -12,7 +12,7 @@
 			font-size: 13px;
 		}
 	}
-	
+
 
 	.tradeItemsParent {
 		position: relative;
@@ -111,6 +111,28 @@
 				}
 			}
 
+			&.rebalancedTrade {
+				background-color: rgba(229, 236, 239, 0.05);
+				margin: 10px 0;
+
+				&.show-false {
+					display: none;
+				}
+
+				.boxOfTrade.relativitySuccess {
+					color: #8dc63f;
+				}
+
+				.clickMore {
+
+					> .curClick {
+						background-size: 100% 100%;
+						width: 13px; height: 13px;
+						background-image: url(~@assets/icons/rebalanced.png);
+					}
+				}
+			}
+
 			&.followerTrade {
 				background-color: rgba(229, 236, 239, 0.2);
 				margin-bottom: 10px;
@@ -150,7 +172,7 @@
 
 				&.opened {
 					box-shadow: 0px 6px 49px 0 rgba(0, 0, 0, 0.64);
-  				background-image: linear-gradient(to top, #5a3e81, #352659);	
+  				background-image: linear-gradient(to top, #5a3e81, #352659);
 
   				.tsFollowersTrades {
   					height: auto;
@@ -189,4 +211,3 @@
 	0% {opacity: 0;}
 	100% {opacity: 1;}
 }
-

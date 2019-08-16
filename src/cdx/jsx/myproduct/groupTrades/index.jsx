@@ -26,16 +26,16 @@ export default class GroupTrades extends React.Component {
   }
 
   componentWillUnmount() {
-    this.stopRequests(); 
+    this.stopRequests();
   }
 
   startRequests = () => {
-    const { 
+    const {
       reduxState: {
         myFollowers,
-      }, 
+      },
       paramsProduct,
-      actions, 
+      actions,
     } = this.props;
 
     const { approvedFollowings }  = utils.myproduct
@@ -55,7 +55,7 @@ export default class GroupTrades extends React.Component {
           ));
         }
 
-        const nextFollowing = showingFollowings.find(curApprovedFollowings => 
+        const nextFollowing = showingFollowings.find(curApprovedFollowings =>
           !approvedFollowingsUsed[curApprovedFollowings._id]
         );
 
@@ -105,15 +105,15 @@ export default class GroupTrades extends React.Component {
   }
 
   renderGroupOrdersList = () => {
-    const { 
+    const {
       reduxState: {
         ordersFollowings,
         myFollowers,
         keys,
         myProducts,
         separatelyTrades,
-      }, 
-      paramsProduct, 
+      },
+      paramsProduct,
       filter: {
         date: filterShowDate,
         follower: filterShowFollower,
@@ -130,7 +130,7 @@ export default class GroupTrades extends React.Component {
 
     const showingFollowings = approvedFollowings;
 
-    if (!showingFollowings.length && !this.state.separatelyDealsShow) 
+    if (!showingFollowings.length && !this.state.separatelyDealsShow)
       return(
         <div className="logTrades followersZero">
           <div>{phrases['myproduct']['#12_1']}</div>
@@ -144,7 +144,7 @@ export default class GroupTrades extends React.Component {
       .getFollowingsNamedMyKeys(keys, showingFollowings)
       .filter(curFollowing => filterShowFollower === 'all' || filterShowFollower === curFollowing.follower);
 
-    const mergedPropsOrders = (orders, props) => 
+    const mergedPropsOrders = (orders, props) =>
       orders.map(curOrder => ({
         ...curOrder,
         ...(props.reduce((res, curProp) => {
@@ -154,10 +154,10 @@ export default class GroupTrades extends React.Component {
         }, {}))
       }));
 
-    const tsOrdersFollowings = ((typeof ordersFollowings === 'object' && ordersFollowings) || []).filter(curOrdersFollowings => 
-      !!followings.find(curFollowing => 
+    const tsOrdersFollowings = ((typeof ordersFollowings === 'object' && ordersFollowings) || []).filter(curOrdersFollowings =>
+      !!followings.find(curFollowing =>
         curOrdersFollowings.followingId === curFollowing._id
-      ) 
+      )
     );
 
     if (this.state.separatelyDealsShow) {
@@ -183,7 +183,7 @@ export default class GroupTrades extends React.Component {
       const nameLeader = leaderKeyId && (keys.find(curKeys => curKeys.keyId === leaderKeyId) || {name: 'error name'}).name;
 
       const followerKeyId = followerOrders.length && followerOrders[0].keyId;
-      const nameFollower = followerKeyId && (followings.find(curFollowing => 
+      const nameFollower = followerKeyId && (followings.find(curFollowing =>
         curFollowing.follower === followerKeyId) || {nameFollower: 'error name'}).nameFollower;
 
       leaderOrders.forEach(curLeaderOrder => {
@@ -216,7 +216,7 @@ export default class GroupTrades extends React.Component {
     const sortFromCreatedAt = (order1, order2) => (
       filterShowDate === 'new' ?
         new Date(order2.createdAt).getTime() - new Date(order1.createdAt).getTime()
-      : 
+      :
         new Date(order1.createdAt).getTime() - new Date(order2.createdAt).getTime()
     );
 
@@ -224,7 +224,7 @@ export default class GroupTrades extends React.Component {
       .filter((corOrder) => !!new Date(corOrder.createdAt).getTime())
       .sort(sortFromCreatedAt);
 
-    if (!arrAllOrders.allOrders.length) 
+    if (!arrAllOrders.allOrders.length)
       return(
         <div className="logTrades">
           {phrases['myproduct']['#12']}
@@ -237,7 +237,7 @@ export default class GroupTrades extends React.Component {
   }
 
   renderTrades = ({arrAllOrders}) => {
-    const { 
+    const {
       filter: {
         nosync: filterShowNoSync,
       },
@@ -264,7 +264,28 @@ export default class GroupTrades extends React.Component {
         <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
       </div>
     );
-    
+
+    const renderRebalancedFollowTrade = (trade) => (
+      <div className={`item rebalancedTrade`} key={`${trade.orderId}-${trade.symbol}`}>
+        <div className="boxOfTrade clickMore">
+          <div className="curClick"></div>
+        </div>
+        <div className="boxOfTrade relativitySuccess">
+          <span className="curValue">{trade.name}</span>
+        </div>
+        <div className="boxOfTrade emptySpace" style={{width: '2%'}}></div>
+        <div className="boxOfTrade pair">{trade.symbol}</div>
+        <div className="boxOfTrade type">{trade.type}</div>
+        <div className={`boxOfTrade side ${trade.side}`}>{trade.side}</div>
+        <div className="boxOfTrade price">{trade.price}</div>
+        <div className="boxOfTrade quantity">{trade.quantity}</div>
+        <div className={`boxOfTrade status ${trade.status}`}>
+          {(configs.myproduct.statusesShowing[trade.status] || trade.status)}
+        </div>
+        <div className="boxOfTrade time">{moment.utc(trade.createdAt).toISOString().slice(11, 19)}</div>
+      </div>
+    );
+
     const listDays = {};
     const synchronizedFollowerTrades = {};
 
@@ -279,7 +300,7 @@ export default class GroupTrades extends React.Component {
       if (!isShow) return 'not-shown';
 
       const tsLogTradesCopied = arrAllOrders.allFollowingsLog.filter(curLogOrder =>
-        (curLogOrder.status !== 'copied' || curLogOrder.status === 'copied') && (
+        (curLogOrder.status === 'copied') && (
           curLogOrder.leaderOrderId === curLeaderOrder.orderId &&
             curLogOrder.symbol === curLeaderOrder.symbol
         )
@@ -291,14 +312,14 @@ export default class GroupTrades extends React.Component {
         )
       );
       const tsFollowersTrades = arrAllOrders.allOrders.filter(curFollowerOrder =>
-        !!tsLogTradesCopied.find(curLogOrder => 
+        !!tsLogTradesCopied.find(curLogOrder =>
           curLogOrder.followerOrderId === curFollowerOrder.orderId &&
             curLogOrder.symbol === curFollowerOrder.symbol
         )
       );
       const curISODate = moment.utc(curLeaderOrder.createdAt).toISOString().slice(0, 10);
       const hasLogTrades = tsFollowersTrades.length > 0 || tsLogTradesNoCopied.length > 0;
-      const relativitySuccess = hasLogTrades && 
+      const relativitySuccess = hasLogTrades &&
         tsFollowersTrades.reduce((res, curTsFollowersTrades, index) => {
           res[0] += getRelativitySuccess(curTsFollowersTrades.status, curLeaderOrder.status) ? 1 : 0;
           res[1] += 1;
@@ -313,9 +334,9 @@ export default class GroupTrades extends React.Component {
       tsFollowersTrades.forEach(curFollowerTrade => {
         synchronizedFollowerTrades[curFollowerTrade.orderId] = true;
       });
-      
+
       listDays[curISODate].push(
-        <CurTradeParent 
+        <CurTradeParent
           {...({
             curLeaderOrder,
             hasLogTrades,
@@ -329,11 +350,11 @@ export default class GroupTrades extends React.Component {
 
     const treatmentFollowerFollowing = (curFollowerOrder, isShow) => {
       const isSynchronized = arrAllOrders.allFollowingsLog
-        .find(curFollowingLogOrder => 
+        .find(curFollowingLogOrder =>
           curFollowingLogOrder.followerOrderId === curFollowerOrder.orderId
         );
 
-      if (isSynchronized || filterShowNoSync === 'hide-all') return false;
+      if ((isSynchronized && isSynchronized.status === 'copied') || filterShowNoSync === 'hide-all') return false;
       if (!isShow) return 'not-shown';
 
       const curISODate = moment.utc(curFollowerOrder.createdAt).toISOString().slice(0, 10);
@@ -342,7 +363,10 @@ export default class GroupTrades extends React.Component {
         [curISODate]: listDays[curISODate] || [],
       });
 
-      listDays[curISODate].push(renderNoFollowTrade(curFollowerOrder));
+      if (isSynchronized && isSynchronized.status === 'rebalanced')
+        listDays[curISODate].push(renderRebalancedFollowTrade(curFollowerOrder));
+      else
+        listDays[curISODate].push(renderNoFollowTrade(curFollowerOrder));
     };
 
     let missedTradeCour = 0;
@@ -353,12 +377,12 @@ export default class GroupTrades extends React.Component {
         const isShow = index < quantityLeaderOrdersShow + missedTradeCour;
 
         if (curOrder.position === 'leader') {
-          const isMissed = treatmentLeaderFollowing(curOrder, isShow); 
+          const isMissed = treatmentLeaderFollowing(curOrder, isShow);
 
           if (isMissed === false) missedTradeCour++;
           else allShowingTrades++;
         }
-        
+
         if (curOrder.position === 'follower') {
           const isMissed = treatmentFollowerFollowing(curOrder, isShow);
 
@@ -367,7 +391,7 @@ export default class GroupTrades extends React.Component {
         }
       });
 
-    if (!allShowingTrades) 
+    if (!allShowingTrades)
       return(
         <div className="logTrades">
           {phrases['myproduct']['#13']}
@@ -419,6 +443,6 @@ export default class GroupTrades extends React.Component {
       <div className="logTrades">
         {this.renderGroupOrdersList()}
       </div>
-    ); 
+    );
   }
 };
