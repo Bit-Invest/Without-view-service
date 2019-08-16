@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "ce1fa48a10e3253d5c41a2ad1cc41948",
-    "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
+    "revision": "5c1d517bcf9e622ba0749a5abfd8c8c1",
+    "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
   },
   {
     "revision": "701597c533545ff83e4c",
@@ -52,16 +52,16 @@ self.__precacheManifest = [
     "url": "/static/js/main.60d78c40.chunk.js"
   },
   {
-    "revision": "5c1d517bcf9e622ba0749a5abfd8c8c1",
-    "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
+    "revision": "e370e8e3219741663b5a172a00cdb2d2",
+    "url": "/static/media/Geometria-Medium.e370e8e3.woff2"
   },
   {
     "revision": "e0f9d6492c7a3c6dc987a849fcb9cb10",
     "url": "/static/media/Geometria-Light.e0f9d649.woff2"
   },
   {
-    "revision": "e370e8e3219741663b5a172a00cdb2d2",
-    "url": "/static/media/Geometria-Medium.e370e8e3.woff2"
+    "revision": "ce1fa48a10e3253d5c41a2ad1cc41948",
+    "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
   },
   {
     "revision": "2fe5f7508322d964c030e10156e43a14",
@@ -72,16 +72,12 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-ExtraLightItalic.9e4b52e7.woff2"
   },
   {
-    "revision": "2718c69a1474b2e2b04afb39c8e62e3f",
-    "url": "/static/media/Geometria-Bold.2718c69a.woff"
+    "revision": "21ffa8553f379519ac5d80c38e039714",
+    "url": "/static/media/Geometria-Medium.21ffa855.woff"
   },
   {
     "revision": "86c78b24aa03145dff4576def89fafab",
     "url": "/static/media/Geometria-Heavy.86c78b24.woff"
-  },
-  {
-    "revision": "21ffa8553f379519ac5d80c38e039714",
-    "url": "/static/media/Geometria-Medium.21ffa855.woff"
   },
   {
     "revision": "1707b84cc13511b162afccae1da3c002",
@@ -90,6 +86,10 @@ self.__precacheManifest = [
   {
     "revision": "413f36b0dc9a4e6ef7cc07b5e4014a66",
     "url": "/static/media/Geometria.413f36b0.woff"
+  },
+  {
+    "revision": "2718c69a1474b2e2b04afb39c8e62e3f",
+    "url": "/static/media/Geometria-Bold.2718c69a.woff"
   },
   {
     "revision": "f1d8fcc96293c7610aef044bd6a85556",
