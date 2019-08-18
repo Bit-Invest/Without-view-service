@@ -155,7 +155,7 @@ class EditingForm extends React.Component {
     }
 
     await this.props.data.methods.edit({
-      ...this.state,
+      ...this.state.data,
       keyId: this.props.data.keyId,
     });
 
@@ -222,7 +222,7 @@ class AddingForm extends React.Component {
     }
 
     await this.props.data.methods.add({
-      ...this.state,
+      ...this.state.data,
       groupName: this.props.data.groupName,
     });
 
