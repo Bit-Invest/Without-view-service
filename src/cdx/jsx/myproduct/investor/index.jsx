@@ -55,7 +55,7 @@ class ActiveInvestor extends React.Component {
   }
 
   onChangeStatus = async (event) => {
-    const { _id, } = this.props.reduxState;  
+    const { _id, } = this.props.reduxState;
     const { setFreeze, setUnFreeze, setFollowingMode, } = this.props.methods;
     const selectedValue = event.target.value;
 
@@ -139,30 +139,34 @@ class ActiveInvestor extends React.Component {
 
     return(
       <div className="balancesBlock">
-        <div className="betweenItem leaderMainBlock">
-          <div className="balancesList">
-            <div className="item headItem">
-              <div className="curItemCoin">{phrases['myproduct']['#22']}</div>
-              <div className="curItemCoin">{phrases['myproduct']['#23']}</div>
-              <div className="curItemCoin">{phrases['myproduct']['#24']}</div>
-              <div className="curItemCoin">{phrases['myproduct']['#25']}</div>
+        <div className="allCoinBalances">
+          <div className="betweenItem leaderMainBlock">
+            <div className="balancesList">
+              <div className="item headItem">
+                <div className="curItemCoin">{phrases['myproduct']['#22']}</div>
+                <div className="curItemCoin">{phrases['myproduct']['#23']}</div>
+                <div className="curItemCoin">{phrases['myproduct']['#24']}</div>
+                <div className="curItemCoin">{phrases['myproduct']['#25']}</div>
+              </div>
+              {jsxListCoins.leader}
             </div>
-            {jsxListCoins.leader}
           </div>
+          <div className="betweenItem followerMainBlock">
+            <div className="balancesList">
+              <div className="item headItem">
+                <div className="curItemCoin">{phrases['myproduct']['#22']}</div>
+                <div className="curItemCoin">{phrases['myproduct']['#23']}</div>
+                <div className="curItemCoin">{phrases['myproduct']['#24']}</div>
+                <div className="curItemCoin">{phrases['myproduct']['#25']}</div>
+              </div>
+              {jsxListCoins.follower}
+            </div>
+          </div>
+        </div>
+        <div className="footBalances">
           <div className="totalBalances">
             <div className="curPropery">{phrases['myproduct']['#26']}</div>
             <div className="curValue">{this.getTotalValue(leaderTotal)}</div>
-          </div>
-        </div>
-        <div className="betweenItem followerMainBlock">
-          <div className="balancesList">
-            <div className="item headItem">
-              <div className="curItemCoin">{phrases['myproduct']['#22']}</div>
-              <div className="curItemCoin">{phrases['myproduct']['#23']}</div>
-              <div className="curItemCoin">{phrases['myproduct']['#24']}</div>
-              <div className="curItemCoin">{phrases['myproduct']['#25']}</div>
-            </div>
-            {jsxListCoins.follower}
           </div>
           <div className="totalBalances">
             <div className="curPropery">{phrases['myproduct']['#27']}</div>
@@ -204,7 +208,7 @@ class ActiveInvestor extends React.Component {
     const activeStatus = frozen ? 'frozen' : mode;
     const createdDate = moment.utc(createdAt).toISOString().slice(0, 10);
     const synchronizationQuality = (quality > 0 ? quality : 0).toFixed(2);
-    
+
     return(
       <div className="investorComponent">
         <div className="mainBlock">

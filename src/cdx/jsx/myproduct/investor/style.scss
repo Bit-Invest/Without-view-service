@@ -85,43 +85,62 @@
 	.balancesBlock {
 		display: flex;
 		justify-content: space-between;
+		flex-direction: column;
+		position: relative;
+		border-top: 1px solid #e47faf;
 
-		.betweenItem {
-			flex: .5;
+		&::after {
+			content: "";
+			position: absolute;
+			height: 100%;
+			width: 1px;
+			background-color: #e47faf;
+			left: 50%;
+			margin-left: -1px;
+		}
+
+		.allCoinBalances {
 			display: flex;
-			flex-direction: column;
-			border-top: 1px solid #e47faf;
+			overflow: auto;
+			position: relative;
 
-			&.leaderMainBlock {
-				border-right: 1px solid #e47faf;
-			}
-
-			.balancesList {
+			.betweenItem {
+				flex: .5;
 				display: flex;
 				flex-direction: column;
-				max-height: 300px;
-				overflow: auto;
 
-				.item {
+				.balancesList {
 					display: flex;
-					justify-content: space-between;
-					padding: 15px 15px;
+					flex-direction: column;
+					max-height: 300px;
 
-					&.headItem {
-						color: #888e9c;
-					}
+					.item {
+						display: flex;
+						justify-content: space-between;
+						padding: 15px 15px;
 
-					.curItemCoin {
-						flex: .25;
-						text-align: center;
+						&.headItem {
+							color: #888e9c;
+						}
+
+						.curItemCoin {
+							flex: .25;
+							text-align: center;
+						}
 					}
 				}
 			}
+		}
+
+		.footBalances {
+			display: flex;
+
 			.totalBalances {
 				display: flex;
 				justify-content: space-between;
 				border-top: 1px solid #e47faf;
 				padding: 15px;
+				flex: 0.5;
 
 				> .curPropery {
 					text-transform: uppercase;
@@ -133,9 +152,3 @@
 		}
 	}
 }
-
-
-
-
-
-
