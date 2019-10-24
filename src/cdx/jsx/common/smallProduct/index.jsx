@@ -308,8 +308,8 @@ class AddingForm extends React.Component {
             <select onChange={this.setValueInputs.bind(this, 'baseAsset')}>
               <option value={'BTC'}>BTC</option>
               <option value={'USD'}>USD</option>
-              <option value={'BTC'}>BNB</option>
-              <option value={'USD'}>ETH</option>
+              <option value={'BNB'}>BNB</option>
+              <option value={'ETH'}>ETH</option>
             </select>
             <select onChange={this.setValueInputs.bind(this, 'typeId')}>
               <option value={0}>{phrases['small-product']['#21']}</option>
