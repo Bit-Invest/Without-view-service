@@ -19,8 +19,8 @@ const initialState = {
 const privatePages = ['profile'];
 
 const settings = {
-	ratingMax: 10,
-	ragingScale: 100,
+	ratingMax: 5,
+	ragingScale: 1000,
 };
 
 const loggerSettings = {

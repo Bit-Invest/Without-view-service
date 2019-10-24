@@ -87,7 +87,7 @@ class FullProduct extends React.Component {
                 <div className="rating">
                   {
                     !productProccesing ? [
-                      <div className="curTitle">{phrases['full-product']['#1']}{ratingValueShow}: </div>,
+                      <div className="curTitle">{phrases['full-product']['#1']} {ratingValueShow}: </div>,
                       <div className="score">
                         <div className={`filled ${styleRating}`} style={{width: `${percentRating}%`}}></div>
                       </div>

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import utils from '@cdx/utils/';
 import { phrases } from '@cdx/utils/common';
 
+import Calendar from 'react-calendar';
+
 import HeadProfitHistory from './headHistory/';
 
 //styles
@@ -239,24 +241,36 @@ class AddingForm extends React.Component {
     super();
 
     this.state = {
-      description: '',
-      name: '',
-      baseAsset: 'BTC',
-      typeId: 0,
-      keyId: '',
-      startingTimestamp: new Date().getTime() - (1000 * 60 * 60 * 24 * (30 * 6)),
+      data: {
+        description: '',
+        name: '',
+        baseAsset: 'BTC',
+        typeId: 0,
+        keyId: '',
+      },
+      showCalendar: false,
+      startingTimestamp: new Date(new Date().getTime() - (1000 * 60 * 60 * 24 * 90)),
     };
+  }
+
+  onChangeDate = date => {
+    this.setState({ startingTimestamp: date });
   }
 
   setValueInputs(property, event) {
     this.setState({
-      [property]: event.target.value,
+      ...this.state,
+      data: {
+        ...this.state.data,
+        [property]: event.target.value,
+      },
     });
   }
 
   sendRequest = async () => {
     await this.props.data.methods.add({
-      ...this.state,
+      ...this.state.data,
+      startingTimestamp: new Date(this.state.startingTimestamp).getTime(),
     });
 
     await this.props.data.methods.toggleAdding();
@@ -264,7 +278,9 @@ class AddingForm extends React.Component {
   }
 
   renderSelectKeys = () =>
-    <select onChange={(event)=>this.setState({keyId:event.target.value})}>
+    <select 
+      onChange={this.setValueInputs.bind(this, 'keyId')}
+    >
       <option value={''}>{phrases['small-product']['#15']}</option>
       {
         this.props.data.keys.map((curKeys, index) =>
@@ -287,16 +303,34 @@ class AddingForm extends React.Component {
         <div className='mainBlock'>
           <div className='items inputs'>
             {this.renderSelectKeys()}
-            <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.description} name='description' placeholder={phrases['small-product']['#17']} />
-            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.name} name='name' placeholder={phrases['small-product']['#18']} />
-            <select onChange={(event)=>this.setState({baseAsset:event.target.value})}>
+            <input onChange={this.setValueInputs.bind(this, 'description')} value={this.state.data.description} name='description' placeholder={phrases['small-product']['#17']} />
+            <input onChange={this.setValueInputs.bind(this, 'name')} value={this.state.data.name} name='name' placeholder={phrases['small-product']['#18']} />
+            <select onChange={this.setValueInputs.bind(this, 'baseAsset')}>
               <option value={'BTC'}>BTC</option>
               <option value={'USD'}>USD</option>
+              <option value={'BTC'}>BNB</option>
+              <option value={'USD'}>ETH</option>
             </select>
-            <select onChange={(event)=>this.setState({typeId:event.target.value})}>
+            <select onChange={this.setValueInputs.bind(this, 'typeId')}>
               <option value={0}>{phrases['small-product']['#21']}</option>
               <option value={1}>{phrases['small-product']['#22']}</option>
             </select>
+            <div className="startDateTitle">
+              Your product will be rated from {this.state.startingTimestamp.toISOString().substr(0, 10)}
+              <div className="clickChangeStartDate" onClick={() => this.setState({ showCalendar: !this.state.showCalendar })}>
+                { !this.state.showCalendar ? 'Click here for change' : 'Save' }
+              </div>
+            </div>
+            <div 
+              className="startDateCalendar"
+              style={{ display: this.state.showCalendar ? 'flex' : 'none' }}
+            >
+              <Calendar
+                onChange={this.onChangeDate}
+                value={this.state.data.date}
+                locale="en-EN"
+              />
+            </div>
           </div>
           <div className='onTopSigns'>
             <div className='item save' onClick={this.sendRequest}>{phrases['small-product']['#19']}</div>
