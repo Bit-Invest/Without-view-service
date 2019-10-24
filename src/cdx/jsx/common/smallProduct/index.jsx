@@ -244,6 +244,7 @@ class AddingForm extends React.Component {
       baseAsset: 'BTC',
       typeId: 0,
       keyId: '',
+      startingTimestamp: new Date().getTime() - (1000 * 60 * 60 * 24 * (30 * 6)),
     };
   }
 

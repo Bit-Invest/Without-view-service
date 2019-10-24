@@ -377,6 +377,7 @@ const actions = utils.common.addPropery([
           baseAsset: data.baseAsset,
           keyId: data.keyId,
           typeId: parseFloat(data.typeId),
+          startingTimestamp: data.startingTimestamp,
 				},
 			},
 		}),

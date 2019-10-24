@@ -225,9 +225,10 @@ export const getIncomeForKeys = (incomeArr, courDaySliced, mode = 'PERCENT', typ
   if (typeof baseBalance !== 'object' || !baseBalance.length) 
     return [];
 
-  const slicedBalances_firstPoint = baseBalance.length > courDaySliced ? baseBalance.length - courDaySliced : 0;
+  const fromDate = new Date().getTime() - (courDaySliced * 24 * 60 * 60 * 1000);
+
   const slicedBalances = baseBalance
-    .slice(slicedBalances_firstPoint, baseBalance.length)
+    .filter((curentBalance) => new Date(curentBalance.timestamp).getTime() > fromDate)
     .filter((curBalance, index, arr) => 
       (((arr[index + 0] || {value: 0}).value !== 0) || (curBalance.value !== 0)) && (
         baseIncome.find(curIncome => curIncome.timestamp === curBalance.timestamp)
