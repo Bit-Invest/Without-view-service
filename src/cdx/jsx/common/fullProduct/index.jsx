@@ -64,11 +64,13 @@ class FullProduct extends React.Component {
     const income = baseIncomeHistory && baseIncomeHistory.length && baseIncomeHistory[baseIncomeHistory.length-1].value / baseIncomeHistory[0].value - 1;
     const ratingValues = baseIncomeHistory && baseIncomeHistory.length && {
       "Volatility": (volatilitySqr() * 10).toFixed(2),
-      "IncomeAverage": (incomeAverage < 0 ? 0 : incomeAverage).toFixed(2),
+      "IncomeAverage": (incomeAverage * 100).toFixed(2),
       "MaxDrawdown": (maxDrawdown * 100).toFixed(2),
       "DmaxDD": (maxRecoveryTimeShare * 100).toFixed(2),
-      "Income": (income < 0 ? 0 : income).toFixed(2),
+      "Income": (income * 100).toFixed(2),
     };
+
+    console.log(rating);
 
     const sinceProduct = moment.utc(since).toISOString().slice(0, 10);
 
@@ -140,7 +142,7 @@ class FullProduct extends React.Component {
                     </div>
                     <div className="item">
                       <div className="property">{phrases['full-product']['#8']}</div>
-                      <div className="value">{ratingValues['IncomeAverage']}</div>
+                      <div className="value">{ratingValues['IncomeAverage']}%</div>
                     </div>
                     <div className="item">
                       <div className="property">{phrases['full-product']['#9']}</div>

@@ -79,11 +79,11 @@ export default (props) => {
     ],
     "IncomeAverage": [
       -100,
-      0.00001,
-      0.005,
-      0.09,
+      0.001,
       0.5,
-      1.5,
+      9,
+      50,
+      150,
     ],
     "Volatility": [
       0,
@@ -94,7 +94,7 @@ export default (props) => {
       2.5,
     ],
     "Income": [
-       0,
+      0,
       5,
       15,
       45,
