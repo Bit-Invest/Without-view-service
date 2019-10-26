@@ -254,7 +254,8 @@ class AddingForm extends React.Component {
   }
 
   onChangeDate = date => {
-    this.setState({ startingTimestamp: date });
+    const time = new Date(date).getTime() + (1000 * 60 * 60 * 5);
+    this.setState({ startingTimestamp: new Date(time) });
   }
 
   setValueInputs(property, event) {
@@ -327,7 +328,7 @@ class AddingForm extends React.Component {
             >
               <Calendar
                 onChange={this.onChangeDate}
-                value={this.state.data.date}
+                value={this.state.startingTimestamp}
                 locale="en-EN"
               />
             </div>
