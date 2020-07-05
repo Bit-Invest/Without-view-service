@@ -159,7 +159,7 @@ class RenderDashboard extends React.Component {
               <div className="curSmallTitle">{phrases['small-dashboard']['#19']}</div>
             </Help>
             <select onChange={(event)=> actions.setBaseAsset(event.target.value)}>
-              {['BTC', 'USD'].map(curBaseAsset =>
+              {['USD'].map(curBaseAsset =>
                 <option 
                   value={curBaseAsset}
                   selected={curBaseAsset === baseAsset}
