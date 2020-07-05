@@ -7,7 +7,7 @@ import { phrases } from '@cdx/utils/common';
 import ICON_PROFILE from '@assets/icons/Profile_icon.svg';
 import ICON_MARKETPLACE from '@assets/icons/Billing_icon.svg';
 import ICOM_HEADER_MENU from '@assets/icons/headerMenu.png';
-import ICON_HEADER_LOGO from '@assets/images/headerLogoCindx.png';
+import ICON_HEADER_LOGO from '@assets/images/headerLogoCindx.jpg';
 
 import './style.scss';
 

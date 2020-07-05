@@ -1,5 +1,83 @@
-import React from 'react';
-import ReactHighstock from 'react-highcharts/ReactHighstock.src';
+// import React from 'react';
+// import ReactHighstock from 'react-highcharts/ReactHighstock.src';
+
+// // const arrRgbGradientColors = [
+// //   '0, 128, 0',
+// //   '0, 0, 255',
+// //   '255, 255, 0',
+// //   '255, 165, 0',
+// // ];
+
+// export default (props) => {
+  // if (!props.income || !props.income.length) 
+  //   return(
+  //     <div className="noLoadedProfit">Product processing...</div>
+  //   );
+
+  // const { income, valuePrefix, valueSuffix } = props;
+  // const renderedSeries = income.map((curIncome, index) => ({
+  //   name: `${curIncome.name} ${curIncome.marketplace ? '(marketplace)' : '(personally)'} `,
+  //   data: (curIncome.income || []).map(cur => [new Date(cur.timestamp).getTime() + 1, parseFloat((cur.value).toFixed(2))]),
+  //   type: 'area',
+  //   gapSize: 5,
+  //   tooltip: {
+  //     valueDecimals: 2,
+  //     valuePrefix: valuePrefix,
+  //     valueSuffix: valueSuffix,
+  //   },
+  //   // fillColor: {
+  //   //   linearGradient: {
+  //   //     x1: 0,
+  //   //     y1: 0,
+  //   //     x2: 0,
+  //   //     y2: 1,
+  //   //   },
+  //   //   stops: [
+  //   //     [0, `rgba(${arrRgbGradientColors[index]}, ${1/(5/(index+1))})`], 
+  //   //     [0, `rgba(${arrRgbGradientColors[index]}, ${1/(5/(index+1))/2})`],
+  //   //   ],
+  //   // },
+  //   threshold: null,
+  // }));
+
+//   const allIncomesValues = income.reduce((res, curIncome) => {
+//     res.push(...(
+//       (curIncome.income || []).map(curObjValue => curObjValue.value)
+//     ));
+
+//     return res;
+//   }, []);
+  
+//   return(
+//     <ReactHighstock
+//       config={{
+//         // ...options,
+//         series: renderedSeries,
+//         // yAxis: {
+//         //   title: {
+//         //     enabled: false,
+//         //   },
+//         //   showFirstLabel: false,
+//         //   showLastLabel: true,
+//         // },
+//         // xAxis: {
+//         //   minRange: 0.000000001,
+//         // },
+//         // xAxis: {
+//         //   min: Math.min(...(allIncomesValues || [])),
+//         //   max: Math.max(...(allIncomesValues || [])),
+//         //   min: 0.0000000001,
+//         //   minRange: 0.00000001,
+//         // },
+//       }}
+//     />
+//   );
+// };
+
+import React from 'react'
+import { render } from 'react-dom'
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
 
 const options = {
   chart: {
@@ -8,9 +86,6 @@ const options = {
   },
   title: {
     text: '',
-  },
-  rangeSelector: {
-    selected: 1,
   },
   legend: {
     enabled: true,
@@ -38,18 +113,12 @@ const options = {
   },
 };
 
-// const arrRgbGradientColors = [
-//   '0, 128, 0',
-//   '0, 0, 255',
-//   '255, 255, 0',
-//   '255, 165, 0',
-// ];
-
 export default (props) => {
-  if (!props.income || !props.income.length) 
+  if (!props.income || !props.income.length) {
     return(
       <div className="noLoadedProfit">Product processing...</div>
     );
+  }
 
   const { income, valuePrefix, valueSuffix } = props;
   const renderedSeries = income.map((curIncome, index) => ({
@@ -62,51 +131,28 @@ export default (props) => {
       valuePrefix: valuePrefix,
       valueSuffix: valueSuffix,
     },
-    // fillColor: {
-    //   linearGradient: {
-    //     x1: 0,
-    //     y1: 0,
-    //     x2: 0,
-    //     y2: 1,
-    //   },
-    //   stops: [
-    //     [0, `rgba(${arrRgbGradientColors[index]}, ${1/(5/(index+1))})`], 
-    //     [0, `rgba(${arrRgbGradientColors[index]}, ${1/(5/(index+1))/2})`],
-    //   ],
-    // },
     threshold: null,
   }));
 
-  const allIncomesValues = income.reduce((res, curIncome) => {
-    res.push(...(
-      (curIncome.income || []).map(curObjValue => curObjValue.value)
-    ));
-
-    return res;
-  }, []);
-  
-  return(
-    <ReactHighstock
-      config={{
-        ...options,
-        series: renderedSeries,
-        yAxis: {
+  return  (
+    <div>
+      <HighchartsReact
+        highcharts={Highcharts}
+        options={{
+          ...options,
           title: {
-            enabled: false,
+            text: ''
           },
-          showFirstLabel: false,
-          showLastLabel: true,
-        },
-        // xAxis: {
-        //   minRange: 0.000000001,
-        // },
-        // xAxis: {
-        //   min: Math.min(...(allIncomesValues || [])),
-        //   max: Math.max(...(allIncomesValues || [])),
-        //   min: 0.0000000001,
-        //   minRange: 0.00000001,
-        // },
-      }}
-    />
-  );
-};
+          xAxis: {
+            type: 'datetime'
+          },
+          series: renderedSeries,
+          scrollbar: {
+            enabled: true
+          }          
+        }}
+      />
+    </div>
+  )
+}
+

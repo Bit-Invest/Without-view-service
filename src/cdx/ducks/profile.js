@@ -69,14 +69,19 @@ const actions = utils.common.addPropery([
 			body: [],
 			processingResFn: (cbParams, res, tsAction, store, status) => {
 				const tsIncomeKeys = store.profile.incomeKeys;
-				const nowArr = typeof tsIncomeKeys === 'object' && tsIncomeKeys;
+        const nowArr = typeof tsIncomeKeys === 'object' && tsIncomeKeys;
+
+        console.log(222, {res})
 
 				return [
 					...(nowArr || []),
 					{
-						keyId: tsAction.data.keyId,
-						baseAsset: tsAction.data.baseAsset,
-						income: (res || {baseIncome: {}}).baseIncome,
+						keyId: res.keyId,
+						baseAsset: res.baseAsset,
+						income: {
+              baseBalance: res.balances,
+              baseIncome: res.profits
+            },
 					},
 				];
 			},
@@ -102,7 +107,7 @@ const actions = utils.common.addPropery([
 				...tsAction,
 				data: {
 					...tsAction.data,
-					url: `/user/income-history/${nextKeyId}/${dashboard.baseAsset}`,
+					url: `/user/futures/profits/?keyId=${nextKeyId}&baseAsset=${dashboard.baseAsset}`,
 					keyId: nextKeyId,
 					baseAsset: dashboard.baseAsset,
 					courBAN: (tsAction.data.courBAN || 0) + 1,
@@ -140,7 +145,7 @@ const actions = utils.common.addPropery([
 			method: 'GET',
 			processingResFn: (cbParams, res, tsAction, store, status) => {
 				const tsBalancesKeys = store.profile.balancesKeys;
-				const nowArr = typeof tsBalancesKeys === 'object' && tsBalancesKeys;
+        const nowArr = typeof tsBalancesKeys === 'object' && tsBalancesKeys;
 
 				return [
 					...(nowArr || []),

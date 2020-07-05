@@ -70,8 +70,8 @@ class RenderDashboard extends React.Component {
 
     this.state = {
       selectedAccount: 'ALL',
-      selectedCourDay: 7,
-      selectedType: 'INCOME',
+      selectedCourDay: 100000,
+      selectedType: 'BALANCE',
       selectedMode: 'ABSOLUTE',
     };
   }
@@ -197,11 +197,13 @@ class RenderDashboard extends React.Component {
     );
 
     return(
-      <div className="incomeParent">
-        <IncomeKeys 
-          income={incomesArr}
-          valueSuffix={`${({PERCENT:`% in ${baseAsset}`,ABSOLUTE:baseAsset})[selectedMode]}`}
-        />
+      <div className="incomeParentOverflow">
+        <div className="incomeParent">
+          <IncomeKeys 
+            income={incomesArr}
+            valueSuffix={`${({PERCENT:`% in ${baseAsset}`,ABSOLUTE:baseAsset})[selectedMode]}`}
+          />
+        </div>
       </div>
     );
   }
@@ -253,7 +255,7 @@ const ContentBoxRender = (props) => {
 
   const skillUser = skillData.reduce((res, curData) => res + notPassed(curData), 0);
 
-  if (skillUser > 1) return <RenderDashboard {...props} />;
+  if (skillUser > 0) return <RenderDashboard {...props} />;
   
   return renderHelloBlock(skillData, skillUser, userInfo);
 };

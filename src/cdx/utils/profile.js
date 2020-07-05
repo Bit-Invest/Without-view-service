@@ -229,16 +229,16 @@ export const getIncomeForKeys = (incomeArr, courDaySliced, mode = 'PERCENT', typ
 
   const slicedBalances = baseBalance
     .filter((curentBalance) => new Date(curentBalance.timestamp).getTime() > fromDate)
-    .filter((curBalance, index, arr) => 
-      (((arr[index + 0] || {value: 0}).value !== 0) || (curBalance.value !== 0)) && (
-        baseIncome.find(curIncome => curIncome.timestamp === curBalance.timestamp)
-      )
-    );
+    // .filter((curBalance, index, arr) => 
+    //   (((arr[index + 0] || {value: 0}).value !== 0) || (curBalance.value !== 0)) && (
+    //     baseIncome.find(curIncome => curIncome.timestamp === curBalance.timestamp)
+    //   )
+    // );
 
   const slicedIncomes = baseIncome
-    .filter((curIncome, index, arr) => 
-      slicedBalances.find(curSlicedBalance => curSlicedBalance.timestamp === curIncome.timestamp)
-    );
+    // .filter((curIncome, index, arr) => 
+    //   slicedBalances.find(curSlicedBalance => curSlicedBalance.timestamp === curIncome.timestamp)
+    // );
 
   const percentBalances = slicedBalances.map((curBalance, index) => ({
     ...curBalance,
@@ -264,13 +264,21 @@ export const getIncomeForKeys = (incomeArr, courDaySliced, mode = 'PERCENT', typ
     }, {
       arr: [],
       mod: 0,
-    }).arr;
+    }).arr
+    // .map((cur, index, arr) => ({
+    //   ...cur,
+    //   value: (arr[index - 1] || {value: 0}).value + cur.value
+    // }));;
 
   const showingUserIncome = slicedIncomes
     .map(curIncome => ({
       ...curIncome,
       value: ((curIncome.value - slicedIncomes[0].value)) * 100,
-    }));
+    }))
+    // .map((cur, index, arr) => ({
+    //   ...cur,
+    //   value: (arr[index - 1] || {value: 0}).value + cur.value
+    // }));
 
   return ({
     INCOME: {
@@ -288,6 +296,18 @@ export const getNameKeys = (keys, keyId) => (
  (keys.find(curKeys => curKeys.keyId === keyId) || {name: undefined}).name
 );
 
+const isEqualBaseAssets = (a, b) => {
+  if (a === 'USD' && b === 'USDT') {
+    return true;
+  }
+
+  if (b === 'USD' && a === 'USDT') {
+    return true;
+  }
+
+  return a === b;
+};
+
 export const getSelectedIncomes = (keys, incomeArr, selectedAccount, selectedCourDaySliced, baseAsset, mode, type) => {
   const selectedKeys = selectedAccount === 'ALL' ? keys : [keys.find(curKeys =>
     curKeys.keyId === selectedAccount
@@ -296,7 +316,7 @@ export const getSelectedIncomes = (keys, incomeArr, selectedAccount, selectedCou
   const incomes = selectedKeys.map(curSelectedKey => {
     const tsIncome = incomeArr.find(curIncome => 
       curIncome.keyId === curSelectedKey.keyId &&
-      curIncome.baseAsset === baseAsset
+      isEqualBaseAssets(curIncome.baseAsset, baseAsset)
     );
     const processedIncome = tsIncome && getIncomeForKeys(
       tsIncome.income, 
@@ -304,6 +324,17 @@ export const getSelectedIncomes = (keys, incomeArr, selectedAccount, selectedCou
       mode, 
       type,
     );
+
+    console.log(1, [
+      tsIncome.income,
+      selectedCourDaySliced, 
+      mode, 
+      type,
+    ]);
+
+    console.log(1, {
+      processedIncome
+    });
 
     return {
       ...curSelectedKey,
