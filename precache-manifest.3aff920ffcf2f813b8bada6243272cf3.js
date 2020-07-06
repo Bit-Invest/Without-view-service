@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "e82dc570074caadb228d",
+    "revision": "f1d5a5b220cebda11dfd",
     "url": "/static/css/main.7b52f69f.chunk.css"
   },
   {
-    "revision": "e82dc570074caadb228d",
-    "url": "/static/js/main.b4fe17b3.chunk.js"
+    "revision": "f1d5a5b220cebda11dfd",
+    "url": "/static/js/main.02d6a2a3.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -52,10 +52,6 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-Bold.5c1d517b.woff2"
   },
   {
-    "revision": "2718c69a1474b2e2b04afb39c8e62e3f",
-    "url": "/static/media/Geometria-Bold.2718c69a.woff"
-  },
-  {
     "revision": "86c78b24aa03145dff4576def89fafab",
     "url": "/static/media/Geometria-Heavy.86c78b24.woff"
   },
@@ -64,20 +60,16 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria-Heavy.ce1fa48a.woff2"
   },
   {
-    "revision": "9e4b52e7e1260af0506f9d915b4e6ffe",
-    "url": "/static/media/Geometria-ExtraLightItalic.9e4b52e7.woff2"
+    "revision": "2718c69a1474b2e2b04afb39c8e62e3f",
+    "url": "/static/media/Geometria-Bold.2718c69a.woff"
   },
   {
     "revision": "f1d8fcc96293c7610aef044bd6a85556",
     "url": "/static/media/Geometria-ExtraLightItalic.f1d8fcc9.woff"
   },
   {
-    "revision": "e370e8e3219741663b5a172a00cdb2d2",
-    "url": "/static/media/Geometria-Medium.e370e8e3.woff2"
-  },
-  {
-    "revision": "21ffa8553f379519ac5d80c38e039714",
-    "url": "/static/media/Geometria-Medium.21ffa855.woff"
+    "revision": "9e4b52e7e1260af0506f9d915b4e6ffe",
+    "url": "/static/media/Geometria-ExtraLightItalic.9e4b52e7.woff2"
   },
   {
     "revision": "e0f9d6492c7a3c6dc987a849fcb9cb10",
@@ -92,11 +84,19 @@ self.__precacheManifest = [
     "url": "/static/media/Geometria.2fe5f750.woff2"
   },
   {
+    "revision": "e370e8e3219741663b5a172a00cdb2d2",
+    "url": "/static/media/Geometria-Medium.e370e8e3.woff2"
+  },
+  {
+    "revision": "21ffa8553f379519ac5d80c38e039714",
+    "url": "/static/media/Geometria-Medium.21ffa855.woff"
+  },
+  {
     "revision": "413f36b0dc9a4e6ef7cc07b5e4014a66",
     "url": "/static/media/Geometria.413f36b0.woff"
   },
   {
-    "revision": "36f9d34fc08a05dfb71be79a276902c6",
+    "revision": "687d038cf0a1b82e74a7f8fcc9a5df5d",
     "url": "/index.html"
   }
 ];
