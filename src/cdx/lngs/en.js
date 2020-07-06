@@ -1,6 +1,6 @@
 let phrasesLng = {
 	'auth-common': {
-		'#1': 'В© 2019 Cindx',
+		'#1': 'В© 2019 TradeLink',
 	},
 	'auth-sign-in': {
 		'#1': 'Sign In', //title
@@ -105,7 +105,7 @@ let phrasesLng = {
 		'#26': 'This status indicates how your keys are currently used (Unused, to create a product or to follow a product)',
 	},
 	'small-dashboard': {
-		'#1': 'Welcome to CINDX',
+		'#1': 'Welcome to TradeLink',
 		'#2': 'Please add your exchange account.',
 		'#3': 'Thank you for adding your account.',
 		'#4': 'Now you can create a product or connect to one of the managers.',
@@ -135,7 +135,7 @@ let phrasesLng = {
 		'#27': 'Choose to view only the profit/loss over the reporting periods or the account`s total balance in absolute values.',
 		'#28': 'Choose the reporting period to display.',
 		'#29': 'By selecting the base asset, you choose whether to display the balance and/or profits in the base crypto currency of the product or USD.',
-		'#30': 'Welcome to the CINDX platform, ',
+		'#30': 'Welcome to the TradeLink platform, ',
 		'#31': 'Here`s how to get started:',
 		'#32': 'Add an exchange account by ',
 		'#33': 'importing API keys',
@@ -147,8 +147,8 @@ let phrasesLng = {
 		'#39': 'Track the profits and other stats of your account in the profile',
 		'#40': 'Please check our ',
 		'#41': 'knowledge base',
-		'#42': ' for detailed instructions on setting up your account and read more about various functions of the CINDX platform.',
-		'#43': 'Support is available at support@cindx.io and in the ',
+		'#42': ' for detailed instructions on setting up your account and read more about various functions of the TradeLink platform.',
+		'#43': 'Support is available at support@tradelink.io and in the ',
 		'#44': 'Telegram chat',
 		'#45': '',
 		'#46': '',
@@ -224,7 +224,7 @@ let phrasesLng = {
 	},
 	'profile-common': {
 		'#1': 'This is the list of all your exchange accounts and API keys associated with them.',
-		'#2': 'Click here to connect an exchange account to your CINDX account.',
+		'#2': 'Click here to connect an exchange account to your TradeLink account.',
 		'#3': 'My keys',
 		'#4': 'Add exchange account',
 		'#5': 'My investors',

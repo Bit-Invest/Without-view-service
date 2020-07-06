@@ -125,7 +125,7 @@ class RenderDashboard extends React.Component {
               <option value="BALANCE" selected={this.state.selectedType === "BALANCE"}>{phrases['small-dashboard']['#12']}</option>
             </select>
           </div>
-          <div className="item">
+          {/* <div className="item">
             <Help description={phrases['small-dashboard']['#28']}>
               <div className="curSmallTitle">{phrases['small-dashboard']['#13']}</div>
             </Help>
@@ -153,7 +153,7 @@ class RenderDashboard extends React.Component {
                 >{curTime.name}</option>      
               )}
             </select>
-          </div>
+          </div> */}
           <div className="item">
             <Help description={phrases['small-dashboard']['#29']}>
               <div className="curSmallTitle">{phrases['small-dashboard']['#19']}</div>
